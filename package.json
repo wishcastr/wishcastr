@@ -12,7 +12,7 @@
     "wiredep": "wiredep --src src/index.html --src src/scss/main.scss",
     "install:bower": "bower install --save",
     "postinstall:bower": "wiredep --src 'src/*.html'",
-    "postinstall": "bower install",
+    "postinstall": "bower install"
   },
   "repository": {
     "type": "git",
