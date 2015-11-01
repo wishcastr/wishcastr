@@ -30,9 +30,9 @@
   "homepage": "https://github.com/wishcastr/wishcastr#readme",
   "dependencies": {
     "bower": "^1.6.5"
+    "node-sass": "^3.4.1",
   },
   "devDependencies": {
-    "node-sass": "^3.4.1",
     "wiredep": "^2.2.2",
     "browser-sync": "^2.9.11"
   }
