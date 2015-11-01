@@ -1,0 +1,27 @@
+{
+  "name": "wishcastr",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "browser-sync start --server 'dist'",
+    "start:dev": "browser-sync start --server --directory --startPath='src/index.html'",
+    "sass": "node-sass src/scss/main.scss dist/css/main.css",
+    "sass:dev": "node-sass src/scss/main.scss src/css/main.css --watch='src/scss/*.scss'",
+    "wiredep": "wiredep --src src/index.html --src src/scss/main.scss",
+    "install:bower": "bower install --save",
+    "postinstall:bower": "wiredep --src 'src/*.html'",
+    "postinstall": "bower install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wishcastr/wishcastr.git"
+  },
+  "author": "Lacey Rice",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wishcastr/wishcastr/issues"
+  },
+  "homepage": "https://github.com/wishcastr/wishcastr#readme"
+}
