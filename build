@@ -4,6 +4,7 @@ echo 'Step 0: Kill ALL THE THINGS... in `public/`'
 rm -rf public/*
 
 echo 'Step 1: Copy all the HTML'
+mkdir -p public
 cp -v src/index.html public/
 mkdir public/partials/
  cp -r src/partials/ public/partials/
