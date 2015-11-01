@@ -5,8 +5,9 @@ rm -rf public/*
 
 echo 'Step 1: Copy all the HTML'
 mkdir -p public
+mkdir -p public/css
 cp -v src/index.html public/
-mkdir public/partials/
+mkdir -p public/partials/
  cp -r src/partials/ public/partials/
 
 echo 'Step 2: Build all the Sass into CSS!'
