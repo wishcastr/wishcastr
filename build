@@ -31,5 +31,3 @@ cp bower_components/angular-route/angular-route.js dist/bower_components/angular
 
 mkdir -p dist/bower_components/font-awesome/css/
 cp bower_components/font-awesome/css/font-awesome.css dist/bower_components/font-awesome/css/font-awesome.css
-
-npm start
