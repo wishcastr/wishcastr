@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
   def angular
-    render :file => 'dist/index.html'
+    render :file => 'public/index.html'
   end
 end
