@@ -3,4 +3,4 @@ branches:
   only:
     - master
     - develop
-script: npm install && npm install -g bower && bower install && bash build
+script: npm install && bash build
