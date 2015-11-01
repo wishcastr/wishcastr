@@ -1,4 +1,4 @@
-echo 'Step 0: Kill ALL THE THINGS... in `dist/`'
+echo 'Step 0: Kill ALL THE THINGS... in `public/`'
 
 rm -rf public/*
 
