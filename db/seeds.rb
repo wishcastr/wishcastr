@@ -15,7 +15,7 @@ end
 
 1000.times do
   Product.create!(brand: Faker::Lorem.word, color:Faker::Commerce.color, edition: Faker::Lorem.word, eisbn: Faker::Code.isbn,
-  list_price: Faker::Commerce.price, model: Faker::Lorem.word, mpn: Faker::Number.number(5),
+  isbn: Faker::Code.isbn, format: Faker::Lorem.word, list_price: Faker::Commerce.price, model: Faker::Lorem.word, mpn: Faker::Number.number(5),
   part_number: rand(1000000..9999999), publication_date: Faker::Date.between(2.days.ago, Date.today),
   release_date: Faker::Date.between(4.days.ago, Date.today), publisher: Faker::Book.publisher,
   sku: rand(10000000..99999999), title: Faker::Lorem.word, upc: rand(1000000..9999999), size: rand(1..55), wish_id: rand(1..300))
