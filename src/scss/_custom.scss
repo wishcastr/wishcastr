@@ -2,15 +2,18 @@
   width: 100%;
 
   .nav-header {
-    background-color: orange;
+    // background-color: orange;
     float: left;
     display: inline-block;
     width: 100%;
+    padding-bottom: 2%;
 
     #logo {
       text-decoration: none;
       display: inline-block;
       font-size: 25pt;
+      font-family: 'Lobster Two', cursive;
+      color: #124DF9;
     } //END #logo
 
     .login {
@@ -23,16 +26,19 @@
     }//END .LOGIN <DIV>
   }//END <HEADER>
 
-  .search-bar {
-    display: block;
-    background-color: purple;
-    padding: 4%;
-
-    .search {
-      display: inline-block;
-      margin: 0 auto;
-    }
-
-
+  .search {
+    display: inline-block;
+    float: left;
+    width: 100%;
+    background-color: #F9BE12;
+    padding-bottom: 4%;
+    padding-top: 4%;
+    text-align: center;
+    @extend .clearfix;
   }//END .SEARCH
-}
+
+  .list {
+    width: 100%;
+  }
+
+}//END .CONTAINER
