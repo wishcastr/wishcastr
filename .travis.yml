@@ -3,4 +3,4 @@ branches:
   only:
     - master
     - develop
-script: npm install && bash build
+script: npm install
