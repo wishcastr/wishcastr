@@ -17,9 +17,9 @@
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
-      <main class="container">
+      <main class="container" ng-app='Wishcastr'>
         <header>
-          <h1>Wishcastr</h1>
+          <a href="#/top-wishes">Wishcastr</a> <!--TODO MAKE THIS LINK TO INDEX-->
           <nav class="login">
             <input type="text" placeholder="username"></input>
             <input type="password" placeholder="password"></input>
@@ -31,6 +31,7 @@
           <!-- search in here some day WOO! -->
         </section> <!--END OF .SEARCH-->
         <section class="list">
+          <a href="#/user-wishes">user wishes</a>
           <ng-view />
         </section> <!--END .LIST-->
       </main> <!--END .CONTAINER-->
