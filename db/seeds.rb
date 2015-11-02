@@ -9,24 +9,31 @@
 #   User.create!(name: Faker::Name.name, email: Faker::Internet.email, password_digest: Faker::Internet.password(6), zipcode: Faker::Address.zip)
 # end
 
-300.times do
-  Wish.create!(name: Faker::Commerce.product_name, user_id: rand(1..100), threshold_price: rand(15.00..500.00).round(2), category: Faker::Lorem.word, query: Faker::Lorem.word)
-end
-
-800.times do
-  Product.create!(brand: Faker::Lorem.word, sku: rand(10000000..99999999), title: Faker::Lorem.word, wish_id: rand(1..300),
-  image_large: Faker::Placeholdit.image("150x150", 'jpg', 'ffffff', '000', 'Some Product'),
-  image_thumbnail: Faker::Placeholdit.image("50x50", 'jpg', 'eeeeee', '000', 'Thumbnail'),
+1000.times do
+  AmazonProduct.create!(brand: Faker::Lorem.word, sku: rand(10000000..99999999), title: Faker::Lorem.word,
+  image_large: "http://www.lorempixel.com/g/150/150",
+  image_thumbnail: "http://www.lorempixel.com/g/50/50",
   description: Faker::Lorem.sentence, affiliate_url: Faker::Internet.url)
 end
 
 10.times do
-  Product.create!(brand: Faker::Lorem.word, sku: rand(10000000..99999999), title: "Jacki Chan Movies", wish_id: rand(1..300),
-  image_large: Faker::Placeholdit.image("150x150", 'jpg', 'ffffff', '000', 'Some Product'),
-  image_thumbnail: Faker::Placeholdit.image("50x50", 'jpg', 'eeeeee', '000', 'Thumbnail'),
+  AmazonProduct.create!(brand: Faker::Lorem.word, sku: rand(10000000..99999999), title: "Jackie Chan Movies",
+  image_large: "http://www.lorempixel.com/g/150/150",
+  image_thumbnail: "http://www.lorempixel.com/g/50/50",
   description: Faker::Lorem.sentence, affiliate_url: Faker::Internet.url)
+end
+
+products = AmazonProduct.all
+
+
+300.times do
+  wish = Wish.create!(name: Faker::Commerce.product_name, user_id: rand(1..100),
+  threshold_price: rand(15.00..500.00).round(2), category: Faker::Lorem.word, query: Faker::Lorem.word)
+  number_of_products = (1..10).to_a.sample
+  number_of_products.times do
+    ProductsWish.create!(wish_id: wish.id, product_id: products.sample.id)
+  end
 end
 
 
 # PriceHistory.create!()
-# ProductWish.create!(wish_id: rand(1..300), product_id: rand(1..800))
