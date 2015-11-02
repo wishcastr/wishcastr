@@ -1,1 +1,1 @@
-# wishcastr
+# WishCastr
