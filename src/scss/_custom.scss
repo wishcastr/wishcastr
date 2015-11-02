@@ -11,9 +11,10 @@
     #logo {
       text-decoration: none;
       display: inline-block;
-      font-size: 25pt;
+      font-size: 30pt;
       font-family: 'Lobster Two', cursive;
-      color: #124DF9;
+      color: #064583;
+      font-weight: bold;
     } //END #logo
 
     .login {
@@ -24,6 +25,15 @@
         text-decoration: none;
       }//END #signup-link
     }//END .LOGIN <DIV>
+    button {
+      background-color: #068383;
+      border: none;
+      color: #fff;
+      // padding-left: 2%;
+      // padding-right: 2%;
+      border-radius: 3px;
+
+    }
   }//END <HEADER>
 
   .search {
@@ -35,6 +45,23 @@
     padding-top: 4%;
     text-align: center;
     @extend .clearfix;
+
+    input {
+      border-radius: 3px;
+      border: none;
+      padding: 5px 95px;
+      text-align: center;
+    }
+
+    button {
+      background-color: #068383;
+      border: none;
+      color: #fff;
+      padding-left: 2%;
+      padding-right: 2%;
+      border-radius: 3px;
+      margin-left: 10px;
+    }//END BUTTON
   }//END .SEARCH
 
   .list-view {
