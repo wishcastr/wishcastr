@@ -21,7 +21,7 @@ cp bower_components/normalize-css/normalize.css public/bower_components/normaliz
 
 
 mkdir -p public/bower_components/jquery/public/
-cp bower_components/jquery/public/jquery.js public/bower_components/jquery/public/jquery.js
+cp bower_components/jquery/dist/jquery.js public/bower_components/jquery/dist/jquery.js
 
 mkdir -p public/bower_components/angular/
 cp bower_components/angular/angular.js public/bower_components/angular/angular.js
