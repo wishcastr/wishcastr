@@ -1,41 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  brand: MyText
-  color: MyText
-  edition: MyText
-  eisbn: MyText
-  format: MyText
-  isbn: MyText
-  list_price: MyText
-  model: MyText
-  mpn: MyText
-  part_number: MyText
-  publication_date: MyText
-  release_date: MyText
-  publisher: MyText
-  sku: MyText
-  title: MyText
-  upc: MyText
-  size: MyText
-  wish_id: 1
+  type: 
+  sku: MyString
+  image_large: MyString
+  image_thumbnail: MyString
+  title: MyString
+  brand: MyString
+  description: MyText
+  affiliate_url: MyString
 
 two:
-  brand: MyText
-  color: MyText
-  edition: MyText
-  eisbn: MyText
-  format: MyText
-  isbn: MyText
-  list_price: MyText
-  model: MyText
-  mpn: MyText
-  part_number: MyText
-  publication_date: MyText
-  release_date: MyText
-  publisher: MyText
-  sku: MyText
-  title: MyText
-  upc: MyText
-  size: MyText
-  wish_id: 1
+  type: 
+  sku: MyString
+  image_large: MyString
+  image_thumbnail: MyString
+  title: MyString
+  brand: MyString
+  description: MyText
+  affiliate_url: MyString
