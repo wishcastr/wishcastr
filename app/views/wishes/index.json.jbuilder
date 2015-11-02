@@ -1,4 +1,4 @@
 json.array!(@wishes) do |wish|
-  json.extract! wish, :id, :user_id, :threshold_price, :category
-  json.url wish_url(wish, format: :json)
+  json.extract! wish, :id, :user_id, :threshold_price, :category, :query, :name
+  json.products wish.products, :type, :sku, :image_large, :image_thumbnail, :title, :brand, :description, :affiliate_url
 end

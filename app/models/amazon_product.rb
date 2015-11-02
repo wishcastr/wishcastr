@@ -1,0 +1,4 @@
+class AmazonProduct < Product
+
+
+end
