@@ -10,6 +10,7 @@
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <!-- Place favicon.ico in the root directory -->
         <!-- bower:css -->
+        <link href='https://fonts.googleapis.com/css?family=Lobster+Two' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="../bower_components/normalize-css/normalize.css" />
         <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.css" />
 
@@ -18,18 +19,21 @@
     </head>
     <body>
       <main class="container" ng-app='Wishcastr'>
-        <header>
-          <a href="#/top-wishes">Wishcastr</a> <!--TODO MAKE THIS LINK TO INDEX-->
-          <nav class="login">
+        <header class="nav-header">
+          <a href="#/top-wishes" id="logo">Wishcastr</a>
+          <div class="login">
             <input type="text" placeholder="username"></input>
             <input type="password" placeholder="password"></input>
             <button type="submit">Login</button>
-            <a href="#/signup">signup</a>
-          </nav> <!--END .LOGIN-->
+            <a href="#/signup" id="signup-link">signup</a>
+          </div>
         </header> <!--END OF HEADER-->
+
         <section class="search">
-          <!-- search in here some day WOO! -->
+            <input type="search"></input>
+            <button type="submit">Search</button>
         </section> <!--END OF .SEARCH-->
+
         <section class="list">
           <a href="#/user-wishes">user wishes</a>
           <a href="#/results">results</a>
