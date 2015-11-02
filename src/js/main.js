@@ -7,7 +7,9 @@
     .when ('/top-wishes', {
       templateUrl: 'partials/top-wishes.html'
     })//END OF TOP-WISHES
-
+    .when ('/user-wishes', {
+      templateUrl: 'partials/user-wishes.html'
+    })//END OF USER-WISHES
   })//END OF MODULE
 
 })(); //END OF IFFE
