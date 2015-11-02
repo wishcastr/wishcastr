@@ -96,13 +96,12 @@ textarea {
    ========================================================================== */
 //bower:scss
 @import "../../bower_components/font-awesome/scss/font-awesome.scss";
-
+@import "_custom";
+@import "_grid";
+@import "_list";
 //endbower
 
 
-p {
-  background-color: green;
-}
 
 
 
