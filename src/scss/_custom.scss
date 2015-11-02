@@ -1,0 +1,38 @@
+.container {
+  width: 100%;
+
+  .nav-header {
+    background-color: orange;
+    float: left;
+    display: inline-block;
+    width: 100%;
+
+    #logo {
+      text-decoration: none;
+      display: inline-block;
+      font-size: 25pt;
+    } //END #logo
+
+    .login {
+      display: inline-block;
+      margin-left: 50%;
+
+      #signup-link {
+        text-decoration: none;
+      }//END #signup-link
+    }//END .LOGIN <DIV>
+  }//END <HEADER>
+
+  .search-bar {
+    display: block;
+    background-color: purple;
+    padding: 4%;
+
+    .search {
+      display: inline-block;
+      margin: 0 auto;
+    }
+
+
+  }//END .SEARCH
+}
