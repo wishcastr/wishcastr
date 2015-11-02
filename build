@@ -20,7 +20,7 @@ mkdir -p public/bower_components/normalize-css/
 cp bower_components/normalize-css/normalize.css public/bower_components/normalize-css/normalize.css
 
 
-mkdir -p public/bower_components/jquery/public/
+mkdir -p public/bower_components/jquery/dist/
 cp bower_components/jquery/dist/jquery.js public/bower_components/jquery/dist/jquery.js
 
 mkdir -p public/bower_components/angular/
