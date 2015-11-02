@@ -12,7 +12,7 @@ class ProductsControllerTest < ActionController::TestCase
 
   test "should create product" do
     assert_difference('Product.count') do
-      post :create, params: { product: { brand: @product.brand, color: @product.color, edition: @product.edition, eisbn: @product.eisbn, format: @product.format, isbn: @product.isbn, list_price: @product.list_price, model: @product.model, mpn: @product.mpn, part_number: @product.part_number, publication_date: @product.publication_date, publisher: @product.publisher, release_date: @product.release_date, size: @product.size, sku: @product.sku, title: @product.title, upc: @product.upc, wish_id: @product.wish_id } }
+      post :create, params: { product: { affiliate_url: @product.affiliate_url, brand: @product.brand, description: @product.description, image_large: @product.image_large, image_thumbnail: @product.image_thumbnail, sku: @product.sku, title: @product.title, type: @product.type } }
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class ProductsControllerTest < ActionController::TestCase
   end
 
   test "should update product" do
-    patch :update, params: { id: @product, product: { brand: @product.brand, color: @product.color, edition: @product.edition, eisbn: @product.eisbn, format: @product.format, isbn: @product.isbn, list_price: @product.list_price, model: @product.model, mpn: @product.mpn, part_number: @product.part_number, publication_date: @product.publication_date, publisher: @product.publisher, release_date: @product.release_date, size: @product.size, sku: @product.sku, title: @product.title, upc: @product.upc, wish_id: @product.wish_id } }
+    patch :update, params: { id: @product, product: { affiliate_url: @product.affiliate_url, brand: @product.brand, description: @product.description, image_large: @product.image_large, image_thumbnail: @product.image_thumbnail, sku: @product.sku, title: @product.title, type: @product.type } }
     assert_response 200
   end
 

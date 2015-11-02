@@ -12,7 +12,7 @@ class WishesControllerTest < ActionController::TestCase
 
   test "should create wish" do
     assert_difference('Wish.count') do
-      post :create, params: { wish: { category: @wish.category, threshold_price: @wish.threshold_price, user_id: @wish.user_id } }
+      post :create, params: { wish: { category: @wish.category, name: @wish.name, query: @wish.query, threshold_price: @wish.threshold_price, user_id: @wish.user_id } }
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class WishesControllerTest < ActionController::TestCase
   end
 
   test "should update wish" do
-    patch :update, params: { id: @wish, wish: { category: @wish.category, threshold_price: @wish.threshold_price, user_id: @wish.user_id } }
+    patch :update, params: { id: @wish, wish: { category: @wish.category, name: @wish.name, query: @wish.query, threshold_price: @wish.threshold_price, user_id: @wish.user_id } }
     assert_response 200
   end
 
