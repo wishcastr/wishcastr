@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102201511) do
+ActiveRecord::Schema.define(version: 20151102204807) do
 
   create_table "price_histories", force: :cascade do |t|
     t.integer  "product_id"
@@ -43,6 +43,17 @@ ActiveRecord::Schema.define(version: 20151102201511) do
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_products_wishes_on_product_id"
     t.index ["wish_id"], name: "index_products_wishes_on_wish_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "postal_code"
+    t.string   "amz_id"
+    t.string   "amz_access_token"
+    t.string   "amz_raccess_token"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "wishes", force: :cascade do |t|

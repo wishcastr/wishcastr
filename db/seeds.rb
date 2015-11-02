@@ -8,6 +8,11 @@
 # 100.times do
 #   User.create!(name: Faker::Name.name, email: Faker::Internet.email, password_digest: Faker::Internet.password(6), zipcode: Faker::Address.zip)
 # end
+700.times do
+  User.create!(name: Faker::Name.name, email: Faker::Internet.email, postal_code: Faker::Address.postcode,
+  amz_id: rand(1..700), amz_access_token: , amz_raccess_token:)
+end
+
 
 1000.times do
   AmazonProduct.create!(brand: Faker::Lorem.word, sku: rand(10000000..99999999), title: Faker::Lorem.word,
