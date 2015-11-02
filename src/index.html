@@ -17,12 +17,23 @@
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
-        <!-- Add your site or application content here -->
-        <p>Hello world! This is HTML5 Boilerplate.</p>
+      <main class="container">
+        <header>
+          <h1>Wishcastr</h1>
+          <nav class="login">
+            <input type="text" placeholder="username"></input>
+            <input type="password" placeholder="password"></input>
+            <button type="submit">Login</button>
+            <a href="#/signup">signup</a>
+          </nav> <!--END .LOGIN-->
+        </header> <!--END OF HEADER-->
+        <section class="search">
+          <!-- search in here some day WOO! -->
+        </section> <!--END OF .SEARCH-->
+        <section class="list">
+          <ng-view />
+        </section> <!--END .LIST-->
+      </main> <!--END .CONTAINER-->
 
         <!-- bower:js -->
         <script src="../bower_components/jquery/dist/jquery.js"></script>
