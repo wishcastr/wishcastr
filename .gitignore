@@ -3,6 +3,7 @@ node_modules/
 bower_components/
 src/css/
 npm-debug.log
+!public/*
 
 # See https://help.github.com/articles/ignoring-files for more about ignoring files.
 #
