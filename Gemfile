@@ -17,7 +17,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'active_model_serializers', '~> 0.10.0.rc2'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem 'rack-cors'
+gem 'rack-cors'
 gem 'puma'
 gem 'faker'
 group :development, :test do
