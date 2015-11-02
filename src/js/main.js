@@ -10,6 +10,12 @@
     .when ('/user-wishes', {
       templateUrl: 'partials/user-wishes.html'
     })//END OF USER-WISHES
+    .when ('/results', {
+      templateUrl: 'partials/results.html'
+    })//END OF RESULTS
+
+
+
   })//END OF MODULE
 
 })(); //END OF IFFE
