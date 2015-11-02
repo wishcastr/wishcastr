@@ -5,18 +5,28 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-100.times do
-  User.create!(name: Faker::Name.name, email: Faker::Internet.email, password_digest: Faker::Internet.password(6), zipcode: Faker::Address.zip)
-end
+# 100.times do
+#   User.create!(name: Faker::Name.name, email: Faker::Internet.email, password_digest: Faker::Internet.password(6), zipcode: Faker::Address.zip)
+# end
 
 300.times do
-  Wish.create!(user_id: rand(1..100), threshold_price: rand(15.00..400.00).round(2), category: Faker::Lorem.word)
+  Wish.create!(name: Faker::Commerce.product_name, user_id: rand(1..100), threshold_price: rand(15.00..500.00).round(2), category: Faker::Lorem.word, query: Faker::Lorem.word)
 end
 
-1000.times do
-  Product.create!(brand: Faker::Lorem.word, color:Faker::Commerce.color, edition: Faker::Lorem.word, eisbn: Faker::Code.isbn,
-  isbn: Faker::Code.isbn, format: Faker::Lorem.word, list_price: Faker::Commerce.price, model: Faker::Lorem.word, mpn: Faker::Number.number(5),
-  part_number: rand(1000000..9999999), publication_date: Faker::Date.between(2.days.ago, Date.today),
-  release_date: Faker::Date.between(4.days.ago, Date.today), publisher: Faker::Book.publisher,
-  sku: rand(10000000..99999999), title: Faker::Lorem.word, upc: rand(1000000..9999999), size: rand(1..55), wish_id: rand(1..300))
+800.times do
+  Product.create!(brand: Faker::Lorem.word, sku: rand(10000000..99999999), title: Faker::Lorem.word, wish_id: rand(1..300),
+  image_large: Faker::Placeholdit.image("150x150", 'jpg', 'ffffff', '000', 'Some Product'),
+  image_thumbnail: Faker::Placeholdit.image("50x50", 'jpg', 'eeeeee', '000', 'Thumbnail'),
+  description: Faker::Lorem.sentence, affiliate_url: Faker::Internet.url)
 end
+
+10.times do
+  Product.create!(brand: Faker::Lorem.word, sku: rand(10000000..99999999), title: "Jacki Chan Movies", wish_id: rand(1..300),
+  image_large: Faker::Placeholdit.image("150x150", 'jpg', 'ffffff', '000', 'Some Product'),
+  image_thumbnail: Faker::Placeholdit.image("50x50", 'jpg', 'eeeeee', '000', 'Thumbnail'),
+  description: Faker::Lorem.sentence, affiliate_url: Faker::Internet.url)
+end
+
+
+# PriceHistory.create!()
+# ProductWish.create!(wish_id: rand(1..300), product_id: rand(1..800))

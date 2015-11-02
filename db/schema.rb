@@ -11,44 +11,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151101211813) do
+ActiveRecord::Schema.define(version: 20151102183646) do
 
-  create_table "products", force: :cascade do |t|
-    t.text     "brand"
-    t.text     "color"
-    t.text     "edition"
-    t.text     "eisbn"
-    t.text     "format"
-    t.text     "isbn"
-    t.text     "list_price"
-    t.text     "model"
-    t.text     "mpn"
-    t.text     "part_number"
-    t.text     "publication_date"
-    t.text     "release_date"
-    t.text     "publisher"
-    t.text     "sku"
-    t.text     "title"
-    t.text     "upc"
-    t.text     "size"
-    t.integer  "wish_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+  create_table "price_histories", force: :cascade do |t|
+    t.integer  "product_id"
+    t.string   "currency"
+    t.decimal  "price"
+    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "password_digest"
-    t.string   "zipcode"
+  create_table "products", force: :cascade do |t|
+    t.string   "type"
+    t.string   "sku"
+    t.string   "image_large"
+    t.string   "image_thumbnail"
+    t.string   "title"
+    t.string   "brand"
+    t.text     "description"
+    t.string   "affiliate_url"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
 
+  create_table "products_wishes", force: :cascade do |t|
+    t.integer  "wish_id"
+    t.integer  "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "wishes", force: :cascade do |t|
     t.integer  "user_id"
-    t.float    "threshold_price"
+    t.decimal  "threshold_price"
     t.string   "category"
+    t.string   "query"
+    t.string   "name"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
