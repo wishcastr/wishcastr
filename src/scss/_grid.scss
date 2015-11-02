@@ -1,0 +1,15 @@
+// for 3, 4, 6,  8 and 12
+@each $Y in 3, 4, 6, 8, 12 {
+  @for $X from 1 through $Y {
+    .col-#{$X}-#{$Y} {
+      width: 100% * ($X / $Y);
+      box-sizing: border-box;
+      display:block; float:left;
+    }
+    .pad-#{$X}-#{$Y} {
+      margin-left: 100% * ($X/$Y);
+      box-sizing: border-box;
+      display:block; float:left;
+    }
+  } // END @for 1...$Y
+} // END @each 6,8,12,16,18
