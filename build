@@ -22,7 +22,6 @@ echo 'Step 4a: Normalize the CSS...'
 mkdir -p public/bower_components/normalize-css/
 cp -v bower_components/normalize-css/normalize.css public/bower_components/normalize-css/normalize.css
 
-
 mkdir -p public/bower_components/jquery/public/
 cp -v bower_components/jquery/public/jquery.js public/bower_components/jquery/public/jquery.js
 
