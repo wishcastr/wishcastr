@@ -1,18 +1,15 @@
 class WishesController < ApplicationController
   before_action :set_wish, only: [:show, :update, :destroy]
 
-  # GET /wishes
   # GET /wishes.json
   def index
     @wishes = Wish.all
   end
 
-  # GET /wishes/1
   # GET /wishes/1.json
   def show
   end
 
-  # POST /wishes
   # POST /wishes.json
   def create
     @wish = Wish.new(wish_params)
@@ -24,7 +21,6 @@ class WishesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /wishes/1
   # PATCH/PUT /wishes/1.json
   def update
     if @wish.update(wish_params)
@@ -34,7 +30,6 @@ class WishesController < ApplicationController
     end
   end
 
-  # DELETE /wishes/1
   # DELETE /wishes/1.json
   def destroy
     @wish.destroy
