@@ -102,6 +102,8 @@ GEM
       actionpack (>= 4.0)
       activemodel (>= 4.0)
       railties (>= 4.0)
+    api_docs (1.0.6)
+      rails (>= 3.1.0)
     bcrypt (3.1.10)
     builder (3.2.2)
     byebug (6.0.2)
@@ -159,6 +161,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers (~> 0.10.0.rc2)
+  api_docs
   arel!
   bcrypt (~> 3.1.7)
   byebug
