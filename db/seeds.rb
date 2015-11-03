@@ -26,8 +26,8 @@ end
 
 10.times do
   AmazonProduct.create!(brand: Faker::Lorem.word, sku: rand(10000000..99999999), title: "Jackie Chan Movies",
-  image_large: "http://www.lorempixel.com/g/150/150",
-  image_thumbnail: "http://www.lorempixel.com/g/50/50",
+  image_large: "http://www.lorempixel.com/g/500/500",
+  image_thumbnail: "http://www.lorempixel.com/g/100/100",
   description: Faker::Lorem.sentence, affiliate_url: Faker::Internet.url)
 end
 
