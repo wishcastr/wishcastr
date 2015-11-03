@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
   end
 
   def top
-    @products = Product.by_wishes
+    @products = Product.by_wishes.top_25_by_wish
     render :index
   end
   # GET /products/1
