@@ -45,20 +45,21 @@
     width: 100%;
     background-color: #F9BE12;
     padding-bottom: 4%;
-    padding-top: 4%;
+    padding-top: 2%;
     text-align: center;
     @extend .clearfix;
 
     h2 {
-      font-size: 25pt;
+      font-size: 35pt;
       font-weight: lighter;
       color: #fff;
-      margin-bottom: 50px;
+      margin-bottom: 17px;
+      margin-top: 25px;
       #wish {
         font-family: 'Lobster Two', cursive;
         font-weight: lighter;
       }
-    }
+    }//.SEARCH
 
     input {
       border-radius: 3px;
