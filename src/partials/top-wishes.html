@@ -6,8 +6,8 @@
       <a href="#">
         <img ng-src="{{product.image_thumbnail}}"></img>
         <h3>{{product.title}}</h3>
-        <p>{{product.description}}</p>
-        <!-- <p>{{product.price}}</p> -->
+        <p>{{product.description | limitTo: 50}}</p>
+        <p>{{product.current_price | currency}}</p>
       </a>
     </li>
   </ul>
