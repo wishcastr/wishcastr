@@ -6,6 +6,8 @@
   h2 {
     font-size: 25pt;
     margin-bottom: 10px;
+    color: #064583;
+
 
   }
 
@@ -31,28 +33,46 @@
       a {
         float: left;
         text-decoration: none;
+        width: 100%;
 
         img {
           display: inline-block;
           margin: 10px;
+          margin-right: 15px;
+          float: left;
         }
 
-        h3 {
-          display: inline-block;
-          margin: 0 10px;
-          color: #064583;
-        }
+        .product-txt {
+          padding-top: 4%;
+          // padding-bottom: 6%;
+          text-align: left;
 
-        p {
-          display: inline-block;
-          margin: 0 10px;
-          color: #068383;
-        }
+          h3 {
+            display: inline-block;
+            margin: 0 10px;
+            margin-left: 0;
+            color: #064583;
+          }
+
+          p {
+            display: inline-block;
+            margin: 0 10px;
+            color: #068383;
+          }
+          #price {
+            float: right;
+            font-size: 18pt;
+            margin-top: 14px; 
+          }
+
+          #descr {
+            display: block;
+          }
+
+        }//.PRODUCT-TXT
+
       }//END OF <A>
     }//END <LI>
   }//END of <UL>
 
-  h2 {
-    color: #064583;
-  }
 }
