@@ -3,15 +3,12 @@ class Product < ActiveRecord::Base
   has_many :products_wishes
   has_many :price_histories
 
-  def self.by_wishes
-    Product.select("products.*, COUNT(products_wishes.id) as wishes_count")
-     .joins("LEFT OUTER JOIN products_wishes ON products.id = products_wishes.product_id")
-     .group("products.id")
-     .order("wishes_count DESC")
-  end
-
-  def self.top_25_by_wish
-    self.by_wishes.limit(25)
+  def self.by_wishes(how_many = nil)
+    products = Product.select("products.*, COUNT(products_wishes.id) as wishes_count")
+      .joins("LEFT OUTER JOIN products_wishes ON products.id = products_wishes.product_id")
+      .group("products.id")
+      .order("wishes_count DESC")
+    how_many ? products.limit(how_many) : products
   end
 
   def current_price
