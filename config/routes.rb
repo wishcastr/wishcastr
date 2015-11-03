@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :products do
     collection do
       get 'top'
+      get 'search'
     end
   end
   mount ApiDocs::Engine => '/api-docs'
