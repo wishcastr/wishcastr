@@ -5,7 +5,15 @@
       redirectTo: 'top-wishes'
     })//END OF REDIRECT
     .when ('/top-wishes', {
-      templateUrl: 'partials/top-wishes.html'
+      templateUrl: 'partials/top-wishes.html',
+      controller: function ($http, $rootScope) {
+        $http.get('http://wishcastr-staging.herokuapp.com/products/top.json')
+        .then(function(response){
+
+
+            $rootScope.products = response.data;
+        })
+      }//end of controller
     })//END OF TOP-WISHES
     .when ('/user-wishes', {
       templateUrl: 'partials/user-wishes.html'

@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-
+  font-family: 'Lato', sans-serif;
   .nav-header {
     // background-color: orange;
     float: left;
@@ -16,6 +16,7 @@
       color: #064583;
       font-weight: bold;
       margin-left: 10px;
+      margin-top: 10px;
     } //END #logo
 
     .login {
@@ -44,15 +45,28 @@
     width: 100%;
     background-color: #F9BE12;
     padding-bottom: 4%;
-    padding-top: 4%;
+    padding-top: 2%;
     text-align: center;
     @extend .clearfix;
+
+    h2 {
+      font-size: 35pt;
+      font-weight: lighter;
+      color: #fff;
+      margin-bottom: 17px;
+      margin-top: 25px;
+      #wish {
+        font-family: 'Lobster Two', cursive;
+        font-weight: lighter;
+      }
+    }//.SEARCH
 
     input {
       border-radius: 3px;
       border: none;
       padding: 5px 95px;
       text-align: center;
+      margin-top: 25px;
     }
 
     button {
