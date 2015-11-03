@@ -15,4 +15,8 @@ class Product < ActiveRecord::Base
     a = price_histories.order(:date).limit(1).first
     a ? a.price : nil
   end
+
+  def search
+    raise NotImplementedError, 'Need to Implement on subClass'
+  end
 end
