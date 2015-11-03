@@ -1,6 +1,7 @@
 class Product < ActiveRecord::Base
   has_many :wishes, through: :products_wish
   has_many :products_wishes
+  has_many :price_histories
 
   def self.by_wishes
     Product.select("products.*, COUNT(products_wishes.id) as wishes_count")
@@ -13,4 +14,8 @@ class Product < ActiveRecord::Base
     self.by_wishes.limit(25)
   end
 
+  def current_price
+    a = price_histories.order(:date).limit(1).first
+    a ? a.price : nil
+  end
 end
