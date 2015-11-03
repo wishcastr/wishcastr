@@ -12,6 +12,10 @@
   User.create!(name: Faker::Name.name, email: Faker::Internet.email, postal_code: Faker::Address.postcode)
 end
 
+1500.times do
+  PriceHistory.create!(product_id: rand(1..1500), currency: "USD", price: Faker::Commerce.price,
+  date: Faker::Date.between(1.days.ago, Date.today))
+end
 
 1000.times do
   AmazonProduct.create!(brand: Faker::Lorem.word, sku: rand(10000000..99999999), title: Faker::Lorem.word,
