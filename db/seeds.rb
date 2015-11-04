@@ -44,4 +44,5 @@ end
 end
 
 
+
 # PriceHistory.create!()
