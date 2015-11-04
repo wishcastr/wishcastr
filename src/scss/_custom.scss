@@ -13,7 +13,7 @@
       display: inline-block;
       font-size: 30pt;
       font-family: 'Lobster Two', cursive;
-      color: #064583;
+      color: #064583;     //DARK BLUE
       font-weight: bold;
       margin-left: 10px;
       margin-top: 10px;
@@ -29,7 +29,7 @@
       }//END #signup-link
     }//END .LOGIN <DIV>
     button {
-      background-color: #068383;
+      background-color: #068383; //TEAL
       border: none;
       color: #fff;
       // padding-left: 2%;
@@ -43,7 +43,7 @@
     display: inline-block;
     float: left;
     width: 100%;
-    background-color: #F9BE12;
+    background-color: #F9BE12; //YELLOW/ORANGE
     padding-bottom: 4%;
     padding-top: 2%;
     text-align: center;
@@ -59,7 +59,7 @@
         font-family: 'Lobster Two', cursive;
         font-weight: lighter;
       }
-    }//.SEARCH
+    }//END H2
 
     input {
       border-radius: 3px;
@@ -78,7 +78,20 @@
       border-radius: 3px;
       margin-left: 10px;
     }//END BUTTON
-  }//END .SEARCH
+
+      .search-menu {
+        list-style: none;
+        background-color: rgba(255,255,255,0.5);
+        width: 60%;
+        margin: 0 auto;
+        border-radius: 5px;
+
+        li {
+          // background-color: #fff;
+          color: #064583;
+        }
+      }
+    }//.SEARCH
 
   .list-view {
     width: 100%;
