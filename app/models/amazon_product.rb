@@ -49,6 +49,34 @@ class AmazonProduct < Product
 
   def self.search(query)
     doc = Nokogiri.XML(open(generate_amazon_uri(query)))
+    doc.remove_namespaces!
+
+    search_results = []
+    logger.debug(doc)
+
+    doc.xpath("/ItemSearchResponse[1]/Items[1]/Item").each do |item|
+      logger.debug(item)
+      result = {}
+
+      result[:id] = nil
+      result[:type] = "AmazonProduct"
+      result[:sku] = item.xpath("ASIN[1]").text
+      result[:image_large] = item.xpath("LargeImage[1]/URL[1]").text || ""
+      result[:image_thumbnail] = item.xpath("ImageSets[1]/ImageSet[1]/TinyImage[1]/URL[1]").text || ""
+      result[:title] = item.xpath("ItemAttributes[1]/Title[1]").text
+      result[:brand] = item.xpath("ItemAttributes[1]/Brand[1]").text || ""
+      result[:current_price] = item.xpath("OfferSummary[1]/LowestNewPrice[1]/FormattedPrice[1]").text.match(/(\d+\.\d+)/)[1]
+      result[:description] = item.xpath("ItemAttributes[1]/Edition[1]").text || ""
+      item.xpath("ItemAttributes[1]/Feature").each do |feature|
+        the_feature = feature.text
+        the_feature.prepend("\n") unless result[:description].blank?
+        result[:description] += the_feature
+      end
+      result[:affiliate_url] = item.xpath("DetailPageURL[1]").text
+
+      search_results << result
+    end
+    search_results
   end
 
 
