@@ -2097,8 +2097,518 @@ textarea {
 .fa-fonticons:before {
   content: ""; }
 
-p {
-  background-color: green; }
+.container {
+  width: 100%;
+  font-family: 'Lato', sans-serif; }
+  .container .nav-header {
+    float: left;
+    display: inline-block;
+    width: 100%;
+    padding-bottom: 2%; }
+    .container .nav-header #logo {
+      text-decoration: none;
+      display: inline-block;
+      font-size: 30pt;
+      font-family: 'Lobster Two', cursive;
+      color: #064583;
+      font-weight: bold;
+      margin-left: 10px;
+      margin-top: 10px; }
+    .container .nav-header .login {
+      display: inline-block;
+      margin-left: 50%; }
+      .container .nav-header .login #signup-link {
+        text-decoration: none;
+        margin-left: 10px; }
+    .container .nav-header button {
+      background-color: #068383;
+      border: none;
+      color: #fff;
+      border-radius: 3px; }
+  .container .search {
+    display: inline-block;
+    float: left;
+    width: 100%;
+    background-color: #F9BE12;
+    padding-bottom: 4%;
+    padding-top: 2%;
+    text-align: center; }
+    .container .search h2 {
+      font-size: 35pt;
+      font-weight: lighter;
+      color: #fff;
+      margin-bottom: 17px;
+      margin-top: 25px; }
+      .container .search h2 #wish {
+        font-family: 'Lobster Two', cursive;
+        font-weight: lighter; }
+    .container .search input {
+      border-radius: 3px;
+      border: none;
+      padding: 5px 95px;
+      text-align: center;
+      margin-top: 25px; }
+    .container .search button {
+      background-color: #068383;
+      border: none;
+      color: #fff;
+      padding-left: 2%;
+      padding-right: 2%;
+      border-radius: 3px;
+      margin-left: 10px; }
+    .container .search .search-menu {
+      list-style: none;
+      background-color: rgba(255, 255, 255, 0.5);
+      width: 60%;
+      margin: 0 auto;
+      border-radius: 5px; }
+      .container .search .search-menu li {
+        color: #064583; }
+  .container .list-view {
+    width: 100%; }
+
+.lists {
+  margin: 0 auto;
+  text-align: center;
+  width: 60%; }
+  .lists h2 {
+    font-size: 25pt;
+    margin-bottom: 10px;
+    color: #064583; }
+  .lists p {
+    font-size: 14pt;
+    color: #515151;
+    margin-bottom: 20px; }
+  .lists ul {
+    list-style: none;
+    width: 100%;
+    padding: 0; }
+    .lists ul li {
+      border: 2px solid #fff;
+      background-color: #f2f2f2; }
+      .lists ul li a {
+        float: left;
+        text-decoration: none;
+        width: 100%; }
+        .lists ul li a img {
+          display: inline-block;
+          margin: 10px;
+          margin-right: 15px;
+          float: left; }
+        .lists ul li a .product-txt {
+          padding-top: 4%;
+          text-align: left; }
+          .lists ul li a .product-txt h3 {
+            display: inline-block;
+            margin: 0 10px;
+            margin-left: 0;
+            color: #064583; }
+          .lists ul li a .product-txt p {
+            display: inline-block;
+            margin: 0 10px;
+            color: #068383; }
+          .lists ul li a .product-txt #price {
+            float: right;
+            font-size: 18pt;
+            margin-top: 14px; }
+          .lists ul li a .product-txt #descr {
+            display: block; }
+
+.col-1-3 {
+  width: 33.33333%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.pad-1-3 {
+  margin-left: 33.33333%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.col-2-3 {
+  width: 66.66667%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.pad-2-3 {
+  margin-left: 66.66667%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.col-3-3 {
+  width: 100%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.pad-3-3 {
+  margin-left: 100%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.col-1-4 {
+  width: 25%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.pad-1-4 {
+  margin-left: 25%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.col-2-4 {
+  width: 50%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.pad-2-4 {
+  margin-left: 50%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.col-3-4 {
+  width: 75%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.pad-3-4 {
+  margin-left: 75%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.col-4-4 {
+  width: 100%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.pad-4-4 {
+  margin-left: 100%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.col-1-6 {
+  width: 16.66667%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.pad-1-6 {
+  margin-left: 16.66667%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.col-2-6 {
+  width: 33.33333%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.pad-2-6 {
+  margin-left: 33.33333%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.col-3-6 {
+  width: 50%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.pad-3-6 {
+  margin-left: 50%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.col-4-6 {
+  width: 66.66667%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.pad-4-6 {
+  margin-left: 66.66667%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.col-5-6 {
+  width: 83.33333%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.pad-5-6 {
+  margin-left: 83.33333%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.col-6-6 {
+  width: 100%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.pad-6-6 {
+  margin-left: 100%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.col-1-8 {
+  width: 12.5%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.pad-1-8 {
+  margin-left: 12.5%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.col-2-8 {
+  width: 25%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.pad-2-8 {
+  margin-left: 25%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.col-3-8 {
+  width: 37.5%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.pad-3-8 {
+  margin-left: 37.5%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.col-4-8 {
+  width: 50%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.pad-4-8 {
+  margin-left: 50%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.col-5-8 {
+  width: 62.5%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.pad-5-8 {
+  margin-left: 62.5%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.col-6-8 {
+  width: 75%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.pad-6-8 {
+  margin-left: 75%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.col-7-8 {
+  width: 87.5%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.pad-7-8 {
+  margin-left: 87.5%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.col-8-8 {
+  width: 100%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.pad-8-8 {
+  margin-left: 100%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.col-1-12 {
+  width: 8.33333%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.pad-1-12 {
+  margin-left: 8.33333%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.col-2-12 {
+  width: 16.66667%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.pad-2-12 {
+  margin-left: 16.66667%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.col-3-12 {
+  width: 25%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.pad-3-12 {
+  margin-left: 25%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.col-4-12 {
+  width: 33.33333%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.pad-4-12 {
+  margin-left: 33.33333%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.col-5-12 {
+  width: 41.66667%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.pad-5-12 {
+  margin-left: 41.66667%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.col-6-12 {
+  width: 50%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.pad-6-12 {
+  margin-left: 50%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.col-7-12 {
+  width: 58.33333%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.pad-7-12 {
+  margin-left: 58.33333%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.col-8-12 {
+  width: 66.66667%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.pad-8-12 {
+  margin-left: 66.66667%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.col-9-12 {
+  width: 75%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.pad-9-12 {
+  margin-left: 75%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.col-10-12 {
+  width: 83.33333%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.pad-10-12 {
+  margin-left: 83.33333%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.col-11-12 {
+  width: 91.66667%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.pad-11-12 {
+  margin-left: 91.66667%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.col-12-12 {
+  width: 100%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
+
+.pad-12-12 {
+  margin-left: 100%;
+  box-sizing: border-box;
+  display: block;
+  float: left; }
 
 /* ==========================================================================
    Helper classes
@@ -2154,14 +2664,16 @@ p {
  * 2. The use of `table` rather than `block` is only necessary if using
  *    `:before` to contain the top-margins of child elements.
  */
-.clearfix:before,
-.clearfix:after {
+.clearfix:before, .container .search:before, .lists ul li:before,
+.clearfix:after,
+.container .search:after,
+.lists ul li:after {
   content: " ";
   /* 1 */
   display: table;
   /* 2 */ }
 
-.clearfix:after {
+.clearfix:after, .container .search:after, .lists ul li:after {
   clear: both; }
 
 /* ==========================================================================
