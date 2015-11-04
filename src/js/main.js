@@ -6,10 +6,10 @@
     })//END OF REDIRECT
     .when ('/top-wishes', {
       templateUrl: 'partials/top-wishes.html',
-      controller: function ($http, $rootScope) {
+      controller: function ($http, $scope) {
         $http.get('http://wishcastr-staging.herokuapp.com/products/top.json')
         .then(function(response){
-            $rootScope.products = response.data;
+            $scope.products = response.data;
         })//END OF PROMISE
       }//end of controller
     })//END OF TOP-WISHES
