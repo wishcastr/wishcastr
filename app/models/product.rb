@@ -16,7 +16,7 @@ class Product < ActiveRecord::Base
     a ? a.price : nil
   end
 
-  def search
+  def self.search
     raise NotImplementedError, 'Need to Implement on subClass'
   end
 end
