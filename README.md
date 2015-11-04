@@ -3,4 +3,4 @@
 # WishCastr
 [Tasks](https://waffle.io/wishcastr/wishcastr)
 
-![alt tag](images/wishcastr_erd.png)
+![alt tag](https://github.com/wishcastr/wishcastr/blob/develop/app/images/wishcastr_erd.png)
