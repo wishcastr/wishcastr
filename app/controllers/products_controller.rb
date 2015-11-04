@@ -20,7 +20,7 @@ class ProductsController < ApplicationController
     results = []
     params[:query].split(" ").each do |w|
       q = "%#{w}%"
-      results += Product.where("title LIKE ?", q)
+      results += AmazonProduct.search(q)
     end
     @products = results.uniq
     render :index
