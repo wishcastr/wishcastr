@@ -17,7 +17,14 @@
       templateUrl: 'partials/user-wishes.html'
     })//END OF USER-WISHES
     .when ('/results', {
-      templateUrl: 'partials/results.html'
+      templateUrl: 'partials/results.html',
+      controller: function($http, $scope){
+        $http.get('http://wishcastr-staging.herokuapp.com/products/search.json?query='+$scope.query)
+        .then(function(response){
+          $scope.products = response.data;
+      })
+    },
+      controllerAs: 'searchResults'
     })//END OF RESULTS
 
 
