@@ -31,24 +31,25 @@
         </header> <!--END OF HEADER-->
 
         <section class="search" ng-controller="Find as find">
+          <div class="color-bar">
             <h2>Find what you're <span id="wish">wishing</span> for</h2>
             <form name="find" ng-submit="search($form)">
-              <input name="query" type="search" placeholder="cast a line" ng-model="query" ng-model-options="{ updateOn: 'default blur'}"></input>
-              <!-- <button type="submit">Search</button> -->
+              <a href="#/results">
+                <input name="query" type="search" placeholder="cast a line" ng-model="query" ng-model-options="{ updateOn: 'default blur'}"></input>
+                <button type="submit">Search</button>
+              </a>
             </form>
-            <ul class="search-menu">
-              <li ng-repeat="product in products">
-                <p>{{product.title}}</p>            <!--TODO: EVENTUALLY MAKE THIS A LINK TO THE ITEM-->
-              </li>
-            </ul>
+          </div>
+
+            <section class="list-view">
+              <a href="#/user-wishes">user wishes</a>
+              <a href="#/results">results</a>
+
+              <ng-view />
+            </section> <!--END .LIST-->
         </section> <!--END OF .SEARCH-->
 
-        <section class="list-view">
-          <a href="#/user-wishes">user wishes</a>
-          <a href="#/results">results</a>
 
-          <ng-view />
-        </section> <!--END .LIST-->
       </main> <!--END .CONTAINER-->
 
         <!-- bower:js -->
