@@ -1,18 +1,21 @@
 require 'time'
-require 'uri'
 require 'openssl'
 require 'base64'
+require 'nokogiri'
+require 'open-uri'
 
 class AmazonProduct < Product
 
-  def search(query)
-    key = ENV['AMAZON_ACCESS_KEY_ID']
-    secret = ENV['AMAZON_SECRET_ACCESS_KEY']
+  ENDPOINT = "webservices.amazon.com"
+  REQUEST_URI = "/onca/xml"
+
+  # See this resource:
+  #  http://webservices.amazon.com/scratchpad/index.html#http://webservices.amazon.com/onca/xml?Service=AWSECommerceService&Operation=ItemSearch&SubscriptionId=AKIAJ64U7F3OSBNH7ERQ&AssociateTag=wishcastr-20&SearchIndex=All&Keywords=nintendo wii&ResponseGroup=Images,ItemAttributes,ItemIds,OfferSummary
+  def self.generate_amazon_uri(query)
+    key = ENV['AWS_ACCESS_KEY_ID']
+    secret = ENV['AWS_SECRET_ACCESS_KEY']
 
     # The region you are interested in
-    ENDPOINT = "webservices.amazon.com"
-    REQUEST_URI = "/onca/xml"
-
     params = {
       "Service" => "AWSECommerceService",
       "Operation" => "ItemSearch",
@@ -35,17 +38,17 @@ class AmazonProduct < Product
     string_to_sign = "GET\n#{ENDPOINT}\n#{REQUEST_URI}\n#{canonical_query_string}"
 
     # Generate the signature required by the Product Advertising API
-    signature = Base64.encode64(OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'), AWS_SECRET_KEY, string_to_sign)).strip()
+    signature = Base64.encode64(OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'), secret, string_to_sign)).strip()
 
     # Generate the signed URL
     request_url = "http://#{ENDPOINT}#{REQUEST_URI}?#{canonical_query_string}&Signature=#{URI.escape(signature, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))}"
 
     logger.debug("Signed URL: \"#{request_url}\"")
-    return "Signed URL: \"#{request_url}\""
+    return request_url
   end
 
-  def
-    
+  def self.search(query)
+    doc = Nokogiri.XML(open(generate_amazon_uri(query)))
   end
 
 
