@@ -3,6 +3,6 @@
 # WishCastr
 [Tasks](https://waffle.io/wishcastr/wishcastr)
 
-![alt tag](https://github.com/wishcastr/wishcastr/blob/develop/app/images/wishcastr_erd.png)
+![ERD](https://github.com/wishcastr/wishcastr/blob/develop/app/images/wishcastr_erd.png)
 
-![alt tag](https://github.com/wishcastr/wishcastr/blob/develop/app/images/wishcastr_workflow.png)
+![User Flow](https://github.com/wishcastr/wishcastr/blob/develop/app/images/wishcastr_workflow.png)
