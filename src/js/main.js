@@ -19,37 +19,26 @@
 
     .when ('/results', {
       templateUrl: 'partials/results.html',
-      controller: function(searchFactory, $scope){
-        $scope.data = {};
-        $scope.updateParam = function() {
-          searchFactory.setParam($scope.data);
-        }
-        $scope.submitParam = function() {
-          searchFactory.callApi()
-          .then(function(response){
-            $scope.products = response.data;
-          })//end promise
-        }//END SUBMITPARAM
-      }, //END CONTROLLER
-      controllerAs: 'searchResults'
+      controller: 'Find',
+      controllerAs: 'results'
     })//END OF RESULTS
 
 
   })//END OF MODULE
-  .controller('Find', [ 'searchFactory', function($scope, searchFactory){
+  .controller('Find', function($scope, Search){
     $scope.data = {};
     $scope.updateParam = function() {
-      searchFactory.setParam($scope.data);
+      Search.setParam($scope.data);
     }
     $scope.submitParam = function() {
-      searchFactory.callApi()
+      Search.callApi()
       .then(function(response){
         $scope.products = response.data;
       })//end promise
     }//END SUBMITPARAM
-  }]) //END CONTROLLER
+  }) //END CONTROLLER
 
-  .factory('searchFactory', function($http, $q){
+  .factory('Search', function($http){
     var query = {};
     var BASEURL = 'http://wishcastr-staging.herokuapp.com/products/search.json?query=';
     var _param = '';
@@ -60,28 +49,28 @@
       _searchUrl = BASEURL + _param;
       return _searchUrl;
     }
-    query.setParam = function(param) {
-      _param = param;
+    query.setParam = function($scope.data) {      //REMEMBERS QUERY
+      _param = $scope.data;
     }
-    query.getParam = function() {
+    query.getParam = function() {       //GETS QUERY
       return _param;
     }
-    query.callApi = function() {
+    query.callApi = function() {      //GETS THE RESULTS
       searchUrl();
-      var deferred = $q.defer();
       $http({
         method: get,
         url: _searchUrl,
       })
-      .success(function(data){
-        deferred.resolve(data);
-      }).error(function(){
-        deferred.reject('Item not found');
-      })
-      return deferred.promise;
     }
     return query;
   })//END OF FACTORY!!!
+
+
+  /*TODO:
+  * remember query
+  * go get results
+  * gimme the query
+  */
 
 })(); //END OF IFFE
 
