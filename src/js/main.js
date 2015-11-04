@@ -19,7 +19,9 @@
 
     .when ('/results', {
       templateUrl: 'partials/results.html',
-      controller: 'Find',
+      controller: function($scope, Search) {
+        
+      }
       controllerAs: 'results'
     })//END OF RESULTS
 
@@ -49,7 +51,7 @@
       _searchUrl = BASEURL + _param;
       return _searchUrl;
     }
-    query.setParam = function($scope.data) {      //REMEMBERS QUERY
+    query.setParam = function(data) {      //REMEMBERS QUERY
       _param = $scope.data;
     }
     query.getParam = function() {       //GETS QUERY
