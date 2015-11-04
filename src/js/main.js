@@ -46,5 +46,18 @@
     console.log($scope.query);
   }])
 
+  .factory('searchFactory', function($http, $scope){
+    var query = {};
+    var BASEURL = 'http://wishcastr-staging.herokuapp.com/products/search.json?query=';
+    var _param = '';
+    var _searchUrl = '';
+
+    var makeUrl = function(){
+      _param = _param.split(' ').join('+');
+      _searchUrl = BASEURL + _param;
+      return _searchUrl;
+
+    }
+  })
 
 })(); //END OF IFFE
