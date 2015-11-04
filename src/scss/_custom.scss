@@ -40,57 +40,72 @@
   }//END <HEADER>
 
   .search {
-    display: inline-block;
-    float: left;
-    width: 100%;
-    background-color: #F9BE12; //YELLOW/ORANGE
-    padding-bottom: 4%;
-    padding-top: 2%;
-    text-align: center;
-    @extend .clearfix;
+    // display: inline-block;
+    // float: left;
+    // width: 100%;
+    // background-color: #F9BE12; //YELLOW/ORANGE
+    // padding-bottom: 4%;
+    // padding-top: 2%;
+    // text-align: center;
+    // @extend .clearfix;
 
-    h2 {
-      font-size: 35pt;
-      font-weight: lighter;
-      color: #fff;
-      margin-bottom: 17px;
-      margin-top: 25px;
-      #wish {
-        font-family: 'Lobster Two', cursive;
-        font-weight: lighter;
-      }
-    }//END H2
-
-    input {
-      border-radius: 3px;
-      border: none;
-      padding: 5px 95px;
+    .color-bar {
+      display: inline-block;
+      float: left;
+      width: 100%;
+      background-color: #F9BE12; //YELLOW/ORANGE
+      padding-bottom: 4%;
+      padding-top: 2%;
       text-align: center;
-      margin-top: 25px;
+      @extend .clearfix;
+      h2 {
+        font-size: 35pt;
+        font-weight: lighter;
+        color: #fff;
+        margin-bottom: 17px;
+        margin-top: 25px;
+        #wish {
+          font-family: 'Lobster Two', cursive;
+          font-weight: lighter;
+        }
+      }//END H2
+
+      input {
+        border-radius: 3px;
+        border: none;
+        padding: 5px 95px;
+        text-align: center;
+        margin-top: 25px;
+      }
+
+      button {
+        background-color: #068383;
+        border: none;
+        color: #fff;
+        padding-left: 2%;
+        padding-right: 2%;
+        border-radius: 3px;
+        margin-left: 10px;
+      }//END BUTTON
+
+
+    }
+    .list-view {
+      width: 100%;
     }
 
-    button {
-      background-color: #068383;
-      border: none;
-      color: #fff;
-      padding-left: 2%;
-      padding-right: 2%;
-      border-radius: 3px;
-      margin-left: 10px;
-    }//END BUTTON
-
-      .search-menu {
-        list-style: none;
-        background-color: rgba(255,255,255,0.5);
-        width: 60%;
-        margin: 0 auto;
-        border-radius: 5px;
-
-        li {
-          // background-color: #fff;
-          color: #064583;
-        }
-      }
+      // .search-menu {
+      //   list-style: none;
+      //   background-color: rgba(255,255,255,0.5);
+      //   width: 60%;
+      //   margin: 0 auto;
+      //   border-radius: 5px;
+      //
+      //   li {
+      //     // background-color: #fff;
+      //     color: #064583;
+      //   }
+      // }
     }//.SEARCH
 
   .list-view {
