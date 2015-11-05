@@ -12,12 +12,17 @@ class WishesController < ApplicationController
 
   # POST /wishes.json
   def create
-    @wish = Wish.new(wish_params)
-
-    if @wish.save
-      render :show, status: :created, location: @wish
+    @user = User.find(request.headers["x-wishcastr-user-id"])
+    if @user && @user.amz_access_token == request.headers["x-wishcastr-access-token"]
+      @wish = Wish.new(wish_params)
+      @wish.user_id = @user.id
+      if @wish.save
+        render :show, status: :created, location: @wish
+      else
+        render json: @wish.errors, status: :unprocessable_entity
+      end
     else
-      render json: @wish.errors, status: :unprocessable_entity
+      render inline: {error: "User ID or Access Token does not match"}.to_json
     end
   end
 
