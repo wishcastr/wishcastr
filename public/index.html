@@ -34,18 +34,21 @@
             <h2>Find what you're <span id="wish">wishing</span> for</h2>
             <form name="find" ng-submit="search($form)">
               <input name="query" type="search" placeholder="cast a line" ng-model="query" ng-model-options="{ updateOn: 'default blur'}"></input>
-              <!-- <button type="submit">Search</button> -->
+              <button type="submit">Search</button>
             </form>
-            <ul class="search-menu">
+            <ul class="search-menu shadow">
               <li ng-repeat="product in products">
-                <p>{{product.title}}</p>            <!--TODO: EVENTUALLY MAKE THIS A LINK TO THE ITEM-->
+                <a target="_blank" href="{{product.affiliate_url}}">
+                  <p>{{product.title}}</p>
+                </a>
+                <!--TODO: EVENTUALLY MAKE THIS A LINK TO THE ITEM-->
               </li>
             </ul>
         </section> <!--END OF .SEARCH-->
 
         <section class="list-view">
-          <a href="#/user-wishes">user wishes</a>
-          <a href="#/results">results</a>
+          <!-- <a href="#/user-wishes">user wishes</a>
+          <a href="#/results">results</a> -->
 
           <ng-view />
         </section> <!--END .LIST-->
