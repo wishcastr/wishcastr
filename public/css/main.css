@@ -2214,11 +2214,11 @@ textarea {
             display: inline-block;
             margin: 0 10px;
             color: #068383; }
-          .lists ul li a .product-txt #price {
+          .lists ul li a .product-txt .price {
             float: right;
             font-size: 18pt;
             margin-top: 14px; }
-          .lists ul li a .product-txt #descr {
+          .lists ul li a .product-txt .descr {
             display: block; }
 
 .col-1-3 {
