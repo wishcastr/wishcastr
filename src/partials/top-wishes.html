@@ -1,0 +1,15 @@
+<section class="lists">
+  <h2>Top Wishes</h2>
+  <p>The top currently wished for items on the site</p>
+  <ul>
+    <li ng-repeat="product in products">
+      <a target="_blank" ng-href="{{product.affiliate_url}}">
+        <img ng-src="{{product.image_thumbnail}}"></img>
+        <div class="product-txt">
+          <h3>{{product.title}}</h3>
+          <p class="price">{{product.current_price | currency}}</p>
+          <p class="descr">{{product.description | limitTo: 50}}</p>
+      </div>
+      </a>
+    </li>
+  </ul>
