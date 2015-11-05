@@ -19,50 +19,95 @@
 
     .when ('/results', {
       templateUrl: 'partials/results.html',
-      controller: 'Find',
+      controller: function(Search){
+        var products = this;
+
+        products.results = function(){
+          return Search.results;
+        };
+      },
+      controllerAs: 'products'
     })//END OF RESULTS
 
 
   })//END OF MODULE
-  .controller('Find', function($scope, Search){
-    $scope.data = {};
-    $scope.updateParam = function() {
-      Search.setParam($scope.data);
-    }
-    $scope.submitParam = function() {
-      Search.callApi()
-      .then(function(response){
-        $scope.products = response.data;
-      })//end promise
-    }//END SUBMITPARAM
-  }) //END CONTROLLER
+  .controller('SearchController', function($http, Search, API){
+    var search = this;
 
-  .factory('Search', function($http){
-    var query = {};
-    var BASEURL = 'http://wishcastr-staging.herokuapp.com/products/search.json?query=';
-    var _param = '';
-    var _searchUrl = '';
+    search.query = '';
 
-    var makeUrl = function(){
-      _param = _param.split(' ').join('+');
-      _searchUrl = BASEURL + _param;
-      return _searchUrl;
-    }
-    query.setParam = function(data) {      //REMEMBERS QUERY
-      _param = $scope.data;
-    }
-    query.getParam = function() {       //GETS QUERY
-      return _param;
-    }
-    query.callApi = function() {      //GETS THE RESULTS
-      makeUrl();
-      $http({
-        method: get,
-        url: _searchUrl,
+    // TODO: Capture a submit event for our search form...
+    search.find = function(){
+      // TODO: Capture the query...
+      // TODO: Make a GET request to the Rails API...
+      // $http({
+      //   method: 'GET', url: API.BASE_URL + API.SEARCH_PATH,
+      //   params: { puppy: 'bad' }
+      // })
+      // FIXME: GET .../search.json?query=pineapple
+      $http.get(API.BASE_URL + API.SEARCH_PATH, {
+        params: { potato: 'round', pineapple: 'spiky' } // Put the query here?
       })
-    }
-    return query;
-  })//END OF FACTORY!!!
+        .then(function(response){
+          // TODO: Attach the results to the `Search` service...
+          Search.results = response.data;
+        })
+    } // END find
+  }) //END CONTROLLER
+  .constant('API', {
+    BASE_URL: 'http://wishcastr-staging.herokuapp.com',
+    SEARCH_PATH: '/products/search.json'
+  })
+  .value('Search', {
+    query: '',
+    results: [
+      { title: 'Bad Robot', current_price: '123.45' }
+    ],
+  })
+  // .factory('Search', function($http, API){
+  //   var results = [
+  //     { title: 'Bad Robot', current_price: '123.45' }
+  //   ];
+  //
+  //   return {
+  //     query: '',
+  //     find: function(query){
+  //       // TODO: Make a GET request to the Rails API...
+  //       // TODO: Keep the results...
+  //       // TODO: Return the Promise...
+  //     }, // END find
+  //     results: function(){
+  //       return results;
+  //     }
+  //   }
+  // })
+
+  // .factory('Search', function($http){
+  //   var query = {};
+  //   var BASEURL = 'http://wishcastr-staging.herokuapp.com/products/search.json?query=';
+  //   var _param = '';
+  //   var _searchUrl = '';
+  //
+  //   var makeUrl = function(){
+  //     _param = _param.split(' ').join('+');
+  //     _searchUrl = BASEURL + _param;
+  //     return _searchUrl;
+  //   }
+  //   query.setParam = function(data) {      //REMEMBERS QUERY
+  //     _param = $scope.data;
+  //   }
+  //   query.getParam = function() {       //GETS QUERY
+  //     return _param;
+  //   }
+  //   query.callApi = function() {      //GETS THE RESULTS
+  //     makeUrl();
+  //     $http({
+  //       method: get,
+  //       url: _searchUrl,
+  //     })
+  //   }
+  //   return query;
+  // })//END OF FACTORY!!!
 
 
   /*TODO:
