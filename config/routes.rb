@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get '/auth/amazon/callback', to: 'sessions#create'
+  get '/auth/failure', to: 'sessions#failure'
+
   resources :users
   resources :wishes
   resources :price_histories
