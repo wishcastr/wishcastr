@@ -24,12 +24,18 @@ class WishesController < ApplicationController
   # PATCH/PUT /wishes/1.json
   def update
     @user = User.find(@wish.user_id)
-    if @user.amz_access_token == request.headers["x-wishcastr-access-token"]
-      if @wish.update(wish_params)
-        render :show, status: :ok, location: @wish
+    if @user.id == request.headers["x-wishcastr-user-id"]
+      if @user.amz_access_token == request.headers["x-wishcastr-access-token"]
+        if @wish.update(wish_params)
+          render :show, status: :ok, location: @wish
+        else
+          render json: @wish.errors, status: :unprocessable_entity
+        end
       else
-        render json: @wish.errors, status: :unprocessable_entity
+        render inline: {error: "Access Token does not match for user"}.to_json
       end
+    else
+      render inline: {error: "User does not own this wish"}.to_json
     end
   end
 
