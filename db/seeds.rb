@@ -5,7 +5,11 @@
   User.create!(
     name: Faker::Name.name,
     email: Faker::Internet.email,
-    postal_code: Faker::Address.postcode)
+    postal_code: Faker::Address.postcode,
+    amz_id: rand(1..700),
+    amz_access_token: Faker::Internet.password,
+    amz_raccess_token: Faker::Internet.password
+  )
 end
 
 1000.times do
@@ -45,7 +49,8 @@ end
     name: Faker::Commerce.product_name,
     user_id: rand(1..100),
     threshold_price: rand(15.00..500.00).round(2),
-    category: Faker::Lorem.word, query: Faker::Lorem.word)
+    category: Faker::Lorem.word,
+    query: Faker::Lorem.word)
   number_of_products = (1..10).to_a.sample
   number_of_products.times do
     ProductsWish.create!(
@@ -53,5 +58,3 @@ end
       product_id: products.sample.id)
   end
 end
-
-# PriceHistory.create!()
