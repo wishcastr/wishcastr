@@ -53,13 +53,23 @@ class WishesController < ApplicationController
 
   # DELETE /wishes/1.json
   def destroy
-    @wish.destroy
+    @user = User.find(request.headers["x-wishcastr-user-id"])
+    if @user && @user.amz_access_token == request.headers["x-wishcastr-access-token"]
+      @wish.destroy
+      render inline: {success: "Success"}.to_json, status: :success
+    end
+    else
+      render inline: {error: "Page not found"}
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_wish
-      @wish = Wish.find(params[:id])
+      begin
+        @wish = Wish.find(params[:id])
+        rescue ActiveRecord::RecordNotFound
+          render inline: {notice: "Can't be found"}.to_json, status: 404
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
