@@ -34,9 +34,9 @@
             <h2>Find what you're <span id="wish">wishing</span> for</h2>
             <form name="find" ng-submit="search($form)">
               <input name="query" type="search" placeholder="cast a line" ng-model="query" ng-model-options="{ updateOn: 'default blur'}"></input>
-              <!-- <button type="submit">Search</button> -->
+              <button type="submit">Search</button>
             </form>
-            <ul class="search-menu">
+            <ul class="search-menu shadow">
               <li ng-repeat="product in products">
                 <p>{{product.title}}</p>            <!--TODO: EVENTUALLY MAKE THIS A LINK TO THE ITEM-->
               </li>
