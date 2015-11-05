@@ -23,10 +23,13 @@ class WishesController < ApplicationController
 
   # PATCH/PUT /wishes/1.json
   def update
-    if @wish.update(wish_params)
-      render :show, status: :ok, location: @wish
-    else
-      render json: @wish.errors, status: :unprocessable_entity
+    @user = User.find(@wish.user_id)
+    if @user.amz_access_token == request.headers["x-wishcastr-access-token"]
+      if @wish.update(wish_params)
+        render :show, status: :ok, location: @wish
+      else
+        render json: @wish.errors, status: :unprocessable_entity
+      end
     end
   end
 
@@ -45,4 +48,5 @@ class WishesController < ApplicationController
     def wish_params
       params.require(:wish).permit(:user_id, :threshold_price, :category, :query, :name)
     end
+
 end
