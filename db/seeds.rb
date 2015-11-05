@@ -14,15 +14,15 @@ end
 
 1000.times do
   AmazonProduct.create!(brand: Faker::Lorem.word, sku: rand(10000000..99999999), title: Faker::Lorem.word,
-  image_large: "http://www.lorempixel.com/g/500/500",
-  image_thumbnail: "http://www.lorempixel.com/g/100/100",
+  image_large: "http://www.lorempixel.com/g/500/500/abstract?#{rand(1..200)}",
+  image_thumbnail: "http://www.lorempixel.com/g/100/100/abstract?#{rand(1..200)}",
   description: Faker::Lorem.sentence, affiliate_url: Faker::Internet.url)
 end
 
 10.times do
   AmazonProduct.create!(brand: Faker::Lorem.word, sku: rand(10000000..99999999), title: "Jackie Chan Movies",
-  image_large: "http://www.lorempixel.com/g/500/500",
-  image_thumbnail: "http://www.lorempixel.com/g/100/100",
+  image_large: "http://www.lorempixel.com/g/500/500/abstract?#{rand(1..200)}",
+  image_thumbnail: "http://www.lorempixel.com/g/100/100/abstract?#{rand(1..200)}",
   description: Faker::Lorem.sentence, affiliate_url: Faker::Internet.url)
 end
 
@@ -41,6 +41,5 @@ end
     ProductsWish.create!(wish_id: wish.id, product_id: products.sample.id)
   end
 end
-
 
 # PriceHistory.create!()

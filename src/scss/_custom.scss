@@ -20,7 +20,8 @@
     } //END #logo
 
     .login {
-      display: inline-block;
+      /*display: inline-block;*/
+      display: none;
       margin-left: 50%;
 
       #signup-link {
@@ -99,6 +100,9 @@
         li {
           // background-color: #fff;
           color: #064583; //BLUE
+          a {
+            text-decoration: none;
+          }
         }
       }
     }//.SEARCH

@@ -2115,7 +2115,8 @@ textarea {
       margin-left: 10px;
       margin-top: 10px; }
     .container .nav-header .login {
-      display: inline-block;
+      /*display: inline-block;*/
+      display: none;
       margin-left: 50%; }
       .container .nav-header .login #signup-link {
         text-decoration: none;
@@ -2168,6 +2169,8 @@ textarea {
       margin-top: 10px; }
       .container .search .search-menu li {
         color: #064583; }
+        .container .search .search-menu li a {
+          text-decoration: none; }
   .container .list-view {
     width: 100%; }
 
