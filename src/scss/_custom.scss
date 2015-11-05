@@ -81,14 +81,24 @@
 
       .search-menu {
         list-style: none;
-        background-color: rgba(255,255,255,0.5);
+        background-color: #c2c2c2;
         width: 60%;
         margin: 0 auto;
         border-radius: 5px;
+        position: absolute;
+        left: 18%;
+        text-align: left;
+        margin-top: 10px;
+
+        // &.shadow {
+	      //     -webkit-box-shadow: 0 8px 6px -6px black;
+	      //     -moz-box-shadow: 0 8px 6px -6px black;
+	      //     box-shadow: 0 8px 6px -6px black;
+        //   }
 
         li {
           // background-color: #fff;
-          color: #064583;
+          color: #064583; //BLUE
         }
       }
     }//.SEARCH
