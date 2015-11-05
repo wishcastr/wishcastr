@@ -3,7 +3,10 @@ class WishesController < ApplicationController
 
   # GET /wishes.json
   def index
-    @wishes = Wish.all
+    @user = User.find(request.headers["x-wishcastr-user-id"])
+    if @user && @user.amz_access_token == request.headers["x-wishcastr-access-token"]
+      @user.wishes = Wish.all
+    end
   end
 
   # GET /wishes/1.json
