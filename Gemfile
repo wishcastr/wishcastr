@@ -14,7 +14,7 @@ gem 'api_docs'
 
 # Authentication
 gem 'omniauth-amazon', github: "wingrunr21/omniauth-amazon"
-gem 'omniauth', github: "twalpole/omniauth", ref: 'rack_master'
+gem 'omniauth', github: "twalpole/omniauth", branch: 'rack_master'
 gem 'oauth2', github: "dbernheisel/oauth2"
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
