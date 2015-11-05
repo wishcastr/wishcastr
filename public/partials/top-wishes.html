@@ -3,12 +3,12 @@
   <p>The top currently wished for items on the site</p>
   <ul>
     <li ng-repeat="product in products">
-      <a href="#">
+      <a target="_blank" ng-href="{{product.affiliate_url}}">
         <img ng-src="{{product.image_thumbnail}}"></img>
         <div class="product-txt">
           <h3>{{product.title}}</h3>
-          <p id="price">{{product.current_price | currency}}</p>
-          <p id="descr">{{product.description | limitTo: 50}}</p>
+          <p class="price">{{product.current_price | currency}}</p>
+          <p class="descr">{{product.description | limitTo: 50}}</p>
       </div>
       </a>
     </li>
