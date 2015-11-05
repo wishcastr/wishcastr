@@ -19,10 +19,7 @@
 
     .when ('/results', {
       templateUrl: 'partials/results.html',
-      controller: function($scope, Search) {
-        
-      }
-      controllerAs: 'results'
+      controller: 'Find',
     })//END OF RESULTS
 
 
@@ -58,7 +55,7 @@
       return _param;
     }
     query.callApi = function() {      //GETS THE RESULTS
-      searchUrl();
+      makeUrl();
       $http({
         method: get,
         url: _searchUrl,
@@ -72,6 +69,9 @@
   * remember query
   * go get results
   * gimme the query
+
+  NEED CONTROLLER FOR FORM SO WHEN IT SUBMITS IT SAVES INPUT TO VARIABLE IN FACTORY!!!!!
+  ONLY THE RESULTS.HTML NEEDS AN $HTTP REQUEST???
   */
 
 })(); //END OF IFFE
