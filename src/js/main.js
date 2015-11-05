@@ -36,20 +36,21 @@
 
     search.query = '';
 
-    // TODO: Capture a submit event for our search form...
+    //  Capture a submit event for our search form...NG-Submit
     search.find = function(){
+      Search.query = this;
       // TODO: Capture the query...
-      // TODO: Make a GET request to the Rails API...
+      //  Make a GET request to the Rails API...
       // $http({
       //   method: 'GET', url: API.BASE_URL + API.SEARCH_PATH,
       //   params: { puppy: 'bad' }
       // })
-      // FIXME: GET .../search.json?query=pineapple
+      // GET .../search.json?query=pineapple
       $http.get(API.BASE_URL + API.SEARCH_PATH, {
-        params: { potato: 'round', pineapple: 'spiky' } // Put the query here?
+        params: Search.query  // Put the query here?
       })
         .then(function(response){
-          // TODO: Attach the results to the `Search` service...
+          //  Attach the results to the `Search` service...
           Search.results = response.data;
         })
     } // END find
@@ -61,7 +62,7 @@
   .value('Search', {
     query: '',
     results: [
-      { title: 'Bad Robot', current_price: '123.45' }
+      // { title: 'Bad Robot', current_price: '123.45' }
     ],
   })
   // .factory('Search', function($http, API){
@@ -82,42 +83,7 @@
   //   }
   // })
 
-  // .factory('Search', function($http){
-  //   var query = {};
-  //   var BASEURL = 'http://wishcastr-staging.herokuapp.com/products/search.json?query=';
-  //   var _param = '';
-  //   var _searchUrl = '';
-  //
-  //   var makeUrl = function(){
-  //     _param = _param.split(' ').join('+');
-  //     _searchUrl = BASEURL + _param;
-  //     return _searchUrl;
-  //   }
-  //   query.setParam = function(data) {      //REMEMBERS QUERY
-  //     _param = $scope.data;
-  //   }
-  //   query.getParam = function() {       //GETS QUERY
-  //     return _param;
-  //   }
-  //   query.callApi = function() {      //GETS THE RESULTS
-  //     makeUrl();
-  //     $http({
-  //       method: get,
-  //       url: _searchUrl,
-  //     })
-  //   }
-  //   return query;
-  // })//END OF FACTORY!!!
 
-
-  /*TODO:
-  * remember query
-  * go get results
-  * gimme the query
-
-  NEED CONTROLLER FOR FORM SO WHEN IT SUBMITS IT SAVES INPUT TO VARIABLE IN FACTORY!!!!!
-  ONLY THE RESULTS.HTML NEEDS AN $HTTP REQUEST???
-  */
 
 })(); //END OF IFFE
 
