@@ -6,14 +6,8 @@ class SessionsController < ApplicationController
     # redirect_to '/'
   end
 
-  def new
-
-  end
-
   def failure
-
   end
-
 
   def destroy
     session[:user_id] = nil
