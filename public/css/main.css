@@ -2158,10 +2158,14 @@ textarea {
       margin-left: 10px; }
     .container .search .search-menu {
       list-style: none;
-      background-color: rgba(255, 255, 255, 0.5);
+      background-color: #c2c2c2;
       width: 60%;
       margin: 0 auto;
-      border-radius: 5px; }
+      border-radius: 5px;
+      position: absolute;
+      left: 18%;
+      text-align: left;
+      margin-top: 10px; }
       .container .search .search-menu li {
         color: #064583; }
   .container .list-view {
