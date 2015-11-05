@@ -13,7 +13,7 @@ class WishesController < ApplicationController
   def show
     user = User.find(request.headers["x-wishcastr-user-id"])
     if user && user.amz_access_token == request.headers["x-wishcastr-access-token"]
-      @wish = Wish.find(params[:id])
+      render :show, status: :success
     end
   end
 
@@ -29,7 +29,7 @@ class WishesController < ApplicationController
         render json: @wish.errors, status: :unprocessable_entity
       end
     else
-      render inline: {error: "User ID or Access Token does not match"}.to_json
+      render inline: {error: "User ID or Access Token does not match"}.to_json, status: :forbidden
     end
   end
 
@@ -44,10 +44,10 @@ class WishesController < ApplicationController
           render json: @wish.errors, status: :unprocessable_entity
         end
       else
-        render inline: {error: "Access Token does not match for user"}.to_json
+        render inline: {error: "Access Token does not match for user"}.to_json, status: :unauthorized
       end
     else
-      render inline: {error: "User does not own this wish"}.to_json
+      render inline: {error: "User does not own this wish"}.to_json, status: :forbidden
     end
   end
 
@@ -57,9 +57,9 @@ class WishesController < ApplicationController
     if user && user.amz_access_token == request.headers["x-wishcastr-access-token"]
       @wish.destroy
       render inline: {success: "Success"}.to_json, status: :success
-    end
     else
-      render inline: {error: "Page not found"}
+      render inline: {error: "Page not found"}, status: :not_found
+    end
   end
 
   private
@@ -67,8 +67,8 @@ class WishesController < ApplicationController
     def set_wish
       begin
         @wish = Wish.find(params[:id])
-        rescue ActiveRecord::RecordNotFound
-          render inline: {notice: "Can't be found"}.to_json, status: 404
+      rescue ActiveRecord::RecordNotFound
+        render inline: {notice: "Can't be found"}.to_json, status: :not_found
       end
     end
 
