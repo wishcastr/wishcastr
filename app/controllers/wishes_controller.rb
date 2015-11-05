@@ -3,26 +3,26 @@ class WishesController < ApplicationController
 
   # GET /wishes.json
   def index
-    @user = User.find(request.headers["x-wishcastr-user-id"])
-    if @user && @user.amz_access_token == request.headers["x-wishcastr-access-token"]
-      @wishes = @user.wishes
+    user = User.find(request.headers["x-wishcastr-user-id"])
+    if user && user.amz_access_token == request.headers["x-wishcastr-access-token"]
+      @wishes = user.wishes
     end
   end
 
   # GET /wishes/1.json
   def show
-    @user = User.find(request.headers["x-wishcastr-user-id"])
-    if @user && @user.amz_access_token == request.headers["x-wishcastr-access-token"]
+    user = User.find(request.headers["x-wishcastr-user-id"])
+    if user && user.amz_access_token == request.headers["x-wishcastr-access-token"]
       @wish = Wish.find(params[:id])
     end
   end
 
   # POST /wishes.json
   def create
-    @user = User.find(request.headers["x-wishcastr-user-id"])
-    if @user && @user.amz_access_token == request.headers["x-wishcastr-access-token"]
+    user = User.find(request.headers["x-wishcastr-user-id"])
+    if user && user.amz_access_token == request.headers["x-wishcastr-access-token"]
       @wish = Wish.new(wish_params)
-      @wish.user_id = @user.id
+      @wish.user_id = user.id
       if @wish.save
         render :show, status: :created, location: @wish
       else
@@ -35,9 +35,9 @@ class WishesController < ApplicationController
 
   # PATCH/PUT /wishes/1.json
   def update
-    @user = User.find(@wish.user_id)
-    if @user.id == request.headers["x-wishcastr-user-id"]
-      if @user.amz_access_token == request.headers["x-wishcastr-access-token"]
+    user = User.find(@wish.user_id)
+    if user.id == request.headers["x-wishcastr-user-id"]
+      if user.amz_access_token == request.headers["x-wishcastr-access-token"]
         if @wish.update(wish_params)
           render :show, status: :ok, location: @wish
         else
@@ -53,8 +53,8 @@ class WishesController < ApplicationController
 
   # DELETE /wishes/1.json
   def destroy
-    @user = User.find(request.headers["x-wishcastr-user-id"])
-    if @user && @user.amz_access_token == request.headers["x-wishcastr-access-token"]
+    user = User.find(request.headers["x-wishcastr-user-id"])
+    if user && user.amz_access_token == request.headers["x-wishcastr-access-token"]
       @wish.destroy
       render inline: {success: "Success"}.to_json, status: :success
     end
