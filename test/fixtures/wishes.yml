@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  threshold_price: 9.99
+  category: MyString
+  query: MyString
+  name: MyString
+
+two:
+  user_id: 1
+  threshold_price: 9.99
+  category: MyString
+  query: MyString
+  name: MyString

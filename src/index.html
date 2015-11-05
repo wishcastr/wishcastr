@@ -10,6 +10,8 @@
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <!-- Place favicon.ico in the root directory -->
         <!-- bower:css -->
+        <link href='https://fonts.googleapis.com/css?family=Lobster+Two' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="../bower_components/normalize-css/normalize.css" />
         <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.css" />
 
@@ -17,12 +19,40 @@
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+      <main class="container" ng-app='Wishcastr'>
+        <header class="nav-header">
+          <a href="#/top-wishes" id="logo">Wishcastr</a>
+          <div class="login">
+            <input type="text" placeholder="username"></input>
+            <input type="password" placeholder="password"></input>
+            <button type="submit">Login</button>
+            <a href="#/signup" id="signup-link">signup</a>
+          </div>
+        </header> <!--END OF HEADER-->
 
-        <!-- Add your site or application content here -->
-        <p>Hello world! This is HTML5 Boilerplate.</p>
+        <section class="search" ng-controller="Find as find">
+            <h2>Find what you're <span id="wish">wishing</span> for</h2>
+            <form name="find" ng-submit="search($form)">
+              <input name="query" type="search" placeholder="cast a line" ng-model="query" ng-model-options="{ updateOn: 'default blur'}"></input>
+              <button type="submit">Search</button>
+            </form>
+            <ul class="search-menu shadow">
+              <li ng-repeat="product in products">
+                <a target="_blank" href="{{product.affiliate_url}}">
+                  <p>{{product.title}}</p>
+                </a>
+                <!--TODO: EVENTUALLY MAKE THIS A LINK TO THE ITEM-->
+              </li>
+            </ul>
+        </section> <!--END OF .SEARCH-->
+
+        <section class="list-view">
+          <!-- <a href="#/user-wishes">user wishes</a>
+          <a href="#/results">results</a> -->
+
+          <ng-view />
+        </section> <!--END .LIST-->
+      </main> <!--END .CONTAINER-->
 
         <!-- bower:js -->
         <script src="../bower_components/jquery/dist/jquery.js"></script>
