@@ -11,6 +11,10 @@ class WishesController < ApplicationController
 
   # GET /wishes/1.json
   def show
+    @user = User.find(request.headers["x-wishcastr-user-id"])
+    if @user && @user.amz_access_token == request.headers["x-wishcastr-access-token"]
+      @wish = Wish.find(params[:id])
+    end
   end
 
   # POST /wishes.json
