@@ -5,7 +5,7 @@ class WishesController < ApplicationController
   def index
     @user = User.find(request.headers["x-wishcastr-user-id"])
     if @user && @user.amz_access_token == request.headers["x-wishcastr-access-token"]
-      @user.wishes = Wish.all
+      @wishes = Wish.all
     end
   end
 
