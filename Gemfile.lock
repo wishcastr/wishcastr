@@ -109,7 +109,7 @@ GIT
 GIT
   remote: git://github.com/twalpole/omniauth.git
   revision: e0c2cd7c75ba741bcbb7318e104ec868454d7cc9
-  ref: rack_master
+  branch: rack_master
   specs:
     omniauth (1.2.2)
       hashie (>= 1.2, < 4)
