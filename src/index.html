@@ -38,7 +38,10 @@
             </form>
             <ul class="search-menu shadow">
               <li ng-repeat="product in products">
-                <p>{{product.title}}</p>            <!--TODO: EVENTUALLY MAKE THIS A LINK TO THE ITEM-->
+                <a target="_blank" href="{{product.affiliate_url}}">
+                  <p>{{product.title}}</p>
+                </a>
+                <!--TODO: EVENTUALLY MAKE THIS A LINK TO THE ITEM-->
               </li>
             </ul>
         </section> <!--END OF .SEARCH-->
