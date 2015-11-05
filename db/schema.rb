@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102204807) do
+ActiveRecord::Schema.define(version: 20151105214747) do
 
   create_table "price_histories", force: :cascade do |t|
     t.integer  "product_id"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20151102204807) do
     t.string   "amz_raccess_token"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.string   "provider"
   end
 
   create_table "wishes", force: :cascade do |t|
