@@ -12,17 +12,26 @@ gem 'rack', github: "rack/rack"
 gem 'bcrypt', '~> 3.1.7'
 gem 'api_docs'
 
+# Authentication
+gem 'omniauth-amazon', github: "wingrunr21/omniauth-amazon"
+gem 'omniauth', github: "twalpole/omniauth", ref: 'rack_master'
+gem 'oauth2', github: "dbernheisel/oauth2"
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
-# Use ActiveModelSerializers to serialize JSON responses
+# Use ActiveModelSerializers for 10x faster performance than jbuilder
 gem 'active_model_serializers', '~> 0.10.0.rc2'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
+
+# Should use passenger later.
 gem 'puma'
+
+# ya know
 gem 'faker'
+
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry'
   gem 'sqlite3'
 end
