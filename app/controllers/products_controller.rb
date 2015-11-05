@@ -17,11 +17,7 @@ class ProductsController < ApplicationController
   end
 
   def search
-    results = []
-    params[:query].split(" ").each do |w|
-      q = "%#{w}%"
-      results += AmazonProduct.search(q)
-    end
+    results = AmazonProduct.search(params[:query])
     @products = results.uniq
     render :index
   end
