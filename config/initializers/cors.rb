@@ -5,7 +5,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins /localhost(:\d+)/
+    origins /localhost(:\d+)/, 'wishcastr-staging.herokuapp.com'
 
     resource '*',
       headers: :any,
