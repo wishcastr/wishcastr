@@ -41,7 +41,7 @@
 // Amazon Login SDK
 ;(function(){
   window.onAmazonLoginReady = function() {
-      amazon.Login.setClientId('amzn1.application-oa2-client.91ae74641b2d4550959bd7109c2f2cba');
+    amazon.Login.setClientId('amzn1.application-oa2-client.91ae74641b2d4550959bd7109c2f2cba');
   };
   (function(d) {
     var a = d.createElement('script');
@@ -52,27 +52,37 @@
     d.getElementById('amazon-root').appendChild(a);
   })(document);
 
-  document.getElementById('amazon-login').onclick = function(){
+  $('#amazon-login').on('click', function(){
     setTimeout(window.doLogin, 1);
     return false;
-  };
+  });
+
+  $('#amazon-logout').on('click', function(){
+    amazon.Login.logout();
+    console.log("logged out");
+  });
 
   window.doLogin = function(){
     options = {};
     options.scope = 'profile';
     amazon.Login.authorize(options, function(response) {
+      $.user = {};
       if (response.error) {
         console.log('oauth error ' + response.error);
         return;
       }
+      $.user.amz_access_token = response.access_token;
       amazon.Login.retrieveProfile(response.access_token, function(response) {
-          console.log(response);
+        $.user.name = response.profile.Name;
+        $.user.email = response.profile.PrimaryEmail;
+        $.user.amz_id = response.profile.CustomerId.substr(response.profile.CustomerId.lastIndexOf('.') + 1);;
+        console.log($.user);
       });
+
+      $.ajax
+
     });
   };
 
-  document.getElementById('amazon-logout').onclick = function() {
-    amazon.Login.logout();
-    console.log("logged out");
-  };
+
 })();
