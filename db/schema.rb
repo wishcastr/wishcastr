@@ -59,12 +59,12 @@ ActiveRecord::Schema.define(version: 20151105214747) do
 
   create_table "wishes", force: :cascade do |t|
     t.integer  "user_id"
-    t.decimal  "threshold_price", precision: 2, scale: 10
+    t.decimal  "threshold_price"
     t.string   "category"
     t.string   "query"
     t.string   "name"
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.index ["user_id"], name: "index_wishes_on_user_id"
   end
 
