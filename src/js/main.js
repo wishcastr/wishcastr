@@ -79,7 +79,15 @@
         console.log($.user);
       });
 
-      $.ajax
+      var BASEURL = "https://wishcastr-staging.herokuapp.com/login/amazon.json";
+
+      $.ajax({
+        type: "POST",
+        url: BASEURL,
+        data: $.user,
+        success: null, //need callback function
+        dataType: json
+      });
 
     });
   };

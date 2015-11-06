@@ -71,13 +71,24 @@
         console.log('oauth error ' + response.error);
         return;
       }
-      $.user.access_token = response.access_token;
+      $.user.amz_access_token = response.access_token;
       amazon.Login.retrieveProfile(response.access_token, function(response) {
         $.user.name = response.profile.Name;
         $.user.email = response.profile.PrimaryEmail;
         $.user.amz_id = response.profile.CustomerId.substr(response.profile.CustomerId.lastIndexOf('.') + 1);;
         console.log($.user);
       });
+
+      var BASEURL = "https://wishcastr-staging.herokuapp.com/login/amazon.json";
+
+      $.ajax({
+        type: "POST",
+        url: BASEURL,
+        data: $.user,
+        success: null, //need callback function
+        dataType: json
+      });
+
     });
   };
 
