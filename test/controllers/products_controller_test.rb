@@ -1,14 +1,14 @@
 require 'test_helper'
 
 class ProductsControllerTest < ActionController::TestCase
-  # setup do
-  #   @product = products(:one)
-  # end
-  #
-  # test "should get index" do
-  #   get :index
-  #   assert_response :success
-  # end
+  setup do
+    @product = products(:one)
+  end
+
+  test "should get index" do
+    get :index
+    assert_response :success
+  end
   #
   # test "should create product" do
   #   assert_difference('Product.count') do
