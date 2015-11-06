@@ -10,6 +10,28 @@ class UsersController < ApplicationController
   def show
   end
 
+  def amazon_login
+    logger.debug(params)
+    if params[:user][:amz_id].blank? || params[:user][:amz_access_token].blank?
+      render inline: {error: "Must provide Amazon ID and Amazon Access Token"}.to_json, status: :unprocessable_entity
+    else
+      begin
+        @user = User.find_by(amz_id: params[:user][:amz_id])
+        @user.update(amz_access_token: params[:user][:amz_access_token])
+        render :show, status: :ok, location: @user
+      rescue
+        @user = User.create(
+          amz_id: params[:user][:amz_id],
+          name: params[:user][:name],
+          email: params[:user][:email],
+          provider: "Amazon",
+          amz_access_token: params[:user][:access_token]
+        )
+        render :show, status: :created, location: @user
+      end
+    end
+  end
+
   # POST /users.json
   def create
     @user = User.new(user_params)

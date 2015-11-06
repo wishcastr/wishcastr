@@ -2,20 +2,15 @@ source 'https://rubygems.org'
 ruby '2.2.2'
 
 gem 'rails', github: "rails/rails"
-gem 'sprockets-rails', github: "rails/sprockets-rails"
-gem 'sprockets', github: "rails/sprockets"
-gem 'sass-rails', github: "rails/sass-rails"
+# gem 'sprockets-rails', github: "rails/sprockets-rails"
+# gem 'sprockets', github: "rails/sprockets"
+# gem 'sass-rails', github: "rails/sass-rails"
 gem 'arel', github: "rails/arel"
 gem 'rack', github: "rack/rack"
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'api_docs'
-
-# Authentication
-gem 'omniauth-amazon', github: "wingrunr21/omniauth-amazon"
-gem 'omniauth', github: "twalpole/omniauth", branch: 'rack_master'
-gem 'oauth2', github: "dbernheisel/oauth2"
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
