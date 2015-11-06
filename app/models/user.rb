@@ -1,11 +1,5 @@
 class User < ActiveRecord::Base
+  validates :amz_id, uniqueness: true, presence: true
+  validates :email, uniqueness: true, presence: true
 
-  def self.create_with_amazon(auth)
-    create! do |user|
-      user.provider = auth["provider"]
-      user.amz_id = auth["uid"]
-      user.name = auth["info"]["name"]
-      user.email = auth["info"]["email"]
-    end
-  end
 end
