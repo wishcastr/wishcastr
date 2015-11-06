@@ -9,14 +9,19 @@ class ProductsControllerTest < ActionController::TestCase
     get :index
     assert_response :success
   end
-  #
-  # test "should create product" do
-  #   assert_difference('Product.count') do
-  #     post :create, params: { product: { affiliate_url: @product.affiliate_url, brand: @product.brand, description: @product.description, image_large: @product.image_large, image_thumbnail: @product.image_thumbnail, sku: @product.sku, title: @product.title, type: @product.type } }
-  #   end
-  #
-  #   assert_response 201
-  # end
+
+  test "should create product" do
+    assert_difference('Product.count') do
+      post :create, params: { product: {
+        affiliate_url: @product.affiliate_url,
+        brand: @product.brand, description: @product.description,
+        image_large: @product.image_large,
+        image_thumbnail: @product.image_thumbnail,
+        sku: @product.sku, title: @product.title,
+        type: @product.type } }, format: :json
+    end
+    assert_response 201
+  end
   #
   # test "should show product" do
   #   get :show, params: { id: @product }
