@@ -38,11 +38,10 @@ class ProductsControllerTest < ActionController::TestCase
     assert_response 200
   end
 
-  # test "should destroy product" do
-  #   assert_difference('Product.count', -1) do
-  #     delete :destroy, params: { id: @product }
-  #   end
-  #
-  #   assert_response 204
-  # end
+  test "should destroy product" do
+    assert_difference('Product.count', -1) do
+      delete :destroy, params: { id: @product }, format: :json
+    end
+    assert_response 204
+  end
 end
