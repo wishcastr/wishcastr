@@ -7,7 +7,7 @@
     .when ('/top-wishes', {
       templateUrl: 'partials/top-wishes.html',
       controller: function ($http, $rootScope) {
-        $http.get('http://wishcastr-staging.herokuapp.com/products/top.json')
+        $http.get('//wishcastr-staging.herokuapp.com/products/top.json')
         .then(function(response){
             $rootScope.products = response.data;
         })//END OF PROMISE
@@ -23,7 +23,7 @@
 
   })//END OF MODULE
   .controller('Find', ['$http', '$scope', function($http, $scope){
-    var BASEURL = 'http://wishcastr-staging.herokuapp.com/products/';
+    var BASEURL = '//wishcastr-staging.herokuapp.com/products/';
 
     $scope.query = "";
     $scope.products = { };
@@ -79,7 +79,7 @@
         console.log($.user);
       });
 
-      var BASEURL = "https://wishcastr-staging.herokuapp.com/login/amazon.json";
+      var BASEURL = "//wishcastr-staging.herokuapp.com/login/amazon.json";
 
       $.ajax({
         type: "POST",
