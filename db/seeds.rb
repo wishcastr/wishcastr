@@ -5,7 +5,9 @@
   User.create!(
     name: Faker::Name.name,
     email: Faker::Internet.email,
-    postal_code: Faker::Address.postcode)
+    postal_code: Faker::Address.postcode,
+    amz_id: rand(999999999),
+    amz_access_token: rand(999999999))
 end
 
 1000.times do
