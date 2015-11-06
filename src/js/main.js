@@ -38,7 +38,7 @@
 
     //  Capture a submit event for our search form...NG-Submit
     search.find = function(){
-      Search.query = this;
+
       // TODO: Capture the query...
       //  Make a GET request to the Rails API...
       // $http({
@@ -47,7 +47,7 @@
       // })
       // GET .../search.json?query=pineapple
       $http.get(API.BASE_URL + API.SEARCH_PATH, {
-        params: Search.query  // Put the query here?
+        params: {query: search.query}  // Put the query here?
       })
         .then(function(response){
           //  Attach the results to the `Search` service...
