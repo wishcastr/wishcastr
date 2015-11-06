@@ -37,7 +37,6 @@ class PriceHistoriesControllerTest < ActionController::TestCase
     assert_difference('PriceHistory.count', -1) do
       delete :destroy, params: { id: @price_history }, format: :json
     end
-
     assert_response 204
   end
 end
