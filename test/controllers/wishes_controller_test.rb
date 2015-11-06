@@ -25,15 +25,18 @@ class WishesControllerTest < ActionController::TestCase
     assert_response 201
   end
 
-  test "should show wish" do
-    get :show, params: { id: @wish }
-    assert_response :success
-  end
-
-  # test "should update wish" do
-  #   patch :update, params: { id: @wish, wish: { category: @wish.category, name: @wish.name, query: @wish.query, threshold_price: @wish.threshold_price, user_id: @wish.user_id } }
-  #   assert_response 200
+  # test "should show wish" do
+  #   get :show, params: { id: @wish }
+  #   assert_response :success
   # end
+
+  test "should update wish" do
+    patch :update, params: { id: @wish, wish: {
+      category: @wish.category, name: @wish.name,
+      query: @wish.query, threshold_price: @wish.threshold_price,
+      user_id: @wish.user_id } }, format: :json
+    assert_response 200
+  end
   #
   # test "should destroy wish" do
   #   assert_difference('Wish.count', -1) do
