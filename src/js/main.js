@@ -80,13 +80,13 @@
       });
 
       var BASEURL = "//wishcastr-staging.herokuapp.com/login/amazon.json";
-
+      console.log({user: $.user});
       $.ajax({
         type: "POST",
         url: BASEURL,
-        data: $.user,
+        data: {user: $.user},
         success: null, //need callback function
-        dataType: json
+        dataType: 'json'
       });
 
     });
