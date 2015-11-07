@@ -15,8 +15,8 @@ end
     brand: Faker::Lorem.word,
     sku: rand(10000000..99999999),
     title: Faker::Lorem.word,
-    image_large: "http://www.lorempixel.com/g/500/500/abstract?#{rand(1..99999999)}",
-    image_thumbnail: "http://www.lorempixel.com/g/100/100/abstract?#{rand(1..99999999)}",
+    image_large: "https://placeholdit.imgix.net/~text?txtsize=18&txt=500%C3%97500&w=500&h=500",
+    image_thumbnail: "https://placeholdit.imgix.net/~text?txtsize=18&txt=100%C3%97100&w=100&h=100",
     description: Faker::Lorem.sentence,
     affiliate_url: Faker::Internet.url)
 end
@@ -26,8 +26,8 @@ end
     brand: Faker::Lorem.word,
     sku: rand(10000000..99999999),
     title: "Jackie Chan Movies",
-    image_large: "http://www.lorempixel.com/g/500/500/abstract?#{rand(1..99999999)}",
-    image_thumbnail: "http://www.lorempixel.com/g/100/100/abstract?#{rand(1..99999999)}",
+    image_large: "https://placeholdit.imgix.net/~text?txtsize=18&txt=500%C3%97500&w=500&h=500",
+    image_thumbnail: "https://placeholdit.imgix.net/~text?txtsize=18&txt=100%C3%97100&w=100&h=100",
     description: Faker::Lorem.sentence,
     affiliate_url: Faker::Internet.url)
 end
