@@ -67,11 +67,26 @@
           .descr {
             display: block;
           }
+          .fa fa-star {
+            font-family: font-awesome;
+          }
 
         }//.PRODUCT-TXT
 
       }//END OF <A>
     }//END <LI>
   }//END of <UL>
+
+}//END .lists
+
+@media (max-width: 767px) {           //MOBILE
+}
+
+@media (max-width: 1024px) and (min-width: 768px){      //TABLET
+
+}
+
+
+@media (min-width: 1025px) {            //DESKTOP
 
 }
