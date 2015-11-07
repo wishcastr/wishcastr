@@ -76,16 +76,15 @@
         $.user.name = response.profile.Name;
         $.user.email = response.profile.PrimaryEmail;
         $.user.amz_id = response.profile.CustomerId.substr(response.profile.CustomerId.lastIndexOf('.') + 1);;
-        console.log($.user);
+        console.log(JSON.stringify({"user": $.user}));
       });
 
       var BASEURL = "//wishcastr-staging.herokuapp.com/login/amazon.json";
-      console.log({user: $.user});
       $.ajax({
         type: "POST",
         url: BASEURL,
-        data: {user: $.user},
-        success: null, //need callback function
+        data: JSON.stringify($.user),
+        success: null, //TODO: callback function
         dataType: 'json'
       });
 

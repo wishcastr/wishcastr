@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     else
       begin
         @user = User.find_by(amz_id: params[:user][:amz_id])
-        @user.update(amz_access_token: params[:user][:amz_access_token])
+        @user.update(params[:user])
         render :show, status: :ok, location: @user
       rescue
         @user = User.create(
