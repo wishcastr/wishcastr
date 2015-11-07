@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   name: MyString
   email: MyString
   postal_code: MyString
@@ -9,6 +10,7 @@ one:
   amz_raccess_token: MyString
 
 two:
+  id: 2
   name: MyString
   email: MyString
   postal_code: MyString
