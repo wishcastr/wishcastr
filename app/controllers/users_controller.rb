@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   def amazon_login
     logger.debug(params)
     if params[:user][:amz_id].blank? || params[:user][:amz_access_token].blank?
-      render inline: {error: "Must provide Amazon ID and Amazon Access Token", given: params}.to_json, status: :unprocessable_entity
+      render inline: {error: "Must provide Amazon ID and Amazon Access Token", given: params[:user]}.to_json, status: :unprocessable_entity
     else
       begin
         @user = User.find_by(amz_id: params[:user][:amz_id])
