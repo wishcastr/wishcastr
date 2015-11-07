@@ -2,14 +2,17 @@
 require 'rack/cors'
 
 require ::File.expand_path('../config/environment', __FILE__)
-run Rails.application
 
-Rack::Cors do
+use Rack::Cors do
   allow do
-    origins /localhost(:\d+)/, 'wishcastr-staging.herokuapp.com'
+    origins /localhost(:\d+)/, '*', 'wishcastr-staging.herokuapp.com'
 
     resource '*',
       headers: :any,
       methods: [:get, :post, :put, :patch, :delete, :options, :head]
   end
 end
+
+
+run Rails.application
+
