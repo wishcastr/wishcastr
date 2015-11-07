@@ -1,18 +1,6 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-
-  Rails.application.config.middleware.insert_before 0, Rack::Cors do
-    allow do
-      origins /localhost(:\d+)/, 'wishcastr-staging.herokuapp.com'
-
-      resource '*',
-        headers: :any,
-        methods: [:get, :post, :put, :patch, :delete, :options, :head]
-    end
-  end
-
-
   # Code is not reloaded between requests.
   config.cache_classes = true
   config.assets.compile = true
