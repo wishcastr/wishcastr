@@ -9,7 +9,8 @@ use Rack::Cors do
       'wishcastr-staging.herokuapp.com',
       'wishcastr.herokuapp.com',
       'wishcastr.com',
-      'staging.wishcastr.com'
+      'staging.wishcastr.com',
+      '*'
 
     resource '*',
       headers: :any,
