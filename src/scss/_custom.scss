@@ -22,11 +22,27 @@
     .login {
       display: inline-block;
       margin-left: 50%;
+      float: right;
+      margin-right: 40px;
+      margin-top: 10px;
 
-      #signup-link {
-        text-decoration: none;
-        margin-left: 10px;
-      }//END #signup-link
+      #amazon-root {
+        margin-top: 13px;
+
+        #amazon-login.active{
+        margin-right: 15px;
+        display: inline-block;
+        }
+        
+        #amazon-login {
+          display: none;
+
+          a {
+            font-size: 12pt;
+            text-decoration: none;
+          }
+        } //END #AMAZON-LOGIN
+      }//END ROOT
     }//END .LOGIN <DIV>
     button {
       background-color: #068383; //TEAL
