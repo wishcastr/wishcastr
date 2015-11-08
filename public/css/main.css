@@ -2115,8 +2115,7 @@ textarea {
       margin-left: 10px;
       margin-top: 10px; }
     .container .nav-header .login {
-      /*display: inline-block;*/
-      display: none;
+      display: inline-block;
       margin-left: 50%; }
       .container .nav-header .login #signup-link {
         text-decoration: none;
@@ -2126,7 +2125,7 @@ textarea {
       border: none;
       color: #fff;
       border-radius: 3px; }
-  .container .search {
+  .container .search .color-bar {
     display: inline-block;
     float: left;
     width: 100%;
@@ -2134,22 +2133,22 @@ textarea {
     padding-bottom: 4%;
     padding-top: 2%;
     text-align: center; }
-    .container .search h2 {
+    .container .search .color-bar h2 {
       font-size: 35pt;
       font-weight: lighter;
       color: #fff;
       margin-bottom: 17px;
       margin-top: 25px; }
-      .container .search h2 #wish {
+      .container .search .color-bar h2 #wish {
         font-family: 'Lobster Two', cursive;
         font-weight: lighter; }
-    .container .search input {
+    .container .search .color-bar input {
       border-radius: 3px;
       border: none;
       padding: 5px 95px;
       text-align: center;
       margin-top: 25px; }
-    .container .search button {
+    .container .search .color-bar button {
       background-color: #068383;
       border: none;
       color: #fff;
@@ -2157,7 +2156,7 @@ textarea {
       padding-right: 2%;
       border-radius: 3px;
       margin-left: 10px; }
-    .container .search .search-menu {
+    .container .search .color-bar .search-menu {
       list-style: none;
       background-color: #c2c2c2;
       width: 60%;
@@ -2167,9 +2166,9 @@ textarea {
       left: 18%;
       text-align: left;
       margin-top: 10px; }
-      .container .search .search-menu li {
+      .container .search .color-bar .search-menu li {
         color: #064583; }
-        .container .search .search-menu li a {
+        .container .search .color-bar .search-menu li a {
           text-decoration: none; }
   .container .list-view {
     width: 100%; }
@@ -2671,16 +2670,16 @@ textarea {
  * 2. The use of `table` rather than `block` is only necessary if using
  *    `:before` to contain the top-margins of child elements.
  */
-.clearfix:before, .container .search:before, .lists ul li:before,
+.clearfix:before, .container .search .color-bar:before, .lists ul li:before,
 .clearfix:after,
-.container .search:after,
+.container .search .color-bar:after,
 .lists ul li:after {
   content: " ";
   /* 1 */
   display: table;
   /* 2 */ }
 
-.clearfix:after, .container .search:after, .lists ul li:after {
+.clearfix:after, .container .search .color-bar:after, .lists ul li:after {
   clear: both; }
 
 /* ==========================================================================

@@ -4,7 +4,7 @@ ruby '2.2.2'
 gem 'rails', github: "rails/rails"
 gem 'sprockets-rails', github: "rails/sprockets-rails"
 gem 'sprockets', github: "rails/sprockets"
-gem 'sass-rails', github: "rails/sass-rails"
+# gem 'sass-rails', github: "rails/sass-rails"
 gem 'arel', github: "rails/arel"
 gem 'rack', github: "rack/rack"
 
@@ -14,15 +14,19 @@ gem 'api_docs'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
-# Use ActiveModelSerializers to serialize JSON responses
+# Use ActiveModelSerializers for 10x faster performance than jbuilder
 gem 'active_model_serializers', '~> 0.10.0.rc2'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
+
+# Should use passenger later.
 gem 'puma'
+
+# ya know
 gem 'faker'
+
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry'
   gem 'sqlite3'
 end

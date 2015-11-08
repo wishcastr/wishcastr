@@ -10,6 +10,24 @@ class UsersController < ApplicationController
   def show
   end
 
+  def login_amazon
+    if user_params[:amz_id].blank? || user_params[:amz_access_token].blank?
+      render inline: {error: "Must provide Amazon ID and Amazon Access Token", given: user_params}.to_json, status: :unprocessable_entity
+    else
+      begin
+        @user = User.find_or_create_by(amz_id: user_params[:amz_id]) do |u|
+          u.name = user_params[:name]
+          u.email = user_params[:email]
+          u.provider = "Amazon"
+          u.amz_access_token = user_params[:amz_access_token]
+        end
+      rescue ActiveRecord::RecordNotUnique
+        retry
+      end
+      render :show, status: :ok, location: @user
+    end
+  end
+
   # POST /users.json
   def create
     @user = User.new(user_params)
@@ -45,4 +63,5 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :postal_code, :amz_id, :amz_access_token, :amz_raccess_token)
     end
+
 end
