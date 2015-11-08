@@ -14,16 +14,20 @@
     list-style: none;
     width: 100%;
     padding: 0;
+    margin-left: 109px;
+    margin-top: 50px;
+    @extend .clearfix;
 
     li {
       border: 2px solid #fff;
       background-color: #f2f2f2;
       @extend .clearfix;
-      width: 25%;
+      width: 20%;
       height: 330px;
       float: left;
       display: inline-block;
       border-radius: 5px;
+      margin: 5px;
       // padding-bottom: 25%;
 
       a {
@@ -35,6 +39,7 @@
           display: block;
           margin: 0 auto;
           margin-top: 10px;
+          margin-bottom: 15px;
 
         }
 
@@ -51,6 +56,8 @@
             margin-left: 0;
             color: #068383;
             font-size: 20pt;
+            margin-bottom: 10px;
+
           }
 
           p {
@@ -58,6 +65,8 @@
             margin: 0 10px;
             color: #068383;
             font-size: 18pt;
+            margin-bottom: 10px;
+
           }
           .price {
             font-size: 18pt;
