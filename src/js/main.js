@@ -23,7 +23,7 @@
             x_wishcastr_access_token: user.amz_access_token,
           }
         };
-        $http.get('/wishes.json', config)
+        $http.get('https://wishcastr-staging.herokuapp.com/wishes.json', config)
         .then(function(response){
           $rootScope.wishes = response.data;
         })//END OF PROMISE
@@ -71,6 +71,7 @@
 
   $('#amazon-logout').on('click', function(){
     setTimeout(window.doLogout, 1);
+    $("#amazon-login").addClass("active");
   });
 
   window.currentUser = function(){
@@ -81,6 +82,7 @@
     amazon.Login.logout();
     docCookies.removeItem('user');
   };
+
 
   //TODO
   //window.doLogin
@@ -111,15 +113,26 @@
   };
 
   window.doRailsLogin = function(u){
-    var BASEURL = "login/amazon.json";
+    var BASEURL = "//wishcastr-staging.herokuapp.com/login/amazon.json";
       $.ajax({
         type: "POST",
         url: BASEURL,
         data: {user: u},
-        success: null, //TODO: callback function
+        success: loginDisplay(), //TODO: callback function
         dataType: 'json'
       });
   };
+
+//---LOGIN BUTTON DISAPPEARS-------
+function loginDisplay () {
+  if(currentUser() === null) {
+    $("#amazon-login").addClass("active")
+  }
+  else{
+      $("#amazon-login").removeClass("active");
+      window.location = "#/user-wishes";
+  }
+};
 
 
 
