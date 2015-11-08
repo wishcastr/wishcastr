@@ -58,19 +58,29 @@
   });
 
   $('#amazon-logout').on('click', function(){
-    amazon.Login.logout();
-    console.log("logged out");
+    setTimeout(window.doLogout, 1);
+    return false;
   });
 
-  window.doLogin = function(){
-    options = {};
-    options.scope = 'profile';
-    amazon.Login.authorize(options, function(response) {
+  window.currentUser = function(){
+    return Cookies.getJSON('user');
+  }
 
+  window.doLogout = function(){
+    amazon.Login.logout();
+    Cookies.remove('user');
+  };
+
+  window.doLogin = function(){
+    options = {
+      scope: 'profile'
+    };
+    amazon.Login.authorize(options, function(response) {
       if (response.error) {
         console.log('oauth error ' + response.error);
         return;
       }
+
       Cookies.set('user-access-token', response.access_token);
       amazon.Login.retrieveProfile(response.access_token, function(response) {
         var u = {};
