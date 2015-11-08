@@ -1,22 +1,13 @@
-.lists {
+.lists {        //<section>
   margin: 0 auto;
   text-align: center;
-  width: 60%;
+  width: 100%;
 
-  h2 {
+  h2 {            //PARTIAL TITLE
     font-size: 25pt;
     margin-bottom: 10px;
     color: #064583;
-
-
   }
-
-  p {
-    font-size: 14pt;
-    color: #515151;
-    margin-bottom: 20px;
-  }
-
 
   ul {
     // border: 1px solid #068383;
@@ -28,6 +19,12 @@
       border: 2px solid #fff;
       background-color: #f2f2f2;
       @extend .clearfix;
+      width: 25%;
+      height: 330px;
+      float: left;
+      display: inline-block;
+      border-radius: 5px;
+      // padding-bottom: 25%;
 
       a {
         float: left;
@@ -35,40 +32,47 @@
         width: 100%;
 
         img {
-          display: inline-block;
-          margin: 10px;
-          margin-right: 15px;
-          float: left;
+          display: block;
+          margin: 0 auto;
+          margin-top: 10px;
+
         }
 
         .product-txt {
           padding-top: 4%;
-          // padding-bottom: 6%;
-          text-align: left;
+          text-decoration: none;
+          color: #f9be12;
+          font-size: 25pt;
+          margin-bottom: 10px;
 
           h3 {
-            display: inline-block;
+            display: block;
             margin: 0 10px;
             margin-left: 0;
-            color: #064583;
+            color: #068383;
+            font-size: 20pt;
           }
 
           p {
-            display: inline-block;
+            display: block;
             margin: 0 10px;
             color: #068383;
+            font-size: 18pt;
           }
           .price {
-            float: right;
             font-size: 18pt;
             margin-top: 14px;
+            font-size: 18pt;
+            color: #064583;
+            font-weight: bold;
           }
 
           .descr {
             display: block;
+            font-size: 14pt;
           }
-          .fa fa-star {
-            font-family: font-awesome;
+          fa fa-star {
+            font-family: Font-Awesome;
           }
 
         }//.PRODUCT-TXT
