@@ -10,25 +10,24 @@ class UsersController < ApplicationController
   def show
   end
 
-  def amazon_login
-    logger.debug(params)
-    if params[:user][:amz_id].blank? || params[:user][:amz_access_token].blank?
-      render inline: {error: "Must provide Amazon ID and Amazon Access Token", given: params[:user]}.to_json, status: :unprocessable_entity
+  def login_amazon
+    json_params = request.body.read
+    logger.debug(json_params)
+    binding.pry
+    if json_params[:amz_id].blank? || json_params[:amz_access_token].blank?
+      render inline: {error: "Must provide Amazon ID and Amazon Access Token", given: json_params}.to_json, status: :unprocessable_entity
     else
       begin
-        @user = User.find_by(amz_id: params[:user][:amz_id])
-        @user.update(params[:user])
-        render :show, status: :ok, location: @user
-      rescue
-        @user = User.create(
-          amz_id: params[:user][:amz_id],
-          name: params[:user][:name],
-          email: params[:user][:email],
-          provider: "Amazon",
-          amz_access_token: params[:user][:access_token]
-        )
-        render :show, status: :created, location: @user
+        @user = User.find_or_create_by(amz_id: json_params[:amz_id]) do |u|
+          u.name = json_params[:name]
+          u.email = json_params[:email]
+          u.provider = "Amazon"
+          u.amz_access_token = json_params[:amz_access_token]
+        end
+      rescue ActiveRecord::RecordNotUnique
+        retry
       end
+      render :show, status: :ok, location: @user
     end
   end
 
@@ -67,4 +66,5 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :postal_code, :amz_id, :amz_access_token, :amz_raccess_token)
     end
+
 end
