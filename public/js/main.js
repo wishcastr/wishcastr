@@ -17,16 +17,20 @@
       templateUrl: 'partials/user-wishes.html',
       controller: function ($http, $scope) {
         var user = currentUser();
-        var config = {
-          headers: {
-            x_wishcastr_user_id: user.id,
-            x_wishcastr_access_token: user.amz_access_token,
-          }
-        };
-        $http.get('/wishes.json', config)
-        .then(function(response){
-          $scope.wishes = response.data;
-        })//END OF PROMISE
+        if(user){
+          var config = {
+            headers: {
+              x_wishcastr_user_id: user.id,
+              x_wishcastr_access_token: user.amz_access_token,
+            }
+          };
+          $http.get('//wishcastr-staging.herokuapp.com/wishes.json', config)
+          .then(function(response){
+            $scope.wishes = response.data;
+          })//END OF PROMISE
+        }else{
+          console.log("Shouldn't see this");
+        }
       }//end of controller
     })//END OF USER-WISHES
 
@@ -128,7 +132,7 @@
 
   window.doAmazonLogin = function(){
     options = {
-      scope: 'profile'
+      scope: 'profile postal'
     };
     amazon.Login.authorize(options, function(response) {
       if (response.error) {
@@ -153,20 +157,20 @@
 
   window.doRailsLogin = function(u){
     var BASEURL = "login/amazon.json";
-      $.ajax({
-        type: "POST",
-        url: BASEURL,
-        data: {user: u},
-        success: null, //TODO: callback function
-        dataType: 'json'
-      }).done(function(response){
-        u.id = response.id;
-        u.amz_raccess_token = response.amz_raccess_token;
-        u.created_at = response.created_at;
-        u.updated_at = response.updated_at;
-        u.postal_code = response.postal_code;
-        docCookies.setItem('user', JSON.stringify(u), 60*60*24*7);
-      });
+    $.ajax({
+      type: "POST",
+      url: BASEURL,
+      data: {user: u},
+      success: null, //TODO: callback function
+      dataType: 'json'
+    }).done(function(response){
+      u.id = response.id;
+      u.amz_raccess_token = response.amz_raccess_token;
+      u.created_at = response.created_at;
+      u.updated_at = response.updated_at;
+      u.postal_code = response.postal_code;
+      docCookies.setItem('user', JSON.stringify(u), 60*60*24*7);
+    });
   };
 
 
