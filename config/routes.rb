@@ -4,11 +4,11 @@ Rails.application.routes.draw do
   root :to => "static#index"
 
   post 'login/amazon' => 'users#login_amazon'
-  resources :users
-  resources :wishes
-  resources :price_histories
-  resources :products_wishes
-  resources :products do
+  resources :products_wishes, defaults: { format: 'json' }
+  resources :users, defaults: { format: 'json' }
+  resources :wishes, defaults: { format: 'json' }
+  resources :price_histories, defaults: { format: 'json' }
+  resources :products, defaults: { format: 'json' } do
     collection do
       get 'top'
       get 'search'
