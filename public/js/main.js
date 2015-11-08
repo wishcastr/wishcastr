@@ -53,7 +53,7 @@
   })(document);
 
   $('#amazon-login').on('click', function(){
-    setTimeout(window.doLogin, 1);
+    setTimeout(window.doAmazonLogin, 1);
     return false;
   });
 
@@ -63,15 +63,15 @@
   });
 
   window.currentUser = function(){
-    return Cookies.getJSON('user');
+    return docCookies.getItem('user');
   }
 
   window.doLogout = function(){
     amazon.Login.logout();
-    Cookies.remove('user');
+    docCookies.removeItem('user');
   };
 
-  window.doLogin = function(){
+  window.doAmazonLogin = function(){
     options = {
       scope: 'profile'
     };
@@ -81,28 +81,33 @@
         return;
       }
 
-      Cookies.set('user-access-token', response.access_token);
+      docCookies.setItem('user-access-token', response.access_token);
+
       amazon.Login.retrieveProfile(response.access_token, function(response) {
         var u = {};
-        u.amz_access_token = Cookies.get('user-access-token');
+        u.amz_access_token = docCookies.getItem('user-access-token');
         u.name = response.profile.Name;
         u.email = response.profile.PrimaryEmail;
         u.amz_id = response.profile.CustomerId.substr(response.profile.CustomerId.lastIndexOf('.') + 1);
-        Cookies.set('user', JSON.stringify(u), { expires: 7 });
-      });
-      console.log(Cookies.getJSON('user'));
-
-      var BASEURL = "login/amazon.json";
-      $.ajax({
-        type: "POST",
-        url: BASEURL,
-        data: {user: Cookies.getJSON('user')},
-        success: null, //TODO: callback function
-        dataType: 'json'
+        docCookies.setItem('user', JSON.stringify(u), 60*60*24*7);
+        window.doRailsLogin(u);
       });
 
     });
   };
+
+  window.doRailsLogin = function(u){
+    var BASEURL = "login/amazon.json";
+      $.ajax({
+        type: "POST",
+        url: BASEURL,
+        data: {user: u},
+        success: null, //TODO: callback function
+        dataType: 'json'
+      });
+  };
+
+
 
 
 })();
