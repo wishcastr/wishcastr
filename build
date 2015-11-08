@@ -34,3 +34,6 @@ cp bower_components/angular-route/angular-route.js public/bower_components/angul
 
 mkdir -p public/bower_components/font-awesome/css/
 cp bower_components/font-awesome/css/font-awesome.css public/bower_components/font-awesome/css/font-awesome.css
+
+mkdir -p public/bower_components/js-cookie
+cp bower_components/js-cookie/src/js.cookie.js public/bower_components/js-cookie/js.cookie.js

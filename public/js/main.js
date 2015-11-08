@@ -66,24 +66,27 @@
     options = {};
     options.scope = 'profile';
     amazon.Login.authorize(options, function(response) {
-      $.user = {};
+
       if (response.error) {
         console.log('oauth error ' + response.error);
         return;
       }
-      $.user.amz_access_token = response.access_token;
+      Cookies.set('user-access-token', response.access_token);
       amazon.Login.retrieveProfile(response.access_token, function(response) {
-        $.user.name = response.profile.Name;
-        $.user.email = response.profile.PrimaryEmail;
-        $.user.amz_id = response.profile.CustomerId.substr(response.profile.CustomerId.lastIndexOf('.') + 1);;
-        console.log(JSON.stringify({"user": $.user}));
+        var u = {};
+        u.amz_access_token = Cookies.get('user-access-token');
+        u.name = response.profile.Name;
+        u.email = response.profile.PrimaryEmail;
+        u.amz_id = response.profile.CustomerId.substr(response.profile.CustomerId.lastIndexOf('.') + 1);
+        Cookies.set('user', JSON.stringify(u), { expires: 7 });
       });
+      console.log(Cookies.getJSON('user'));
 
       var BASEURL = "login/amazon.json";
       $.ajax({
         type: "POST",
         url: BASEURL,
-        data: $.user,
+        data: {user: Cookies.getJSON('user')},
         success: null, //TODO: callback function
         dataType: 'json'
       });
