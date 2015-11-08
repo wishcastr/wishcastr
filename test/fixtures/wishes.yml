@@ -3,9 +3,9 @@
 one:
   user_id: 1
   threshold_price: 9.99
-  category: MyString
-  query: MyString
-  name: MyString
+  category: Food
+  query: hotdog
+  name: loose sausage
 
 two:
   user_id: 1
