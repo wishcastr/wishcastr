@@ -1,11 +1,15 @@
-<section class="lists">
+<section class="result-list">
   <h2>Results</h2>
-  <ul>
-    <li>
-      <a href="#">
-        <img src="{{USE.API.IMG}}" />
-        <h3>{{RESULTS.API.TITLE}}</h3>
-        <p>{{RESULTS.API.CURRENT_PRICE}}</p>
+  <ul class="search-menu">
+    <li ng-repeat="product in products.results()">
+      <a href="#"> <!--TODO: MAKE THIS LINK TO AN ITEM SPECIFIC PAGE-->
+        <img ng-src="{{product.image_thumbnail}}">
+        <div class="product-txt" title="{{product.description}}">
+          <h3 class="title">{{product.title}}</h3>
+          <p class="price">{{product.current_price | currency}}</p>
+          <p class="descr">{{product.description | limitTo: 80}}{{product.description.length > 20 ? '...' : ''}}</p>
+        </div>
       </a>
     </li>
   </ul>
+</section>
