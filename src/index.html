@@ -10,8 +10,8 @@
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <!-- Place favicon.ico in the root directory -->
         <!-- bower:css -->
-        <link href='https://fonts.googleapis.com/css?family=Lobster+Two' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Lobster+Two' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link href="../bower_components/hover/scss/hover.scss" />
         <link rel="stylesheet" href="../bower_components/normalize-css/normalize.css" />
         <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.css" />
@@ -24,10 +24,12 @@
         <header class="nav-header">
           <a href="#/top-wishes" id="logo">Wishcastr</a>
           <div class="login">
-            <input type="text" placeholder="username"></input>
-            <input type="password" placeholder="password"></input>
-            <button type="submit">Login</button>
-            <a href="#/signup" id="signup-link">signup</a>
+            <div id="amazon-root">
+              <span id="amazon-login" class="active">
+                <img src="https://images-na.ssl-images-amazon.com/images/G/01/lwa/btnLWA_gold_76x32.png" />
+              </span>
+              <a href="#/top-wishes"id="amazon-logout">Logout</a>
+            </div>
           </div>
         </header> <!--END OF HEADER-->
 
@@ -73,5 +75,6 @@
             r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
             ga('create','UA-XXXXX-X','auto');ga('send','pageview');
         </script>
+
     </body>
 </html>

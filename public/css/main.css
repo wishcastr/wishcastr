@@ -2115,8 +2115,7 @@ textarea {
       margin-left: 10px;
       margin-top: 10px; }
     .container .nav-header .login {
-      /*display: inline-block;*/
-      display: none;
+      display: inline-block;
       margin-left: 50%; }
       .container .nav-header .login #signup-link {
         text-decoration: none;
