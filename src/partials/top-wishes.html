@@ -2,15 +2,16 @@
   <h2>Top Wishes</h2>
   <p>The top currently wished for items on the site</p>
   <ul>
-    <li ng-repeat="product in products">
+    <li title="{{product.description}}" ng-repeat="product in products">
       <a target="_blank" ng-href="{{product.affiliate_url}}">
           <img ng-src="{{product.image_thumbnail}}" />
         <div class="product-txt">
           <h3>{{product.title}}</h3>
           <p class="price">{{product.current_price | currency}}</p>
-          <p class="descr">{{product.description | limitTo: 50}}{{product.description.length > 20 ? '...' : ''}}</p>
-          <span class="fa fa-star"></span>
-      </div>
+          <p class="descr">{{product.description | limitTo: 25}}{{product.description.length > 20 ? '...' : ''}}</p>
+          <span class="fa fa-star" title="Create a Wish"></span>
+        </div>
       </a>
     </li>
   </ul>
+</section>
