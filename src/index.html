@@ -12,6 +12,7 @@
         <!-- bower:css -->
         <link href='//fonts.googleapis.com/css?family=Lobster+Two' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link href="../bower_components/hover/scss/hover.scss" />
         <link rel="stylesheet" href="../bower_components/normalize-css/normalize.css" />
         <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.css" />
 
@@ -46,10 +47,10 @@
           </div>
 
             <section class="list-view">
-              <a href="#/user-wishes">user wishes</a>
-              <a href="#/results">results</a>
+              <!-- <a href="#/user-wishes">user wishes</a>
+              <a href="#/results">results</a> -->
+              <ng-view><span class="fa fa-circle-o-notch fa-spin"></span></ng-view>
 
-              <ng-view />
             </section> <!--END .LIST-->
         </section> <!--END OF .SEARCH-->
 

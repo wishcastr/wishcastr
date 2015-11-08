@@ -1,33 +1,34 @@
-.lists {
+.lists {        //<section>
   margin: 0 auto;
   text-align: center;
-  width: 60%;
+  width: 100%;
 
-  h2 {
+  h2 {            //PARTIAL TITLE
     font-size: 25pt;
     margin-bottom: 10px;
     color: #064583;
-
-
   }
-
-  p {
-    font-size: 14pt;
-    color: #515151;
-    margin-bottom: 20px;
-  }
-
 
   ul {
     // border: 1px solid #068383;
     list-style: none;
     width: 100%;
     padding: 0;
+    margin-left: 109px;
+    margin-top: 50px;
+    @extend .clearfix;
 
     li {
       border: 2px solid #fff;
       background-color: #f2f2f2;
       @extend .clearfix;
+      width: 20%;
+      height: 330px;
+      float: left;
+      display: inline-block;
+      border-radius: 5px;
+      margin: 5px;
+      // padding-bottom: 25%;
 
       a {
         float: left;
@@ -35,43 +36,98 @@
         width: 100%;
 
         img {
-          display: inline-block;
-          margin: 10px;
-          margin-right: 15px;
-          float: left;
+          display: block;
+          margin: 0 auto;
+          margin-top: 10px;
+          margin-bottom: 15px;
+
         }
 
         .product-txt {
           padding-top: 4%;
-          // padding-bottom: 6%;
-          text-align: left;
+          text-decoration: none;
+          color: #f9be12;
+          font-size: 25pt;
+          margin-bottom: 10px;
 
           h3 {
-            display: inline-block;
+            display: block;
             margin: 0 10px;
             margin-left: 0;
-            color: #064583;
+            color: #068383;
+            font-size: 20pt;
+            margin-bottom: 10px;
+
           }
 
           p {
-            display: inline-block;
+            display: block;
             margin: 0 10px;
             color: #068383;
+            font-size: 18pt;
+            margin-bottom: 10px;
+
           }
           .price {
-            float: right;
             font-size: 18pt;
             margin-top: 14px;
+            font-size: 18pt;
+            color: #064583;
+            font-weight: bold;
           }
 
           .descr {
             display: block;
+            font-size: 14pt;
           }
+          fa fa-star {
+            font-family: Font-Awesome;
+            /* Icon Grow */
+            @mixin icon-grow {
+            	@include hacks();
+            	position: relative;
+            	padding-right: #{$spaceBetweenTextAndArrows};
+            	@include prefixed(transition-duration, $mediumDuration);
+
+            	&:before {
+            		content: "\f005";
+            		position: absolute;
+            		right: 1em;
+            		padding: 0 1px;
+            		font-family: FontAwesome;
+            		@include prefixed(transform, translateZ(0));
+            		@include prefixed(transition-duration, $mediumDuration);
+            		@include prefixed(transition-property, transform);
+            		@include prefixed(transition-timing-function, ease-out);
+            	}
+
+            	&:hover,
+            	&:focus,
+            	&:active {
+
+            		&:before {
+            			@include prefixed(transform, scale(1.3) translateZ(0));
+            		}
+            	}
+            } //ICON GROW! FIXME: MAKE THAT STAR GROW!!!!! OR ELSE REMOVE HTML AND BUILD SCRIPT UGHHH
+          }// STAR
 
         }//.PRODUCT-TXT
 
       }//END OF <A>
     }//END <LI>
   }//END of <UL>
+
+}//END .lists
+
+@media (max-width: 767px) {           //MOBILE
+}
+
+@media (max-width: 1024px) and (min-width: 768px){      //TABLET
+
+}
+
+
+@media (min-width: 1025px) {            //DESKTOP
 
 }
