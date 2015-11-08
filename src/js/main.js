@@ -31,7 +31,7 @@
 
 
   })//END OF MODULE
-  .controller('SearchController', function($http, Search, API){
+  .controller('SearchController', function($http, Search, API, $location){
     var search = this;
 
     search.query = '';
@@ -52,6 +52,7 @@
         .then(function(response){
           //  Attach the results to the `Search` service...
           Search.results = response.data;
+          $location.path('/results');
         })
     } // END find
   }) //END CONTROLLER
