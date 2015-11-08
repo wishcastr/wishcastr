@@ -75,15 +75,15 @@
       amazon.Login.retrieveProfile(response.access_token, function(response) {
         $.user.name = response.profile.Name;
         $.user.email = response.profile.PrimaryEmail;
-        $.user.amz_id = response.profile.CustomerId.substr(response.profile.CustomerId.lastIndexOf('.') + 1);;
+        $.user.amz_id = response.profile.CustomerId.substr(response.profile.CustomerId.lastIndexOf('.') + 1);
         console.log(JSON.stringify({"user": $.user}));
       });
 
-      var BASEURL = "//wishcastr-staging.herokuapp.com/login/amazon.json";
+      var BASEURL = "login/amazon.json";
       $.ajax({
         type: "POST",
         url: BASEURL,
-        data: JSON.stringify($.user),
+        data: $.user,
         success: null, //TODO: callback function
         dataType: 'json'
       });

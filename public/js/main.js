@@ -79,11 +79,11 @@
         console.log(JSON.stringify({"user": $.user}));
       });
 
-      var BASEURL = "//wishcastr-staging.herokuapp.com/login/amazon.json";
+      var BASEURL = "login/amazon.json";
       $.ajax({
         type: "POST",
         url: BASEURL,
-        data: JSON.stringify($.user),
+        data: $.user,
         success: null, //TODO: callback function
         dataType: 'json'
       });
