@@ -9,12 +9,25 @@
       controller: function ($http, $rootScope) {
         $http.get('//wishcastr-staging.herokuapp.com/products/top.json')
         .then(function(response){
-            $rootScope.products = response.data;
+          $rootScope.products = response.data;
         })//END OF PROMISE
       }//end of controller
     })//END OF TOP-WISHES
     .when ('/user-wishes', {
-      templateUrl: 'partials/user-wishes.html'
+      templateUrl: 'partials/user-wishes.html',
+      controller: function ($http, $rootScope) {
+        var user = currentUser();
+        var config = {
+          headers: {
+            x_wishcastr_user_id: user.id,
+            x_wishcastr_access_token: user.amz_access_token,
+          }
+        };
+        $http.get('/wishes.json', config)
+        .then(function(response){
+          $rootScope.wishes = response.data;
+        })//END OF PROMISE
+      }//end of controller
     })//END OF USER-WISHES
     .when ('/results', {
       templateUrl: 'partials/results.html'
@@ -54,22 +67,23 @@
 
   $('#amazon-login').on('click', function(){
     setTimeout(window.doAmazonLogin, 1);
-    return false;
   });
 
   $('#amazon-logout').on('click', function(){
     setTimeout(window.doLogout, 1);
-    return false;
   });
 
   window.currentUser = function(){
-    return docCookies.getItem('user');
+    return JSON.parse(docCookies.getItem('user'));
   }
 
   window.doLogout = function(){
     amazon.Login.logout();
     docCookies.removeItem('user');
   };
+
+  //TODO
+  //window.doLogin
 
   window.doAmazonLogin = function(){
     options = {
@@ -81,16 +95,16 @@
         return;
       }
 
-      docCookies.setItem('user-access-token', response.access_token);
+      var userAccessToken = response.access_token;
 
-      amazon.Login.retrieveProfile(response.access_token, function(response) {
+      amazon.Login.retrieveProfile(userAccessToken, function(response) {
         var u = {};
-        u.amz_access_token = docCookies.getItem('user-access-token');
+        u.amz_access_token = userAccessToken;
         u.name = response.profile.Name;
         u.email = response.profile.PrimaryEmail;
         u.amz_id = response.profile.CustomerId.substr(response.profile.CustomerId.lastIndexOf('.') + 1);
         docCookies.setItem('user', JSON.stringify(u), 60*60*24*7);
-        window.doRailsLogin(u);
+        setTimeout(window.doRailsLogin(u), 1);
       });
 
     });
@@ -106,7 +120,6 @@
         dataType: 'json'
       });
   };
-
 
 
 

@@ -5,7 +5,11 @@ require ::File.expand_path('../config/environment', __FILE__)
 
 use Rack::Cors do
   allow do
-    origins /localhost(:\d+)/, '*', 'wishcastr-staging.herokuapp.com'
+    origins /localhost(:\d+)/,
+      'wishcastr-staging.herokuapp.com',
+      'wishcastr.herokuapp.com',
+      'wishcastr.com',
+      'staging.wishcastr.com'
 
     resource '*',
       headers: :any,
