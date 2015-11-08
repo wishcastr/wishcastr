@@ -132,7 +132,7 @@
 
   window.doAmazonLogin = function(){
     options = {
-      scope: 'profile postal_code'
+      scope: 'profile'
     };
     amazon.Login.authorize(options, function(response) {
       if (response.error) {

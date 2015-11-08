@@ -57,3 +57,37 @@ end
       product_id: products.sample.id)
   end
 end
+
+david = User.create!(
+  name: "David Bernheisel",
+  email: "david@wishcastr.com",
+  postal_code: nil,
+  amz_id: "AECXWYJZ5BRUS5KCN35V4O4XPP3Q",
+  amz_raccess_token: nil,
+  amz_access_token: "Atza|IQEBLjAsAhRgciI1zJB6s8XCOBNNn5uyBvdnjAIUBEskYBNBshgf_0s7-pmGD6BOrgJ8Z0DdFLvHTPdYNErwG-MQ6YBaKvBXf_lRnB07T4FNZEEKMeACm4Ao0ZyfFSPbTF_wITjjHSuk4j87GWkCkj_e4JRCL1spWqRaueYeKe-8ZZoVw0T83gDyTR1HEx75aa0R8sXLDgwCqg-RPTNHQRZLucAzS8Bs04Bcdbf4lvzGDpW0nRpoo5f1jJ_CKNQX8B0Xj9qRZEJTQGbnrfxn-vjLPrOJYyXKX0J4PPEZrSnX4i1QETSp0gwTMR0twHqKf_St3aGCJQe6NcvVBu82vGxrit6vDwb_L59eywkaloR_pkKaYS3iZh1BTi0_R7crdWCnFniOCwm1Wo7jUuFtyqYi8tgpsZnUlLONQ_Khp8YoWgs")
+
+["Nintendo", "Metroid", "Wheelmate Laptop Steering Wheel Desk", "Uranium Ore", "Playmobil Security Check Point", "Laparoscopic Gastric Bypass Kit", "Zombies"].each do |item|
+  Wish.create!(
+    name: item + "-name",
+    user_id: david.id,
+    threshold_price: rand(15.00..500.00).round(2),
+    category: Faker::Lorem.word,
+    query: item + "-query")
+end
+
+lacey = User.create!(
+  name: "Lacey Rice",
+  email: "laceyrice@me.com",
+  postal_code: nil,
+  amz_id: "AE64PCCIMZPOEGXH2EG2Y7SMGU3Q",
+  amz_raccess_token: nil,
+  amz_access_token: "Atza|IQEBLjAsAhQdWXfOewzME-Wzzki43wbTRD9_-AIUROdyviFiwnZGf17_LCaqyujNr_4CoqrdcYuB6vNQ4UFH7DUdCeMgMlGX5sZ2P4YDsbnBV3rAsS6ae1l8JrWb3O-2xqXltfMkOMjzi-pT84V2P0bs4wEwzT5ew3Pg_F1WkHovDdpj5gj2KnScwp7iRYLH4rVN3MEAqpLUm2d_g9_fR12B6b9hCjr6S1QF69IWjy0c8ABIxUDP1i6DvZjvV3aEp7cXtO6ItV9JA8nXOBpI0ZoJ1W7m71AHLhRLRw-wFGyvSk_IA9jnNh76dXh1eUjKwr2NMQcAz2D80kwXAboMGzV3NiSeLIJHBSrByiG3ANvkd6GEgpcJzmA-OdT5mL9cAr5mvaWicK_Erve8ULONd29pKQ")
+
+["Potato", "Interstellar", "Star Wars Box Set", "Iron Man Hoodie", "Doctor Who Ice Tray", "Laptop bag", "Javascript book"].each do |item|
+  Wish.create!(
+    name: item + "-name",
+    user_id: lacey.id,
+    threshold_price: rand(15.00..500.00).round(2),
+    category: Faker::Lorem.word,
+    query: item + "-query")
+end
