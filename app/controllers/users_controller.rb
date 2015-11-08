@@ -21,7 +21,6 @@ class UsersController < ApplicationController
           u.provider = "Amazon"
           u.amz_access_token = user_params[:amz_access_token]
         end
-        binding.pry
       rescue ActiveRecord::RecordNotUnique
         retry
       end
