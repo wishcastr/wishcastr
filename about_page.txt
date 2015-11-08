@@ -1,23 +1,28 @@
 How we Started:
 Although David and Da-Me were separated at birth, fate would bring them back together at the
-Iron Yard, for no bond was stronger than one forged in the fire of code boot camp.
+Iron Yard, for no bond was stronger than one forged in the fire of code boot camp. While at the
+Iron Yard, they discovered a Ruby which they used to preform magical feats. They traveled along Rails
+with their new found talents and were tested mercilessly by their sensei Fox Matthews.
 
-Through difficult trails they learned the skills necessary to traverse the world unguided.
-Before they could begin this quest, they needed supplies, but more importantly
+Through difficult trails they quickly learned the skills necessary to traverse the world unguided.
+Before they could begin their quest, they needed supplies, but more importantly
 they needed a magical messenger bag that could hold everything that was needed. David, searched
 far and wide for the perfect bag but couldn't find a price that was acceptable. They thought, there
-must be a better way! Instead of going from store to store looking for the perfect bag at the perfect
-price, or standing idly by hoping the price would drop, they decided to make Wishcastr.com.
+must be a better way!  Instead of going from store to store looking for the perfect bag
+at the perfect price, or standing idly by hoping the price would drop, they decided to make Wishcastr.com.
 
 As they started this journey they knew they couldn't do it alone. So they requested the assistance
 of a talented wizard named Lacey. They had heard of her gifts in Angular, HTML and CSS. These were
 powerful tools that would help them combat future issues they knew they would come to face.
 
 What Wishcastr.com does:
-Now with Lacey joining the group, they were ready. Ready to create a site with a one stop search,
+Now with Lacey joining the group, they were ready. Ready to create a magical being named Wishcastr.com
 that would crawl through the Amazon, scour through the bay, the Ebay that is, and potentially many other
-sites to traverse. Wishcastr.com could search for any magical item and set the price so something more
-affordable. Wishcastr.com would then alert them when it had found that item for their threshold price.
+treacherous sites. With Wishcastr.com they could search for any magical item and set the price to something
+they found acceptable. Wishcastr.com would then alert them when it had found that item for
+their acceptable price.
+
+
 
 What we actually do.
 
