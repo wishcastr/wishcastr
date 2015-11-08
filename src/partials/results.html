@@ -3,7 +3,7 @@
   <ul class="search-menu">
     <li ng-repeat="product in products.results()">
       <a href="#"> <!--TODO: MAKE THIS LINK TO AN ITEM SPECIFIC PAGE-->
-        <img ng-src="{{product.image_thumbnail}}"></img>
+        <img ng-src="{{product.image_thumbnail}}">
         <div class="product-txt" title="{{product.description}}">
           <h3 class="title">{{product.title}}</h3>
           <p class="price">{{product.current_price | currency}}</p>
