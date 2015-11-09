@@ -1,3 +1,11 @@
+$amazon-image-up: url(https://images-na.ssl-images-amazon.com/images/G/01/lwa/btnLWA_gold_76x32.png);
+$amazon-image-down: url(https://images-na.ssl-images-amazon.com/images/G/01/lwa/btnLWA_gold_76x32_pressed.png);
+
+body:after {
+  display: none;
+  content: $amazon-image-up $amazon-image-down;
+}
+
 .container {
   width: 100%;
   font-family: 'Lato', sans-serif;
@@ -27,15 +35,20 @@
 
       #amazon-root {
         margin-top: 13px;
+        cursor: pointer;
 
-        #amazon-login.active{
-        margin-right: 10px;
-        display: inline-block;
-        margin-top: 10px;
+        #amazon-login.active {
+        display: block;
         }
 
         #amazon-login {
-          display: none;
+          height: 32px;
+          width: 76px;
+          cursor: pointer;
+          background: $amazon-image-up no-repeat;
+        }
+        #amazon-login:active {
+          background: $amazon-image-down no-repeat;
         }
 
         a.active{

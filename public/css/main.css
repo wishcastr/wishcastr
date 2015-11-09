@@ -2097,6 +2097,10 @@ textarea {
 .fa-fonticons:before {
   content: ""; }
 
+body:after {
+  display: none;
+  content: url(https://images-na.ssl-images-amazon.com/images/G/01/lwa/btnLWA_gold_76x32.png) url(https://images-na.ssl-images-amazon.com/images/G/01/lwa/btnLWA_gold_76x32_pressed.png); }
+
 .container {
   width: 100%;
   font-family: 'Lato', sans-serif; }
@@ -2120,13 +2124,17 @@ textarea {
       margin-top: 10px;
       float: right; }
       .container .nav-header .login #amazon-root {
-        margin-top: 13px; }
+        margin-top: 13px;
+        cursor: pointer; }
         .container .nav-header .login #amazon-root #amazon-login.active {
-          margin-right: 10px;
-          display: inline-block;
-          margin-top: 10px; }
+          display: block; }
         .container .nav-header .login #amazon-root #amazon-login {
-          display: none; }
+          height: 32px;
+          width: 76px;
+          cursor: pointer;
+          background: url(https://images-na.ssl-images-amazon.com/images/G/01/lwa/btnLWA_gold_76x32.png) no-repeat; }
+        .container .nav-header .login #amazon-root #amazon-login:active {
+          background: url(https://images-na.ssl-images-amazon.com/images/G/01/lwa/btnLWA_gold_76x32_pressed.png) no-repeat; }
         .container .nav-header .login #amazon-root a.active {
           font-size: 14pt;
           text-decoration: none; }
