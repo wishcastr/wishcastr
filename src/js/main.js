@@ -159,7 +159,7 @@
   window.doLogout = function(){
     amazon.Login.logout();
     docCookies.removeItem('user');
-    loginDisplay();
+    toggleLoginDisplay();
   };
 
 
@@ -200,7 +200,6 @@
       type: "POST",
       url: BASEURL,
       data: {user: u},
-      success: loginDisplay(), //TODO: callback function
       dataType: 'json'
     }).done(function(response){
       u.id = response.id;
@@ -209,25 +208,26 @@
       u.updated_at = response.updated_at;
       u.postal_code = response.postal_code;
       docCookies.setItem('user', JSON.stringify(u), 60*60*24*7);
+      toggleLoginDisplay();
     });
   };
 
 //---LOGIN BUTTON DISAPPEARS-------
-function loginDisplay () {
-  if(currentUser() === null) { //NO USER LOGGED IN
-    // $("#amazon-login").addClass("active")
-    $("#amazon-login").show();
-    $("#amazon-logout").hide();
-  }
-  else{ //USER LOGGED IN
-      // $("#amazon-login").removeClass("active");
+
+  //---LOGIN BUTTON DISAPPEARS-------
+  function toggleLoginDisplay () {
+    if(currentUser() === null) { //NO USER LOGGED IN
+      $("#amazon-login").show();
+      $("#amazon-logout").hide();
+    }else{ //USER LOGGED IN
       $('#amazon-login').hide();
       $("#amazon-logout").show();
-      // $('#amazon-logout').addClass('active');
       window.location = "#/user-wishes";
-  }
-};
+    }
+  };
 
-
+  $(document).ready(function(){
+    toggleLoginDisplay();
+  })
 
 })();

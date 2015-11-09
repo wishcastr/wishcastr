@@ -159,7 +159,11 @@
   window.doLogout = function(){
     amazon.Login.logout();
     docCookies.removeItem('user');
+<<<<<<< HEAD
     loginDisplay();
+=======
+    toggleLoginDisplay();
+>>>>>>> 7c5e329ee5d1153a146bfca8e9c2c33f5ece75e3
   };
 
 
@@ -194,13 +198,19 @@
   };
 
   window.doRailsLogin = function(u){
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7c5e329ee5d1153a146bfca8e9c2c33f5ece75e3
     var BASEURL = "//wishcastr-staging.herokuapp.com/login/amazon.json";
     $.ajax({
       type: "POST",
       url: BASEURL,
       data: {user: u},
+<<<<<<< HEAD
       success: loginDisplay(), //TODO: callback function
+=======
+>>>>>>> 7c5e329ee5d1153a146bfca8e9c2c33f5ece75e3
       dataType: 'json'
     }).done(function(response){
       u.id = response.id;
@@ -209,6 +219,7 @@
       u.updated_at = response.updated_at;
       u.postal_code = response.postal_code;
       docCookies.setItem('user', JSON.stringify(u), 60*60*24*7);
+<<<<<<< HEAD
     });
   };
 
@@ -229,5 +240,26 @@ function loginDisplay () {
 };
 
 
+=======
+      toggleLoginDisplay();
+    });
+  };
+
+  //---LOGIN BUTTON DISAPPEARS-------
+  function toggleLoginDisplay () {
+    if(currentUser() === null) { //NO USER LOGGED IN
+      $("#amazon-login").show();
+      $("#amazon-logout").hide();
+    }else{ //USER LOGGED IN
+      $('#amazon-login').hide();
+      $("#amazon-logout").show();
+      window.location = "#/user-wishes";
+    }
+  };
+
+  $(document).ready(function(){
+    toggleLoginDisplay();
+  })
+>>>>>>> 7c5e329ee5d1153a146bfca8e9c2c33f5ece75e3
 
 })();
