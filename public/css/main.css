@@ -2116,20 +2116,22 @@ textarea {
       margin-top: 10px; }
     .container .nav-header .login {
       display: inline-block;
-      margin-left: 50%;
-      float: right;
       margin-right: 40px;
-      margin-top: 10px; }
+      margin-top: 10px;
+      float: right; }
       .container .nav-header .login #amazon-root {
         margin-top: 13px; }
         .container .nav-header .login #amazon-root #amazon-login.active {
-          margin-right: 15px;
-          display: inline-block; }
+          margin-right: 10px;
+          display: inline-block;
+          margin-top: 10px; }
         .container .nav-header .login #amazon-root #amazon-login {
           display: none; }
-          .container .nav-header .login #amazon-root #amazon-login a {
-            font-size: 12pt;
-            text-decoration: none; }
+        .container .nav-header .login #amazon-root a.active {
+          font-size: 14pt;
+          text-decoration: none; }
+        .container .nav-header .login #amazon-root #amazon-logout {
+          display: none; }
     .container .nav-header button {
       background-color: #068383;
       border: none;
@@ -2181,6 +2183,9 @@ textarea {
           text-decoration: none; }
   .container .list-view {
     width: 100%; }
+    .container .list-view .fa-spin {
+      -webkit-animation: fa-spin 2s infinite linear;
+      animation: fa-spin 2s infinite linear; }
 
 .lists {
   margin: 0 auto;
@@ -2190,6 +2195,9 @@ textarea {
     font-size: 25pt;
     margin-bottom: 10px;
     color: #064583; }
+  .lists p {
+    font-size: 14pt;
+    color: #068383; }
   .lists ul {
     list-style: none;
     width: 100%;
@@ -2220,6 +2228,8 @@ textarea {
           color: #f9be12;
           font-size: 25pt;
           margin-bottom: 10px; }
+          .lists ul li a .product-txt:hover {
+            color: #064583; }
           .lists ul li a .product-txt h3 {
             display: block;
             margin: 0 10px;
@@ -2244,7 +2254,8 @@ textarea {
             font-size: 14pt; }
           .lists ul li a .product-txt fa fa-star {
             font-family: Font-Awesome;
-            /* Icon Grow */ }
+            display: inline-block;
+            vertical-align: middle; }
 
 .result-list {
   margin: 0 auto;
@@ -2775,9 +2786,10 @@ div.awesome-people div.awesome-person {
  * 2. The use of `table` rather than `block` is only necessary if using
  *    `:before` to contain the top-margins of child elements.
  */
-.clearfix:before, .container .search .color-bar:before, .lists ul:before, .lists ul li:before, .result-list ul li:before, div.awesome-people:before,
+.clearfix:before, .container .search .color-bar:before, .lists:before, .lists ul:before, .lists ul li:before, .result-list ul li:before, div.awesome-people:before,
 .clearfix:after,
 .container .search .color-bar:after,
+.lists:after,
 .lists ul:after,
 .lists ul li:after,
 .result-list ul li:after,
@@ -2787,7 +2799,7 @@ div.awesome-people:after {
   display: table;
   /* 2 */ }
 
-.clearfix:after, .container .search .color-bar:after, .lists ul:after, .lists ul li:after, .result-list ul li:after, div.awesome-people:after {
+.clearfix:after, .container .search .color-bar:after, .lists:after, .lists ul:after, .lists ul li:after, .result-list ul li:after, div.awesome-people:after {
   clear: both; }
 
 /* ==========================================================================
