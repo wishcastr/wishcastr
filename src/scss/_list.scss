@@ -52,13 +52,13 @@
         .product-txt {
           padding-top: 4%;
           text-decoration: none;
-          color: #f9be12;
-          font-size: 25pt;
-          margin-bottom: 10px;
-
-          &:hover {
-            color: #064583;
-          }
+          // color: #f9be12;
+          // font-size: 25pt;
+          // margin-bottom: 10px;
+          //
+          // &:hover {
+          //   color: #064583;
+          // }
 
           h3 {
             display: block;
@@ -92,15 +92,26 @@
 
           }
 
-          fa fa-star {
-            font-family: Font-Awesome;
-            display: inline-block;
-            vertical-align: middle;
-            // &:hover {
-            //   background-color: red;
-            // }
+          .star-link {
+            color: #f9be12;
+            font-size: 25pt;
+            margin-bottom: 10px;
 
-          }// STAR
+            &:hover {
+              color: #064583;
+            }
+            fa fa-star {
+              font-family: Font-Awesome;
+              display: inline-block;
+              vertical-align: middle;
+              // &:hover {
+              //   background-color: red;
+              // }
+
+            }// STAR
+
+          }
+
 
         }//.PRODUCT-TXT
 
