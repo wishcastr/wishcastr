@@ -2116,10 +2116,20 @@ textarea {
       margin-top: 10px; }
     .container .nav-header .login {
       display: inline-block;
-      margin-left: 50%; }
-      .container .nav-header .login #signup-link {
-        text-decoration: none;
-        margin-left: 10px; }
+      margin-left: 50%;
+      float: right;
+      margin-right: 40px;
+      margin-top: 10px; }
+      .container .nav-header .login #amazon-root {
+        margin-top: 13px; }
+        .container .nav-header .login #amazon-root #amazon-login.active {
+          margin-right: 15px;
+          display: inline-block; }
+        .container .nav-header .login #amazon-root #amazon-login {
+          display: none; }
+          .container .nav-header .login #amazon-root #amazon-login a {
+            font-size: 12pt;
+            text-decoration: none; }
     .container .nav-header button {
       background-color: #068383;
       border: none;
@@ -2127,7 +2137,6 @@ textarea {
       border-radius: 3px; }
   .container .search .color-bar {
     display: inline-block;
-    float: left;
     width: 100%;
     background-color: #F9BE12;
     padding-bottom: 4%;
@@ -2681,6 +2690,37 @@ textarea {
   display: block;
   float: left; }
 
+section.privacy {
+  padding: 1em 2em; }
+
+section.about {
+  padding: 1em 2em; }
+
+div.awesome-people div.awesome-person {
+  margin: 2em;
+  background-color: #f2f2f2;
+  border: gray;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  margin: 1em;
+  position: relative;
+  width: 300px;
+  float: left; }
+  div.awesome-people div.awesome-person div.awesome-person-img {
+    overflow: hidden;
+    height: 200px;
+    max-height: 200px; }
+    div.awesome-people div.awesome-person div.awesome-person-img img {
+      width: 100%; }
+  div.awesome-people div.awesome-person div.awesome-person-name {
+    font-weight: bold;
+    line-height: 1.5em;
+    padding: 0.5em;
+    border-bottom: 1px silver solid; }
+  div.awesome-people div.awesome-person div.awesome-person-description {
+    font-size: 1em;
+    line-height: 1.5em;
+    padding: 0.5em; }
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */
@@ -2735,18 +2775,19 @@ textarea {
  * 2. The use of `table` rather than `block` is only necessary if using
  *    `:before` to contain the top-margins of child elements.
  */
-.clearfix:before, .container .search .color-bar:before, .lists ul:before, .lists ul li:before, .result-list ul li:before,
+.clearfix:before, .container .search .color-bar:before, .lists ul:before, .lists ul li:before, .result-list ul li:before, div.awesome-people:before,
 .clearfix:after,
 .container .search .color-bar:after,
 .lists ul:after,
 .lists ul li:after,
-.result-list ul li:after {
+.result-list ul li:after,
+div.awesome-people:after {
   content: " ";
   /* 1 */
   display: table;
   /* 2 */ }
 
-.clearfix:after, .container .search .color-bar:after, .lists ul:after, .lists ul li:after, .result-list ul li:after {
+.clearfix:after, .container .search .color-bar:after, .lists ul:after, .lists ul li:after, .result-list ul li:after, div.awesome-people:after {
   clear: both; }
 
 /* ==========================================================================

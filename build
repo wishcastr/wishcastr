@@ -37,3 +37,10 @@ cp bower_components/font-awesome/css/font-awesome.css public/bower_components/fo
 
 mkdir -p public/bower_components/hover/scss/
 cp bower_components/hover/scss/hover.scss public/bower_components/hover/scss/hover.scss
+
+echo 'Step 5: Copy all the images!'
+
+mkdir -p public/images/
+cp -r images/ public/images/
+
+
