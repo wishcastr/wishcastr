@@ -10,7 +10,7 @@
           <h3>{{product.title | limitTo: 25}}</h3>
           <p class="price">{{product.current_price | currency}}</p>
           <p class="descr">{{product.description | limitTo: 25}}{{product.description.length > 25 ? '...' : ''}}</p>
-          <div class="star-link" >
+          <div class="star-link" ng-click="starLinkyLink()" >
             <span class="fa fa-star-o" title="Create a Wish"></span>
           </div>
         </div>
