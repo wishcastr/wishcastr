@@ -2185,7 +2185,8 @@ textarea {
     width: 100%; }
     .container .list-view .fa-spin {
       -webkit-animation: fa-spin 2s infinite linear;
-      animation: fa-spin 2s infinite linear; }
+      animation: fa-spin 2s infinite linear;
+      margin: 0 auto; }
 
 .lists {
   margin: 0 auto;

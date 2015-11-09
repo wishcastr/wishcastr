@@ -17,13 +17,13 @@ class AmazonProduct < Product
 
     # The region you are interested in
     params = {
-      Service: "AWSECommerceService",
-      Operation: "ItemSearch",
-      AWSAccessKeyId: key,
-      AssociateTag: "wishcaster-20",
-      SearchIndex: "All",
-      Keywords: query,
-      ResponseGroup: "Images,ItemAttributes,ItemIds,OfferListings,Offers"
+      "Service" => "AWSECommerceService",
+      "Operation" => "ItemSearch",
+      "AWSAccessKeyId" => key,
+      "AssociateTag" => "wishcaster-20",
+      "SearchIndex" => "All",
+      "Keywords" => query,
+      "ResponseGroup" => "Images,ItemAttributes,ItemIds,OfferListings,Offers"
     }
 
     # Set current timestamp if not set
