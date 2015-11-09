@@ -6,6 +6,7 @@
     })//END OF REDIRECT
     .when ('/top-wishes', {
       templateUrl: 'partials/top-wishes.html',
+
       controller: function ($http, $scope) {
         $http.get('//wishcastr-staging.herokuapp.com/products/top.json')
         .then(function(response){
@@ -17,6 +18,7 @@
       templateUrl: 'partials/user-wishes.html',
       controller: function ($http, $scope) {
         var user = currentUser();
+
         if(user){
           var config = {
             headers: {
@@ -44,10 +46,18 @@
         };
       },
       controllerAs: 'products'
-    })//END OF RESULTS
+    })
+    .when ('/privacy', {
+      templateUrl: 'partials/privacy.html'
+    })
+    .when ('/about', {
+      templateUrl: 'partials/about.html'
+    })//END OF RESULTS//END OF RESULTS
 
 
   })//END OF MODULE
+
+
   .controller('SearchController', function($http, Search, API, $location){
     var search = this;
 
@@ -74,7 +84,7 @@
     } // END find
   }) //END CONTROLLER
   .constant('API', {
-    BASE_URL: 'http://wishcastr-staging.herokuapp.com',
+    BASE_URL: '//wishcastr-staging.herokuapp.com',
     SEARCH_PATH: '/products/search.json'
   })
   .value('Search', {
@@ -83,6 +93,25 @@
       // { title: 'Bad Robot', current_price: '123.45' }
     ],
   })
+  // .factory('Search', function($http, API){
+  //   var results = [
+  //     { title: 'Bad Robot', current_price: '123.45' }
+  //   ];
+  //
+  //   return {
+  //     query: '',
+  //     find: function(query){
+  //       // TODO: Make a GET request to the Rails API...
+  //       // TODO: Keep the results...
+  //       // TODO: Return the Promise...
+  //     }, // END find
+  //     results: function(){
+  //       return results;
+  //     }
+  //   }
+  // })
+
+
 
   .controller('Find', ['$http', '$scope', function($http, $scope){
     var BASEURL = '//wishcastr-staging.herokuapp.com/products/';
@@ -99,6 +128,7 @@
 
 
 })(); //END OF IFFE
+
 
 // Amazon Login SDK
 ;(function(){
@@ -120,6 +150,7 @@
 
   $('#amazon-logout').on('click', function(){
     setTimeout(window.doLogout, 1);
+    $("#amazon-login").addClass("active");
   });
 
   window.currentUser = function(){
@@ -130,6 +161,12 @@
     amazon.Login.logout();
     docCookies.removeItem('user');
   };
+
+
+
+  //TODO
+  //window.doLogin
+
 
   window.doAmazonLogin = function(){
     options = {
@@ -157,12 +194,13 @@
   };
 
   window.doRailsLogin = function(u){
-    var BASEURL = "login/amazon.json";
+
+    var BASEURL = "//wishcastr-staging.herokuapp.com/login/amazon.json";
     $.ajax({
       type: "POST",
       url: BASEURL,
       data: {user: u},
-      success: null, //TODO: callback function
+      success: loginDisplay(), //TODO: callback function
       dataType: 'json'
     }).done(function(response){
       u.id = response.id;
@@ -173,6 +211,17 @@
       docCookies.setItem('user', JSON.stringify(u), 60*60*24*7);
     });
   };
+
+//---LOGIN BUTTON DISAPPEARS-------
+function loginDisplay () {
+  if(currentUser() === null) {
+    $("#amazon-login").addClass("active")
+  }
+  else{
+      $("#amazon-login").removeClass("active");
+      window.location = "#/user-wishes";
+  }
+};
 
 
 })();

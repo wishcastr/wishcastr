@@ -25,10 +25,10 @@
           <a href="#/top-wishes" id="logo">Wishcastr</a>
           <div class="login">
             <div id="amazon-root">
-              <span id="amazon-login">
+              <span id="amazon-login" class="active">
                 <img src="https://images-na.ssl-images-amazon.com/images/G/01/lwa/btnLWA_gold_76x32.png" />
               </span>
-              <a id="amazon-logout">Logout</a>
+              <a href="#/top-wishes"id="amazon-logout">Logout</a>
             </div>
           </div>
         </header> <!--END OF HEADER-->
@@ -49,10 +49,17 @@
             <section class="list-view">
               <!-- <a href="#/user-wishes">user wishes</a>
               <a href="#/results">results</a> -->
-              <ng-view><span class="fa fa-circle-o-notch fa-spin"></span></ng-view>
-
             </section> <!--END .LIST-->
         </section> <!--END OF .SEARCH-->
+
+        <ng-view>
+          <span class="fa fa-circle-o-notch fa-spin"></span>
+        </ng-view>
+
+        <footer>
+        <a href="#/privacy">Privacy Policy</a><br/>
+        <a href="#/about">About Wishcastr</a>
+        </footer>
 
 
       </main> <!--END .CONTAINER-->
