@@ -35,21 +35,14 @@ cp bower_components/angular-route/angular-route.js public/bower_components/angul
 mkdir -p public/bower_components/font-awesome/css/
 mkdir -p public/fonts/
 cp bower_components/font-awesome/css/font-awesome.css public/bower_components/font-awesome/css/font-awesome.css
-<<<<<<< HEAD
-=======
+
 cp -r bower_components/font-awesome/fonts/ public/fonts/
->>>>>>> 7c5e329ee5d1153a146bfca8e9c2c33f5ece75e3
 
 mkdir -p public/bower_components/hover/scss/
 cp bower_components/hover/scss/hover.scss public/bower_components/hover/scss/hover.scss
 
 echo 'Step 5: Copy all the images!'
-
 mkdir -p public/images/
 cp -r images/ public/images/
-<<<<<<< HEAD
-=======
 cp -r rootimages/ public/
->>>>>>> 7c5e329ee5d1153a146bfca8e9c2c33f5ece75e3
-
 

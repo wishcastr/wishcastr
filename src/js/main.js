@@ -212,8 +212,6 @@
     });
   };
 
-//---LOGIN BUTTON DISAPPEARS-------
-
   //---LOGIN BUTTON DISAPPEARS-------
   function toggleLoginDisplay () {
     if(currentUser() === null) { //NO USER LOGGED IN

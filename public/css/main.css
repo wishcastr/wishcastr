@@ -138,7 +138,7 @@ textarea {
     left: -1.85714em; }
 
 .fa-border {
-  padding: 0.2em 0.25em 0.15em;
+  padding: .2em .25em .15em;
   border: solid 0.08em #eee;
   border-radius: .1em; }
 
@@ -2786,14 +2786,14 @@ div.awesome-people div.awesome-person {
  * 2. The use of `table` rather than `block` is only necessary if using
  *    `:before` to contain the top-margins of child elements.
  */
-.clearfix:before,
-.container .search .color-bar:before,
-.lists:before,
-.lists ul:before,
-.lists ul li:before,
-.result-list ul li:before,
-div.awesome-people:before,
-.clearfix:after, .container .search .color-bar:after, .lists:after, .lists ul:after, .lists ul li:after, .result-list ul li:after, div.awesome-people:after {
+.clearfix:before, .container .search .color-bar:before, .lists:before, .lists ul:before, .lists ul li:before, .result-list ul li:before, div.awesome-people:before,
+.clearfix:after,
+.container .search .color-bar:after,
+.lists:after,
+.lists ul:after,
+.lists ul li:after,
+.result-list ul li:after,
+div.awesome-people:after {
   content: " ";
   /* 1 */
   display: table;
