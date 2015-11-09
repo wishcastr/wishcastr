@@ -17,13 +17,13 @@ class AmazonProduct < Product
 
     # The region you are interested in
     params = {
-      "Service" => "AWSECommerceService",
-      "Operation" => "ItemSearch",
-      "AWSAccessKeyId" => key,
-      "AssociateTag" => "wishcaster-20",
-      "SearchIndex" => "All",
-      "Keywords" => query,
-      "ResponseGroup" => "Images,ItemAttributes,ItemIds,OfferListings,Offers"
+      Service: "AWSECommerceService",
+      Operation: "ItemSearch",
+      AWSAccessKeyId: key,
+      AssociateTag: "wishcaster-20",
+      SearchIndex: "All",
+      Keywords: query,
+      ResponseGroup: "Images,ItemAttributes,ItemIds,OfferListings,Offers"
     }
 
     # Set current timestamp if not set
@@ -65,7 +65,8 @@ class AmazonProduct < Product
       result[:image_thumbnail] = item.xpath("ImageSets[1]/ImageSet[1]/TinyImage[1]/URL[1]").text || ""
       result[:title] = item.xpath("ItemAttributes[1]/Title[1]").text.titleize
       result[:brand] = item.xpath("ItemAttributes[1]/Brand[1]").text || ""
-      result[:current_price] = item.xpath("OfferSummary[1]/LowestNewPrice[1]/Amount[1]").text.to_f/100 || "Not Available"
+      result[:current_price] = item.xpath("OfferSummary[1]/LowestNewPrice[1]/Amount[1]").text.to_f/100
+      result[:current_price] = "Not Available" unless result[:current_price]
       result[:description] = item.xpath("ItemAttributes[1]/Edition[1]").text || ""
       result[:affiliate_url] = item.xpath("DetailPageURL[1]").text
       item.xpath("ItemAttributes[1]/Feature").each do |feature|
