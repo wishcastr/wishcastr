@@ -223,6 +223,8 @@
     }
   };
 
-
+  $(document).ready(function(){
+    toggleLoginDisplay();
+  })
 
 })();
