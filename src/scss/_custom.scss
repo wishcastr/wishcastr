@@ -2,7 +2,6 @@
   width: 100%;
   font-family: 'Lato', sans-serif;
   .nav-header {
-    // background-color: orange;
     float: left;
     display: inline-block;
     width: 100%;
@@ -21,27 +20,32 @@
 
     .login {
       display: inline-block;
-      margin-left: 50%;
-      float: right;
       margin-right: 40px;
       margin-top: 10px;
+      float: right;
+
 
       #amazon-root {
         margin-top: 13px;
 
         #amazon-login.active{
-        margin-right: 15px;
+        margin-right: 10px;
         display: inline-block;
+        margin-top: 10px;
         }
-        
         #amazon-login {
           display: none;
+        }
 
-          a {
-            font-size: 12pt;
-            text-decoration: none;
-          }
-        } //END #AMAZON-LOGIN
+        a.active{
+          font-size: 14pt;
+          text-decoration: none;
+        }
+
+        #amazon-logout {
+          display: none;
+        }
+
       }//END ROOT
     }//END .LOGIN <DIV>
     button {
@@ -128,7 +132,12 @@
 
   .list-view {
     width: 100%;
-  }
+
+    .#{$fa-css-prefix}-spin {
+      -webkit-animation: fa-spin 2s infinite linear;
+      animation: fa-spin 2s infinite linear;
+    }
+  } //END LIST-VIEW
 
 }//END .CONTAINER
 
