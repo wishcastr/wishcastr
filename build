@@ -44,5 +44,6 @@ echo 'Step 5: Copy all the images!'
 
 mkdir -p public/images/
 cp -r images/ public/images/
+cp -r rootimages/ public/
 
 
