@@ -12,8 +12,12 @@
         $http.get('//wishcastr-staging.herokuapp.com/products/top.json')
         .then(function(response){
           $scope.products = response.data;
-          $scope.$on('$viewContentLoaded', starLinkyLink);
+          // $scope.$on('$viewContentLoaded', starLinkyLink);
         })//END OF PROMISE
+        $scope.starLinkyLink = function () {
+          console.log("click");
+          $(this).find('span').toggleClass('.fa-star-o .fa-star');
+        }
         }//end of controller
       // controller: function ($scope) {
 
@@ -103,20 +107,6 @@
       })//END PROMISE
     }//END searchParam()
   }])
-
-//JQUERY OPTION FOR CLICKING ON STAR DIV
-  function starLinkyLink() {
-    $('.star-link').on('click', function(){
-      console.log("CLICK ME");
-    });
-  }
-
-//ANGULAR OPTION FOR CLICKING ON STAR DIV
-  function clickStar() {
-    angular.element('.star-link').on('click',function() {
-      console.log("CLICK ME");
-    })
-  }
 
 })(); //END OF IFFE
 
