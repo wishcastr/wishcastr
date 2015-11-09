@@ -2099,7 +2099,7 @@ textarea {
 
 body:after {
   display: none;
-  content: url(https://images-na.ssl-images-amazon.com/images/G/01/lwa/btnLWA_gold_76x32.png) url(https://images-na.ssl-images-amazon.com/images/G/01/lwa/btnLWA_gold_76x32_pressed.png); }
+  content: url(../images/amazon_login_76x32.png) url(../images/amazon_login_76x32_pressed.png); }
 
 .container {
   width: 100%;
@@ -2124,22 +2124,20 @@ body:after {
       margin-top: 10px;
       float: right; }
       .container .nav-header .login #amazon-root {
-        margin-top: 13px;
-        cursor: pointer; }
-        .container .nav-header .login #amazon-root #amazon-login.active {
-          display: block; }
+        cursor: pointer;
+        background: url(../images/amazon_login_76x32.png) no-repeat;
+        height: 32px;
+        width: 76px; }
+        .container .nav-header .login #amazon-root span {
+          padding: 6px 0 0 30px;
+          font-size: .8em;
+          font-weight: bold; }
         .container .nav-header .login #amazon-root #amazon-login {
-          height: 32px;
-          width: 76px;
-          cursor: pointer;
-          background: url(https://images-na.ssl-images-amazon.com/images/G/01/lwa/btnLWA_gold_76x32.png) no-repeat; }
-        .container .nav-header .login #amazon-root #amazon-login:active {
-          background: url(https://images-na.ssl-images-amazon.com/images/G/01/lwa/btnLWA_gold_76x32_pressed.png) no-repeat; }
-        .container .nav-header .login #amazon-root a.active {
-          font-size: 14pt;
-          text-decoration: none; }
+          display: block; }
         .container .nav-header .login #amazon-root #amazon-logout {
           display: none; }
+      .container .nav-header .login #amazon-root:active {
+        background: url(../images/amazon_login_76x32_pressed.png) no-repeat; }
     .container .nav-header button {
       background-color: #068383;
       border: none;

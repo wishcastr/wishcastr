@@ -1,5 +1,5 @@
-$amazon-image-up: url(https://images-na.ssl-images-amazon.com/images/G/01/lwa/btnLWA_gold_76x32.png);
-$amazon-image-down: url(https://images-na.ssl-images-amazon.com/images/G/01/lwa/btnLWA_gold_76x32_pressed.png);
+$amazon-image-up: url(../images/amazon_login_76x32.png);
+$amazon-image-down: url(../images/amazon_login_76x32_pressed.png);
 
 body:after {
   display: none;
@@ -32,35 +32,30 @@ body:after {
       margin-top: 10px;
       float: right;
 
-
       #amazon-root {
-        margin-top: 13px;
         cursor: pointer;
+        background: $amazon-image-up no-repeat;
+        height: 32px;
+        width: 76px;
 
-        #amazon-login.active {
-        display: block;
+        span {
+          padding: 6px 0 0 30px;
+          font-size: .8em;
+          font-weight: bold;
         }
 
         #amazon-login {
-          height: 32px;
-          width: 76px;
-          cursor: pointer;
-          background: $amazon-image-up no-repeat;
-        }
-        #amazon-login:active {
-          background: $amazon-image-down no-repeat;
-        }
-
-        a.active{
-          font-size: 14pt;
-          text-decoration: none;
+          display: block;
         }
 
         #amazon-logout {
           display: none;
         }
-
+      }
+      #amazon-root:active {
+        background: $amazon-image-down no-repeat;
       }//END ROOT
+
     }//END .LOGIN <DIV>
     button {
       background-color: #068383; //TEAL
