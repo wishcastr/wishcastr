@@ -46,7 +46,13 @@
         };
       },
       controllerAs: 'products'
-    })//END OF RESULTS
+    })
+    .when ('/privacy', {
+      templateUrl: 'partials/privacy.html'
+    })
+    .when ('/about', {
+      templateUrl: 'partials/about.html'
+    })//END OF RESULTS//END OF RESULTS
 
 
   })//END OF MODULE
@@ -78,7 +84,7 @@
     } // END find
   }) //END CONTROLLER
   .constant('API', {
-    BASE_URL: 'http://wishcastr-staging.herokuapp.com',
+    BASE_URL: '//wishcastr-staging.herokuapp.com',
     SEARCH_PATH: '/products/search.json'
   })
   .value('Search', {
