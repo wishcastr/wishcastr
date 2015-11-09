@@ -104,13 +104,14 @@
     }//END searchParam()
   }])
 
+//JQUERY OPTION FOR CLICKING ON STAR DIV
   function starLinkyLink() {
     $('.star-link').on('click', function(){
       console.log("CLICK ME");
     });
   }
 
-
+//ANGULAR OPTION FOR CLICKING ON STAR DIV
   function clickStar() {
     angular.element('.star-link').on('click',function() {
       console.log("CLICK ME");
