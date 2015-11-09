@@ -1,8 +1,15 @@
+$amazon-image-up: url(https://images-na.ssl-images-amazon.com/images/G/01/lwa/btnLWA_gold_76x32.png);
+$amazon-image-down: url(https://images-na.ssl-images-amazon.com/images/G/01/lwa/btnLWA_gold_76x32_pressed.png);
+
+body:after {
+  display: none;
+  content: $amazon-image-up $amazon-image-down;
+}
+
 .container {
   width: 100%;
   font-family: 'Lato', sans-serif;
   .nav-header {
-    // background-color: orange;
     float: left;
     display: inline-block;
     width: 100%;
@@ -20,14 +27,40 @@
     } //END #logo
 
     .login {
-      /*display: inline-block;*/
-      display: none;
-      margin-left: 50%;
+      display: inline-block;
+      margin-right: 40px;
+      margin-top: 10px;
+      float: right;
 
-      #signup-link {
-        text-decoration: none;
-        margin-left: 10px;
-      }//END #signup-link
+
+      #amazon-root {
+        margin-top: 13px;
+        cursor: pointer;
+
+        #amazon-login.active {
+        display: block;
+        }
+
+        #amazon-login {
+          height: 32px;
+          width: 76px;
+          cursor: pointer;
+          background: $amazon-image-up no-repeat;
+        }
+        #amazon-login:active {
+          background: $amazon-image-down no-repeat;
+        }
+
+        a.active{
+          font-size: 14pt;
+          text-decoration: none;
+        }
+
+        #amazon-logout {
+          display: none;
+        }
+
+      }//END ROOT
     }//END .LOGIN <DIV>
     button {
       background-color: #068383; //TEAL
@@ -41,44 +74,46 @@
   }//END <HEADER>
 
   .search {
-    display: inline-block;
-    float: left;
-    width: 100%;
-    background-color: #F9BE12; //YELLOW/ORANGE
-    padding-bottom: 4%;
-    padding-top: 2%;
-    text-align: center;
-    @extend .clearfix;
 
-    h2 {
-      font-size: 35pt;
-      font-weight: lighter;
-      color: #fff;
-      margin-bottom: 17px;
-      margin-top: 25px;
-      #wish {
-        font-family: 'Lobster Two', cursive;
-        font-weight: lighter;
-      }
-    }//END H2
-
-    input {
-      border-radius: 3px;
-      border: none;
-      padding: 5px 95px;
+    .color-bar {
+      display: inline-block;
+      width: 100%;
+      background-color: #F9BE12; //YELLOW/ORANGE
+      padding-bottom: 4%;
+      padding-top: 2%;
       text-align: center;
-      margin-top: 25px;
-    }
+      @extend .clearfix;
+      h2 {
+        font-size: 35pt;
+        font-weight: lighter;
+        color: #fff;
+        margin-bottom: 17px;
+        margin-top: 25px;
+        #wish {
+          font-family: 'Lobster Two', cursive;
+          font-weight: lighter;
+        }
+      }//END H2
 
-    button {
-      background-color: #068383;
-      border: none;
-      color: #fff;
-      padding-left: 2%;
-      padding-right: 2%;
-      border-radius: 3px;
-      margin-left: 10px;
-    }//END BUTTON
+      input {
+        border-radius: 3px;
+        border: none;
+        padding: 5px 95px;
+        text-align: center;
+        margin-top: 25px;
+      }
+
+      button {
+        background-color: #068383;
+        border: none;
+        color: #fff;
+        padding-left: 2%;
+        padding-right: 2%;
+        border-radius: 3px;
+        margin-left: 10px;
+      }//END BUTTON
+
+
 
       .search-menu {
         list-style: none;
@@ -105,10 +140,29 @@
           }
         }
       }
+    }//.COLOR-BAR=
     }//.SEARCH
 
   .list-view {
     width: 100%;
-  }
+
+    .#{$fa-css-prefix}-spin {
+      -webkit-animation: fa-spin 2s infinite linear;
+      animation: fa-spin 2s infinite linear;
+      margin: 0 auto;
+    }
+  } //END LIST-VIEW
 
 }//END .CONTAINER
+
+@media (max-width: 767px) {           //MOBILE
+}
+
+@media (max-width: 1024px) and (min-width: 768px){      //TABLET
+
+}
+
+
+@media (min-width: 1025px) {            //DESKTOP
+
+}
