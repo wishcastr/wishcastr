@@ -11,8 +11,14 @@ class WishesController < ApplicationController
 
   def draft
     user = User.find(request.headers["x-wishcastr-user-id"])
+    wish = Wish.create()
     if user && user.amz_access_token == request.headers["x-wishcastr-access-token"]
-      @wishes = user.unsaved_wish.wishes
+      @wishes = user.unsaved_wish
+        if @wishes
+          render json: :show
+        else
+          render json: :create wish
+    end
   end
 
   # GET /wishes/1.json

@@ -8,9 +8,9 @@ class User < ActiveRecord::Base
     if it returns true then show wish
     else create a wish
 
-    uw = Wish.find_by_user(user)
+    user_wish = Wish.find_by_user(user)
+    if user_wish 
 
-    
   end
 
 end
