@@ -9,6 +9,12 @@ class WishesController < ApplicationController
     end
   end
 
+  def draft
+    user = User.find(request.headers["x-wishcastr-user-id"])
+    if user && user.amz_access_token == request.headers["x-wishcastr-access-token"]
+      @wishes = user.unsaved_wish.wishes
+  end
+
   # GET /wishes/1.json
   def show
     user = User.find(request.headers["x-wishcastr-user-id"])
