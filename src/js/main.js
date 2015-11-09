@@ -224,5 +224,9 @@
   };
 
 
+$(document).ready(function(){
+  toggleLoginDisplay();
+})
+
 
 })();
