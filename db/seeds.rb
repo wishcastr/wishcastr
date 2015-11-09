@@ -66,7 +66,7 @@ david = User.create!(
   postal_code: nil,
   amz_id: "AECXWYJZ5BRUS5KCN35V4O4XPP3Q",
   amz_raccess_token: nil,
-  amz_access_token: ENV("AMZ_DAVID_TOKEN"))
+  amz_access_token: ENV["AMZ_DAVID_TOKEN"])
 
 ["Nintendo", "Metroid", "Wheelmate Laptop Steering Wheel Desk", "Uranium Ore", "Playmobil Security Check Point", "Laparoscopic Gastric Bypass Kit", "Zombies"].each do |item|
   Wish.create!(
@@ -83,7 +83,7 @@ lacey = User.create!(
   postal_code: nil,
   amz_id: "AE64PCCIMZPOEGXH2EG2Y7SMGU3Q",
   amz_raccess_token: nil,
-  amz_access_token: ENV("AMZ_LACEY_TOKEN"))
+  amz_access_token: ENV["AMZ_LACEY_TOKEN"])
 
 ["Potato", "Interstellar", "Star Wars Box Set", "Iron Man Hoodie", "Doctor Who Ice Tray", "Laptop bag", "Javascript book"].each do |item|
   Wish.create!(
@@ -93,3 +93,21 @@ lacey = User.create!(
     category: Faker::Lorem.word,
     query: item + "-query")
 end
+
+dame = User.create!(
+  name: "Da-Me Kim",
+  email: "da-me@wishcastr.com",
+  postal_code: nil,
+  amz_id: "AEUT4REP2B6FMB7V4V6VFQ2AJJVQ",
+  amz_raccess_token: nil,
+  amz_access_token: ENV["AMZ_DAME_TOKEN"])
+
+["Jackie Chan movie", "Magic the Gathering Booster Box", "Bruce Lee signed poster", "Back to the Future shoes", "hoverboard", "foldgers coffee", "horse mask"].each do |item|
+  Wish.create!(
+    name: item + "-name",
+    user_id: dame.id,
+    threshold_price: rand(15.00..500.00).round(2),
+    category: Faker::Lorem.word,
+    query: item + "-query")
+end
+
