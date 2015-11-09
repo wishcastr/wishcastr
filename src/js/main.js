@@ -144,7 +144,6 @@
 
   $('#amazon-logout').on('click', function(){
     setTimeout(window.doLogout, 1);
-    $("#amazon-login").addClass("active");
   });
 
   window.currentUser = function(){
@@ -154,6 +153,7 @@
   window.doLogout = function(){
     amazon.Login.logout();
     docCookies.removeItem('user');
+    loginDisplay();
   };
 
 
@@ -208,14 +208,20 @@
 
 //---LOGIN BUTTON DISAPPEARS-------
 function loginDisplay () {
-  if(currentUser() === null) {
-    $("#amazon-login").addClass("active")
+  if(currentUser() === null) { //NO USER LOGGED IN
+    // $("#amazon-login").addClass("active")
+    $("#amazon-login").show();
+    $("#amazon-logout").hide();
   }
-  else{
-      $("#amazon-login").removeClass("active");
+  else{ //USER LOGGED IN
+      // $("#amazon-login").removeClass("active");
+      $('#amazon-login').hide();
+      $("#amazon-logout").show();
+      // $('#amazon-logout').addClass('active');
       window.location = "#/user-wishes";
   }
 };
+
 
 
 })();
