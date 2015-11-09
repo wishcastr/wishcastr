@@ -3,15 +3,24 @@
   <p>The top currently wished for items on the site</p>
   <ul>
     <li title="{{product.description}}" ng-repeat="product in products">
-      <a target="_blank" ng-href="{{product.affiliate_url}}">
+      <a href="javascript:void(0)">
+      <!-- <a ng-href="{{product.affiliate_url}}"> -->
           <img ng-src="{{product.image_thumbnail}}" />
         <div class="product-txt">
           <h3>{{product.title}}</h3>
           <p class="price">{{product.current_price | currency}}</p>
           <p class="descr">{{product.description | limitTo: 25}}{{product.description.length > 20 ? '...' : ''}}</p>
-          <span class="fa fa-star" title="Create a Wish"></span>
+            <span class="fa fa-star-o" title="Create a Wish"></span>
         </div>
       </a>
     </li>
   </ul>
 </section>
+
+<script>//-----Star change------
+$(".product-txt").on('click', function(){
+  console.log("HELLO THERE!!!!");
+
+  // $(".fa-star-o").toggleClass("fa-star fa-star-o");
+});
+</script>
