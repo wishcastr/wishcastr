@@ -63,9 +63,9 @@ ActiveRecord::Schema.define(version: 20151109203157) do
     t.string   "category"
     t.string   "query"
     t.string   "name"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.boolean  "saved"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "saved",           default: false
     t.index ["user_id"], name: "index_wishes_on_user_id"
   end
 
