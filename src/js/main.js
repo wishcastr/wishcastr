@@ -4,19 +4,42 @@
     .when ('/', {
       redirectTo: 'top-wishes'
     })//END OF REDIRECT
+
     .when ('/top-wishes', {
       templateUrl: 'partials/top-wishes.html',
 
-      controller: function ($http, $scope) {
-        $http.get('//wishcastr-staging.herokuapp.com/products/top.json')
-        .then(function(response){
-          $scope.products = response.data;
-        })//END OF PROMISE
+      controller: function ($http, $scope, API) {
+        $http.get(API.BASE_URL+API.TOP_WISHES_PATH)
+          .then(function(response){
+            $scope.products = response.data;
+          })//END OF PROMISE
+        $scope.starProduct = function () {
+          var star = $(event.target).closest('.star-link').find('.fa');
+          var p = $(event.target).closest('.product');
+          star.toggleClass('fa-star fa-star-o');
+          if(star.hasClass('fa-star')){
+            p = {
+              sku: p.attr('data-product-sku'),
+              type: p.attr('data-product-source')
+            };
+            console.log(p);
+            u = currentUser();
+            w = {something: "something"};
+
+            //TODO PUT to Rails server for adding
+          }else{
+            console.log("removed item from wish");
+            //TODO PUT to Rails server for removal
+          }
+        }
       }//end of controller
+      // controller: function ($scope) {
+
     })//END OF TOP-WISHES
+
     .when ('/user-wishes', {
       templateUrl: 'partials/user-wishes.html',
-      controller: function ($http, $scope) {
+      controller: function ($http, $scope, API) {
         var user = currentUser();
 
         if(user){
@@ -26,7 +49,7 @@
               x_wishcastr_access_token: user.amz_access_token,
             }
           };
-          $http.get('//wishcastr-staging.herokuapp.com/wishes.json', config)
+          $http.get(API.BASE_URL+API.WISHES_PATH, config)
           .then(function(response){
             $scope.wishes = response.data;
           })//END OF PROMISE
@@ -47,9 +70,11 @@
       },
       controllerAs: 'products'
     })
+
     .when ('/privacy', {
       templateUrl: 'partials/privacy.html'
     })
+
     .when ('/about', {
       templateUrl: 'partials/about.html'
     })//END OF RESULTS//END OF RESULTS
@@ -60,24 +85,14 @@
 
   .controller('SearchController', function($http, Search, API, $location){
     var search = this;
-
     search.query = '';
 
-    //  Capture a submit event for our search form...NG-Submit
     search.find = function(){
 
-      // TODO: Capture the query...
-      //  Make a GET request to the Rails API...
-      // $http({
-      //   method: 'GET', url: API.BASE_URL + API.SEARCH_PATH,
-      //   params: { puppy: 'bad' }
-      // })
-      // GET .../search.json?query=pineapple
       $http.get(API.BASE_URL + API.SEARCH_PATH, {
-        params: {query: search.query}  // Put the query here?
+        params: {query: search.query}
       })
         .then(function(response){
-          //  Attach the results to the `Search` service...
           Search.results = response.data;
           $location.path('/results');
         })
@@ -85,7 +100,10 @@
   }) //END CONTROLLER
   .constant('API', {
     BASE_URL: '//wishcastr-staging.herokuapp.com',
-    SEARCH_PATH: '/products/search.json'
+    SEARCH_PATH: '/products/search.json',
+    DRAFT_WISH_PATH: '/wishes/draft.json',
+    WISHES_PATH: '/wishes.json',
+    TOP_WISHES_PATH: '/products/top.json'
   })
   .value('Search', {
     query: '',
@@ -93,39 +111,6 @@
       // { title: 'Bad Robot', current_price: '123.45' }
     ],
   })
-  // .factory('Search', function($http, API){
-  //   var results = [
-  //     { title: 'Bad Robot', current_price: '123.45' }
-  //   ];
-  //
-  //   return {
-  //     query: '',
-  //     find: function(query){
-  //       // TODO: Make a GET request to the Rails API...
-  //       // TODO: Keep the results...
-  //       // TODO: Return the Promise...
-  //     }, // END find
-  //     results: function(){
-  //       return results;
-  //     }
-  //   }
-  // })
-
-
-
-  .controller('Find', ['$http', '$scope', function($http, $scope){
-    var BASEURL = '//wishcastr-staging.herokuapp.com/products/';
-
-    $scope.query = "";
-    $scope.products = { };
-    $scope.search = function(){
-      $http.get(BASEURL+'search.json?query='+$scope.query)
-      .then(function(response){
-        $scope.products = response.data;
-      })//END PROMISE
-    }//END searchParam()
-  }])
-
 
 })(); //END OF IFFE
 
@@ -162,12 +147,6 @@
     toggleLoginDisplay();
   };
 
-
-
-  //TODO
-  //window.doLogin
-
-
   window.doAmazonLogin = function(){
     options = {
       scope: 'profile'
@@ -194,7 +173,6 @@
   };
 
   window.doRailsLogin = function(u){
-
     var BASEURL = "//wishcastr-staging.herokuapp.com/login/amazon.json";
     $.ajax({
       type: "POST",
@@ -228,4 +206,12 @@
     toggleLoginDisplay();
   })
 
+
+
+
 })();
+
+;(function(){
+
+
+})();//END IFFE

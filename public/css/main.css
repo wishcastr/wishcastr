@@ -2231,12 +2231,7 @@ body:after {
           margin-bottom: 15px; }
         .lists ul li a .product-txt {
           padding-top: 4%;
-          text-decoration: none;
-          color: #f9be12;
-          font-size: 25pt;
-          margin-bottom: 10px; }
-          .lists ul li a .product-txt:hover {
-            color: #064583; }
+          text-decoration: none; }
           .lists ul li a .product-txt h3 {
             display: block;
             margin: 0 10px;
@@ -2259,10 +2254,16 @@ body:after {
           .lists ul li a .product-txt .descr {
             display: block;
             font-size: 14pt; }
-          .lists ul li a .product-txt fa fa-star {
-            font-family: Font-Awesome;
-            display: inline-block;
-            vertical-align: middle; }
+          .lists ul li a .product-txt .star-link {
+            color: #f9be12;
+            font-size: 25pt;
+            margin-bottom: 10px; }
+            .lists ul li a .product-txt .star-link:hover {
+              color: #fad159; }
+            .lists ul li a .product-txt .star-link fa fa-star {
+              font-family: Font-Awesome;
+              display: inline-block;
+              vertical-align: middle; }
 
 .result-list {
   margin: 0 auto;
@@ -2738,6 +2739,38 @@ div.awesome-people div.awesome-person {
     font-size: 1em;
     line-height: 1.5em;
     padding: 0.5em; }
+
+/* Icon Grow */
+.hvr-icon-grow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s; }
+
+.hvr-icon-grow:before {
+  position: absolute;
+  right: -15px;
+  bottom: -10px;
+  padding: 0 1px;
+  font-family: FontAwesome;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out; }
+
+.hvr-icon-grow:hover:before, .hvr-icon-grow:focus:before, .hvr-icon-grow:active:before {
+  -webkit-transform: scale(1.3) translateZ(0);
+  transform: scale(1.3) translateZ(0); }
 
 /* ==========================================================================
    Helper classes
