@@ -89,8 +89,11 @@
         };
       },
       controllerAs: 'products'
-    })
+    })//END OF RESULTS PARTIAL
 
+    .when ('/wish-form', {
+      templateUrl: 'partials/wish-form.html'
+    })//END WISH-FORM
 
   })//END OF MODULE
 
