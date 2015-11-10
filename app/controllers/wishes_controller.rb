@@ -30,18 +30,20 @@ class WishesController < ApplicationController
     user = User.find(request.headers["x-wishcastr-user-id"])
     if user && user.amz_access_token == request.headers["x-wishcastr-access-token"]
       @wish = user.draft_wish
-      prouct = Product
-        if @wish
-          @wish.products << product
-          render :show, status: :success
+      product = params[:product]
+      if @wish
+        @wish.products << product unless @wish.product_duplicate?(product.sku, product.type)
+        render :show, status: :success
+      else
+        @wish.new(user_id: user.id)
+        @wish.products << product
+        if @wish.save
+          render :show, status: :created
         else
-          @wish.create(user_id: user.id)
-          if @wish.save
-            render :show, status: :created
-          else
-            @draft.products(params of product)
-              if draft.
-            draft.wish.product(params of product) add it to the wish and return wish
+          render json: @wish.errors
+        end
+      end
+    end
   end
   # GET /wishes/1.json
   def show
