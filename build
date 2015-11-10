@@ -4,8 +4,7 @@ rm -rf public/*
 mkdir -p public
 
 echo 'Step 1: Copy all the HTML'
-
-cp src/index.html public/
+cp src/*.html public/
 
 mkdir -p public/partials/
 cp -r src/partials/ public/partials/
@@ -43,6 +42,6 @@ cp bower_components/hover/scss/hover.scss public/bower_components/hover/scss/hov
 
 echo 'Step 5: Copy all the images!'
 mkdir -p public/images/
-cp -r images/ public/images/
-cp -r rootimages/ public/
+cp -r src/img/ public/images/
+cp -r src/favicons/ public/
 
