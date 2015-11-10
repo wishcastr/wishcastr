@@ -13,8 +13,8 @@
           .then(function(response){
             $scope.products = response.data;
           })//END OF PROMISE
-        $scope.starLinkyLink = function () {
-          var star = $(event.target).closest('.star-link').find('.fa')
+        $scope.starProduct = function () {
+          var star = $(event.target).closest('.star-link').find('.fa');
           var p = $(event.target).closest('.product');
           star.toggleClass('fa-star fa-star-o');
           if(star.hasClass('fa-star')){
@@ -23,6 +23,9 @@
               type: p.attr('data-product-source')
             };
             console.log(p);
+            u = currentUser();
+            w = {something: "something"};
+
             //TODO PUT to Rails server for adding
           }else{
             console.log("removed item from wish");
@@ -109,17 +112,6 @@
     ],
   })
 
-  .controller('Find', ['$http', '$scope', function($http, $scope, API){
-    $scope.query = "";
-    $scope.products = { };
-    $scope.search = function(){
-      $http.get(API.BASE_URL+API.SEARCH_PATH+'?query='+$scope.query)
-      .then(function(response){
-        $scope.products = response.data;
-      })//END PROMISE
-    }//END searchParam()
-  }])
-
 })(); //END OF IFFE
 
 
@@ -154,12 +146,6 @@
     docCookies.removeItem('user');
     toggleLoginDisplay();
   };
-
-
-
-  //TODO
-  //window.doLogin
-
 
   window.doAmazonLogin = function(){
     options = {
