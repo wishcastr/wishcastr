@@ -4,8 +4,7 @@ rm -rf public/*
 mkdir -p public
 
 echo 'Step 1: Copy all the HTML'
-
-cp src/index.html public/
+cp src/*.html public/
 
 mkdir -p public/partials/
 cp -r src/partials/ public/partials/
