@@ -129,12 +129,12 @@
     d.getElementById('amazon-root').appendChild(a);
   })(document);
 
-  $('#amazon-login').on('click', function(){
-    setTimeout(window.doAmazonLogin, 1);
-  });
-
-  $('#amazon-logout').on('click', function(){
-    setTimeout(window.doLogout, 1);
+  $('#amazon-root').on('click', function(){
+    if(currentUser()){
+      setTimeout(window.doLogout, 1);
+    }else{
+      setTimeout(window.doAmazonLogin, 1);
+    }
   });
 
   window.currentUser = function(){
@@ -193,11 +193,11 @@
   //---LOGIN BUTTON DISAPPEARS-------
   function toggleLoginDisplay () {
     if(currentUser() === null) { //NO USER LOGGED IN
-      $("#amazon-login").show();
-      $("#amazon-logout").hide();
+      $("#amazon-login").css("display", "block");
+      $("#amazon-logout").css("display", "none");
     }else{ //USER LOGGED IN
-      $('#amazon-login').hide();
-      $("#amazon-logout").show();
+      $('#amazon-login').css("display", "none");
+      $("#amazon-logout").css("display", "block");
       window.location = "#/user-wishes";
     }
   };

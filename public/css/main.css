@@ -2097,6 +2097,10 @@ textarea {
 .fa-fonticons:before {
   content: ""; }
 
+body:after {
+  display: none;
+  content: url(../images/amazon_login_76x32.png) url(../images/amazon_login_76x32_pressed.png); }
+
 .container {
   width: 100%;
   font-family: 'Lato', sans-serif; }
@@ -2120,18 +2124,20 @@ textarea {
       margin-top: 10px;
       float: right; }
       .container .nav-header .login #amazon-root {
-        margin-top: 13px; }
-        .container .nav-header .login #amazon-root #amazon-login.active {
-          margin-right: 10px;
-          display: inline-block;
-          margin-top: 10px; }
+        cursor: pointer;
+        background: url(../images/amazon_login_76x32.png) no-repeat;
+        height: 32px;
+        width: 76px; }
+        .container .nav-header .login #amazon-root span {
+          padding: 6px 0 0 30px;
+          font-size: .8em;
+          font-weight: bold; }
         .container .nav-header .login #amazon-root #amazon-login {
-          display: none; }
-        .container .nav-header .login #amazon-root a.active {
-          font-size: 14pt;
-          text-decoration: none; }
+          display: block; }
         .container .nav-header .login #amazon-root #amazon-logout {
           display: none; }
+      .container .nav-header .login #amazon-root:active {
+        background: url(../images/amazon_login_76x32_pressed.png) no-repeat; }
     .container .nav-header button {
       background-color: #068383;
       border: none;

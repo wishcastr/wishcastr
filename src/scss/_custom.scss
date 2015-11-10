@@ -1,3 +1,11 @@
+$amazon-image-up: url(../images/amazon_login_76x32.png);
+$amazon-image-down: url(../images/amazon_login_76x32_pressed.png);
+
+body:after {
+  display: none;
+  content: $amazon-image-up $amazon-image-down;
+}
+
 .container {
   width: 100%;
   font-family: 'Lato', sans-serif;
@@ -24,30 +32,30 @@
       margin-top: 10px;
       float: right;
 
-
       #amazon-root {
-        margin-top: 13px;
+        cursor: pointer;
+        background: $amazon-image-up no-repeat;
+        height: 32px;
+        width: 76px;
 
-        #amazon-login.active{
-        margin-right: 10px;
-        display: inline-block;
-        margin-top: 10px;
+        span {
+          padding: 6px 0 0 30px;
+          font-size: .8em;
+          font-weight: bold;
         }
 
         #amazon-login {
-          display: none;
-        }
-
-        a.active{
-          font-size: 14pt;
-          text-decoration: none;
+          display: block;
         }
 
         #amazon-logout {
           display: none;
         }
-
+      }
+      #amazon-root:active {
+        background: $amazon-image-down no-repeat;
       }//END ROOT
+
     }//END .LOGIN <DIV>
     button {
       background-color: #068383; //TEAL
