@@ -4,12 +4,11 @@ class User < ActiveRecord::Base
   has_many :wishes
 
   def unsaved_wish
-    find a wish attached to user
-    if it returns true then show wish
-    else create a wish
+    find a wish attached to user if it returns true then show wish else create a
+    (wish wish controller action)
 
     user_wish = Wish.find_by_user(user)
-    if user_wish 
+    if user_wish
 
   end
 
