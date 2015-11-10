@@ -1,0 +1,21 @@
+<section class="wish-form">
+  <h1>Create a wish</h1>
+  <form class="create-wish">
+
+    <h4>Name your wish</h4>
+    <input type="text" placeholder="Wish Name" />
+
+    <p>or</p>
+
+    <h4>Add to an existing wish</h4>
+    <select name="wishes">
+      <option>{{wish.name}}</option>
+    </select>
+
+    <h4>Name your desired price</h4>
+    <span class="currency">$<input type="text" placeholder="Price" /></span>
+
+    <button type="submit">Save your wish</button>
+    <a href="#">Cancel</a>
+  </form>
+</section>
