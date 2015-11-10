@@ -1,0 +1,28 @@
+.wish-form {
+  width: 100%;
+
+  h1 {
+    color: #064583;
+  }
+
+  .create-wish { //FORM
+    width: 100%;
+
+    .currency {
+    border: 1px inset #ccc;
+
+      input {
+        border: 0;
+      }
+    }// END CURRENCY <SPAN>
+
+    button {
+      background-color: #068383;
+      border: none;
+      color: #fff;
+      padding-left: 2%;
+      padding-right: 2%;
+      border-radius: 3px;
+    }
+  }//END <FORM>
+}//END .WISH-FORM
