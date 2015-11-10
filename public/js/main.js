@@ -8,14 +8,26 @@
     .when ('/top-wishes', {
       templateUrl: 'partials/top-wishes.html',
 
-      controller: function ($http, $scope) {
-        $http.get('//wishcastr-staging.herokuapp.com/products/top.json')
-        .then(function(response){
-          $scope.products = response.data;
-          // $scope.$on('$viewContentLoaded', starLinkyLink);
-        })//END OF PROMISE
+      controller: function ($http, $scope, API) {
+        $http.get(API.BASE_URL+API.TOP_WISHES_PATH)
+          .then(function(response){
+            $scope.products = response.data;
+          })//END OF PROMISE
         $scope.starLinkyLink = function () {
-          $(event.target).closest('.star-link').find('.fa').toggleClass('fa-star fa-star-o');
+          var star = $(event.target).closest('.star-link').find('.fa')
+          var p = $(event.target).closest('.product');
+          star.toggleClass('fa-star fa-star-o');
+          if(star.hasClass('fa-star')){
+            p = {
+              sku: p.attr('data-product-sku'),
+              type: p.attr('data-product-source')
+            };
+            console.log(p);
+            //TODO PUT to Rails server for adding
+          }else{
+            console.log("removed item from wish");
+            //TODO PUT to Rails server for removal
+          }
         }
       }//end of controller
       // controller: function ($scope) {
@@ -24,7 +36,7 @@
 
     .when ('/user-wishes', {
       templateUrl: 'partials/user-wishes.html',
-      controller: function ($http, $scope) {
+      controller: function ($http, $scope, API) {
         var user = currentUser();
 
         if(user){
@@ -34,7 +46,7 @@
               x_wishcastr_access_token: user.amz_access_token,
             }
           };
-          $http.get('//wishcastr-staging.herokuapp.com/wishes.json', config)
+          $http.get(API.BASE_URL+API.WISHES_PATH, config)
           .then(function(response){
             $scope.wishes = response.data;
           })//END OF PROMISE
@@ -85,7 +97,10 @@
   }) //END CONTROLLER
   .constant('API', {
     BASE_URL: '//wishcastr-staging.herokuapp.com',
-    SEARCH_PATH: '/products/search.json'
+    SEARCH_PATH: '/products/search.json',
+    DRAFT_WISH_PATH: '/wishes/draft.json',
+    WISHES_PATH: '/wishes.json',
+    TOP_WISHES_PATH: '/products/top.json'
   })
   .value('Search', {
     query: '',
@@ -94,13 +109,11 @@
     ],
   })
 
-  .controller('Find', ['$http', '$scope', function($http, $scope){
-    var BASEURL = '//wishcastr-staging.herokuapp.com/products/';
-
+  .controller('Find', ['$http', '$scope', function($http, $scope, API){
     $scope.query = "";
     $scope.products = { };
     $scope.search = function(){
-      $http.get(BASEURL+'search.json?query='+$scope.query)
+      $http.get(API.BASE_URL+API.SEARCH_PATH+'?query='+$scope.query)
       .then(function(response){
         $scope.products = response.data;
       })//END PROMISE
@@ -174,7 +187,6 @@
   };
 
   window.doRailsLogin = function(u){
-
     var BASEURL = "//wishcastr-staging.herokuapp.com/login/amazon.json";
     $.ajax({
       type: "POST",
