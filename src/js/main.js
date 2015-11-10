@@ -13,24 +13,44 @@
           .then(function(response){
             $scope.products = response.data;
           })//END OF PROMISE
-        $scope.starProduct = function () {
-          var star = $(event.target).closest('.star-link').find('.fa');
-          var p = $(event.target).closest('.product');
-          star.toggleClass('fa-star fa-star-o');
-          if(star.hasClass('fa-star')){
-            p = {
-              sku: p.attr('data-product-sku'),
-              type: p.attr('data-product-source')
-            };
-            console.log(p);
-            u = currentUser();
-            w = {something: "something"};
 
-            //TODO PUT to Rails server for adding
+        $scope.starProduct = function () {
+          u = currentUser();
+          if(u){
+            var star = $(event.target).closest('.star-link').find('.fa');
+            var product = $(event.target).closest('.product');
+            star.toggleClass('fa-star fa-star-o');
+            if(star.hasClass('fa-star')){
+
+              var data = {
+                product: {
+                  sku: product.attr('data-product-sku'),
+                  type: product.attr('data-product-source')
+                }
+              };
+
+              var config = {
+                headers: {
+                  x_wishcastr_user_id: u.id,
+                  x_wishcastr_access_token: u.amz_access_token,
+                }
+              };
+
+              $http.post(API.BASE_URL+API.DRAFT_WISH_PATH, data, config)
+              .then(function(response){
+                $scope.draft_wish = response.data;
+              })
+              console.log($scope.draft_wish);
+              //TODO PUT to Rails server for adding
+            }else{
+              console.log("removed item from wish");
+              //TODO PUT to Rails server for removal
+            }
           }else{
-            console.log("removed item from wish");
-            //TODO PUT to Rails server for removal
+            console.log("You must sign up");
+            //TODO prompt sign up modal
           }
+
         }
       }//end of controller
       // controller: function ($scope) {
