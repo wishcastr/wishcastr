@@ -111,6 +111,8 @@
           Search.results = response.data;
           $location.path('/results');
         })
+        search.query = '';
+
     } // END find
   }) //END CONTROLLER
   .constant('API', {
