@@ -148,6 +148,12 @@ body:after {
     }
   } //END LIST-VIEW
 
+  footer {
+    background-color: #F9BE12;
+    text-decoration: none;
+    color: white;
+  }
+
 }//END .CONTAINER
 
 @media (max-width: 767px) {           //MOBILE
