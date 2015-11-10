@@ -204,6 +204,8 @@
       u.postal_code = response.postal_code;
       docCookies.setItem('user', JSON.stringify(u), 60*60*24*7);
       toggleLoginDisplay();
+      window.location = "#/user-wishes";
+
     });
   };
 
@@ -215,7 +217,6 @@
     }else{ //USER LOGGED IN
       $('#amazon-login').css("display", "none");
       $("#amazon-logout").css("display", "block");
-      window.location = "#/user-wishes";
     }
   };
 
