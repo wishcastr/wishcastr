@@ -47,14 +47,6 @@
       },
       controllerAs: 'products'
     })
-    .when ('/privacy', {
-      templateUrl: 'partials/privacy.html'
-    })
-    .when ('/about', {
-      templateUrl: 'partials/about.html'
-    })//END OF RESULTS//END OF RESULTS
-
-
   })//END OF MODULE
 
 
