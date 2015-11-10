@@ -2710,35 +2710,46 @@ body:after {
   float: left; }
 
 section.privacy {
-  padding: 1em 2em; }
+  padding: 1em 2em;
+  color: #064583;
+  width: 80%;
+  margin-left: 15px; }
+  section.privacy h1 {
+    color: #068383; }
+  section.privacy h3 {
+    color: #068383; }
+  section.privacy h4 {
+    color: #068383; }
 
-section.about {
-  padding: 1em 2em; }
-
-div.awesome-people div.awesome-person {
-  margin: 2em;
-  background-color: #f2f2f2;
-  border: gray;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
-  margin: 1em;
-  position: relative;
-  width: 300px;
-  float: left; }
-  div.awesome-people div.awesome-person div.awesome-person-img {
-    overflow: hidden;
-    height: 200px;
-    max-height: 200px; }
-    div.awesome-people div.awesome-person div.awesome-person-img img {
-      width: 100%; }
-  div.awesome-people div.awesome-person div.awesome-person-name {
-    font-weight: bold;
-    line-height: 1.5em;
-    padding: 0.5em;
-    border-bottom: 1px silver solid; }
-  div.awesome-people div.awesome-person div.awesome-person-description {
-    font-size: 1em;
-    line-height: 1.5em;
-    padding: 0.5em; }
+.about {
+  padding: 1em 2em;
+  color: #064583; }
+  .about h1 {
+    color: #068383; }
+  .about div.awesome-people div.awesome-person {
+    margin: 2em;
+    background-color: #f2f2f2;
+    border: gray;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    margin: 1em;
+    position: relative;
+    width: 300px;
+    float: left; }
+    .about div.awesome-people div.awesome-person div.awesome-person-img {
+      overflow: hidden;
+      height: 200px;
+      max-height: 200px; }
+      .about div.awesome-people div.awesome-person div.awesome-person-img img {
+        width: 100%; }
+    .about div.awesome-people div.awesome-person div.awesome-person-name {
+      font-weight: bold;
+      line-height: 1.5em;
+      padding: 0.5em;
+      border-bottom: 1px silver solid; }
+    .about div.awesome-people div.awesome-person div.awesome-person-description {
+      font-size: 1em;
+      line-height: 1.5em;
+      padding: 0.5em; }
 
 /* Icon Grow */
 .hvr-icon-grow {
@@ -2826,20 +2837,20 @@ div.awesome-people div.awesome-person {
  * 2. The use of `table` rather than `block` is only necessary if using
  *    `:before` to contain the top-margins of child elements.
  */
-.clearfix:before, .container .search .color-bar:before, .lists:before, .lists ul:before, .lists ul li:before, .result-list ul li:before, div.awesome-people:before,
+.clearfix:before, .container .search .color-bar:before, .lists:before, .lists ul:before, .lists ul li:before, .result-list ul li:before, .about div.awesome-people:before,
 .clearfix:after,
 .container .search .color-bar:after,
 .lists:after,
 .lists ul:after,
 .lists ul li:after,
 .result-list ul li:after,
-div.awesome-people:after {
+.about div.awesome-people:after {
   content: " ";
   /* 1 */
   display: table;
   /* 2 */ }
 
-.clearfix:after, .container .search .color-bar:after, .lists:after, .lists ul:after, .lists ul li:after, .result-list ul li:after, div.awesome-people:after {
+.clearfix:after, .container .search .color-bar:after, .lists:after, .lists ul:after, .lists ul li:after, .result-list ul li:after, .about div.awesome-people:after {
   clear: both; }
 
 /* ==========================================================================
