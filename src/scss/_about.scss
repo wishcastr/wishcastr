@@ -24,7 +24,7 @@
 
       div.awesome-person-img {
         overflow: hidden;
-        height: 200px;
+        height: 500px;
         max-height: 200px;
 
         img {
@@ -44,6 +44,10 @@
         line-height: 1.5em;
         padding: 0.5em;
       }
-    }
+    }//END DIV.AWESOME-PERSON
+  }//END DIV AWESOME-PEOPLE
+  footer {
+    display: inline-block;
+    float: left;
   }
-}  
+}//END .ABOUT
