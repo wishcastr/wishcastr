@@ -2,7 +2,7 @@ class Wish < ActiveRecord::Base
   has_many :products_wish
   has_many :products, through: :products_wish
   belongs_to :user
-  accepts_nested_attributes_for :product
+  accepts_nested_attributes_for :products
 
   def product_duplicate?(sku, type)
     @wish.products.any? { |p| p.sku == sku && p.type == type}

@@ -3,10 +3,10 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true, presence: true
   has_many :wishes
   has_many :products, through: :wishes
-  
+
 
   def draft_wish
-    self.wishes.where(saved: false).limit(1)
+    self.wishes.where(saved: false).limit(1).first
   end
 
 end
