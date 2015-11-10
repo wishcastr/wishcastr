@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   post 'login/amazon' => 'users#login_amazon'
   post 'wishes/draft_wish_add'
-  get 'wuishes/draft'
+  get 'wishes/draft'
 
   resources :users, defaults: { format: 'json' }
   resources :wishes, defaults: { format: 'json' }
