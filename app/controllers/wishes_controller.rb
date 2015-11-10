@@ -30,14 +30,16 @@ class WishesController < ApplicationController
     user = User.find(request.headers["x-wishcastr-user-id"])
     if user && user.amz_access_token == request.headers["x-wishcastr-access-token"]
       @wish = user.draft_wish
+      prouct = Product
         if @wish
+          @wish.products << product
           render :show, status: :success
         else
           @wish.create(user_id: user.id)
           if @wish.save
             render :show, status: :created
           else
-            @draft.product_wish(params of product)
+            @draft.products(params of product)
               if draft.
             draft.wish.product(params of product) add it to the wish and return wish
   end
@@ -106,7 +108,8 @@ class WishesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wish_params
-      params.require(:wish).permit(:user_id, :threshold_price, :category, :query, :name)
+      params.require(:wish).permit(:user_id, :threshold_price, :category, :query, :name,
+      products_attributes: [:type, :sku, :image_large, :image_thumbnail, :title, :brand, :description, :affiliate_url])
     end
 
 end
