@@ -6,9 +6,13 @@
         <img ng-src="{{product.image_thumbnail}}">
         <div class="product-txt" title="{{product.description}}">
           <h3 class="title">{{product.title | limitTo: 50}}{{product.description.length > 20 ? '...' : ''}}</h3>
+          <div class="star-link" ng-click="starProduct()" >
+            <span class="fa fa-star-o hvr-icon-grow" title="Create a Wish"></span>
+          </div>
           <p class="price">{{product.current_price | currency }}</p>
           <p class="descr">{{product.description | limitTo: 80}}{{product.description.length > 20 ? '...' : ''}}</p>
         </div>
+
       </a>
     </li>
   </ul>
