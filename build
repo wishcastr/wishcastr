@@ -43,6 +43,6 @@ cp bower_components/hover/scss/hover.scss public/bower_components/hover/scss/hov
 
 echo 'Step 5: Copy all the images!'
 mkdir -p public/images/
-cp -r images/ public/images/
-cp -r rootimages/ public/
+cp -r src/img/ public/images/
+cp -r src/favicons/ public/
 

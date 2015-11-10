@@ -15,10 +15,9 @@
           // $scope.$on('$viewContentLoaded', starLinkyLink);
         })//END OF PROMISE
         $scope.starLinkyLink = function () {
-          console.log("click");
-          $(this).find('span').toggleClass('.fa-star-o .fa-star');
+          $(event.target).closest('.star-link').find('.fa').toggleClass('fa-star fa-star-o');
         }
-        }//end of controller
+      }//end of controller
       // controller: function ($scope) {
 
     })//END OF TOP-WISHES

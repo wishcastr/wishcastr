@@ -2185,7 +2185,8 @@ textarea {
     width: 100%; }
     .container .list-view .fa-spin {
       -webkit-animation: fa-spin 2s infinite linear;
-      animation: fa-spin 2s infinite linear; }
+      animation: fa-spin 2s infinite linear;
+      margin: 0 auto; }
 
 .lists {
   margin: 0 auto;
@@ -2224,12 +2225,7 @@ textarea {
           margin-bottom: 15px; }
         .lists ul li a .product-txt {
           padding-top: 4%;
-          text-decoration: none;
-          color: #f9be12;
-          font-size: 25pt;
-          margin-bottom: 10px; }
-          .lists ul li a .product-txt:hover {
-            color: #064583; }
+          text-decoration: none; }
           .lists ul li a .product-txt h3 {
             display: block;
             margin: 0 10px;
@@ -2252,10 +2248,16 @@ textarea {
           .lists ul li a .product-txt .descr {
             display: block;
             font-size: 14pt; }
-          .lists ul li a .product-txt fa fa-star {
-            font-family: Font-Awesome;
-            display: inline-block;
-            vertical-align: middle; }
+          .lists ul li a .product-txt .star-link {
+            color: #f9be12;
+            font-size: 25pt;
+            margin-bottom: 10px; }
+            .lists ul li a .product-txt .star-link:hover {
+              color: #064583; }
+            .lists ul li a .product-txt .star-link fa fa-star {
+              font-family: Font-Awesome;
+              display: inline-block;
+              vertical-align: middle; }
 
 .result-list {
   margin: 0 auto;
