@@ -12,14 +12,35 @@ class WishesController < ApplicationController
   def draft
     user = User.find(request.headers["x-wishcastr-user-id"])
     if user && user.amz_access_token == request.headers["x-wishcastr-access-token"]
-      @wishes = user.unsaved_wish
-        if @wishes
-          render json: :show
+      @wish = user.draft_wish
+        if @wish
+          render :show, status: :success
         else
-          render json: :create
+          @wish.create(user_id: user.id)
+          if @wish.save
+            render :show, status: :created
+          else
+            render json: @wish.errors, status: :unprocessable_entity
+          end
+        end
     end
   end
 
+  def draft_wish_add
+    user = User.find(request.headers["x-wishcastr-user-id"])
+    if user && user.amz_access_token == request.headers["x-wishcastr-access-token"]
+      @wish = user.draft_wish
+        if @wish
+          render :show, status: :success
+        else
+          @wish.create(user_id: user.id)
+          if @wish.save
+            render :show, status: :created
+          else
+            @draft.product_wish(params of product)
+              if draft.
+            draft.wish.product(params of product) add it to the wish and return wish
+  end
   # GET /wishes/1.json
   def show
     user = User.find(request.headers["x-wishcastr-user-id"])
