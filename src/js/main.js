@@ -12,10 +12,10 @@
         $http.get('//wishcastr-staging.herokuapp.com/products/top.json')
         .then(function(response){
           $scope.products = response.data;
-          // $scope.$on('$viewContentLoaded', starLinkyLink);
         })//END OF PROMISE
         $scope.starLinkyLink = function () {
           $(event.target).closest('.star-link').find('.fa').toggleClass('fa-star fa-star-o');
+
         }
       }//end of controller
       // controller: function ($scope) {
