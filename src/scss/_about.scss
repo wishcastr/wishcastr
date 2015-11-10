@@ -1,43 +1,49 @@
-section.about {
+.about {
   padding: 1em 2em;
-}
-
-div.awesome-people{
-  @extend .clearfix;
-
-  div.awesome-person {
-    margin: 2em;
-    background-color: #f2f2f2;
-    border: gray;
-    box-shadow: 0 2px 4px rgba(0,0,0,.25);
-    margin: 1em;
-    position: relative;
-    width: 300px;
-    float: left;
+  color: #064583; //BLUE
 
 
-    div.awesome-person-img {
-      overflow: hidden;
-      height: 200px;
-      max-height: 200px;
+  h1 {
+    color: #068383;
+  }
 
-      img {
-        width: 100%;
+
+  div.awesome-people{
+    @extend .clearfix;
+
+    div.awesome-person {
+      margin: 2em;
+      background-color: #f2f2f2;
+      border: gray;
+      box-shadow: 0 2px 4px rgba(0,0,0,.25);
+      margin: 1em;
+      position: relative;
+      width: 300px;
+      float: left;
+
+
+      div.awesome-person-img {
+        overflow: hidden;
+        height: 200px;
+        max-height: 200px;
+
+        img {
+          width: 100%;
+        }
+      }
+
+      div.awesome-person-name {
+        font-weight: bold;
+        line-height: 1.5em;
+        padding: 0.5em;
+        border-bottom: 1px silver solid;
+      }
+
+      div.awesome-person-description {
+        font-size: 1em;
+        line-height: 1.5em;
+        padding: 0.5em;
       }
     }
-
-    div.awesome-person-name {
-      font-weight: bold;
-      line-height: 1.5em;
-      padding: 0.5em;
-      border-bottom: 1px silver solid;
-    }
-
-    div.awesome-person-description {
-      font-size: 1em;
-      line-height: 1.5em;
-      padding: 0.5em;
-    }
   }
-}
-
+}  
