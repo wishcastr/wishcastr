@@ -150,9 +150,22 @@ body:after {
 
   footer {
     background-color: #F9BE12;
-    text-decoration: none;
-    color: white;
-  }
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    a {
+      text-decoration: none;
+      color: #064583;
+      margin-left: 10px;
+      margin-right: 10px;
+
+      &::before {
+        content: '\f005';
+        font-family: FontAwesome;
+        margin-right: 8px;
+    }
+    }
+  }//END FOOTER
 
 }//END .CONTAINER
 
