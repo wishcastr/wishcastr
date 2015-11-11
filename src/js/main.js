@@ -100,6 +100,11 @@
 
   })//END OF MODULE
 
+  .controller('Hello', function($scope) {
+    $scope.name = currentUser().name;
+    // console.log(name);
+
+  })//END CONTROLLER HELLO
 
   .controller('SearchController', function($http, Search, API, $location){
     var search = this;
@@ -131,6 +136,7 @@
       // { title: 'Bad Robot', current_price: '123.45' }
     ],
   })
+
 
 })(); //END OF IFFE
 
