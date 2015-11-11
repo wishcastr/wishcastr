@@ -24,13 +24,26 @@ body:after {
       font-weight: bold;
       margin-left: 10px;
       margin-top: 10px;
+      width: 50%;
+      float: left;
     } //END #logo
+
+    .meta {
+      float: left;
+      display: inline-block;
+      width: 25%;
+      margin-top: 30px;
+      color: #064583;     //DARK BLUE
+      font-size: 16pt;
+
+    }//END .META
 
     .login {
       display: inline-block;
       margin-right: 40px;
-      margin-top: 10px;
+      margin-top: 30px;
       float: right;
+      width: 15%;
 
       #amazon-root {
         cursor: pointer;
@@ -152,7 +165,7 @@ body:after {
     background-color: #F9BE12;
     padding-top: 20px;
     padding-bottom: 20px;
-    margin-top: 60px; 
+    margin-top: 60px;
 
     a {
       text-decoration: none;
