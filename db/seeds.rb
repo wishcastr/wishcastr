@@ -4,7 +4,7 @@
 100.times do
   User.create!(
     name: Faker::Name.name,
-    email: Faker::Internet.email,
+    email: Faker::Internet.safe_email,
     postal_code: Faker::Address.postcode,
     amz_id: rand(999999999),
     amz_raccess_token: Faker::Internet.password,
@@ -124,11 +124,12 @@ end
 
 dame = User.create!(
   name: "Da-Me Kim",
-  email: "da-me@wishcastr.com",
+  email: "damekim1206@gmail.com",
   postal_code: nil,
   amz_id: "AEUT4REP2B6FMB7V4V6VFQ2AJJVQ",
   amz_raccess_token: nil,
   amz_access_token: ENV["AMZ_DAME_TOKEN"])
+
 
 ["Jackie Chan movie", "Magic the Gathering Booster Box", "Bruce Lee signed poster", "Back to the Future shoes", "hoverboard", "foldgers coffee", "horse mask"].each do |item|
   Wish.create!(
@@ -138,3 +139,14 @@ dame = User.create!(
     category: Faker::Lorem.word,
     query: item + "-query")
 end
+
+wishy = Wish.create!(
+  name: "Black-ops",
+  user_id: dame.id,
+  threshold_price: 1000,
+  category: Faker::Lorem.word,
+  query: "Black Ops Game")
+
+sample_product = Product.find_by(sku: "B00VU4J8YY")
+PriceHistory.create!(product_id: sample_product.id, date: DateTime.now() - 1.day, price: 10000)
+wishy.products << sample_product
