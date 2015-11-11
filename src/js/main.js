@@ -17,7 +17,7 @@
             $location.path('/wish-form');         //TO /WISH-FORM
 
           };
-        $scope.starProduct = function () {
+          $scope.starProduct = function () {
           // $location.path('/wish-form');
           u = currentUser();
           if(u){
@@ -58,9 +58,6 @@
             } //else
 
         }//END SCOPE FUNCTION
-        // function tracer() {
-        //   console.log("YAYAYAYAYAY!!!!!");
-        // }
       }//end of controller
     })//END OF TOP-WISHES
 
@@ -99,7 +96,12 @@
     })//END OF RESULTS PARTIAL
 
     .when ('/wish-form', {
-      templateUrl: 'partials/wish-form.html'
+      templateUrl: 'partials/wish-form.html',
+      controller: function($location, $scope) {
+        $scope.submitWish = function() {
+          $location.path('/user-wishes');
+        };//SUBMITWISH
+      }//END CONTROLLER
     })//END WISH-FORM
 
   })//END OF MODULE
