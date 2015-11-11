@@ -74,7 +74,7 @@ products = AmazonProduct.all
 end
 
 300.times do
-  wish = Wish.create!(
+  wish = Wish.create(
     name: Faker::Commerce.product_name,
     user_id: rand(1..100),
     threshold_price: rand(15.00..500.00).round(2),
@@ -82,7 +82,7 @@ end
     query: Faker::Lorem.word)
   number_of_products = (1..10).to_a.sample
   number_of_products.times do
-    ProductsWish.create!(
+    ProductsWish.create(
       wish_id: wish.id,
       product_id: products.sample.id)
   end
