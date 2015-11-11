@@ -101,10 +101,23 @@
   })//END OF MODULE
 
   .controller('Hello', function($scope) {
-    $scope.name = currentUser().name;
-    // console.log(name);
+    if (currentUser() !== null) {
+      $scope.name = currentUser().name;
+    }
 
   })//END CONTROLLER HELLO
+
+  /*
+  .controller('Hello', function($scope) {
+    if (currentUser() === null) {
+      $('#welcome').addClass('hidden');
+    }
+    else {
+      $('#welcome').removeClass('hidden');
+      $scope.name = currentUser().name;
+    }
+  })
+  */
 
   .controller('SearchController', function($http, Search, API, $location){
     var search = this;
@@ -133,7 +146,6 @@
   .value('Search', {
     query: '',
     results: [
-      // { title: 'Bad Robot', current_price: '123.45' }
     ],
   })
 
@@ -171,6 +183,7 @@
     amazon.Login.logout();
     docCookies.removeItem('user');
     toggleLoginDisplay();
+    $location.path('/top-wishes');
   };
 
   window.doAmazonLogin = function(){
@@ -223,17 +236,18 @@
     if(currentUser() === null) { //NO USER LOGGED IN
       $("#amazon-login").css("display", "block");
       $("#amazon-logout").css("display", "none");
+      $('#welcome').addClass('hidden'); //TODO: DELETE ME IF WELCOME DOESN'T WORK
+
     }else{ //USER LOGGED IN
       $('#amazon-login').css("display", "none");
       $("#amazon-logout").css("display", "block");
+      $('#welcome').removeClass('hidden'); //TODO: DELETE ME IF WELCOME DOESN'T WORK
     }
   };
 
   $(document).ready(function(){
     toggleLoginDisplay();
   })
-
-
 
 
 })();
