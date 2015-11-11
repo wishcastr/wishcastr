@@ -114,8 +114,8 @@ class AmazonProduct < Product
     product[:affiliate_url] = item.xpath("DetailPageURL[1]").text
     item.xpath("ItemAttributes[1]/Feature").each do |feature|
       the_feature = feature.text
-      the_feature.prepend("\n") unless result[:description].blank?
-      product_result[:description] += the_feature
+      the_feature.prepend("\n") unless product[:description].blank?
+      product[:description] += the_feature
     end
     product
   end
