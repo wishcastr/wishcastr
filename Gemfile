@@ -20,7 +20,7 @@ gem 'rack-cors'
 
 gem 'daemons'
 gem 'delayed_job_active_record'
-
+gem 'whenever'
 # Should use passenger later.
 gem 'puma'
 
