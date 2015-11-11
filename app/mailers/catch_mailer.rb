@@ -4,4 +4,9 @@ class CatchMailer < ApplicationMailer
 
   end
 
+  def test(user)
+    @user = user
+    mail to: @user.email, subject: 'Testing Wishcastr'
+  end
+
 end
