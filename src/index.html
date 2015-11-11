@@ -42,6 +42,12 @@
     <main class="container" ng-app='Wishcastr'>
       <header class="nav-header">
         <a href="#/top-wishes" id="logo">Wishcastr</a>
+        <nav class="meta">
+          <p>Welcome, {{user.user_name}}</p>
+
+          <!-- <a href="#/top-wishes" id="top">Top Wishes</a>
+          <a href="#/user-wishes" id="home"><i class="fa fa-home"></i></a> -->
+        </nav>
         <div class="login">
           <div id="amazon-root">
             <span id="amazon-login">
@@ -52,7 +58,7 @@
             </span>
           </div>
         </div>
-      </header> <!--END OF HEADER-->
+      </header> <!--END OF NAV-HEADER-->
 
       <section class="search">
         <div class="color-bar" ng-controller="SearchController as search">
