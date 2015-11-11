@@ -85,13 +85,16 @@
 
     .when ('/results', {
       templateUrl: 'partials/results.html',
-      controller: function(Search){
+      controller: function(Search, $location, $scope){
+        $scope.wishForm = function() {          //ON CLICK TAKES YOU FROM /RESULTS
+          $location.path('/wish-form');         //TO /WISH-FORM
+        }
         var products = this;
 
         products.results = function(){
           return Search.results;
         };
-      },
+      }, //END CONTROLLER
       controllerAs: 'products'
     })//END OF RESULTS PARTIAL
 
