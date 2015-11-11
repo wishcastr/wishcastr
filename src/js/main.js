@@ -8,19 +8,21 @@
     .when ('/top-wishes', {
       templateUrl: 'partials/top-wishes.html',
 
-      controller: function ($http, $scope, API) {
+      controller: function ($http, $scope, API, $location) {
         $http.get(API.BASE_URL+API.TOP_WISHES_PATH)
           .then(function(response){
             $scope.products = response.data;
           })//END OF PROMISE
 
         $scope.starProduct = function () {
+          $location.path('/wish-form');
           u = currentUser();
           if(u){
             var star = $(event.target).closest('.star-link').find('.fa');
             var product = $(event.target).closest('.product');
             star.toggleClass('fa-star fa-star-o');
             if(star.hasClass('fa-star')){
+
 
               var data = {
                 product: {
@@ -39,6 +41,7 @@
               $http.post(API.BASE_URL+API.DRAFT_WISH_PATH, data, config)
               .then(function(response){
                 $scope.draft_wish = response.data;
+
               })
               console.log($scope.draft_wish);
               //TODO PUT to Rails server for adding
@@ -97,6 +100,24 @@
 
   })//END OF MODULE
 
+  .controller('Hello', function($scope) {
+    if (currentUser() !== null) {
+      $scope.name = currentUser().name;
+    }
+
+  })//END CONTROLLER HELLO
+
+  /*
+  .controller('Hello', function($scope) {
+    if (currentUser() === null) {
+      $('#welcome').addClass('hidden');
+    }
+    else {
+      $('#welcome').removeClass('hidden');
+      $scope.name = currentUser().name;
+    }
+  })
+  */
 
   .controller('SearchController', function($http, Search, API, $location){
     var search = this;
@@ -125,9 +146,9 @@
   .value('Search', {
     query: '',
     results: [
-      // { title: 'Bad Robot', current_price: '123.45' }
     ],
   })
+
 
 })(); //END OF IFFE
 
@@ -162,6 +183,8 @@
     amazon.Login.logout();
     docCookies.removeItem('user');
     toggleLoginDisplay();
+    $location.path('/top-wishes');  //FIXME: MAYBE?
+
   };
 
   window.doAmazonLogin = function(){
@@ -184,10 +207,12 @@
         u.amz_id = response.profile.CustomerId.substr(response.profile.CustomerId.lastIndexOf('.') + 1);
         docCookies.setItem('user', JSON.stringify(u));
         setTimeout(window.doRailsLogin(u), 1);
-      });
+      }); //END RETREVEPROFILE
 
-    });
-  };
+    }); //END LOGIN.AUTHORIZE
+    // $window.location.reload(); //FIXME: DOESN'T BREAK CODE BUT DOESN'T SOLVE RELOAD PROBLEM FOR HELLO CTLR
+
+  }; //END DOAMAZONLOGIN
 
   window.doRailsLogin = function(u){
     var BASEURL = "//wishcastr-staging.herokuapp.com/login/amazon.json";
@@ -214,17 +239,18 @@
     if(currentUser() === null) { //NO USER LOGGED IN
       $("#amazon-login").css("display", "block");
       $("#amazon-logout").css("display", "none");
+      $('#welcome').addClass('hidden'); //TODO: DELETE ME IF WELCOME DOESN'T WORK
+
     }else{ //USER LOGGED IN
       $('#amazon-login').css("display", "none");
       $("#amazon-logout").css("display", "block");
+      $('#welcome').removeClass('hidden'); //TODO: DELETE ME IF WELCOME DOESN'T WORK
     }
   };
 
   $(document).ready(function(){
     toggleLoginDisplay();
   })
-
-
 
 
 })();

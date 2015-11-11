@@ -24,13 +24,29 @@ body:after {
       font-weight: bold;
       margin-left: 10px;
       margin-top: 10px;
+      width: 50%;
+      float: left;
     } //END #logo
+
+    .meta {
+      float: left;
+      display: inline-block;
+      width: 25%;
+      margin-top: 10px;
+      color: #064583;     //DARK BLUE
+      font-size: 16pt;
+
+      .hidden {
+        display: none;
+      }
+    }//END .META
 
     .login {
       display: inline-block;
-      margin-right: 40px;
-      margin-top: 10px;
-      float: right;
+      margin-top: 30px;
+      float: left;
+      width: 10%;
+
 
       #amazon-root {
         cursor: pointer;
@@ -151,21 +167,53 @@ body:after {
   footer {
     background-color: #F9BE12;
     padding-top: 20px;
-    padding-bottom: 20px;
-    margin-top: 60px; 
+    padding-bottom: 15px;
+    margin-top: 60px;
+    @extend .clearfix;
 
-    a {
+    .info-pgs {
+      width: 50%;
+      float: left;
+      margin-top: 10px;
+
+      a {
+        text-decoration: none;
+        color: #fdf2cf;
+        font-size: 14pt;
+        margin-left: 10px;
+        margin-right: 10px;
+
+        &::before {
+          content: '\f005';
+          font-family: FontAwesome;
+          margin-right: 8px;
+        }
+
+        &:hover {
+          color: #068383;
+        }
+      }//END A
+    }//END .info-pgs
+
+
+    #gihub {
+      float: right;
       text-decoration: none;
-      color: #064583;
-      margin-left: 10px;
-      margin-right: 10px;
+      margin-right: 25px;
+      font-family: FontAwesome;
+      font-size: 25pt;
+      width: 48%;
+      text-align: right;
 
-      &::before {
-        content: '\f005';
-        font-family: FontAwesome;
-        margin-right: 8px;
-    }
-    }
+      a {
+        text-decoration: none;
+        color: #fdf2cf;
+        &:hover {
+          color: #068383;
+        }
+      }//A
+
+    } //GITHUB
   }//END FOOTER
 
 }//END .CONTAINER
