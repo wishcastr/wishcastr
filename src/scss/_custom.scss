@@ -32,18 +32,21 @@ body:after {
       float: left;
       display: inline-block;
       width: 25%;
-      margin-top: 30px;
+      margin-top: 10px;
       color: #064583;     //DARK BLUE
       font-size: 16pt;
 
+      .hidden {
+        display: none;
+      }
     }//END .META
 
     .login {
       display: inline-block;
-      margin-right: 40px;
       margin-top: 30px;
-      float: right;
-      width: 15%;
+      float: left;
+      width: 10%;
+
 
       #amazon-root {
         cursor: pointer;
