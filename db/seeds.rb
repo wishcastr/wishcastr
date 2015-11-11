@@ -67,7 +67,7 @@ products = AmazonProduct.all
 
 150.times do
   PriceHistory.create!(
-    product_id: rand(1..1010),
+    product_id: products.sample.id,
     currency: "USD",
     price: Faker::Commerce.price,
     date: Faker::Date.between(1.days.ago, Date.today))
