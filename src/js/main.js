@@ -8,19 +8,21 @@
     .when ('/top-wishes', {
       templateUrl: 'partials/top-wishes.html',
 
-      controller: function ($http, $scope, API) {
+      controller: function ($http, $scope, API, $location) {
         $http.get(API.BASE_URL+API.TOP_WISHES_PATH)
           .then(function(response){
             $scope.products = response.data;
           })//END OF PROMISE
 
         $scope.starProduct = function () {
+          $location.path('/wish-form');
           u = currentUser();
           if(u){
             var star = $(event.target).closest('.star-link').find('.fa');
             var product = $(event.target).closest('.product');
             star.toggleClass('fa-star fa-star-o');
             if(star.hasClass('fa-star')){
+
 
               var data = {
                 product: {
@@ -39,6 +41,7 @@
               $http.post(API.BASE_URL+API.DRAFT_WISH_PATH, data, config)
               .then(function(response){
                 $scope.draft_wish = response.data;
+
               })
               console.log($scope.draft_wish);
               //TODO PUT to Rails server for adding
