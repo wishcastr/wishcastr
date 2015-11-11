@@ -183,7 +183,8 @@
     amazon.Login.logout();
     docCookies.removeItem('user');
     toggleLoginDisplay();
-    $location.path('/top-wishes');
+    $location.path('/top-wishes');  //FIXME: MAYBE?
+
   };
 
   window.doAmazonLogin = function(){
@@ -206,10 +207,12 @@
         u.amz_id = response.profile.CustomerId.substr(response.profile.CustomerId.lastIndexOf('.') + 1);
         docCookies.setItem('user', JSON.stringify(u));
         setTimeout(window.doRailsLogin(u), 1);
-      });
+      }); //END RETREVEPROFILE
 
-    });
-  };
+    }); //END LOGIN.AUTHORIZE
+    // $window.location.reload(); //FIXME: DOESN'T BREAK CODE BUT DOESN'T SOLVE RELOAD PROBLEM FOR HELLO CTLR
+
+  }; //END DOAMAZONLOGIN
 
   window.doRailsLogin = function(u){
     var BASEURL = "//wishcastr-staging.herokuapp.com/login/amazon.json";
