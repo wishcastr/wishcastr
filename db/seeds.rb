@@ -138,4 +138,3 @@ dame = User.create!(
     category: Faker::Lorem.word,
     query: item + "-query")
 end
-
