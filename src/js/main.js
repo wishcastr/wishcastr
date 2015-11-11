@@ -13,9 +13,11 @@
           .then(function(response){
             $scope.products = response.data;
           })//END OF PROMISE
-
+          $scope.tracer = function() {
+            console.log("YAYAYAYAYAY!!!!!");
+          };
         $scope.starProduct = function () {
-          $location.path('/wish-form');
+          // $location.path('/wish-form');
           u = currentUser();
           if(u){
             var star = $(event.target).closest('.star-link').find('.fa');
@@ -47,17 +49,18 @@
               //TODO PUT to Rails server for adding
             }else{
               console.log("removed item from wish");
-              //TODO PUT to Rails server for removal
-            }
-          }else{
-            console.log("You must sign up");
-            //TODO prompt sign up modal
-          }
+                //TODO PUT to Rails server for removal
+              }
+            }else{
+              console.log("You must sign up");
+              //TODO prompt sign up modal
+            } //else
 
-        }
+        }//END SCOPE FUNCTION
+        // function tracer() {
+        //   console.log("YAYAYAYAYAY!!!!!");
+        // }
       }//end of controller
-      // controller: function ($scope) {
-
     })//END OF TOP-WISHES
 
     .when ('/user-wishes', {
@@ -107,17 +110,7 @@
 
   })//END CONTROLLER HELLO
 
-  /*
-  .controller('Hello', function($scope) {
-    if (currentUser() === null) {
-      $('#welcome').addClass('hidden');
-    }
-    else {
-      $('#welcome').removeClass('hidden');
-      $scope.name = currentUser().name;
-    }
-  })
-  */
+
 
   .controller('SearchController', function($http, Search, API, $location){
     var search = this;
@@ -252,10 +245,10 @@
     toggleLoginDisplay();
   })
 
+//--------------WISH COLLECTOR-----------------------
+function tracer() {
+  console.log("YAYAYAYAYAY!!!!!");
+};
 
-})();
 
-;(function(){
-
-
-})();//END IFFE
+})(); //END IFFE
