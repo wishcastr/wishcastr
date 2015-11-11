@@ -2097,6 +2097,10 @@ textarea {
 .fa-fonticons:before {
   content: ""; }
 
+body:after {
+  display: none;
+  content: url(../img/amazon_login_76x32.png) url(../img/amazon_login_76x32_pressed.png); }
+
 .container {
   width: 100%;
   font-family: 'Lato', sans-serif; }
@@ -2120,18 +2124,20 @@ textarea {
       margin-top: 10px;
       float: right; }
       .container .nav-header .login #amazon-root {
-        margin-top: 13px; }
-        .container .nav-header .login #amazon-root #amazon-login.active {
-          margin-right: 10px;
-          display: inline-block;
-          margin-top: 10px; }
+        cursor: pointer;
+        background: url(../img/amazon_login_76x32.png) no-repeat;
+        height: 32px;
+        width: 76px; }
+        .container .nav-header .login #amazon-root span {
+          padding: 6px 0 0 30px;
+          font-size: .8em;
+          font-weight: bold; }
         .container .nav-header .login #amazon-root #amazon-login {
-          display: none; }
-        .container .nav-header .login #amazon-root a.active {
-          font-size: 14pt;
-          text-decoration: none; }
+          display: block; }
         .container .nav-header .login #amazon-root #amazon-logout {
           display: none; }
+      .container .nav-header .login #amazon-root:active {
+        background: url(../img/amazon_login_76x32_pressed.png) no-repeat; }
     .container .nav-header button {
       background-color: #068383;
       border: none;
@@ -2185,7 +2191,22 @@ textarea {
     width: 100%; }
     .container .list-view .fa-spin {
       -webkit-animation: fa-spin 2s infinite linear;
-      animation: fa-spin 2s infinite linear; }
+      animation: fa-spin 2s infinite linear;
+      margin: 0 auto; }
+  .container footer {
+    background-color: #F9BE12;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 60px; }
+    .container footer a {
+      text-decoration: none;
+      color: #064583;
+      margin-left: 10px;
+      margin-right: 10px; }
+      .container footer a::before {
+        content: '\f005';
+        font-family: FontAwesome;
+        margin-right: 8px; }
 
 .lists {
   margin: 0 auto;
@@ -2224,12 +2245,7 @@ textarea {
           margin-bottom: 15px; }
         .lists ul li a .product-txt {
           padding-top: 4%;
-          text-decoration: none;
-          color: #f9be12;
-          font-size: 25pt;
-          margin-bottom: 10px; }
-          .lists ul li a .product-txt:hover {
-            color: #064583; }
+          text-decoration: none; }
           .lists ul li a .product-txt h3 {
             display: block;
             margin: 0 10px;
@@ -2252,15 +2268,21 @@ textarea {
           .lists ul li a .product-txt .descr {
             display: block;
             font-size: 14pt; }
-          .lists ul li a .product-txt fa fa-star {
-            font-family: Font-Awesome;
-            display: inline-block;
-            vertical-align: middle; }
+          .lists ul li a .product-txt .star-link {
+            color: #f9be12;
+            font-size: 25pt;
+            margin-bottom: 10px; }
+            .lists ul li a .product-txt .star-link:hover {
+              color: #fad159; }
+            .lists ul li a .product-txt .star-link fa fa-star {
+              font-family: Font-Awesome;
+              display: inline-block;
+              vertical-align: middle; }
 
 .result-list {
   margin: 0 auto;
   text-align: center;
-  width: 60%; }
+  width: 80%; }
   .result-list h2 {
     font-size: 25pt;
     margin-bottom: 10px;
@@ -2301,7 +2323,21 @@ textarea {
           .result-list ul li a .product-txt .price {
             float: right;
             font-size: 18pt;
-            margin-top: 14px; }
+            margin-top: 10px; }
+          .result-list ul li a .product-txt .star-link {
+            color: #f9be12;
+            font-size: 35pt;
+            margin-bottom: 10px;
+            margin-left: 50px;
+            margin-right: 35px;
+            display: block;
+            float: right; }
+            .result-list ul li a .product-txt .star-link:hover {
+              color: #fad159; }
+            .result-list ul li a .product-txt .star-link fa fa-star {
+              font-family: Font-Awesome;
+              display: inline-block;
+              vertical-align: middle; }
           .result-list ul li a .product-txt .descr {
             display: block; }
 
@@ -2702,35 +2738,124 @@ textarea {
   float: left; }
 
 section.privacy {
-  padding: 1em 2em; }
+  padding: 1em 2em;
+  color: #064583;
+  width: 80%;
+  margin-left: 15px; }
+  section.privacy h1 {
+    color: #068383; }
+  section.privacy h3 {
+    color: #068383; }
+  section.privacy h4 {
+    color: #068383; }
 
-section.about {
-  padding: 1em 2em; }
+.about {
+  padding: 1em 2em;
+  color: #064583; }
+  .about h1 {
+    color: #068383; }
+  .about div.awesome-people div.awesome-person {
+    margin: 2em;
+    background-color: #f2f2f2;
+    border: gray;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    margin: 1em;
+    position: relative;
+    width: 300px;
+    float: left; }
+    .about div.awesome-people div.awesome-person div.awesome-person-img {
+      overflow: hidden;
+      height: 500px;
+      max-height: 200px; }
+      .about div.awesome-people div.awesome-person div.awesome-person-img img {
+        width: 100%; }
+    .about div.awesome-people div.awesome-person div.awesome-person-name {
+      font-weight: bold;
+      line-height: 1.5em;
+      padding: 0.5em;
+      border-bottom: 1px silver solid; }
+    .about div.awesome-people div.awesome-person div.awesome-person-description {
+      font-size: 1em;
+      line-height: 1.5em;
+      padding: 0.5em; }
+  .about footer {
+    display: inline-block;
+    float: left; }
 
-div.awesome-people div.awesome-person {
-  margin: 2em;
-  background-color: #f2f2f2;
-  border: gray;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
-  margin: 1em;
-  position: relative;
-  width: 300px;
-  float: left; }
-  div.awesome-people div.awesome-person div.awesome-person-img {
-    overflow: hidden;
-    height: 200px;
-    max-height: 200px; }
-    div.awesome-people div.awesome-person div.awesome-person-img img {
-      width: 100%; }
-  div.awesome-people div.awesome-person div.awesome-person-name {
-    font-weight: bold;
-    line-height: 1.5em;
-    padding: 0.5em;
-    border-bottom: 1px silver solid; }
-  div.awesome-people div.awesome-person div.awesome-person-description {
-    font-size: 1em;
-    line-height: 1.5em;
-    padding: 0.5em; }
+.wish-form {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  color: #064583; }
+  .wish-form h1 {
+    text-align: center; }
+  .wish-form .create-wish {
+    width: 40%;
+    margin: 0 auto;
+    display: block;
+    border: 1 solid red;
+    background-color: #f2f2f2;
+    margin-bottom: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px; }
+    .wish-form .create-wish h4 {
+      font-size: 14pt;
+      margin-bottom: 10px;
+      margin-top: 30px; }
+    .wish-form .create-wish .currency {
+      border: 1px solid #ccc;
+      color: #a3a3a3;
+      background-color: #fff; }
+      .wish-form .create-wish .currency input {
+        border: 0;
+        background-color: transparent; }
+    .wish-form .create-wish button {
+      background-color: #068383;
+      border: none;
+      color: #fff;
+      padding-left: 2%;
+      padding-right: 2%;
+      border-radius: 3px;
+      display: block;
+      margin: 0 auto;
+      margin-top: 40px;
+      margin-bottom: 15px; }
+    .wish-form .create-wish .cancel {
+      color: #064583;
+      text-decoration: none;
+      margin-top: 15px; }
+
+/* Icon Grow */
+.hvr-icon-grow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s; }
+
+.hvr-icon-grow:before {
+  position: absolute;
+  right: -15px;
+  bottom: -10px;
+  padding: 0 1px;
+  font-family: FontAwesome;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out; }
+
+.hvr-icon-grow:hover:before, .hvr-icon-grow:focus:before, .hvr-icon-grow:active:before {
+  -webkit-transform: scale(1.3) translateZ(0);
+  transform: scale(1.3) translateZ(0); }
 
 /* ==========================================================================
    Helper classes
@@ -2786,20 +2911,20 @@ div.awesome-people div.awesome-person {
  * 2. The use of `table` rather than `block` is only necessary if using
  *    `:before` to contain the top-margins of child elements.
  */
-.clearfix:before, .container .search .color-bar:before, .lists:before, .lists ul:before, .lists ul li:before, .result-list ul li:before, div.awesome-people:before,
+.clearfix:before, .container .search .color-bar:before, .lists:before, .lists ul:before, .lists ul li:before, .result-list ul li:before, .about div.awesome-people:before,
 .clearfix:after,
 .container .search .color-bar:after,
 .lists:after,
 .lists ul:after,
 .lists ul li:after,
 .result-list ul li:after,
-div.awesome-people:after {
+.about div.awesome-people:after {
   content: " ";
   /* 1 */
   display: table;
   /* 2 */ }
 
-.clearfix:after, .container .search .color-bar:after, .lists:after, .lists ul:after, .lists ul li:after, .result-list ul li:after, div.awesome-people:after {
+.clearfix:after, .container .search .color-bar:after, .lists:after, .lists ul:after, .lists ul li:after, .result-list ul li:after, .about div.awesome-people:after {
   clear: both; }
 
 /* ==========================================================================

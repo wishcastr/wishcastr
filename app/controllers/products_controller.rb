@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
   end
 
   def top
-    quantity = params[:limit] || 25
+    quantity = params[:limit] || 24
     @products = Product.by_wishes(quantity)
     render :index
   end
