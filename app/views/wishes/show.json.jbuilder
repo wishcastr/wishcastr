@@ -5,5 +5,6 @@ json.extract! @wish,
   :category,
   :query,
   :name,
+  :saved,
   :created_at,
   :updated_at

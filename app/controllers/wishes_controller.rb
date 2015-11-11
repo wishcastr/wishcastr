@@ -23,6 +23,8 @@ class WishesController < ApplicationController
             render json: @wish.errors, status: :unprocessable_entity
           end
         end
+    else
+      render inline: {error: "not authorized"}.to_json, status: :unauthorized
     end
   end
 

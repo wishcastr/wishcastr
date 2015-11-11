@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   root :to => "static#index"
 
   post 'login/amazon' => 'users#login_amazon'
-  post 'wishes/draft_wish_add'
-  get 'wishes/draft'
+  post 'wishes/draft' => 'wishes#draft_wish_add'
+  get 'wishes/draft' => 'wishes#draft'
 
   resources :users, defaults: { format: 'json' }
   resources :wishes, defaults: { format: 'json' }
