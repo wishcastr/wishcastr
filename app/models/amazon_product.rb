@@ -95,29 +95,29 @@ class AmazonProduct < Product
   end
 
   def self.item_lookup(sku)
-    doc = Nokogiri.XML(open(generate_amazon_uri(query, "ItemLookup")))
+    doc = Nokogiri.XML(open(generate_amazon_uri(sku, "ItemLookup")))
     doc.remove_namespaces!
 
     product = {}
 
-    doc.xpath("/ItemLookupResponse[1]/Items[1]/Item").each do |item|
-      product_result = {}
+    item = doc.xpath("/ItemLookupResponse[1]/Items[1]/Item[1]")
 
-      result[:id] = nil
-      result[:type] = "AmazonProduct"
-      result[:sku] = item.xpath("ASIN[1]").text
-      result[:image_large] = item.xpath("LargeImage[1]/URL[1]").text || ""
-      result[:title] = item.xpath("ItemAttributes[1]/Title[1]").text.titleize
-      result[:brand] = item.xpath("ItemAttributes[1]/Brand[1]").text || ""
-      result[:current_price] = item.xpath("OfferSummary[1]/LowestNewPrice[1]/Amount[1]").text.to_f/100
-      result[:current_price] = "Not Available" unless result[:current_price]
-      result[:description] = item.xpath("ItemAttributes[1]/Edition[1]").text || "No Description"
-      result[:affiliate_url] = item.xpath("DetailPageURL[1]").text
-      item.xpath("ItemAttributes[1]/Feature").each do |feature|
-        the_feature = feature.text
-        the_feature.prepend("\n") unless result[:description].blank?
-        result[:description] += the_feature
-      end
+    product[:id] = nil
+    product[:type] = "AmazonProduct"
+    product[:sku] = item.xpath("ASIN[1]").text
+    product[:image_large] = item.xpath("LargeImage[1]/URL[1]").text || ""
+    product[:title] = item.xpath("ItemAttributes[1]/Title[1]").text.titleize
+    product[:brand] = item.xpath("ItemAttributes[1]/Brand[1]").text || ""
+    product[:current_price] = item.xpath("OfferSummary[1]/LowestNewPrice[1]/Amount[1]").text.to_f/100
+    product[:current_price] = "Not Available" unless product[:current_price]
+    product[:description] = item.xpath("ItemAttributes[1]/Edition[1]").text || "No Description"
+    product[:affiliate_url] = item.xpath("DetailPageURL[1]").text
+    item.xpath("ItemAttributes[1]/Feature").each do |feature|
+      the_feature = feature.text
+      the_feature.prepend("\n") unless result[:description].blank?
+      product_result[:description] += the_feature
+    end
+    product
   end
 
 end
