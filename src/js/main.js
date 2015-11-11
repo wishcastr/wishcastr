@@ -13,8 +13,9 @@
           .then(function(response){
             $scope.products = response.data;
           })//END OF PROMISE
-          $scope.tracer = function() {
-            console.log("YAYAYAYAYAY!!!!!");
+          $scope.wishForm = function() {          //ON CLICK TAKES YOU FROM /RESULTS
+            $location.path('/wish-form');         //TO /WISH-FORM
+
           };
         $scope.starProduct = function () {
           // $location.path('/wish-form');
