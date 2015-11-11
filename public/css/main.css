@@ -2196,7 +2196,8 @@ body:after {
   .container footer {
     background-color: #F9BE12;
     padding-top: 20px;
-    padding-bottom: 20px; }
+    padding-bottom: 20px;
+    margin-top: 60px; }
     .container footer a {
       text-decoration: none;
       color: #064583;
@@ -2281,7 +2282,7 @@ body:after {
 .result-list {
   margin: 0 auto;
   text-align: center;
-  width: 60%; }
+  width: 80%; }
   .result-list h2 {
     font-size: 25pt;
     margin-bottom: 10px;
@@ -2322,7 +2323,21 @@ body:after {
           .result-list ul li a .product-txt .price {
             float: right;
             font-size: 18pt;
-            margin-top: 14px; }
+            margin-top: 10px; }
+          .result-list ul li a .product-txt .star-link {
+            color: #f9be12;
+            font-size: 35pt;
+            margin-bottom: 10px;
+            margin-left: 50px;
+            margin-right: 35px;
+            display: block;
+            float: right; }
+            .result-list ul li a .product-txt .star-link:hover {
+              color: #fad159; }
+            .result-list ul li a .product-txt .star-link fa fa-star {
+              font-family: Font-Awesome;
+              display: inline-block;
+              vertical-align: middle; }
           .result-list ul li a .product-txt .descr {
             display: block; }
 
@@ -2750,7 +2765,7 @@ section.privacy {
     float: left; }
     .about div.awesome-people div.awesome-person div.awesome-person-img {
       overflow: hidden;
-      height: 200px;
+      height: 500px;
       max-height: 200px; }
       .about div.awesome-people div.awesome-person div.awesome-person-img img {
         width: 100%; }
@@ -2763,6 +2778,9 @@ section.privacy {
       font-size: 1em;
       line-height: 1.5em;
       padding: 0.5em; }
+  .about footer {
+    display: inline-block;
+    float: left; }
 
 .wish-form {
   width: 100%;
