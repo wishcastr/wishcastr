@@ -32,9 +32,10 @@ class WishesController < ApplicationController
     user = User.find(request.headers["x-wishcastr-user-id"])
     if user && user.amz_access_token == request.headers["x-wishcastr-access-token"]
       @wish = user.draft_wish
-      product = params[:product]
+      product = Product.find_or_create_by(sku: params[:product][:sku], type: params[:product][:type])
       if @wish
-        @wish.products << product unless @wish.product_duplicate?(product.sku, product.type)
+        @wish.products << product unless @wish.product_duplicate?(product[:sku], product[:type])
+        logger.debug(@wish)
         render :show, status: :success
       else
         @wish.new(user_id: user.id)
