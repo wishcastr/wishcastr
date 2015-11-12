@@ -2,22 +2,27 @@
   <h1>Create a wish</h1>
   <form class="create-wish">
 
+    <section class="form-item" ng-repeat="product in draft_wish.products">
+      <figure class="img-sizing">
+        <img ng-src="{{product.image_thumbnail}}" />
+      </figure>
+      <div class="product-txt">
+        <h3 class="product-title">{{product.title | limitTo: 25}}</h3>
+        <p class="price">
+          {{product.threshold_price | currency}}
+        </p>
+        <p class="descr">
+          {{product.description | limitTo: 25}}{{product.description.length > 25 ? '...' : ''}}
+        </p>
+      </div>
+    </section>
+
     <h4>Name your wish</h4>
-    <input type="text" placeholder="Wish Name" />
-
-<!-- TODO: ADD THIS LATER -->
-    <!-- <p>or</p>
-
-    <h4>Add to an existing wish</h4>
-    <select name="wishes">
-      <option>Select a Wish</option>
-      <option>{{wish.name}}</option>
-    </select> -->
-
+    <input type="text" placeholder="Wish Name" ng-model="draft_wish.name" />
     <h4>Name your desired price</h4>
-    <span class="currency">$ <input type="text" placeholder="Price" /></span>
+    <span class="currency">$ <input type="text" placeholder="Price" ng-model="draft_wish.threshold_price" /></span>
 
     <button type="submit" ng-click="submitWish()">Save your wish</button>
-    <a href="#" class="cancel">Cancel</a>
+    <p class="cancel" ng-click="goBack()">Cancel</p>
   </form>
 </section>
