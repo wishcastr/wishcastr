@@ -113,3 +113,15 @@ dame = User.create!(
   amz_id: "AEUT4REP2B6FMB7V4V6VFQ2AJJVQ",
   amz_raccess_token: nil,
   amz_access_token: ENV["AMZ_DAME_TOKEN"])
+
+  wishy = Wish.create!(
+    name: "Overwatch-Collectors-PC",
+    user_id: dame.id,
+    threshold_price: 1500,
+    category: Faker::Lorem.word,
+    saved: true,
+    query: "Overwatch Collector")
+
+  # sample_product = Product.find_by(sku: "B017L187X2")
+  # PriceHistory.create!(product_id: sample_product.id, date: DateTime.now() - 1.day, price: 10000)
+  # wishy.products << sample_product

@@ -32,7 +32,7 @@ class Product < ActiveRecord::Base
       else
         logger.debug("How did this happen? Amazon you dumb")
       end
-      sleep 0.75 if product.class == AmazonProduct
+      sleep 1.0 if product.class == AmazonProduct
     end
   end
 end
