@@ -1,0 +1,60 @@
+.wish-form { //<SECTION>
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  color: #064583;
+
+
+  h1 {
+    text-align: center;
+  }
+
+  .create-wish { //FORM
+    width: 40%;
+    margin: 0 auto;
+    display: block;
+    border: 1 solid red;
+    background-color: #f2f2f2;
+    margin-bottom: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    // text-align: left;
+
+    h4 {
+      font-size: 14pt;
+      margin-bottom: 10px;
+      margin-top: 30px;
+      // margin-left: 50px;
+
+    }
+    .currency {
+    border: 1px solid #ccc;
+    color: #a3a3a3;
+    background-color: #fff;
+
+      input {
+        border: 0;
+        background-color: transparent;
+      }
+    }// END CURRENCY <SPAN>
+
+    button {
+      background-color: #068383;
+      border: none;
+      color: #fff;
+      padding-left: 2%;
+      padding-right: 2%;
+      border-radius: 3px;
+      display: block;
+      margin: 0 auto;
+      margin-top: 40px;
+      margin-bottom: 15px;
+    }
+
+    .cancel {
+      color: #064583;
+      text-decoration: none;
+      margin-top: 15px;
+    }
+  }//END <FORM>
+}//END .WISH-FORM

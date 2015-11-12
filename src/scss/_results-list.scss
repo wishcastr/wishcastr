@@ -1,7 +1,7 @@
 .result-list {
   margin: 0 auto;
   text-align: center;
-  width: 60%;
+  width: 80%;
 
   h2 {
     font-size: 25pt;
@@ -64,15 +64,33 @@
           .price {
             float: right;
             font-size: 18pt;
-            margin-top: 14px;
+            margin-top: 10px;
           }
+
+          .star-link {
+            color: #f9be12;
+            font-size: 35pt;
+            margin-bottom: 10px;
+            margin-left: 50px;
+            margin-right: 35px;
+            display: block;
+            float: right;
+
+            &:hover {
+              color: #fad159;
+            }
+
+            fa fa-star {
+              font-family: Font-Awesome;
+              display: inline-block;
+              vertical-align: middle;
+            }// STAR
+          }//END STAR-LINK
 
           .descr {
             display: block;
           }
-
         }//.PRODUCT-TXT
-
       }//END OF <A>
     }//END <LI>
   }//END of <UL>

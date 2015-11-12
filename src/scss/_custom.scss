@@ -1,5 +1,5 @@
-$amazon-image-up: url(../images/amazon_login_76x32.png);
-$amazon-image-down: url(../images/amazon_login_76x32_pressed.png);
+$amazon-image-up: url(../img/amazon_login_76x32.png);
+$amazon-image-down: url(../img/amazon_login_76x32_pressed.png);
 
 body:after {
   display: none;
@@ -147,6 +147,26 @@ body:after {
       margin: 0 auto;
     }
   } //END LIST-VIEW
+
+  footer {
+    background-color: #F9BE12;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 60px; 
+
+    a {
+      text-decoration: none;
+      color: #064583;
+      margin-left: 10px;
+      margin-right: 10px;
+
+      &::before {
+        content: '\f005';
+        font-family: FontAwesome;
+        margin-right: 8px;
+    }
+    }
+  }//END FOOTER
 
 }//END .CONTAINER
 
