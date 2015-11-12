@@ -93,6 +93,8 @@
 
         products.results = function(){
           return Search.results;
+
+
         };
       }, //END CONTROLLER
       controllerAs: 'products'
@@ -144,8 +146,7 @@
   })
   .value('Search', {
     query: '',
-    results: [
-    ],
+    results: [],
   })
 
 
@@ -251,10 +252,15 @@
     toggleLoginDisplay();
   })
 
-//--------------WISH COLLECTOR-----------------------
-function tracer() {
-  console.log("YAYAYAYAYAY!!!!!");
-};
+//--------------COLLECTING WISHES-----------------------
+/*
+* store the info from the GET in an object
+  - distinguish specific "item"
+* bind? specific item to specific star
+* if star is clicked post item details for that item
+  - need seperate 'wish in progress object'????
+* when Create Wish is clicked switch to Wish-Form with object
+* When 'submitted' POST that object to API
 
-
+*/
 })(); //END IFFE
