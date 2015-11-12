@@ -65,13 +65,13 @@ end
 
 products = AmazonProduct.all
 
-150.times do
-  PriceHistory.create!(
-    product_id: products.sample.id,
-    currency: "USD",
-    price: Faker::Commerce.price,
-    date: Faker::Time.between(100.days.ago, 1.day.ago))
-end
+# 150.times do
+#   PriceHistory.create!(
+#     product_id: products.sample.id,
+#     currency: "USD",
+#     price: Faker::Commerce.price,
+#     date: Faker::Date.between(100.days.ago, Date.today))
+# end
 
 # 300.times do
 #   wish = Wish.create(
@@ -114,3 +114,14 @@ dame = User.create!(
   amz_raccess_token: nil,
   amz_access_token: ENV["AMZ_DAME_TOKEN"])
 
+  wishy = Wish.create!(
+    name: "Overwatch-Collectors-PC",
+    user_id: dame.id,
+    threshold_price: 1500,
+    category: Faker::Lorem.word,
+    saved: true,
+    query: "Overwatch Collector")
+
+  # sample_product = Product.find_by(sku: "B017L187X2")
+  # PriceHistory.create!(product_id: sample_product.id, date: DateTime.now() - 1.day, price: 10000)
+  # wishy.products << sample_product
