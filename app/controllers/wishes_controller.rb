@@ -10,8 +10,8 @@ class WishesController < ApplicationController
   end
 
   def draft
-    user = User.find(request.headers["x-wishcastr-user-id"])
-    if user && user.amz_access_token == request.headers["x-wishcastr-access-token"]
+    user = User.find(params[:user_id])
+    if user && user.amz_access_token == params[:access_token]
       @wish = user.draft_wish
         if @wish
           render :show, status: :success
