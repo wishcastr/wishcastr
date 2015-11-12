@@ -25,6 +25,7 @@
           var star = $(event.target).closest('.star-link').find('.fa');
           var p = $(event.target).closest('.product');
           star.toggleClass('fa-star fa-star-o');
+          var products = $scope.starredProducts.products;
           var product = {
             sku: p.attr('data-product-sku'),
             type: p.attr('data-product-source'),
@@ -34,10 +35,9 @@
           } //END VAR PRODUCT
 
           if(star.hasClass('fa-star')){
-            $scope.starredProducts.products.push(product);
+            products.push(product);
           }else{
-            index = $scope.starredProducts.products.indexOf(product);
-            $scope.starredProducts.products.splice(index, 1);
+            products.splice(products.indexOf(product), 1);
           }
         }//END SCOPE FUNCTION
 

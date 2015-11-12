@@ -70,7 +70,7 @@ products = AmazonProduct.all
     product_id: products.sample.id,
     currency: "USD",
     price: Faker::Commerce.price,
-    date: Faker::Date.between(100.days.ago, Date.today))
+    date: Faker::Time.between(100.days.ago, 1.day.ago))
 end
 
 # 300.times do

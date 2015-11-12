@@ -14,7 +14,7 @@
             $scope.products = response.data;
           })//END OF PROMISE
 
-          $scope.starredProducts = [];
+          $scope.starredProducts = {products: []};
 
           $scope.wishForm = function() {          //ON CLICK TAKES YOU FROM /RESULTS
                      //TO /WISH-FORM
@@ -25,6 +25,7 @@
           var star = $(event.target).closest('.star-link').find('.fa');
           var p = $(event.target).closest('.product');
           star.toggleClass('fa-star fa-star-o');
+          var products = $scope.starredProducts.products;
           var product = {
             sku: p.attr('data-product-sku'),
             type: p.attr('data-product-source'),
@@ -34,10 +35,9 @@
           } //END VAR PRODUCT
 
           if(star.hasClass('fa-star')){
-            $scope.starredProducts.push(product);
+            products.push(product);
           }else{
-            index = $scope.starredProducts.indexOf(product);
-            $scope.starredProducts.splice(index, 1);
+            products.splice(products.indexOf(product), 1);
           }
         }//END SCOPE FUNCTION
 

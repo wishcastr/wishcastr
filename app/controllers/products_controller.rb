@@ -49,14 +49,14 @@ class ProductsController < ApplicationController
 
   def trigger_update
     Product.update_prices
-     Wish.all.each do |wish|
-       catches = wish.find_catches
-       catches.each do |caught|
-         CatchMailer.catch(wish.user, caught, wish).deliver_now unless wish.notified
-         wish.update(notified: true)
-       end
-     end
-     render inline: {status: "Success!"}.to_json
+    Wish.all.each do |wish|
+      catches = wish.find_catches
+      catches.each do |caught|
+        CatchMailer.catch(wish.user, caught, wish).deliver_now unless wish.notified
+        wish.update(notified: true)
+      end
+    end
+    render inline: {status: "Success!"}.to_json
   end
 
   private
