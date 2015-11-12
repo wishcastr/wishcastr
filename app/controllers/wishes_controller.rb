@@ -9,6 +9,45 @@ class WishesController < ApplicationController
     end
   end
 
+  def draft
+    user = User.find(request.headers["x-wishcastr-user-id"])
+    if user && user.amz_access_token == request.headers["x-wishcastr-access-token"]
+      @wish = user.draft_wish
+        if @wish
+          render :show, status: :success
+        else
+          @wish.create(user_id: user.id)
+          if @wish.save
+            render :show, status: :created
+          else
+            render json: @wish.errors, status: :unprocessable_entity
+          end
+        end
+    else
+      render inline: {error: "not authorized"}.to_json, status: :unauthorized
+    end
+  end
+
+  def draft_wish_add
+    user = User.find(request.headers["x-wishcastr-user-id"])
+    if user && user.amz_access_token == request.headers["x-wishcastr-access-token"]
+      @wish = user.draft_wish
+      product = Product.find_or_create_by(sku: params[:product][:sku], type: params[:product][:type])
+      if @wish
+        @wish.products << product unless @wish.product_duplicate?(product[:sku], product[:type])
+        logger.debug(@wish)
+        render :show, status: :success
+      else
+        @wish.new(user_id: user.id)
+        @wish.products << product
+        if @wish.save
+          render :show, status: :created
+        else
+          render json: @wish.errors
+        end
+      end
+    end
+  end
   # GET /wishes/1.json
   def show
     user = User.find(request.headers["x-wishcastr-user-id"])
@@ -74,7 +113,8 @@ class WishesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wish_params
-      params.require(:wish).permit(:user_id, :threshold_price, :category, :query, :name)
+      params.require(:wish).permit(:user_id, :threshold_price, :category, :query, :name,
+      {product: [:type, :sku, :image_large, :image_thumbnail, :title, :brand, :description, :affiliate_url]})
     end
 
 end
