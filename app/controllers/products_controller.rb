@@ -49,7 +49,7 @@ class ProductsController < ApplicationController
 
   def trigger_update
     Product.update_prices
-     Wishes.all.each do |wish|
+     Wish.all.each do |wish|
        catches = wish.find_catches
        catches.each do |caught|
          CatchMailer.catch(wish.user, caught, wish).deliver_now unless wish.notified
