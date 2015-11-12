@@ -87,6 +87,7 @@
       input {
         border: 0;
         background-color: transparent;
+        color: #064583;
       }
     }// END CURRENCY <SPAN>
 
@@ -101,12 +102,22 @@
       margin: 0 auto;
       margin-top: 40px;
       margin-bottom: 15px;
+
+      &:hover {
+        background-color: #379b9b;
+      }
     }
 
     .cancel {
       color: #064583;
       text-decoration: none;
       margin-top: 15px;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+        // color: #698fb4;
+      }
     }
   }//END <FORM>
 }//END .WISH-FORM
