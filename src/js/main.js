@@ -35,18 +35,7 @@
               };//END VAR DATA
               console.log(data);
 
-              // var config = {
-              //   headers: {
-              //     x_wishcastr_user_id: u.id,
-              //     x_wishcastr_access_token: u.amz_access_token,
-              //   }
-              // };
-              //
-              // $http.post(API.BASE_URL+API.DRAFT_WISH_PATH, data, config)
-              // .then(function(response){
-              //   $scope.draft_wish = response.data;
 
-              // })
               console.log($scope.draft_wish);
               //TODO PUT to Rails server for adding
             }else{
@@ -65,16 +54,17 @@
     .when ('/user-wishes', {
       templateUrl: 'partials/user-wishes.html',
       controller: function ($http, $scope, API) {
-        var user = currentUser();
+        var u = currentUser();
 
-        if(user){
-          var config = {
-            headers: {
-              x_wishcastr_user_id: user.id,
-              x_wishcastr_access_token: user.amz_access_token,
-            }
-          };
-          $http.get(API.BASE_URL+API.WISHES_PATH, config)
+        if(u){
+          // var config = {
+          //   headers: {
+          //     x_wishcastr_user_id: user.id,
+          //     x_wishcastr_access_token: user.amz_access_token,
+          //   }
+          // };
+          $http.get(API.BASE_URL+API.WISHES_PATH, {
+            params: {user_id: u.id, access_token: u.amz_access_token}})
           .then(function(response){
             $scope.wishes = response.data;
           })//END OF PROMISE
@@ -103,10 +93,29 @@
 
     .when ('/wish-form', {
       templateUrl: 'partials/wish-form.html',
-      controller: function($location, $scope) {
+      controller: function($location, $scope, $http, API) {
         $scope.submitWish = function() {
           $location.path('/user-wishes');
         };//SUBMITWISH
+
+        u = currentUser();
+
+        // var config = {
+        //   // headers: {
+        //   //   x_wishcastr_user_id: u.id,
+        //   //   x_wishcastr_access_token: u.amz_access_token,
+        //   // }
+        // };
+
+        $http.get(API.BASE_URL+API.DRAFT_WISH_PATH, {
+          params: {user_id: u.id, access_token: u.amz_access_token}
+        } )
+        .then(function(response){
+          $scope.draft_wish = response.data;
+          console.log($scope.draft_wish);
+
+        })
+
       }//END CONTROLLER
     })//END WISH-FORM
 
@@ -184,7 +193,7 @@
     amazon.Login.logout();
     docCookies.removeItem('user');
     toggleLoginDisplay();
-    $location.path('/top-wishes');  //FIXME: MAYBE?
+    location.path('/top-wishes');  //FIXME: MAYBE?
 
   };
 
@@ -197,7 +206,7 @@
         console.log('oauth error ' + response.error);
         return;
       }
-
+      console.log(response);
       var userAccessToken = response.access_token;
 
       amazon.Login.retrieveProfile(userAccessToken, function(response) {
@@ -253,15 +262,8 @@
     toggleLoginDisplay();
   })
 
-//--------------COLLECTING WISHES-----------------------
-/*
-* store the info from the GET in an object
-  - distinguish specific "item"
-* bind? specific item to specific star
-* if star is clicked post item details for that item
-  - need seperate 'wish in progress object'????
-* when Create Wish is clicked switch to Wish-Form with object
-* When 'submitted' POST that object to API
+  // $(window).scroll(function(){
+  //     $(".add-wish").css("bottom",Math.max(20,0-$(this).scrollBottom()));
+  // });
 
-*/
 })(); //END IFFE
