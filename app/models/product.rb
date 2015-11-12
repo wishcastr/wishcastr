@@ -12,7 +12,7 @@ class Product < ActiveRecord::Base
   end
 
   def current_price
-    a = price_histories.order(:date).limit(1).first
+    a = price_histories.order(created_at: :desc).limit(1).first
     a ? a.price : "Not Available"
   end
 
