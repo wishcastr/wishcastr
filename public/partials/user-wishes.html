@@ -1,8 +1,13 @@
-<section class="lists">
+<section class="user-wishes-list">
   <h2>User Wishes</h2>
   <ul>
     <li ng-repeat="wish in wishes">
-      <h3>{{wish.name}}</h3>
-      <h4>{{wish.threshold_price | currency}}</h4>
+      <figure class="wish-img-sizing">
+        <img ng-src="{{product.image_large}}" />
+      </figure>
+      <div class="wishes-list-txt">
+        <h3>{{wish.name}}</h3>
+        <h4>{{wish.threshold_price | currency}}</h4>
+      </div>
     </li>
   </ul>
