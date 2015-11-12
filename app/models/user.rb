@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   validates :amz_id, uniqueness: true, presence: true
   validates :email, uniqueness: true, presence: true
   has_many :wishes
+  after_create :new_account_email
   has_many :products, through: :wishes
 
 
@@ -9,4 +10,8 @@ class User < ActiveRecord::Base
     self.wishes.where(saved: false).limit(1).first
   end
 
+
+  def new_account_email
+    CatchMailer.new_account(self).deliver_now
+  end
 end

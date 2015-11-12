@@ -65,13 +65,13 @@ end
 
 products = AmazonProduct.all
 
-150.times do
-  PriceHistory.create!(
-    product_id: products.sample.id,
-    currency: "USD",
-    price: Faker::Commerce.price,
-    date: Faker::Time.between(100.days.ago, 1.day.ago))
-end
+# 150.times do
+#   PriceHistory.create!(
+#     product_id: products.sample.id,
+#     currency: "USD",
+#     price: Faker::Commerce.price,
+#     date: Faker::Date.between(100.days.ago, Date.today))
+# end
 
 # 300.times do
 #   wish = Wish.create(
@@ -96,14 +96,6 @@ david = User.create!(
   amz_raccess_token: nil,
   amz_access_token: ENV["AMZ_DAVID_TOKEN"])
 
-["Nintendo", "Metroid", "Wheelmate Laptop Steering Wheel Desk", "Uranium Ore", "Playmobil Security Check Point", "Laparoscopic Gastric Bypass Kit", "Zombies"].each do |item|
-  Wish.create!(
-    name: item + "-name",
-    user_id: david.id,
-    threshold_price: rand(15.00..500.00).round(2),
-    category: Faker::Lorem.word,
-    query: item + "-query")
-end
 
 lacey = User.create!(
   name: "Lacey Rice",
@@ -113,14 +105,6 @@ lacey = User.create!(
   amz_raccess_token: nil,
   amz_access_token: ENV["AMZ_LACEY_TOKEN"])
 
-["Potato", "Interstellar", "Star Wars Box Set", "Iron Man Hoodie", "Doctor Who Ice Tray", "Laptop bag", "Javascript book"].each do |item|
-  Wish.create!(
-    name: item + "-name",
-    user_id: lacey.id,
-    threshold_price: rand(15.00..500.00).round(2),
-    category: Faker::Lorem.word,
-    query: item + "-query")
-end
 
 dame = User.create!(
   name: "Da-Me Kim",
@@ -130,23 +114,14 @@ dame = User.create!(
   amz_raccess_token: nil,
   amz_access_token: ENV["AMZ_DAME_TOKEN"])
 
-
-["Jackie Chan movie", "Magic the Gathering Booster Box", "Call of Duty Black-ops", "Back to the Future shoes", "hoverboard", "foldgers coffee", "horse mask"].each do |item|
-  Wish.create!(
-    name: item + "-name",
+  wishy = Wish.create!(
+    name: "Overwatch-Collectors-PC",
     user_id: dame.id,
-    threshold_price: rand(60.00..500.00).round(2),
+    threshold_price: 1500,
     category: Faker::Lorem.word,
-    query: item + "-query")
-end
+    saved: true,
+    query: "Overwatch Collector")
 
-wishy = Wish.create!(
-  name: "Black-ops",
-  user_id: dame.id,
-  threshold_price: 500,
-  category: Faker::Lorem.word,
-  query: "Black Ops Game")
-
-sample_product = Product.find_by(sku: "B00VU4J8YY")
-PriceHistory.create!(product_id: sample_product.id, date: DateTime.now() - 1.day, price: 10000)
-wishy.products << sample_product
+  # sample_product = Product.find_by(sku: "B017L187X2")
+  # PriceHistory.create!(product_id: sample_product.id, date: DateTime.now() - 1.day, price: 10000)
+  # wishy.products << sample_product
