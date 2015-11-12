@@ -10,7 +10,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "browser-sync start --server 'public'",
-    "start:dev": "browser-sync start --server --directory --startPath='src/index.html'",
+    "start:dev": "browser-sync start --server --https --directory --startPath='src/index.html'",
     "sass": "node-sass src/scss/main.scss public/css/main.css",
     "sass:dev": "node-sass src/scss/main.scss src/css/main.css --watch='src/scss/*.scss'",
     "wiredep": "wiredep --src src/index.html --src src/scss/main.scss",

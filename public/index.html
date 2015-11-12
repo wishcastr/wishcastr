@@ -42,6 +42,9 @@
     <main class="container" ng-app='Wishcastr'>
       <header class="nav-header">
         <a href="#/top-wishes" id="logo">Wishcastr</a>
+        <nav class="meta" ng-controller="Hello as hello">
+          <p id="welcome">Welcome, <span ng-bind="name"></span></p>
+        </nav>
         <div class="login">
           <div id="amazon-root">
             <span id="amazon-login">
@@ -52,7 +55,7 @@
             </span>
           </div>
         </div>
-      </header> <!--END OF HEADER-->
+      </header> <!--END OF NAV-HEADER-->
 
       <section class="search">
         <div class="color-bar" ng-controller="SearchController as search">
@@ -77,9 +80,15 @@
       </section> <!--END .LIST-->
 
       <footer>
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="about.html">About Wishcastr</a>
-        <a href="#/wish-form">WISH-FORM</a> <!--TODO: LINK STARS AND REMOVE THIS -->
+        <div class="info-pgs">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="about.html">About Wishcastr</a>
+        </div>
+        <div id="gihub">
+          <a href="https://github.com/wishcastr/wishcastr">
+            <i class="fa fa-github-square"></i>
+          </a>
+        </div>
       </footer>
 
     </main> <!--END .CONTAINER-->

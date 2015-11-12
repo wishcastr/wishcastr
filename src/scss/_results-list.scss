@@ -94,5 +94,45 @@
       }//END OF <A>
     }//END <LI>
   }//END of <UL>
+  .add-wish{
+    font-family: FontAwesome;
+    font-size: 20pt;
+    color: #f9be12;
+    background-color: #f2f2f2;
+    float: right;
+    display: inline;
+    top: 90%;
+    right: 20px;
+    position: fixed;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+
+    &:hover {
+      color: #f9be12;
+      padding: 0;
+
+      .drp-down {
+        display: block;
+      }
+    }//.ADD-WISH HOVER
+    .drp-down {
+      display:none;
+      font-size: 12pt;
+      color: #064583;
+      background-color: none;
+    }
+  }//END .ADD-WISH
+} //END <SECTION>
+
+
+@media (max-width: 767px) {           //MOBILE
+}
+
+@media (max-width: 1024px) and (min-width: 768px){      //TABLET
+
+}
+
+
+@media (min-width: 1025px) {            //DESKTOP
 
 }

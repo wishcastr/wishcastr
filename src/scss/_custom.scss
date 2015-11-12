@@ -24,13 +24,34 @@ body:after {
       font-weight: bold;
       margin-left: 10px;
       margin-top: 10px;
+      width: 58%;
+      float: left;
     } //END #logo
+
+    .meta {
+      float: left;
+      display: inline-block;
+      width: 25%;
+      margin-top: 10px;
+      color: #064583;     //DARK BLUE
+      font-size: 16pt;
+      margin-right: 0;
+      text-align: right;
+
+      .hidden {
+        display: none;
+      }
+    }//END .META
 
     .login {
       display: inline-block;
-      margin-right: 40px;
-      margin-top: 10px;
+      margin-top: 30px;
       float: right;
+      width: 10%;
+      margin-right: 0;
+
+
+
 
       #amazon-root {
         cursor: pointer;
@@ -61,11 +82,11 @@ body:after {
       background-color: #068383; //TEAL
       border: none;
       color: #fff;
-      // padding-left: 2%;
-      // padding-right: 2%;
       border-radius: 3px;
-
-    }
+      &:hover {
+        background-color: #379b9b;
+      }
+    }//BUTTON
   }//END <HEADER>
 
   .search {
@@ -145,27 +166,60 @@ body:after {
       -webkit-animation: fa-spin 2s infinite linear;
       animation: fa-spin 2s infinite linear;
       margin: 0 auto;
+      font-size: 20pt;
     }
   } //END LIST-VIEW
 
   footer {
     background-color: #F9BE12;
     padding-top: 20px;
-    padding-bottom: 20px;
-    margin-top: 60px; 
+    padding-bottom: 15px;
+    margin-top: 60px;
+    @extend .clearfix;
 
-    a {
+    .info-pgs {
+      width: 50%;
+      float: left;
+      margin-top: 10px;
+
+      a {
+        text-decoration: none;
+        color: #fdf2cf;
+        font-size: 14pt;
+        margin-left: 10px;
+        margin-right: 10px;
+
+        &::before {
+          content: '\f005';
+          font-family: FontAwesome;
+          margin-right: 8px;
+        }
+
+        &:hover {
+          color: #068383;
+        }
+      }//END A
+    }//END .info-pgs
+
+
+    #gihub {
+      float: right;
       text-decoration: none;
-      color: #064583;
-      margin-left: 10px;
-      margin-right: 10px;
+      margin-right: 25px;
+      font-family: FontAwesome;
+      font-size: 25pt;
+      width: 48%;
+      text-align: right;
 
-      &::before {
-        content: '\f005';
-        font-family: FontAwesome;
-        margin-right: 8px;
-    }
-    }
+      a {
+        text-decoration: none;
+        color: #fdf2cf;
+        &:hover {
+          color: #068383;
+        }
+      }//A
+
+    } //GITHUB
   }//END FOOTER
 
 }//END .CONTAINER

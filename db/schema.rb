@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20151111204639) do
     t.string   "name"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+    t.boolean  "saved",           default: false
     t.boolean  "notified",        default: false
     t.index ["user_id"], name: "index_wishes_on_user_id"
   end

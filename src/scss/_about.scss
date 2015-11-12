@@ -37,6 +37,17 @@
         line-height: 1.5em;
         padding: 0.5em;
         border-bottom: 1px silver solid;
+
+        .about-link {
+          margin: 0 .1em;
+          float: right;
+          text-decoration: none;
+          color: #068383;
+          font-size: 1.5em;
+        }
+        .about-link:visted {
+          color: #068383;
+        }
       }
 
       div.awesome-person-description {
@@ -51,3 +62,17 @@
     float: left;
   }
 }//END .ABOUT
+
+
+
+@media (max-width: 767px) {           //MOBILE
+}
+
+@media (max-width: 1024px) and (min-width: 768px){      //TABLET
+
+}
+
+
+@media (min-width: 1025px) {            //DESKTOP
+
+}
