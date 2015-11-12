@@ -52,7 +52,6 @@
             $http.post(API.BASE_URL+API.DRAFT_WISH_PATH, $scope.starredProducts, config)
               .then(function(response){
                 $scope.draft_wish = response.data;
-                console.log($scope.draft_wish);
             })//END OF PROMISE
 
           }else{
@@ -119,7 +118,6 @@
         })
         .then(function(response){
           $scope.draft_wish = response.data;
-          console.log($scope.draft_wish);
         })
 
       }//END CONTROLLER
