@@ -8,53 +8,65 @@
     .when ('/top-wishes', {
       templateUrl: 'partials/top-wishes.html',
 
-      controller: function ($http, $scope, API) {
+      controller: function ($http, $scope, API, $location) {
         $http.get(API.BASE_URL+API.TOP_WISHES_PATH)
           .then(function(response){
             $scope.products = response.data;
           })//END OF PROMISE
 
-        $scope.starProduct = function () {
-          u = currentUser();
-          if(u){
-            var star = $(event.target).closest('.star-link').find('.fa');
-            var product = $(event.target).closest('.product');
-            star.toggleClass('fa-star fa-star-o');
-            if(star.hasClass('fa-star')){
+          $scope.starredProducts = [];
 
-              var data = {
-                product: {
-                  sku: product.attr('data-product-sku'),
-                  type: product.attr('data-product-source')
-                }
-              };
+          $scope.wishForm = function() {          //ON CLICK TAKES YOU FROM /RESULTS
+                     //TO /WISH-FORM
+          };
 
-              var config = {
-                headers: {
-                  x_wishcastr_user_id: u.id,
-                  x_wishcastr_access_token: u.amz_access_token,
-                }
-              };
+          $scope.starProduct = function () {
+          // $location.path('/wish-form');
+          var star = $(event.target).closest('.star-link').find('.fa');
+          var p = $(event.target).closest('.product');
+          star.toggleClass('fa-star fa-star-o');
+          var product = {
+            sku: p.attr('data-product-sku'),
+            type: p.attr('data-product-source'),
+            description: p.attr('title'),
+            image_thumbnail: p.find('img').attr('src'),
+            title: p.find('.product-title').text()
+          } //END VAR PRODUCT
 
-              $http.post(API.BASE_URL+API.DRAFT_WISH_PATH, data, config)
-              .then(function(response){
-                $scope.draft_wish = response.data;
-              })
-              console.log($scope.draft_wish);
-              //TODO PUT to Rails server for adding
-            }else{
-              console.log("removed item from wish");
-              //TODO PUT to Rails server for removal
+          if(star.hasClass('fa-star')){
+            $scope.starredProducts.push(product);
+          }else{
+            index = $scope.starredProducts.indexOf(product);
+            $scope.starredProducts.splice(index, 1);
+          }
+        }//END SCOPE FUNCTION
+
+        $scope.draftWish = function() {
+          $location.path('/wish-form');
+          var user = currentUser();
+          if(user){
+
+            config = {
+              params: {
+                user_id: user.id,
+                access_token: user.amz_access_token
+              }
             }
+
+            $http.post(API.BASE_URL+API.DRAFT_WISH_PATH, $scope.starredProducts, config)
+            .then(function(response){
+              $scope.draft_wish = response.data;
+              console.log($scope.draft_wish);
+            })//END OF PROMISE
+
           }else{
             console.log("You must sign up");
             //TODO prompt sign up modal
-          }
-
+          } //else
         }
-      }//end of controller
-      // controller: function ($scope) {
 
+
+      }//end of controller
     })//END OF TOP-WISHES
 
     .when ('/user-wishes', {
@@ -63,13 +75,12 @@
         var user = currentUser();
 
         if(user){
-          var config = {
-            headers: {
-              x_wishcastr_user_id: user.id,
-              x_wishcastr_access_token: user.amz_access_token,
+          $http.get(API.BASE_URL+API.WISHES_PATH, {
+            params: {
+              user_id: user.id,
+              access_token: user.amz_access_token
             }
-          };
-          $http.get(API.BASE_URL+API.WISHES_PATH, config)
+          })
           .then(function(response){
             $scope.wishes = response.data;
           })//END OF PROMISE
@@ -81,21 +92,58 @@
 
     .when ('/results', {
       templateUrl: 'partials/results.html',
-      controller: function(Search){
+      controller: function(Search, $location, $scope){
+        $scope.wishForm = function() {          //ON CLICK TAKES YOU FROM /RESULTS
+          $location.path('/wish-form');         //TO /WISH-FORM
+        }
         var products = this;
 
         products.results = function(){
           return Search.results;
+
+
         };
-      },
+      }, //END CONTROLLER
       controllerAs: 'products'
     })//END OF RESULTS PARTIAL
 
     .when ('/wish-form', {
-      templateUrl: 'partials/wish-form.html'
+      templateUrl: 'partials/wish-form.html',
+      controller: function($location, $scope, $http, API) {
+        $scope.submitWish = function() {
+          $location.path('/user-wishes');
+        };//SUBMITWISH
+
+        u = currentUser();
+
+        // var config = {
+        //   // headers: {
+        //   //   x_wishcastr_user_id: u.id,
+        //   //   x_wishcastr_access_token: u.amz_access_token,
+        //   // }
+        // };
+
+        $http.get(API.BASE_URL+API.DRAFT_WISH_PATH, {
+          params: {user_id: u.id, access_token: u.amz_access_token}
+        } )
+        .then(function(response){
+          $scope.draft_wish = response.data;
+          console.log($scope.draft_wish);
+
+        })
+
+      }//END CONTROLLER
     })//END WISH-FORM
 
   })//END OF MODULE
+
+  .controller('Hello', function($scope) {
+    if (currentUser() !== null) {
+      $scope.name = currentUser().name;
+    }
+
+  })//END CONTROLLER HELLO
+
 
 
   .controller('SearchController', function($http, Search, API, $location){
@@ -124,10 +172,9 @@
   })
   .value('Search', {
     query: '',
-    results: [
-      // { title: 'Bad Robot', current_price: '123.45' }
-    ],
+    results: [],
   })
+
 
 })(); //END OF IFFE
 
@@ -162,6 +209,8 @@
     amazon.Login.logout();
     docCookies.removeItem('user');
     toggleLoginDisplay();
+    location.path('/top-wishes');  //FIXME: MAYBE?
+
   };
 
   window.doAmazonLogin = function(){
@@ -173,7 +222,7 @@
         console.log('oauth error ' + response.error);
         return;
       }
-
+      console.log(response);
       var userAccessToken = response.access_token;
 
       amazon.Login.retrieveProfile(userAccessToken, function(response) {
@@ -184,10 +233,12 @@
         u.amz_id = response.profile.CustomerId.substr(response.profile.CustomerId.lastIndexOf('.') + 1);
         docCookies.setItem('user', JSON.stringify(u));
         setTimeout(window.doRailsLogin(u), 1);
-      });
+      }); //END RETREVEPROFILE
 
-    });
-  };
+    }); //END LOGIN.AUTHORIZE
+    // $window.location.reload(); //FIXME: DOESN'T BREAK CODE BUT DOESN'T SOLVE RELOAD PROBLEM FOR HELLO CTLR
+
+  }; //END DOAMAZONLOGIN
 
   window.doRailsLogin = function(u){
     var BASEURL = "//wishcastr-staging.herokuapp.com/login/amazon.json";
@@ -214,9 +265,12 @@
     if(currentUser() === null) { //NO USER LOGGED IN
       $("#amazon-login").css("display", "block");
       $("#amazon-logout").css("display", "none");
+      $('#welcome').addClass('hidden'); //TODO: DELETE ME IF WELCOME DOESN'T WORK
+
     }else{ //USER LOGGED IN
       $('#amazon-login').css("display", "none");
       $("#amazon-logout").css("display", "block");
+      $('#welcome').removeClass('hidden'); //TODO: DELETE ME IF WELCOME DOESN'T WORK
     }
   };
 
@@ -224,12 +278,8 @@
     toggleLoginDisplay();
   })
 
+  // $(window).scroll(function(){
+  //     $(".add-wish").css("bottom",Math.max(20,0-$(this).scrollBottom()));
+  // });
 
-
-
-})();
-
-;(function(){
-
-
-})();//END IFFE
+})(); //END IFFE
