@@ -14,7 +14,7 @@ class WishesController < ApplicationController
     if user && user.amz_access_token == params[:access_token]
       @wish = user.draft_wish
         if @wish
-          render :show, status: :success
+          render :show, status: :ok
         else
           @wish.create(user_id: user.id)
           if @wish.save
@@ -42,7 +42,7 @@ class WishesController < ApplicationController
           @wish.products << product
         end
       end
-      render :show, status: :success
+      render :show, status: :ok
     else
       render inline: {error: "not authorized"}.to_json, status: :unauthorized
     end
@@ -53,7 +53,7 @@ class WishesController < ApplicationController
   def show
     user = User.find(params[:user_id])
     if user && user.amz_access_token == params[:access_token]
-      render :show, status: :success
+      render :show, status: :ok
     end
   end
 
@@ -96,7 +96,7 @@ class WishesController < ApplicationController
     user = User.find(params[:user_id])
     if user && user.amz_access_token == params[:access_token]
       @wish.destroy
-      render inline: {success: "Success"}.to_json, status: :success
+      render inline: {success: "Success"}.to_json, status: :ok
     else
       render inline: {error: "Page not found"}, status: :not_found
     end
