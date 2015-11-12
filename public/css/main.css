@@ -2157,6 +2157,8 @@ body:after {
       border: none;
       color: #fff;
       border-radius: 3px; }
+      .container .nav-header button:hover {
+        background-color: #379b9b; }
   .container .search .color-bar {
     display: inline-block;
     width: 100%;
@@ -2892,6 +2894,43 @@ section.privacy {
     margin-bottom: 50px;
     padding-top: 10px;
     padding-bottom: 10px; }
+    .wish-form .create-wish .form-item .img-sizing {
+      width: 260px;
+      height: 150px;
+      overflow: hidden;
+      margin: 0 auto; }
+      .wish-form .create-wish .form-item .img-sizing img {
+        display: block;
+        margin: 0 auto;
+        margin-top: 20px;
+        margin-bottom: 15px;
+        max-width: 100%;
+        max-height: 100%; }
+    .wish-form .create-wish .form-item .product-txt {
+      padding-top: 4%;
+      text-decoration: none; }
+      .wish-form .create-wish .form-item .product-txt h3 {
+        display: block;
+        margin: 0 10px;
+        margin-left: 0;
+        color: #068383;
+        font-size: 16pt;
+        margin-bottom: 10px; }
+      .wish-form .create-wish .form-item .product-txt p {
+        display: block;
+        margin: 0 10px;
+        color: #068383;
+        font-size: 12pt;
+        margin-bottom: 10px; }
+      .wish-form .create-wish .form-item .product-txt .price {
+        font-size: 18pt;
+        margin-top: 14px;
+        font-size: 14pt;
+        color: #064583;
+        font-weight: bold; }
+      .wish-form .create-wish .form-item .product-txt .descr {
+        display: block;
+        font-size: 12pt; }
     .wish-form .create-wish h4 {
       font-size: 14pt;
       margin-bottom: 10px;
@@ -2902,7 +2941,8 @@ section.privacy {
       background-color: #fff; }
       .wish-form .create-wish .currency input {
         border: 0;
-        background-color: transparent; }
+        background-color: transparent;
+        color: #064583; }
     .wish-form .create-wish button {
       background-color: #068383;
       border: none;
@@ -2914,10 +2954,15 @@ section.privacy {
       margin: 0 auto;
       margin-top: 40px;
       margin-bottom: 15px; }
+      .wish-form .create-wish button:hover {
+        background-color: #379b9b; }
     .wish-form .create-wish .cancel {
       color: #064583;
       text-decoration: none;
-      margin-top: 15px; }
+      margin-top: 15px;
+      cursor: pointer; }
+      .wish-form .create-wish .cancel:hover {
+        text-decoration: underline; }
 
 /* Icon Grow */
 .hvr-icon-grow {
