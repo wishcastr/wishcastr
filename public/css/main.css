@@ -2996,6 +2996,70 @@ section.privacy {
   -webkit-transform: scale(1.3) translateZ(0);
   transform: scale(1.3) translateZ(0); }
 
+.user-wishes-list {
+  margin: 0 auto;
+  text-align: center;
+  width: 100%; }
+  .user-wishes-list h2 {
+    font-size: 25pt;
+    margin-bottom: 10px;
+    color: #064583; }
+  .user-wishes-list p {
+    font-size: 14pt;
+    color: #068383; }
+  .user-wishes-list ul {
+    list-style: none;
+    width: 100%;
+    padding: 0;
+    margin-left: 109px;
+    margin-top: 50px; }
+    .user-wishes-list ul li {
+      border: 2px solid #fff;
+      background-color: #f2f2f2;
+      width: 20%;
+      height: 330px;
+      float: left;
+      display: inline-block;
+      border-radius: 5px;
+      margin: 5px; }
+      .user-wishes-list ul li .wish-img-sizing {
+        width: 260px;
+        height: 150px;
+        overflow: hidden;
+        margin: 0 auto; }
+        .user-wishes-list ul li .wish-img-sizing img {
+          display: block;
+          margin: 0 auto;
+          margin-top: 20px;
+          margin-bottom: 15px;
+          max-width: 100%;
+          max-height: 100%; }
+      .user-wishes-list ul li .wishes-list-txt {
+        padding-top: 4%;
+        text-decoration: none; }
+        .user-wishes-list ul li .wishes-list-txt h3 {
+          display: block;
+          margin: 0 10px;
+          margin-left: 0;
+          color: #068383;
+          font-size: 16pt;
+          margin-bottom: 10px; }
+        .user-wishes-list ul li .wishes-list-txt p {
+          display: block;
+          margin: 0 10px;
+          color: #068383;
+          font-size: 12pt;
+          margin-bottom: 10px; }
+        .user-wishes-list ul li .wishes-list-txt .price {
+          font-size: 18pt;
+          margin-top: 14px;
+          font-size: 14pt;
+          color: #064583;
+          font-weight: bold; }
+        .user-wishes-list ul li .wishes-list-txt .descr {
+          display: block;
+          font-size: 12pt; }
+
 html {
   width: 100%;
   height: 100%;
@@ -3057,7 +3121,7 @@ html {
  * 2. The use of `table` rather than `block` is only necessary if using
  *    `:before` to contain the top-margins of child elements.
  */
-.clearfix:before, .container .search .color-bar:before, .container footer:before, .lists:before, .lists ul:before, .lists ul li:before, .result-list ul li:before, .about div.awesome-people:before,
+.clearfix:before, .container .search .color-bar:before, .container footer:before, .lists:before, .lists ul:before, .lists ul li:before, .result-list ul li:before, .about div.awesome-people:before, .user-wishes-list:before, .user-wishes-list ul:before, .user-wishes-list ul li:before,
 .clearfix:after,
 .container .search .color-bar:after,
 .container footer:after,
@@ -3065,13 +3129,16 @@ html {
 .lists ul:after,
 .lists ul li:after,
 .result-list ul li:after,
-.about div.awesome-people:after {
+.about div.awesome-people:after,
+.user-wishes-list:after,
+.user-wishes-list ul:after,
+.user-wishes-list ul li:after {
   content: " ";
   /* 1 */
   display: table;
   /* 2 */ }
 
-.clearfix:after, .container .search .color-bar:after, .container footer:after, .lists:after, .lists ul:after, .lists ul li:after, .result-list ul li:after, .about div.awesome-people:after {
+.clearfix:after, .container .search .color-bar:after, .container footer:after, .lists:after, .lists ul:after, .lists ul li:after, .result-list ul li:after, .about div.awesome-people:after, .user-wishes-list:after, .user-wishes-list ul:after, .user-wishes-list ul li:after {
   clear: both; }
 
 /* ==========================================================================
