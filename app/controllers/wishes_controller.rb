@@ -32,22 +32,23 @@ class WishesController < ApplicationController
     user = User.find(params[:user_id])
     if user && user.amz_access_token == params[:access_token]
       @wish = user.draft_wish
-      product = Product.find_or_create_by(sku: params[:product][:sku], type: params[:product][:type])
-      if @wish
-        @wish.products << product unless @wish.product_duplicate?(product[:sku], product[:type])
-        logger.debug(@wish)
-        render :show, status: :success
-      else
-        @wish.new(user_id: user.id)
-        @wish.products << product
-        if @wish.save
-          render :show, status: :created
+      products = params[:products]
+      products.each do |p|
+        product = Product.find_or_create_by(sku: p[:sku], type: p[:type])
+        if @wish
+          @wish.products << product unless @wish.product_duplicate?(product.sku, product.type)
         else
-          render json: @wish.errors
+          @wish = Wish.create(user_id: user.id)
+          @wish.products << product
         end
       end
+      render :show, status: :success
+    else
+      render inline: {error: "not authorized"}.to_json, status: :unauthorized
     end
   end
+
+
   # GET /wishes/1.json
   def show
     user = User.find(params[:user_id])
@@ -113,8 +114,7 @@ class WishesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wish_params
-      params.require(:wish).permit(:user_id, :threshold_price, :category, :query, :name,
-      {product: [:type, :sku, :image_large, :image_thumbnail, :title, :brand, :description, :affiliate_url]})
+      params.require(:wish).permit(:user_id, :threshold_price, :category, :query, :name, products: [:sku, :type, :image_large, :image_thumbnail, :title, :brand, :description, :affiliate_url])
     end
 
 end
