@@ -119,6 +119,7 @@ lacey = User.create!(
     user_id: lacey.id,
     threshold_price: rand(15.00..500.00).round(2),
     category: Faker::Lorem.word,
+    saved: true,
     query: item + "-query")
 end
 
@@ -137,6 +138,7 @@ dame = User.create!(
     user_id: dame.id,
     threshold_price: rand(60.00..500.00).round(2),
     category: Faker::Lorem.word,
+    saved: true,
     query: item + "-query")
 end
 
@@ -145,6 +147,7 @@ wishy = Wish.create!(
   user_id: dame.id,
   threshold_price: 500,
   category: Faker::Lorem.word,
+  saved: true,
   query: "Black Ops Game")
 
 sample_product = Product.find_by(sku: "B00VU4J8YY")

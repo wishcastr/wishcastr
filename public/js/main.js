@@ -103,10 +103,13 @@
 
     .when ('/wish-form', {
       templateUrl: 'partials/wish-form.html',
-      controller: function($location, $scope, $http, API) {
+      controller: function($location, $scope, $window, $http, API) {
         $scope.submitWish = function() {
           $location.path('/user-wishes');
         };//SUBMITWISH
+        $scope.goBack = function() {
+          $window.history.back();
+        };//goBack
 
         user = currentUser();
 
@@ -118,9 +121,11 @@
         })
         .then(function(response){
           $scope.draft_wish = response.data;
-        })
+          console.log($scope.draft_wish);
 
-      }//END CONTROLLER
+        })//END PROMISE
+      },//END CONTROLLER
+
     })//END WISH-FORM
 
   })//END OF MODULE
