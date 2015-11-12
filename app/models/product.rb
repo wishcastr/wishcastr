@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  has_many :wishes, through: :products_wish
+  has_many :wishes, through: :products_wishes
   has_many :products_wishes
   has_many :price_histories
 
@@ -18,5 +18,21 @@ class Product < ActiveRecord::Base
 
   def self.search
     raise NotImplementedError, 'Need to Implement on subClass'
+  end
+
+  def self.item_lookup
+    raise NotImplementedError, 'Need to Implement on subClass'
+  end
+
+  def self.update_prices
+    Product.all.each do |product|
+      updated_product = product.class.item_lookup(product.sku)
+      if updated_product[:sku] == product.sku
+        PriceHistory.create(product_id: product.id, price: updated_product[:current_price], date: DateTime.now())
+      else
+        logger.debug("How did this happen? Amazon you dumb")
+      end
+      sleep 1.0
+    end
   end
 end

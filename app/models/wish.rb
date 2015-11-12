@@ -8,4 +8,12 @@ class Wish < ActiveRecord::Base
     self.products.any? { |p| p.sku == sku && p.type == type }
   end
 
+  def find_catches
+    catches = []
+    self.products.each do |product|
+      catches << product if product.current_price <= self.threshold_price
+    end
+    catches
+  end
+
 end

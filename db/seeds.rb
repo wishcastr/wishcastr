@@ -1,17 +1,17 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 
-100.times do
-  User.create!(
-    name: Faker::Name.name,
-    email: Faker::Internet.email,
-    postal_code: Faker::Address.postcode,
-    amz_id: rand(999999999),
-    amz_raccess_token: Faker::Internet.password,
-    amz_access_token: rand(999999999)
-  )
+# 10.times do
+#   User.create!(
+#     name: Faker::Name.name,
+#     email: Faker::Internet.safe_email,
+#     postal_code: Faker::Address.postcode,
+#     amz_id: rand(999999999),
+#     amz_raccess_token: Faker::Internet.password,
+#     amz_access_token: rand(999999999)
+#   )
 
-end
+# end
 
 samples = [
   {sku: "1250067057", affiliate_url: "http://www.amazon.com/Extreme-Ownership-U-S-Navy-SEALs/dp/1250067057%3FSubscriptionId%3DAKIAJ64U7F3OSBNH7ERQ%26tag%3Dwishcastr-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3D1250067057", brand: "", title: "Extreme Ownership: How U.S. Navy SEALs Lead and Win", image_large: "http://ecx.images-amazon.com/images/I/41eQVmcqSpL.jpg", image_thumbnail: "http://ecx.images-amazon.com/images/I/41eQVmcqSpL._SL110_.jpg", description: "An instant New York Times bestseller. In Extreme Ownership, Jocko Willink and Leif Babin share hard-hitting, Navy SEAL combat stories that translate into lessons for business and life. With riveting first-hand accounts of making high-pressure decisions as Navy SEAL battlefield leaders, this book is equally gripping for leaders who seek to dominate other arenas. Jocko and Leif served together in SEAL Task Unit Bruiser, the most highly decorated Special Operations unit from the war in Iraq. Their efforts contributed to the historic triumph for U.S. forces in Ramadi. Through those difficult months of sustained combat, Jocko, Leif and their SEAL brothers learned that leadership--at every level--is the most important thing on the battlefield. They started Echelon Front to teach these same leadership principles to companies across industries throughout the business world that want to build their own high-performance, winning teams. This book explains the SEAL leadership concepts crucial to accomplishing the most difficult missions in combat and how to apply them to any group, team, or organization. It provides the reader with Jocko and Leif's formula for success: the mindset and guiding principles that enable SEAL combat units to achieve extraordinary results. It demonstrates how to apply these directly to business and life to likewise achieve victory."},
@@ -70,23 +70,23 @@ products = AmazonProduct.all
     product_id: products.sample.id,
     currency: "USD",
     price: Faker::Commerce.price,
-    date: Faker::Date.between(1.days.ago, Date.today))
+    date: Faker::Date.between(100.days.ago, Date.today))
 end
 
-300.times do
-  wish = Wish.create(
-    name: Faker::Commerce.product_name,
-    user_id: rand(1..100),
-    threshold_price: rand(15.00..500.00).round(2),
-    category: Faker::Lorem.word,
-    query: Faker::Lorem.word)
-  number_of_products = (1..10).to_a.sample
-  number_of_products.times do
-    ProductsWish.create(
-      wish_id: wish.id,
-      product_id: products.sample.id)
-  end
-end
+# 300.times do
+#   wish = Wish.create(
+#     name: Faker::Commerce.product_name,
+#     user_id: rand(1..100),
+#     threshold_price: rand(15.00..500.00).round(2),
+#     category: Faker::Lorem.word,
+#     query: Faker::Lorem.word)
+#   number_of_products = (1..10).to_a.sample
+#   number_of_products.times do
+#     ProductsWish.create(
+#       wish_id: wish.id,
+#       product_id: products.sample.id)
+#   end
+# end
 
 david = User.create!(
   name: "David Bernheisel",
@@ -124,18 +124,29 @@ end
 
 dame = User.create!(
   name: "Da-Me Kim",
-  email: "da-me@wishcastr.com",
+  email: "damekim1206@gmail.com",
   postal_code: nil,
   amz_id: "AEUT4REP2B6FMB7V4V6VFQ2AJJVQ",
   amz_raccess_token: nil,
   amz_access_token: ENV["AMZ_DAME_TOKEN"])
 
-["Jackie Chan movie", "Magic the Gathering Booster Box", "Bruce Lee signed poster", "Back to the Future shoes", "hoverboard", "foldgers coffee", "horse mask"].each do |item|
+
+["Jackie Chan movie", "Magic the Gathering Booster Box", "Call of Duty Black-ops", "Back to the Future shoes", "hoverboard", "foldgers coffee", "horse mask"].each do |item|
   Wish.create!(
     name: item + "-name",
     user_id: dame.id,
-    threshold_price: rand(15.00..500.00).round(2),
+    threshold_price: rand(60.00..500.00).round(2),
     category: Faker::Lorem.word,
     query: item + "-query")
 end
 
+wishy = Wish.create!(
+  name: "Black-ops",
+  user_id: dame.id,
+  threshold_price: 500,
+  category: Faker::Lorem.word,
+  query: "Black Ops Game")
+
+sample_product = Product.find_by(sku: "B00VU4J8YY")
+PriceHistory.create!(product_id: sample_product.id, date: DateTime.now() - 1.day, price: 10000)
+wishy.products << sample_product

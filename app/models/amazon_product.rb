@@ -11,20 +11,34 @@ class AmazonProduct < Product
 
   # See this resource:
   #  http://webservices.amazon.com/scratchpad/index.html#http://webservices.amazon.com/onca/xml?Service=AWSECommerceService&Operation=ItemSearch&SubscriptionId=AKIAJ64U7F3OSBNH7ERQ&AssociateTag=wishcastr-20&SearchIndex=All&Keywords=nintendo wii&ResponseGroup=Images,ItemAttributes,ItemIds,OfferSummary
-  def self.generate_amazon_uri(query)
+  def self.generate_amazon_uri(query, operation = "ItemSearch")
     key = ENV['AWS_ACCESS_KEY_ID']
     secret = ENV['AWS_SECRET_ACCESS_KEY']
+    tag = "wishcastr-20"
+    params = {}
 
     # The region you are interested in
-    params = {
-      "Service" => "AWSECommerceService",
-      "Operation" => "ItemSearch",
-      "AWSAccessKeyId" => key,
-      "AssociateTag" => "wishcaster-20",
-      "SearchIndex" => "All",
-      "Keywords" => query,
-      "ResponseGroup" => "Images,ItemAttributes,ItemIds,OfferListings,Offers"
-    }
+    if operation == "ItemSearch"
+      params = {
+        "Service" => "AWSECommerceService",
+        "Operation" => operation,
+        "AWSAccessKeyId" => key,
+        "AssociateTag" => tag,
+        "SearchIndex" => "All",
+        "Keywords" => query,
+        "ResponseGroup" => "Images,ItemAttributes,ItemIds,OfferListings,Offers"
+      }
+    elsif operation == "ItemLookup"
+      params = {
+        "Service" => "AWSECommerceService",
+        "Operation" => operation,
+        "AWSAccessKeyId" => key,
+        "AssociateTag" => tag,
+        "ItemId" => query,
+        "IdType" => "ASIN",
+        "ResponseGroup" => "Images,ItemAttributes,Offers"
+      }
+    end
 
     # Set current timestamp if not set
     params["Timestamp"] = Time.now.gmtime.iso8601 if !params.key?("Timestamp")
@@ -43,19 +57,19 @@ class AmazonProduct < Product
     # Generate the signed URL
     request_url = "http://#{ENDPOINT}#{REQUEST_URI}?#{canonical_query_string}&Signature=#{URI.escape(signature, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))}"
 
-    logger.debug("Signed URL: \"#{request_url}\"")
+    # logger.debug("Signed URL: \"#{request_url}\"")
     return request_url
   end
 
   def self.search(query)
-    doc = Nokogiri.XML(open(generate_amazon_uri(query)))
+    doc = Nokogiri.XML(open(generate_amazon_uri(query, "ItemSearch")))
     doc.remove_namespaces!
 
     search_results = []
-    logger.debug(doc)
+    # logger.debug(doc)
 
     doc.xpath("/ItemSearchResponse[1]/Items[1]/Item").each do |item|
-      logger.debug(item)
+      # logger.debug(item)
       result = {}
 
       result[:id] = nil
@@ -67,7 +81,7 @@ class AmazonProduct < Product
       result[:brand] = item.xpath("ItemAttributes[1]/Brand[1]").text || ""
       result[:current_price] = item.xpath("OfferSummary[1]/LowestNewPrice[1]/Amount[1]").text.to_f/100
       result[:current_price] = "Not Available" unless result[:current_price]
-      result[:description] = item.xpath("ItemAttributes[1]/Edition[1]").text || ""
+      result[:description] = item.xpath("ItemAttributes[1]/Edition[1]").text || "No Description"
       result[:affiliate_url] = item.xpath("DetailPageURL[1]").text
       item.xpath("ItemAttributes[1]/Feature").each do |feature|
         the_feature = feature.text
@@ -80,5 +94,32 @@ class AmazonProduct < Product
     search_results
   end
 
+  def self.item_lookup(sku)
+    doc = Nokogiri.XML(open(generate_amazon_uri(sku, "ItemLookup")))
+    doc.remove_namespaces!
+
+    product = {}
+    # logger.debug(doc)
+
+    item = doc.xpath("/ItemLookupResponse[1]/Items[1]/Item[1]")
+    # logger.debug(item)
+
+    product[:id] = nil
+    product[:type] = "AmazonProduct"
+    product[:sku] = item.xpath("ASIN[1]").text
+    product[:image_large] = item.xpath("LargeImage[1]/URL[1]").text || ""
+    product[:title] = item.xpath("ItemAttributes[1]/Title[1]").text.titleize
+    product[:brand] = item.xpath("ItemAttributes[1]/Brand[1]").text || ""
+    product[:current_price] = item.xpath("OfferSummary[1]/LowestNewPrice[1]/Amount[1]").text.to_f/100
+    product[:current_price] = "Not Available" unless product[:current_price]
+    product[:description] = item.xpath("ItemAttributes[1]/Edition[1]").text || "No Description"
+    product[:affiliate_url] = item.xpath("DetailPageURL[1]").text
+    item.xpath("ItemAttributes[1]/Feature").each do |feature|
+      the_feature = feature.text
+      the_feature.prepend("\n") unless product[:description].blank?
+      product[:description] += the_feature
+    end
+    product
+  end
 
 end
