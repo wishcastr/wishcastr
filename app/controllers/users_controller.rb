@@ -16,10 +16,12 @@ class UsersController < ApplicationController
     else
       begin
         @user = User.find_or_create_by(amz_id: user_params[:amz_id]) do |u|
-          u.name = user_params[:name]
-          u.email = user_params[:email]
-          u.provider = "Amazon"
-          u.amz_access_token = user_params[:amz_access_token]
+          u.update(
+            name: user_params[:name],
+            email: user_params[:email],
+            provider: "Amazon",
+            amz_access_token: user_params[:amz_access_token]
+          )
         end
       rescue ActiveRecord::RecordNotUnique
         retry
