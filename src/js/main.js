@@ -68,13 +68,9 @@
         var user = currentUser();
 
         if(user){
-          var config = {
-            headers: {
-              x_wishcastr_user_id: user.id,
-              x_wishcastr_access_token: user.amz_access_token,
-            }
-          };
-          $http.get(API.BASE_URL+API.WISHES_PATH, config)
+          $http.get(API.BASE_URL+API.WISHES_PATH, {
+            params: {user_id: user.id, access_token: user.amz_access_token}
+          })
           .then(function(response){
             $scope.wishes = response.data;
           })//END OF PROMISE

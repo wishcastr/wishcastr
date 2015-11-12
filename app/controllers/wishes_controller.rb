@@ -3,8 +3,8 @@ class WishesController < ApplicationController
 
   # GET /wishes.json
   def index
-    user = User.find(request.headers["x-wishcastr-user-id"])
-    if user && user.amz_access_token == request.headers["x-wishcastr-access-token"]
+    user = User.find(params[:user_id])
+    if user && user.amz_access_token == params[:access_token]
       @wishes = user.wishes
     end
   end
@@ -29,8 +29,8 @@ class WishesController < ApplicationController
   end
 
   def draft_wish_add
-    user = User.find(request.headers["x-wishcastr-user-id"])
-    if user && user.amz_access_token == request.headers["x-wishcastr-access-token"]
+    user = User.find(params[:user_id])
+    if user && user.amz_access_token == params[:access_token]
       @wish = user.draft_wish
       product = Product.find_or_create_by(sku: params[:product][:sku], type: params[:product][:type])
       if @wish
@@ -50,16 +50,16 @@ class WishesController < ApplicationController
   end
   # GET /wishes/1.json
   def show
-    user = User.find(request.headers["x-wishcastr-user-id"])
-    if user && user.amz_access_token == request.headers["x-wishcastr-access-token"]
+    user = User.find(params[:user_id])
+    if user && user.amz_access_token == params[:access_token]
       render :show, status: :success
     end
   end
 
   # POST /wishes.json
   def create
-    user = User.find(request.headers["x-wishcastr-user-id"])
-    if user && user.amz_access_token == request.headers["x-wishcastr-access-token"]
+    user = User.find(params[:user_id])
+    if user && user.amz_access_token == params[:access_token]
       @wish = Wish.new(wish_params)
       @wish.user_id = user.id
       if @wish.save
@@ -75,8 +75,8 @@ class WishesController < ApplicationController
   # PATCH/PUT /wishes/1.json
   def update
     user = User.find(@wish.user_id)
-    if user.id == request.headers["x-wishcastr-user-id"]
-      if user.amz_access_token == request.headers["x-wishcastr-access-token"]
+    if user.id == params[:user_id]
+      if user.amz_access_token == params[:access_token]
         if @wish.update(wish_params)
           render :show, status: :ok, location: @wish
         else
@@ -92,8 +92,8 @@ class WishesController < ApplicationController
 
   # DELETE /wishes/1.json
   def destroy
-    user = User.find(request.headers["x-wishcastr-user-id"])
-    if user && user.amz_access_token == request.headers["x-wishcastr-access-token"]
+    user = User.find(params[:user_id])
+    if user && user.amz_access_token == params[:access_token]
       @wish.destroy
       render inline: {success: "Success"}.to_json, status: :success
     else

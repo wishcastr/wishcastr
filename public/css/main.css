@@ -2117,12 +2117,23 @@ body:after {
       color: #064583;
       font-weight: bold;
       margin-left: 10px;
-      margin-top: 10px; }
+      margin-top: 10px;
+      width: 50%;
+      float: left; }
+    .container .nav-header .meta {
+      float: left;
+      display: inline-block;
+      width: 25%;
+      margin-top: 10px;
+      color: #064583;
+      font-size: 16pt; }
+      .container .nav-header .meta .hidden {
+        display: none; }
     .container .nav-header .login {
       display: inline-block;
-      margin-right: 40px;
-      margin-top: 10px;
-      float: right; }
+      margin-top: 30px;
+      float: left;
+      width: 10%; }
       .container .nav-header .login #amazon-root {
         cursor: pointer;
         background: url(../img/amazon_login_76x32.png) no-repeat;
@@ -2192,21 +2203,42 @@ body:after {
     .container .list-view .fa-spin {
       -webkit-animation: fa-spin 2s infinite linear;
       animation: fa-spin 2s infinite linear;
-      margin: 0 auto; }
+      margin: 0 auto;
+      font-size: 20pt; }
   .container footer {
     background-color: #F9BE12;
     padding-top: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 15px;
     margin-top: 60px; }
-    .container footer a {
+    .container footer .info-pgs {
+      width: 50%;
+      float: left;
+      margin-top: 10px; }
+      .container footer .info-pgs a {
+        text-decoration: none;
+        color: #fdf2cf;
+        font-size: 14pt;
+        margin-left: 10px;
+        margin-right: 10px; }
+        .container footer .info-pgs a::before {
+          content: '\f005';
+          font-family: FontAwesome;
+          margin-right: 8px; }
+        .container footer .info-pgs a:hover {
+          color: #068383; }
+    .container footer #gihub {
+      float: right;
       text-decoration: none;
-      color: #064583;
-      margin-left: 10px;
-      margin-right: 10px; }
-      .container footer a::before {
-        content: '\f005';
-        font-family: FontAwesome;
-        margin-right: 8px; }
+      margin-right: 25px;
+      font-family: FontAwesome;
+      font-size: 25pt;
+      width: 48%;
+      text-align: right; }
+      .container footer #gihub a {
+        text-decoration: none;
+        color: #fdf2cf; }
+        .container footer #gihub a:hover {
+          color: #068383; }
 
 .lists {
   margin: 0 auto;
@@ -2238,11 +2270,18 @@ body:after {
         float: left;
         text-decoration: none;
         width: 100%; }
-        .lists ul li a img {
-          display: block;
-          margin: 0 auto;
-          margin-top: 10px;
-          margin-bottom: 15px; }
+        .lists ul li a .img-sizing {
+          width: 260px;
+          height: 150px;
+          overflow: hidden;
+          margin: 0 auto; }
+          .lists ul li a .img-sizing img {
+            display: block;
+            margin: 0 auto;
+            margin-top: 20px;
+            margin-bottom: 15px;
+            max-width: 100%;
+            max-height: 100%; }
         .lists ul li a .product-txt {
           padding-top: 4%;
           text-decoration: none; }
@@ -2251,23 +2290,23 @@ body:after {
             margin: 0 10px;
             margin-left: 0;
             color: #068383;
-            font-size: 20pt;
+            font-size: 16pt;
             margin-bottom: 10px; }
           .lists ul li a .product-txt p {
             display: block;
             margin: 0 10px;
             color: #068383;
-            font-size: 18pt;
+            font-size: 12pt;
             margin-bottom: 10px; }
           .lists ul li a .product-txt .price {
             font-size: 18pt;
             margin-top: 14px;
-            font-size: 18pt;
+            font-size: 14pt;
             color: #064583;
             font-weight: bold; }
           .lists ul li a .product-txt .descr {
             display: block;
-            font-size: 14pt; }
+            font-size: 12pt; }
           .lists ul li a .product-txt .star-link {
             color: #f9be12;
             font-size: 25pt;
@@ -2278,6 +2317,28 @@ body:after {
               font-family: Font-Awesome;
               display: inline-block;
               vertical-align: middle; }
+  .lists .add-wish {
+    font-family: FontAwesome;
+    font-size: 20pt;
+    color: #f9be12;
+    background-color: #f2f2f2;
+    float: right;
+    display: inline;
+    top: 90%;
+    right: 20px;
+    position: fixed;
+    padding-left: 2.5%;
+    padding-right: 2.5%; }
+    .lists .add-wish:hover {
+      color: #f9be12;
+      padding: 0; }
+      .lists .add-wish:hover .drp-down {
+        display: block; }
+    .lists .add-wish .drp-down {
+      display: none;
+      font-size: 12pt;
+      color: #064583;
+      background-color: none; }
 
 .result-list {
   margin: 0 auto;
@@ -2340,6 +2401,28 @@ body:after {
               vertical-align: middle; }
           .result-list ul li a .product-txt .descr {
             display: block; }
+  .result-list .add-wish {
+    font-family: FontAwesome;
+    font-size: 20pt;
+    color: #f9be12;
+    background-color: #f2f2f2;
+    float: right;
+    display: inline;
+    top: 90%;
+    right: 20px;
+    position: fixed;
+    padding-left: 2.5%;
+    padding-right: 2.5%; }
+    .result-list .add-wish:hover {
+      color: #f9be12;
+      padding: 0; }
+      .result-list .add-wish:hover .drp-down {
+        display: block; }
+    .result-list .add-wish .drp-down {
+      display: none;
+      font-size: 12pt;
+      color: #064583;
+      background-color: none; }
 
 .col-1-3 {
   width: 33.33333%;
@@ -2857,6 +2940,13 @@ section.privacy {
   -webkit-transform: scale(1.3) translateZ(0);
   transform: scale(1.3) translateZ(0); }
 
+html {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden; }
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */
@@ -2911,9 +3001,10 @@ section.privacy {
  * 2. The use of `table` rather than `block` is only necessary if using
  *    `:before` to contain the top-margins of child elements.
  */
-.clearfix:before, .container .search .color-bar:before, .lists:before, .lists ul:before, .lists ul li:before, .result-list ul li:before, .about div.awesome-people:before,
+.clearfix:before, .container .search .color-bar:before, .container footer:before, .lists:before, .lists ul:before, .lists ul li:before, .result-list ul li:before, .about div.awesome-people:before,
 .clearfix:after,
 .container .search .color-bar:after,
+.container footer:after,
 .lists:after,
 .lists ul:after,
 .lists ul li:after,
@@ -2924,7 +3015,7 @@ section.privacy {
   display: table;
   /* 2 */ }
 
-.clearfix:after, .container .search .color-bar:after, .lists:after, .lists ul:after, .lists ul li:after, .result-list ul li:after, .about div.awesome-people:after {
+.clearfix:after, .container .search .color-bar:after, .container footer:after, .lists:after, .lists ul:after, .lists ul li:after, .result-list ul li:after, .about div.awesome-people:after {
   clear: both; }
 
 /* ==========================================================================
