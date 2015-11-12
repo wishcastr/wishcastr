@@ -82,11 +82,11 @@ body:after {
       background-color: #068383; //TEAL
       border: none;
       color: #fff;
-      // padding-left: 2%;
-      // padding-right: 2%;
       border-radius: 3px;
-
-    }
+      &:hover {
+        background-color: #379b9b;
+      }
+    }//BUTTON
   }//END <HEADER>
 
   .search {
