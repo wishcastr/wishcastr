@@ -25,14 +25,14 @@ class Product < ActiveRecord::Base
   end
 
   def self.update_prices
-    Product.all.each do |p|
-      updated_p = Product.item_lookup(p.sku)
-      if updated_p.sku == p.sku
-        PriceHistory.create(sku: p.sku, price: updated_p.current_price, date: Today.now())
+    Product.all.each do |product|
+      updated_product = product.class.item_lookup(product.sku)
+      if updated_product[:sku] == product.sku
+        PriceHistory.create(product_id: product.id, price: updated_product[:current_price], date: DateTime.now())
       else
         logger.debug("How did this happen? Amazon you dumb")
       end
+      sleep 1.0
     end
   end
-
 end

@@ -99,8 +99,10 @@ class AmazonProduct < Product
     doc.remove_namespaces!
 
     product = {}
+    # logger.debug(doc)
 
     item = doc.xpath("/ItemLookupResponse[1]/Items[1]/Item[1]")
+    # logger.debug(item)
 
     product[:id] = nil
     product[:type] = "AmazonProduct"

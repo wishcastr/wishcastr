@@ -5,8 +5,8 @@ class Wish < ActiveRecord::Base
 
   def find_catches
     catches = []
-    self.products.each do |p|
-      catches << p if p.current_price <= self.threshold_price
+    self.products.each do |product|
+      catches << product if product.current_price <= self.threshold_price
     end
     catches
   end
