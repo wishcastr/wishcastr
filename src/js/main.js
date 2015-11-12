@@ -154,7 +154,7 @@
     } // END find
   }) //END CONTROLLER
   .constant('API', {
-    BASE_URL: '//localhost:3000',
+    BASE_URL: '//wishcastr-staging.herokuapp.com',
     SEARCH_PATH: '/products/search.json',
     DRAFT_WISH_PATH: '/wishes/draft.json',
     WISHES_PATH: '/wishes.json',
@@ -228,7 +228,7 @@
   }; //END DOAMAZONLOGIN
 
   window.doRailsLogin = function(u){
-    var BASEURL = "//localhost:3000/login/amazon.json";
+    var BASEURL = "//wishcastr-staging.herokuapp.com/login/amazon.json";
     $.ajax({
       type: "POST",
       url: BASEURL,
