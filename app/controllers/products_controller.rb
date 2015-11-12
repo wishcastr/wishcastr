@@ -56,7 +56,7 @@ class ProductsController < ApplicationController
          wish.update(notified: true)
        end
      end
-     render :inline, {message: 'success'}.to_json
+     render inline: {status: "Success!"}.to_json
   end
 
   private
