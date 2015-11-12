@@ -2,6 +2,9 @@
   <h2>User Wishes</h2>
   <ul>
     <li ng-repeat="wish in wishes">
+      <figure class="img-sizing">
+        <img ng-src="{{product.image_thumbnail}}" />
+      </figure>
       <h3>{{wish.name}}</h3>
       <h4>{{wish.threshold_price | currency}}</h4>
     </li>
