@@ -9,7 +9,7 @@
       <div class="product-txt">
         <h3 class="product-title">{{product.title | limitTo: 25}}</h3>
         <p class="price">
-          {{product.current_price | currency}}
+          {{product.threshold_price | currency}}
         </p>
         <p class="descr">
           {{product.description | limitTo: 25}}{{product.description.length > 25 ? '...' : ''}}
