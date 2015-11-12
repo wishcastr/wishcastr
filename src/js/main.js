@@ -4,127 +4,173 @@
     .when ('/', {
       redirectTo: 'top-wishes'
     })//END OF REDIRECT
+
     .when ('/top-wishes', {
       templateUrl: 'partials/top-wishes.html',
 
-      controller: function ($http, $scope) {
-        $http.get('//wishcastr-staging.herokuapp.com/products/top.json')
-        .then(function(response){
-          $scope.products = response.data;
+      controller: function ($http, $scope, API, $location) {
+        $http.get(API.BASE_URL+API.TOP_WISHES_PATH)
+          .then(function(response){
+            $scope.products = response.data;
         })//END OF PROMISE
+
+        $scope.starredProducts = {products: []};
+
+        $scope.starProduct = function () {
+          // $location.path('/wish-form');
+          var star = $(event.target).closest('.star-link').find('.fa');
+          var p = $(event.target).closest('.product');
+          star.toggleClass('fa-star fa-star-o');
+          var products = $scope.starredProducts.products;
+          var product = {
+            sku: p.attr('data-product-sku'),
+            type: p.attr('data-product-source'),
+            description: p.attr('title'),
+            image_thumbnail: p.find('img').attr('src'),
+            title: p.find('.product-title').text()
+          } //END VAR PRODUCT
+
+          if(star.hasClass('fa-star')){
+            products.push(product);
+          }else{
+            products.splice(products.indexOf(product), 1);
+          }
+        }//END SCOPE FUNCTION
+
+        $scope.draftWish = function() {
+          $location.path('/wish-form');
+          var user = currentUser();
+          if(user){
+
+            config = {
+              params: {
+                user_id: user.id,
+                access_token: user.amz_access_token
+              }
+            };
+
+            $http.post(API.BASE_URL+API.DRAFT_WISH_PATH, $scope.starredProducts, config)
+              .then(function(response){
+                $scope.draft_wish = response.data;
+            })//END OF PROMISE
+
+          }else{
+            console.log("You must sign up");
+            //TODO prompt sign up modal
+          } //else
+        }
+
+
       }//end of controller
     })//END OF TOP-WISHES
+
     .when ('/user-wishes', {
       templateUrl: 'partials/user-wishes.html',
-      controller: function ($http, $scope) {
+      controller: function ($http, $scope, API) {
         var user = currentUser();
 
         if(user){
-          var config = {
-            headers: {
-              x_wishcastr_user_id: user.id,
-              x_wishcastr_access_token: user.amz_access_token,
+          $http.get(API.BASE_URL+API.WISHES_PATH, {
+            params: {
+              user_id: user.id,
+              access_token: user.amz_access_token
             }
-          };
-          $http.get('//wishcastr-staging.herokuapp.com/wishes.json', config)
+          })
           .then(function(response){
             $scope.wishes = response.data;
           })//END OF PROMISE
         }else{
           console.log("Shouldn't see this");
+          //TODO Hide User Wishes link when user is not logged in.
         }
       }//end of controller
     })//END OF USER-WISHES
 
     .when ('/results', {
       templateUrl: 'partials/results.html',
-      controller: function(Search){
+      controller: function(Search, $location, $scope){
+        $scope.wishForm = function() {          //ON CLICK TAKES YOU FROM /RESULTS
+          $location.path('/wish-form');         //TO /WISH-FORM
+        }
         var products = this;
 
         products.results = function(){
           return Search.results;
         };
-      },
+      }, //END CONTROLLER
       controllerAs: 'products'
-    })
-    .when ('/privacy', {
-      templateUrl: 'partials/privacy.html'
-    })
-    .when ('/about', {
-      templateUrl: 'partials/about.html'
-    })//END OF RESULTS//END OF RESULTS
+    })//END OF RESULTS PARTIAL
 
+    .when ('/wish-form', {
+      templateUrl: 'partials/wish-form.html',
+      controller: function($location, $scope, $window, $http, API) {
+        $scope.submitWish = function() {
+          $location.path('/user-wishes');
+          $http.patch(API.BASE_URL + '/wishes/' + $scope.draft_wish.id + ".json", $scope.draft_wish, {
+            params: {
+              user_id: user.id,
+              access_token: user.amz_access_token
+              }//END PARAMS
+            })//END PATCH
+        };//SUBMITWISH
+
+        $scope.goBack = function() {
+          $window.history.back();
+        };//goBack
+
+        user = currentUser();
+
+        $http.get(API.BASE_URL+API.DRAFT_WISH_PATH, {
+          params: {
+            user_id: user.id,
+            access_token: user.amz_access_token
+          }
+        }) //END GET
+        .then(function(response){
+          $scope.draft_wish = response.data;
+          console.log($scope.draft_wish);
+
+        })//END PROMISE
+      }//END CONTROLLER
+
+    })//END WISH-FORM
 
   })//END OF MODULE
 
+  .controller('Hello', function($scope) {
+    if (currentUser() !== null) {
+      $scope.name = currentUser().name;
+    }
+  })//END CONTROLLER HELLO
 
   .controller('SearchController', function($http, Search, API, $location){
     var search = this;
-
     search.query = '';
 
-    //  Capture a submit event for our search form...NG-Submit
     search.find = function(){
 
-      // TODO: Capture the query...
-      //  Make a GET request to the Rails API...
-      // $http({
-      //   method: 'GET', url: API.BASE_URL + API.SEARCH_PATH,
-      //   params: { puppy: 'bad' }
-      // })
-      // GET .../search.json?query=pineapple
       $http.get(API.BASE_URL + API.SEARCH_PATH, {
-        params: {query: search.query}  // Put the query here?
+        params: {query: search.query}
       })
         .then(function(response){
-          //  Attach the results to the `Search` service...
           Search.results = response.data;
           $location.path('/results');
         })
+        search.query = '';
+
     } // END find
   }) //END CONTROLLER
   .constant('API', {
     BASE_URL: '//wishcastr-staging.herokuapp.com',
-    SEARCH_PATH: '/products/search.json'
+    SEARCH_PATH: '/products/search.json',
+    DRAFT_WISH_PATH: '/wishes/draft.json',
+    WISHES_PATH: '/wishes.json',
+    TOP_WISHES_PATH: '/products/top.json'
   })
   .value('Search', {
     query: '',
-    results: [
-      // { title: 'Bad Robot', current_price: '123.45' }
-    ],
+    results: [],
   })
-  // .factory('Search', function($http, API){
-  //   var results = [
-  //     { title: 'Bad Robot', current_price: '123.45' }
-  //   ];
-  //
-  //   return {
-  //     query: '',
-  //     find: function(query){
-  //       // TODO: Make a GET request to the Rails API...
-  //       // TODO: Keep the results...
-  //       // TODO: Return the Promise...
-  //     }, // END find
-  //     results: function(){
-  //       return results;
-  //     }
-  //   }
-  // })
-
-
-
-  .controller('Find', ['$http', '$scope', function($http, $scope){
-    var BASEURL = '//wishcastr-staging.herokuapp.com/products/';
-
-    $scope.query = "";
-    $scope.products = { };
-    $scope.search = function(){
-      $http.get(BASEURL+'search.json?query='+$scope.query)
-      .then(function(response){
-        $scope.products = response.data;
-      })//END PROMISE
-    }//END searchParam()
-  }])
 
 
 })(); //END OF IFFE
@@ -162,12 +208,6 @@
     toggleLoginDisplay();
   };
 
-
-
-  //TODO
-  //window.doLogin
-
-
   window.doAmazonLogin = function(){
     options = {
       scope: 'profile'
@@ -177,7 +217,6 @@
         console.log('oauth error ' + response.error);
         return;
       }
-
       var userAccessToken = response.access_token;
 
       amazon.Login.retrieveProfile(userAccessToken, function(response) {
@@ -188,13 +227,14 @@
         u.amz_id = response.profile.CustomerId.substr(response.profile.CustomerId.lastIndexOf('.') + 1);
         docCookies.setItem('user', JSON.stringify(u));
         setTimeout(window.doRailsLogin(u), 1);
-      });
+      }); //END RETREVEPROFILE
 
-    });
-  };
+    }); //END LOGIN.AUTHORIZE
+    // $window.location.reload(); //FIXME: DOESN'T BREAK CODE BUT DOESN'T SOLVE RELOAD PROBLEM FOR HELLO CTLR
+
+  }; //END DOAMAZONLOGIN
 
   window.doRailsLogin = function(u){
-
     var BASEURL = "//wishcastr-staging.herokuapp.com/login/amazon.json";
     $.ajax({
       type: "POST",
@@ -209,6 +249,8 @@
       u.postal_code = response.postal_code;
       docCookies.setItem('user', JSON.stringify(u), 60*60*24*7);
       toggleLoginDisplay();
+      window.location = "#/user-wishes";
+
     });
   };
 
@@ -217,10 +259,12 @@
     if(currentUser() === null) { //NO USER LOGGED IN
       $("#amazon-login").css("display", "block");
       $("#amazon-logout").css("display", "none");
+      $('#welcome').addClass('hidden'); //TODO: DELETE ME IF WELCOME DOESN'T WORK
+
     }else{ //USER LOGGED IN
       $('#amazon-login').css("display", "none");
       $("#amazon-logout").css("display", "block");
-      window.location = "#/user-wishes";
+      $('#welcome').removeClass('hidden'); //TODO: DELETE ME IF WELCOME DOESN'T WORK
     }
   };
 
@@ -228,4 +272,8 @@
     toggleLoginDisplay();
   })
 
-})();
+  // $(window).scroll(function(){
+  //     $(".add-wish").css("bottom",Math.max(20,0-$(this).scrollBottom()));
+  // });
+
+})(); //END IFFE

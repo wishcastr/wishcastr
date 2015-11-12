@@ -97,12 +97,24 @@ textarea {
 //bower:scss
 @import "../../bower_components/font-awesome/scss/font-awesome.scss";
 @import "_custom";
-@import "list";
+@import "_top-list";
 @import "_results-list";
 @import "_grid";
 @import "_privacy";
 @import "_about";
+@import "_wish-form";
+@import "_hover";
+@import "_user-wishes";
 //endbower
+
+html {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+}
+
 
 
 

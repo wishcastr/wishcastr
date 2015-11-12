@@ -1,0 +1,104 @@
+.user-wishes-list {        //<section>
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+  @extend .clearfix;
+
+  h2 {            //PARTIAL TITLE
+    font-size: 25pt;
+    margin-bottom: 10px;
+    color: #064583;
+  }
+
+  p {
+    font-size: 14pt;
+    color: #068383;
+  }
+
+  ul {
+    list-style: none;
+    width: 100%;
+    padding: 0;
+    margin-left: 109px;
+    margin-top: 50px;
+    @extend .clearfix;
+
+    li {
+      border: 2px solid #fff;
+      background-color: #f2f2f2;
+      @extend .clearfix;
+      width: 20%;
+      height: 330px;
+      float: left;
+      display: inline-block;
+      border-radius: 5px;
+      margin: 5px;
+
+      .wish-img-sizing {
+        width: 260px;
+        height: 150px;
+        overflow: hidden;
+        margin: 0 auto;
+        img {
+          display: block;
+          margin: 0 auto;
+          margin-top: 20px;
+          margin-bottom: 15px;
+          max-width: 100%;
+          max-height: 100%;
+
+          }
+        }//END WISH-IMG-SIZING
+
+
+        .wishes-list-txt {
+          padding-top: 4%;
+          text-decoration: none;
+
+          h3 {
+            display: block;
+            margin: 0 10px;
+            margin-left: 0;
+            color: #068383;
+            font-size: 16pt;
+            margin-bottom: 10px;
+
+          }
+
+          p {
+            display: block;
+            margin: 0 10px;
+            color: #068383;
+            font-size: 12pt;
+            margin-bottom: 10px;
+
+          }
+          .price {
+            font-size: 18pt;
+            margin-top: 14px;
+            font-size: 14pt;
+            color: #064583;
+            font-weight: bold;
+          }
+
+          .descr {
+            display: block;
+            font-size: 12pt;
+          }
+
+        }//.wishes-list-TXT
+    }//END <LI>
+  }//END of <UL>
+}//END .user-wishes-list
+
+@media (max-width: 767px) {           //MOBILE
+}
+
+@media (max-width: 1024px) and (min-width: 768px){      //TABLET
+
+}
+
+
+@media (min-width: 1025px) {            //DESKTOP
+
+}

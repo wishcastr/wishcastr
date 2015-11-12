@@ -2,25 +2,29 @@
   <h2>Top Wishes</h2>
   <p>The top currently wished for items on the site</p>
   <ul>
-    <li title="{{product.description}}" ng-repeat="product in products">
-      <a href="javascript:void(0)">
-      <!-- <a ng-href="{{product.affiliate_url}}"> -->
+    <li class="product"
+      data-product-sku="{{product.sku}}" data-product-source="{{product.type}}" title="{{product.description}}" ng-repeat="product in products">
+      <a ng-href="">
+        <figure class="img-sizing">
           <img ng-src="{{product.image_thumbnail}}" />
+        </figure>
         <div class="product-txt">
-          <h3>{{product.title}}</h3>
-          <p class="price">{{product.current_price | currency}}</p>
-          <p class="descr">{{product.description | limitTo: 25}}{{product.description.length > 20 ? '...' : ''}}</p>
-            <span class="fa fa-star-o" title="Create a Wish"></span>
+          <h3 class="product-title">{{product.title | limitTo: 25}}</h3>
+          <p class="price">
+            {{product.current_price | currency}}
+          </p>
+          <p class="descr">
+            {{product.description | limitTo: 25}}{{product.description.length > 25 ? '...' : ''}}
+          </p>
+          <div class="star-link" ng-click="starProduct()" >
+            <span class="fa fa-star-o hvr-icon-grow" title="Create a Wish"></span>
+          </div>
         </div>
       </a>
     </li>
   </ul>
+  <div class="add-wish" ng-click="draftWish()">
+    <i class="fa fa-plus-circle"></i>
+    <div class="drp-down">Create a wish</div>
+  </div>
 </section>
-
-<script>//-----Star change------
-$(".product-txt").on('click', function(){
-  console.log("HELLO THERE!!!!");
-
-  // $(".fa-star-o").toggleClass("fa-star fa-star-o");
-});
-</script>

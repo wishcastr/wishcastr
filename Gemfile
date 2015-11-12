@@ -8,8 +8,6 @@ gem 'sprockets', github: "rails/sprockets"
 gem 'arel', github: "rails/arel"
 gem 'rack', github: "rack/rack"
 
-# Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.7'
 gem 'api_docs'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -20,6 +18,9 @@ gem 'active_model_serializers', '~> 0.10.0.rc2'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
 
+gem 'daemons'
+gem 'delayed_job_active_record'
+gem 'whenever'
 # Should use passenger later.
 gem 'puma'
 
