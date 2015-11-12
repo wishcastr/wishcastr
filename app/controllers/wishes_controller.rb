@@ -16,7 +16,7 @@ class WishesController < ApplicationController
       if @wish
         render :show, status: :ok
       else
-        @wish.create(user_id: user.id)
+        @wish = Wish.create(user_id: user.id)
         render :show, status: :created
       end
     else
