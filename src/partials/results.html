@@ -12,8 +12,13 @@
           <p class="price">{{product.current_price | currency }}</p>
           <p class="descr">{{product.description | limitTo: 80}}{{product.description.length > 20 ? '...' : ''}}</p>
         </div>
-
       </a>
     </li>
   </ul>
+
+  <div class="add-wish" ng-click="wishForm()">
+    <i class="fa fa-plus-circle"></i>
+    <div class="drp-down">Create a wish</div>
+  </div>
+  
 </section>

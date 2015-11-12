@@ -13,9 +13,12 @@
           .then(function(response){
             $scope.products = response.data;
           })//END OF PROMISE
+          $scope.wishForm = function() {          //ON CLICK TAKES YOU FROM /RESULTS
+            $location.path('/wish-form');         //TO /WISH-FORM
 
-        $scope.starProduct = function () {
-          $location.path('/wish-form');
+          };
+          $scope.starProduct = function () {
+          // $location.path('/wish-form');
           u = currentUser();
           if(u){
             var star = $(event.target).closest('.star-link').find('.fa');
@@ -29,35 +32,34 @@
                   sku: product.attr('data-product-sku'),
                   type: product.attr('data-product-source')
                 }
-              };
+              };//END VAR DATA
+              console.log(data);
 
-              var config = {
-                headers: {
-                  x_wishcastr_user_id: u.id,
-                  x_wishcastr_access_token: u.amz_access_token,
-                }
-              };
+              // var config = {
+              //   headers: {
+              //     x_wishcastr_user_id: u.id,
+              //     x_wishcastr_access_token: u.amz_access_token,
+              //   }
+              // };
+              //
+              // $http.post(API.BASE_URL+API.DRAFT_WISH_PATH, data, config)
+              // .then(function(response){
+              //   $scope.draft_wish = response.data;
 
-              $http.post(API.BASE_URL+API.DRAFT_WISH_PATH, data, config)
-              .then(function(response){
-                $scope.draft_wish = response.data;
-
-              })
+              // })
               console.log($scope.draft_wish);
               //TODO PUT to Rails server for adding
             }else{
               console.log("removed item from wish");
-              //TODO PUT to Rails server for removal
-            }
-          }else{
-            console.log("You must sign up");
-            //TODO prompt sign up modal
-          }
+                //TODO PUT to Rails server for removal
+              }
+            }else{
+              console.log("You must sign up");
+              //TODO prompt sign up modal
+            } //else
 
-        }
+        }//END SCOPE FUNCTION
       }//end of controller
-      // controller: function ($scope) {
-
     })//END OF TOP-WISHES
 
     .when ('/user-wishes', {
@@ -84,18 +86,28 @@
 
     .when ('/results', {
       templateUrl: 'partials/results.html',
-      controller: function(Search){
+      controller: function(Search, $location, $scope){
+        $scope.wishForm = function() {          //ON CLICK TAKES YOU FROM /RESULTS
+          $location.path('/wish-form');         //TO /WISH-FORM
+        }
         var products = this;
 
         products.results = function(){
           return Search.results;
+
+
         };
-      },
+      }, //END CONTROLLER
       controllerAs: 'products'
     })//END OF RESULTS PARTIAL
 
     .when ('/wish-form', {
-      templateUrl: 'partials/wish-form.html'
+      templateUrl: 'partials/wish-form.html',
+      controller: function($location, $scope) {
+        $scope.submitWish = function() {
+          $location.path('/user-wishes');
+        };//SUBMITWISH
+      }//END CONTROLLER
     })//END WISH-FORM
 
   })//END OF MODULE
@@ -107,17 +119,7 @@
 
   })//END CONTROLLER HELLO
 
-  /*
-  .controller('Hello', function($scope) {
-    if (currentUser() === null) {
-      $('#welcome').addClass('hidden');
-    }
-    else {
-      $('#welcome').removeClass('hidden');
-      $scope.name = currentUser().name;
-    }
-  })
-  */
+
 
   .controller('SearchController', function($http, Search, API, $location){
     var search = this;
@@ -145,8 +147,7 @@
   })
   .value('Search', {
     query: '',
-    results: [
-    ],
+    results: [],
   })
 
 
@@ -252,10 +253,15 @@
     toggleLoginDisplay();
   })
 
+//--------------COLLECTING WISHES-----------------------
+/*
+* store the info from the GET in an object
+  - distinguish specific "item"
+* bind? specific item to specific star
+* if star is clicked post item details for that item
+  - need seperate 'wish in progress object'????
+* when Create Wish is clicked switch to Wish-Form with object
+* When 'submitted' POST that object to API
 
-})();
-
-;(function(){
-
-
-})();//END IFFE
+*/
+})(); //END IFFE
