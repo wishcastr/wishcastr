@@ -76,7 +76,7 @@ class WishesController < ApplicationController
   # PATCH/PUT /wishes/1.json
   def update
     user = User.find(@wish.user_id)
-    if user.id == params[:user_id]
+    if user.id == params[:user_id].to_i
       if user.amz_access_token == params[:access_token]
         if @wish.update(wish_params)
           @wish.update(saved: true)
@@ -88,7 +88,7 @@ class WishesController < ApplicationController
         render inline: {error: "Access Token does not match for user"}.to_json, status: :unauthorized
       end
     else
-      render inline: {error: "User does not own this wish", user_on_wish: @wish.user_id, provided: params[:id]}.to_json, status: :forbidden
+      render inline: {error: "User does not own this wish", user_on_wish: @wish.user_id, provided: params[:user_id]}.to_json, status: :forbidden
     end
   end
 
