@@ -114,7 +114,7 @@ class WishesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wish_params
-      params.require(:wish).permit(:user_id, :threshold_price, :category, :query, :name, products: [:sku, :type, :image_large, :image_thumbnail, :title, :brand, :description, :affiliate_url])
+      params.require(:wish).permit(:id, :user_id, :threshold_price, :category, :query, :name, products: [:sku, :type, :image_large, :image_thumbnail, :title, :brand, :description, :affiliate_url])
     end
 
 end
