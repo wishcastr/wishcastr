@@ -106,7 +106,14 @@
       controller: function($location, $scope, $window, $http, API) {
         $scope.submitWish = function() {
           $location.path('/user-wishes');
+          $http.patch(API.BASE_URL + '/wishes/' + $scope.draft_wish.id + ".json", $scope.draft_wish, {
+            params: {
+              user_id: user.id,
+              access_token: user.amz_access_token
+              }//END PARAMS
+            })//END PATCH
         };//SUBMITWISH
+
         $scope.goBack = function() {
           $window.history.back();
         };//goBack
@@ -118,13 +125,13 @@
             user_id: user.id,
             access_token: user.amz_access_token
           }
-        })
+        }) //END GET
         .then(function(response){
           $scope.draft_wish = response.data;
           console.log($scope.draft_wish);
 
         })//END PROMISE
-      },//END CONTROLLER
+      }//END CONTROLLER
 
     })//END WISH-FORM
 
@@ -134,10 +141,7 @@
     if (currentUser() !== null) {
       $scope.name = currentUser().name;
     }
-
   })//END CONTROLLER HELLO
-
-
 
   .controller('SearchController', function($http, Search, API, $location){
     var search = this;
@@ -157,7 +161,7 @@
     } // END find
   }) //END CONTROLLER
   .constant('API', {
-    BASE_URL: '//wishcastr-staging.herokuapp.com',
+    BASE_URL: '//localhost:3000',
     SEARCH_PATH: '/products/search.json',
     DRAFT_WISH_PATH: '/wishes/draft.json',
     WISHES_PATH: '/wishes.json',
@@ -231,7 +235,7 @@
   }; //END DOAMAZONLOGIN
 
   window.doRailsLogin = function(u){
-    var BASEURL = "//wishcastr-staging.herokuapp.com/login/amazon.json";
+    var BASEURL = "//localhost:3000/login/amazon.json";
     $.ajax({
       type: "POST",
       url: BASEURL,

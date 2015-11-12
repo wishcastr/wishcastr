@@ -13,12 +13,12 @@ class WishesController < ApplicationController
     user = User.find(params[:user_id])
     if user && user.amz_access_token == params[:access_token]
       @wish = user.draft_wish
-        if @wish
-          render :show, status: :ok
-        else
-          @wish.create(user_id: user.id)
-          render :show, status: :created
-        end
+      if @wish
+        render :show, status: :ok
+      else
+        @wish.create(user_id: user.id)
+        render :show, status: :created
+      end
     else
       render inline: {error: "not authorized"}.to_json, status: :unauthorized
     end
