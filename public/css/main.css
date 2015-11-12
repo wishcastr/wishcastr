@@ -2860,6 +2860,14 @@ section.privacy {
       line-height: 1.5em;
       padding: 0.5em;
       border-bottom: 1px silver solid; }
+      .about div.awesome-people div.awesome-person div.awesome-person-name .about-link {
+        margin: 0 .1em;
+        float: right;
+        text-decoration: none;
+        color: #068383;
+        font-size: 1.5em; }
+      .about div.awesome-people div.awesome-person div.awesome-person-name .about-link:visted {
+        color: #068383; }
     .about div.awesome-people div.awesome-person div.awesome-person-description {
       font-size: 1em;
       line-height: 1.5em;
