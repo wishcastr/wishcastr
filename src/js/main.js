@@ -32,20 +32,21 @@
                   sku: product.attr('data-product-sku'),
                   type: product.attr('data-product-source')
                 }
-              };
+              };//END VAR DATA
+              console.log(data);
 
-              var config = {
-                headers: {
-                  x_wishcastr_user_id: u.id,
-                  x_wishcastr_access_token: u.amz_access_token,
-                }
-              };
+              // var config = {
+              //   headers: {
+              //     x_wishcastr_user_id: u.id,
+              //     x_wishcastr_access_token: u.amz_access_token,
+              //   }
+              // };
+              //
+              // $http.post(API.BASE_URL+API.DRAFT_WISH_PATH, data, config)
+              // .then(function(response){
+              //   $scope.draft_wish = response.data;
 
-              $http.post(API.BASE_URL+API.DRAFT_WISH_PATH, data, config)
-              .then(function(response){
-                $scope.draft_wish = response.data;
-
-              })
+              // })
               console.log($scope.draft_wish);
               //TODO PUT to Rails server for adding
             }else{
