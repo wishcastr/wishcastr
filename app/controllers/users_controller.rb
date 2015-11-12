@@ -15,14 +15,13 @@ class UsersController < ApplicationController
       render inline: {error: "Must provide Amazon ID and Amazon Access Token", given: user_params}.to_json, status: :unprocessable_entity
     else
       begin
-        @user = User.find_or_create_by(amz_id: user_params[:amz_id]) do |u|
-          u.update(
-            name: user_params[:name],
-            email: user_params[:email],
-            provider: "Amazon",
-            amz_access_token: user_params[:amz_access_token]
-          )
-        end
+        @user = User.find_or_create_by(amz_id: user_params[:amz_id])
+        @user.update(
+          name: user_params[:name],
+          email: user_params[:email],
+          provider: "Amazon",
+          amz_access_token: user_params[:amz_access_token]
+        )
       rescue ActiveRecord::RecordNotUnique
         retry
       end
