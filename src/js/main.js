@@ -12,15 +12,11 @@
         $http.get(API.BASE_URL+API.TOP_WISHES_PATH)
           .then(function(response){
             $scope.products = response.data;
-          })//END OF PROMISE
+        })//END OF PROMISE
 
-          $scope.starredProducts = {products: []};
+        $scope.starredProducts = {products: []};
 
-          $scope.wishForm = function() {          //ON CLICK TAKES YOU FROM /RESULTS
-                     //TO /WISH-FORM
-          };
-
-          $scope.starProduct = function () {
+        $scope.starProduct = function () {
           // $location.path('/wish-form');
           var star = $(event.target).closest('.star-link').find('.fa');
           var p = $(event.target).closest('.product');
@@ -51,12 +47,11 @@
                 user_id: user.id,
                 access_token: user.amz_access_token
               }
-            }
+            };
 
             $http.post(API.BASE_URL+API.DRAFT_WISH_PATH, $scope.starredProducts, config)
-            .then(function(response){
-              $scope.draft_wish = response.data;
-              console.log($scope.draft_wish);
+              .then(function(response){
+                $scope.draft_wish = response.data;
             })//END OF PROMISE
 
           }else{
@@ -86,6 +81,7 @@
           })//END OF PROMISE
         }else{
           console.log("Shouldn't see this");
+          //TODO Hide User Wishes link when user is not logged in.
         }
       }//end of controller
     })//END OF USER-WISHES
@@ -100,8 +96,6 @@
 
         products.results = function(){
           return Search.results;
-
-
         };
       }, //END CONTROLLER
       controllerAs: 'products'
@@ -117,25 +111,20 @@
           $window.history.back();
         };//goBack
 
-        u = currentUser();
-
-        // var config = {
-        //   // headers: {
-        //   //   x_wishcastr_user_id: u.id,
-        //   //   x_wishcastr_access_token: u.amz_access_token,
-        //   // }
-        // };
+        user = currentUser();
 
         $http.get(API.BASE_URL+API.DRAFT_WISH_PATH, {
-          params: {user_id: u.id, access_token: u.amz_access_token}
-        } )
+          params: {
+            user_id: user.id,
+            access_token: user.amz_access_token
+          }
+        })
         .then(function(response){
           $scope.draft_wish = response.data;
           console.log($scope.draft_wish);
 
         })//END PROMISE
       },//END CONTROLLER
-
 
     })//END WISH-FORM
 
@@ -213,8 +202,6 @@
     amazon.Login.logout();
     docCookies.removeItem('user');
     toggleLoginDisplay();
-    location.path('/top-wishes');  //FIXME: MAYBE?
-
   };
 
   window.doAmazonLogin = function(){
@@ -226,7 +213,6 @@
         console.log('oauth error ' + response.error);
         return;
       }
-      console.log(response);
       var userAccessToken = response.access_token;
 
       amazon.Login.retrieveProfile(userAccessToken, function(response) {
