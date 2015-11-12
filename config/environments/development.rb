@@ -32,7 +32,7 @@ Rails.application.configure do
     port:                 587,
     domain:               'wishcastr.com',
     # user_name:            ENV['WISHCASTR_NOTIFY_USER'],
-    user_name:            'postmaster@wishcastr.com',
+    user_name:            ENV['MAILGUN_USERNAME'],
     # password:             ENV['WISHCASTR_NOTIFY_USER_PASSWORD'],
     password:             ENV['MAILGUN_PASSWORD'],
     authentication:       'plain',
