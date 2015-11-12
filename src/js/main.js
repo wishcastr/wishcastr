@@ -14,7 +14,7 @@
             $scope.products = response.data;
           })//END OF PROMISE
 
-          $scope.starredProducts = [];
+          $scope.starredProducts = {products: []};
 
           $scope.wishForm = function() {          //ON CLICK TAKES YOU FROM /RESULTS
                      //TO /WISH-FORM
@@ -34,10 +34,10 @@
           } //END VAR PRODUCT
 
           if(star.hasClass('fa-star')){
-            $scope.starredProducts.push(product);
+            $scope.starredProducts.products.push(product);
           }else{
-            index = $scope.starredProducts.indexOf(product);
-            $scope.starredProducts.splice(index, 1);
+            index = $scope.starredProducts.products.indexOf(product);
+            $scope.starredProducts.products.splice(index, 1);
           }
         }//END SCOPE FUNCTION
 
