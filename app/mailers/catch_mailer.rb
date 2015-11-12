@@ -3,7 +3,7 @@ class CatchMailer < ApplicationMailer
   def new_account(user)
     @user = user
     if @user
-      mail(to: "#{@user.name} <#{@user.email}>", subject: "#{@user.name}, Wishcastr Account Created")
+      mail(to: "#{@user.name} <#{@user.email}>", subject: "Wishcastr Account Created")
     else
       logger.debug("Could not find #{user}")
     end
