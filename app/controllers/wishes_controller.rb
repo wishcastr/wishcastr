@@ -17,11 +17,7 @@ class WishesController < ApplicationController
           render :show, status: :ok
         else
           @wish.create(user_id: user.id)
-          if @wish.save
-            render :show, status: :created
-          else
-            render json: @wish.errors, status: :unprocessable_entity
-          end
+          render :show, status: :created
         end
     else
       render inline: {error: "not authorized"}.to_json, status: :unauthorized
