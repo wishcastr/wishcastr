@@ -32,7 +32,7 @@ class Product < ActiveRecord::Base
       else
         logger.debug("How did this happen? Amazon you dumb")
       end
-      sleep 1.0
+      sleep 0.75
     end
   end
 end

@@ -27,11 +27,14 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
+    # address:              'smtp.gmail.com',
+    address:              'smtp.mailgun.org'
     port:                 587,
     domain:               'wishcastr.com',
-    user_name:            ENV['WISHCASTR_NOTIFY_USER'],
-    password:             ENV['WISHCASTR_NOTIFY_USER_PASSWORD'],
+    # user_name:            ENV['WISHCASTR_NOTIFY_USER'],
+    user_name:            'postmaster@wishcastr.com'
+    # password:             ENV['WISHCASTR_NOTIFY_USER_PASSWORD'],
+    password:             ENV['MAILGUN_PASSWORD'],
     authentication:       'plain',
     enable_starttls_auto: true
   }
