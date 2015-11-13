@@ -35,7 +35,14 @@
           }else{
             products.splice(products.indexOf(product), 1);
           }
-        }//END SCOPE FUNCTION
+
+          if(products.length > 0){
+            angular.element(".add-wish").css("display", "block");
+          }else{
+            angular.element(".add-wish").css("display", "none");
+          }
+
+        }//END STARPRODUCT SCOPE FUNCTION
 
         $scope.draftWish = function() {
           $location.path('/wish-form');

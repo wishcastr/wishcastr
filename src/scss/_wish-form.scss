@@ -2,7 +2,7 @@
   width: 100%;
   margin: 0 auto;
   text-align: center;
-  color: #064583;
+  color: $dark-blue;
 
 
   h1 {
@@ -61,7 +61,7 @@
           font-size: 18pt;
           margin-top: 14px;
           font-size: 14pt;
-          color: #064583;
+          color: $dark-blue;
           font-weight: bold;
         }
 
@@ -87,12 +87,12 @@
       input {
         border: 0;
         background-color: transparent;
-        color: #064583;
+        color: $dark-blue;
       }
     }// END CURRENCY <SPAN>
 
     button {
-      background-color: #068383;
+      background-color: $teal;
       border: none;
       color: #fff;
       padding-left: 2%;
@@ -104,12 +104,12 @@
       margin-bottom: 15px;
 
       &:hover {
-        background-color: #379b9b;
+        background-color: $light-teal;
       }
     }
 
     .cancel {
-      color: #064583;
+      color: $dark-blue;
       text-decoration: none;
       margin-top: 15px;
       cursor: pointer;
