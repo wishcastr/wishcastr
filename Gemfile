@@ -8,8 +8,6 @@ gem 'sprockets', github: "rails/sprockets"
 gem 'arel', github: "rails/arel"
 gem 'rack', github: "rack/rack"
 
-gem 'api_docs'
-
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # Use ActiveModelSerializers for 10x faster performance than jbuilder
