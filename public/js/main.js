@@ -194,7 +194,11 @@
     a.async = true;
     a.id = 'amazon-login-sdk';
     a.src = 'https://api-cdn.amazon.com/sdk/login1.js';
-    d.getElementById('amazon-root').appendChild(a);
+    ar = d.getElementById('amazon-root');
+    if(ar){
+      ar.appendChild(a);
+    };
+
   })(document);
 
   $('#amazon-root').on('click', function(){
