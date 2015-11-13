@@ -144,6 +144,9 @@ body:after {
         border-radius: 3px;
         margin-left: 10px;
         font-size: 1.75em;
+        &:hover {
+          background-color: $light-teal;
+        }
       }//END BUTTON
 
 

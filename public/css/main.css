@@ -2197,6 +2197,8 @@ body:after {
       border-radius: 3px;
       margin-left: 10px;
       font-size: 1.75em; }
+      .container .search .color-bar button:hover {
+        background-color: #379b9b; }
     .container .search .color-bar .search-menu {
       list-style: none;
       background-color: #c2c2c2;
@@ -2909,15 +2911,14 @@ section.privacy {
         text-decoration: none;
         color: #068383;
         font-size: 1.5em; }
+        .about div.awesome-people div.awesome-person div.awesome-person-name .about-link:hover {
+          color: #379b9b; }
       .about div.awesome-people div.awesome-person div.awesome-person-name .about-link:visted {
         color: #068383; }
     .about div.awesome-people div.awesome-person div.awesome-person-description {
       font-size: 1em;
       line-height: 1.5em;
       padding: 0.5em; }
-  .about footer {
-    display: inline-block;
-    float: left; }
 
 .wish-form {
   width: 100%;
