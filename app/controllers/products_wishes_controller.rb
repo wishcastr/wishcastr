@@ -2,13 +2,13 @@ class ProductsWishesController < ApplicationController
   before_action :set_products_wish, only: [:show, :update, :destroy]
 
   # GET /products_wishes.json
-  def index
-    @products_wishes = ProductsWish.all
-  end
+  # def index
+  #   @products_wishes = ProductsWish.all
+  # end
 
   # GET /products_wishes/1.json
-  def show
-  end
+  # def show
+  # end
 
   # POST /products_wishes.json
   def create

@@ -2,9 +2,9 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :update, :destroy]
 
   # GET /products.json
-  def index
-    @products = Product.all
-  end
+  # def index
+  #   @products = Product.all
+  # end
 
   def top
     quantity = params[:limit] || 24
