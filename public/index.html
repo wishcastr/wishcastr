@@ -43,18 +43,19 @@
       <header class="nav-header">
         <a href="#/top-wishes" id="logo">Wishcastr</a>
         <nav class="meta" ng-controller="Hello as hello">
-          <p id="welcome">Welcome, <span ng-bind="name"></span></p>
-        </nav>
-        <div class="login">
-          <div id="amazon-root">
-            <span id="amazon-login">
-              Login
-            </span>
-            <span id="amazon-logout">
-              Logout
-            </span>
+          <div class="login">
+            <div id="amazon-root">
+              <span id="amazon-login">
+                Login
+              </span>
+              <span id="amazon-logout">
+                Logout
+              </span>
+            </div>
+            <p id="welcome">Welcome, <span ng-bind="name"></span></p>
           </div>
-        </div>
+        </nav>
+
       </header> <!--END OF NAV-HEADER-->
 
       <section class="search">
@@ -72,6 +73,10 @@
       </section> <!--END OF .SEARCH-->
 
       <section class="list-view">
+        <nav id="sub-views">
+          <button class="top-views">Top Wishes</button>
+          <button class="user-views">User Wishes</button>
+        </nav>
         <ng-view>
           <span class="fa fa-circle-o-notch fa-spin"></span>
         </ng-view>
@@ -84,7 +89,7 @@
           <a href="privacy.html">Privacy Policy</a>
           <a href="about.html">About Wishcastr</a>
         </div>
-        <div id="gihub">
+        <div id="github">
           <a href="https://github.com/wishcastr/wishcastr">
             <i class="fa fa-github-square"></i>
           </a>

@@ -4,8 +4,8 @@ class WishesControllerTest < ActionController::TestCase
   setup do
     @wish = wishes(:one)
     @user = users(:one)
-    @request.headers["x-wishcastr-access-token"] = @user.amz_access_token
-    @request.headers["x-wishcastr-user-id"] = @user.id
+    params["access_token"] = @user.amz_access_token
+    params["user_id"] = @user.id
   end
 
   test "should get index" do

@@ -1,5 +1,10 @@
 $amazon-image-up: url(../img/amazon_login_76x32.png);
 $amazon-image-down: url(../img/amazon_login_76x32_pressed.png);
+$dark-blue: #064583;
+$teal: #068383;
+$light-teal: #379b9b;
+$yellow-orange: #F9BE12;
+$ivory: #fdf2cf;
 
 body:after {
   display: none;
@@ -20,7 +25,7 @@ body:after {
       display: inline-block;
       font-size: 30pt;
       font-family: 'Lobster Two', cursive;
-      color: #064583;     //DARK BLUE
+      color: $dark-blue;     //DARK BLUE
       font-weight: bold;
       margin-left: 10px;
       margin-top: 10px;
@@ -29,57 +34,68 @@ body:after {
     } //END #logo
 
     .meta {
-      float: left;
+      float: right;
       display: inline-block;
       width: 25%;
       margin-top: 10px;
-      color: #064583;     //DARK BLUE
+      color: $dark-blue;     //DARK BLUE
       font-size: 16pt;
-      margin-right: 0;
+      margin-right: 10px;
       text-align: right;
 
       .hidden {
         display: none;
       }
-    }//END .META
 
-    .login {
+      .login {
       display: inline-block;
-      margin-top: 30px;
+      margin-top: 10px;
       float: right;
-      width: 10%;
       margin-right: 0;
 
+        #amazon-root {
+          cursor: pointer;
+          background: $amazon-image-up no-repeat;
+          height: 32px;
+          width: 76px;
+          float: right;
+          clear: right;
 
+          span {
+            padding: 6px 0 0 30px;
+            font-size: .6em;
+            font-weight: bold;
+            text-align: left;
+          }
 
+          #amazon-login {
+            display: block;
+            color: black;
+          }
 
-      #amazon-root {
-        cursor: pointer;
-        background: $amazon-image-up no-repeat;
-        height: 32px;
-        width: 76px;
-
-        span {
-          padding: 6px 0 0 30px;
-          font-size: .8em;
-          font-weight: bold;
+          #amazon-logout {
+            display: none;
+            color: black;
+          }
+        }
+        #amazon-root:active {
+          background: $amazon-image-down no-repeat;
+        }//END AMAZON-ROOT
+        #welcome {
+          float: right;
+          margin: 0;
         }
 
-        #amazon-login {
-          display: block;
-        }
+      }//END .LOGIN <DIV>
 
-        #amazon-logout {
-          display: none;
-        }
-      }
-      #amazon-root:active {
-        background: $amazon-image-down no-repeat;
-      }//END ROOT
 
-    }//END .LOGIN <DIV>
+
+
+    }//END .META
+
+
     button {
-      background-color: #068383; //TEAL
+      background-color: $teal; //TEAL
       border: none;
       color: #fff;
       border-radius: 3px;
@@ -94,7 +110,7 @@ body:after {
     .color-bar {
       display: inline-block;
       width: 100%;
-      background-color: #F9BE12; //YELLOW/ORANGE
+      background-color: $yellow-orange; //YELLOW/ORANGE
       padding-bottom: 4%;
       padding-top: 2%;
       text-align: center;
@@ -116,17 +132,21 @@ body:after {
         border: none;
         padding: 5px 95px;
         text-align: center;
-        margin-top: 25px;
+        font-size: 1.75em;
       }
 
       button {
-        background-color: #068383;
+        background-color: $teal;
         border: none;
         color: #fff;
         padding-left: 2%;
         padding-right: 2%;
         border-radius: 3px;
         margin-left: 10px;
+        font-size: 1.75em;
+        &:hover {
+          background-color: $light-teal;
+        }
       }//END BUTTON
 
 
@@ -150,7 +170,7 @@ body:after {
 
         li {
           // background-color: #fff;
-          color: #064583; //BLUE
+          color: $dark-blue; //DARK-BLUE
           a {
             text-decoration: none;
           }
@@ -171,20 +191,19 @@ body:after {
   } //END LIST-VIEW
 
   footer {
-    background-color: #F9BE12;
+    background-color: $yellow-orange;
     padding-top: 20px;
     padding-bottom: 15px;
     margin-top: 60px;
     @extend .clearfix;
 
     .info-pgs {
-      width: 50%;
       float: left;
       margin-top: 10px;
 
       a {
         text-decoration: none;
-        color: #fdf2cf;
+        color: $ivory;
         font-size: 14pt;
         margin-left: 10px;
         margin-right: 10px;
@@ -196,26 +215,25 @@ body:after {
         }
 
         &:hover {
-          color: #068383;
+          color: $teal;
         }
       }//END A
     }//END .info-pgs
 
 
-    #gihub {
+    #github {
       float: right;
       text-decoration: none;
       margin-right: 25px;
       font-family: FontAwesome;
       font-size: 25pt;
-      width: 48%;
       text-align: right;
 
       a {
         text-decoration: none;
-        color: #fdf2cf;
+        color: $ivory;
         &:hover {
-          color: #068383;
+          color: $teal;
         }
       }//A
 

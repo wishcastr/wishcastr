@@ -2121,37 +2121,44 @@ body:after {
       width: 58%;
       float: left; }
     .container .nav-header .meta {
-      float: left;
+      float: right;
       display: inline-block;
       width: 25%;
       margin-top: 10px;
       color: #064583;
       font-size: 16pt;
-      margin-right: 0;
+      margin-right: 10px;
       text-align: right; }
       .container .nav-header .meta .hidden {
         display: none; }
-    .container .nav-header .login {
-      display: inline-block;
-      margin-top: 30px;
-      float: right;
-      width: 10%;
-      margin-right: 0; }
-      .container .nav-header .login #amazon-root {
-        cursor: pointer;
-        background: url(../img/amazon_login_76x32.png) no-repeat;
-        height: 32px;
-        width: 76px; }
-        .container .nav-header .login #amazon-root span {
-          padding: 6px 0 0 30px;
-          font-size: .8em;
-          font-weight: bold; }
-        .container .nav-header .login #amazon-root #amazon-login {
-          display: block; }
-        .container .nav-header .login #amazon-root #amazon-logout {
-          display: none; }
-      .container .nav-header .login #amazon-root:active {
-        background: url(../img/amazon_login_76x32_pressed.png) no-repeat; }
+      .container .nav-header .meta .login {
+        display: inline-block;
+        margin-top: 10px;
+        float: right;
+        margin-right: 0; }
+        .container .nav-header .meta .login #amazon-root {
+          cursor: pointer;
+          background: url(../img/amazon_login_76x32.png) no-repeat;
+          height: 32px;
+          width: 76px;
+          float: right;
+          clear: right; }
+          .container .nav-header .meta .login #amazon-root span {
+            padding: 6px 0 0 30px;
+            font-size: .6em;
+            font-weight: bold;
+            text-align: left; }
+          .container .nav-header .meta .login #amazon-root #amazon-login {
+            display: block;
+            color: black; }
+          .container .nav-header .meta .login #amazon-root #amazon-logout {
+            display: none;
+            color: black; }
+        .container .nav-header .meta .login #amazon-root:active {
+          background: url(../img/amazon_login_76x32_pressed.png) no-repeat; }
+        .container .nav-header .meta .login #welcome {
+          float: right;
+          margin: 0; }
     .container .nav-header button {
       background-color: #068383;
       border: none;
@@ -2180,7 +2187,7 @@ body:after {
       border: none;
       padding: 5px 95px;
       text-align: center;
-      margin-top: 25px; }
+      font-size: 1.75em; }
     .container .search .color-bar button {
       background-color: #068383;
       border: none;
@@ -2188,7 +2195,10 @@ body:after {
       padding-left: 2%;
       padding-right: 2%;
       border-radius: 3px;
-      margin-left: 10px; }
+      margin-left: 10px;
+      font-size: 1.75em; }
+      .container .search .color-bar button:hover {
+        background-color: #379b9b; }
     .container .search .color-bar .search-menu {
       list-style: none;
       background-color: #c2c2c2;
@@ -2216,7 +2226,6 @@ body:after {
     padding-bottom: 15px;
     margin-top: 60px; }
     .container footer .info-pgs {
-      width: 50%;
       float: left;
       margin-top: 10px; }
       .container footer .info-pgs a {
@@ -2231,18 +2240,17 @@ body:after {
           margin-right: 8px; }
         .container footer .info-pgs a:hover {
           color: #068383; }
-    .container footer #gihub {
+    .container footer #github {
       float: right;
       text-decoration: none;
       margin-right: 25px;
       font-family: FontAwesome;
       font-size: 25pt;
-      width: 48%;
       text-align: right; }
-      .container footer #gihub a {
+      .container footer #github a {
         text-decoration: none;
         color: #fdf2cf; }
-        .container footer #gihub a:hover {
+        .container footer #github a:hover {
           color: #068383; }
 
 .lists {
@@ -2319,21 +2327,31 @@ body:after {
             .lists ul li a .product-txt .star-link:hover {
               color: #fad159; }
             .lists ul li a .product-txt .star-link fa fa-star {
-              font-family: Font-Awesome;
+              font-family: FontAwesome;
               display: inline-block;
               vertical-align: middle; }
   .lists .add-wish {
-    font-family: FontAwesome;
-    font-size: 20pt;
-    color: #f9be12;
-    background-color: #f2f2f2;
     float: right;
-    display: inline;
+    display: none;
     top: 90%;
-    right: 20px;
+    margin: 0 auto;
     position: fixed;
-    padding-left: 2.5%;
-    padding-right: 2.5%; }
+    width: 100%; }
+    .lists .add-wish button {
+      font-size: 20pt;
+      border-radius: 5px;
+      background-color: #068383;
+      color: white;
+      cursor: pointer;
+      border: none;
+      box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.5);
+      -webkit-animation: display-none-transition 0.5s;
+      animation: display-none-transition 0.5s; }
+      .lists .add-wish button:hover {
+        background-color: #379b9b; }
+    .lists .add-wish button::before {
+      font-family: FontAwesome;
+      content: '\f0fe'; }
     .lists .add-wish:hover {
       color: #f9be12;
       padding: 0; }
@@ -2344,6 +2362,31 @@ body:after {
       font-size: 12pt;
       color: #064583;
       background-color: none; }
+
+/* Grow */
+.hvr-grow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform; }
+
+.hvr-grow:hover, .hvr-grow:focus, .hvr-grow:active {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1); }
+
+@-webkit-keyframes display-none-transition {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
 
 .result-list {
   margin: 0 auto;
@@ -2868,15 +2911,14 @@ section.privacy {
         text-decoration: none;
         color: #068383;
         font-size: 1.5em; }
+        .about div.awesome-people div.awesome-person div.awesome-person-name .about-link:hover {
+          color: #379b9b; }
       .about div.awesome-people div.awesome-person div.awesome-person-name .about-link:visted {
         color: #068383; }
     .about div.awesome-people div.awesome-person div.awesome-person-description {
       font-size: 1em;
       line-height: 1.5em;
       padding: 0.5em; }
-  .about footer {
-    display: inline-block;
-    float: left; }
 
 .wish-form {
   width: 100%;
