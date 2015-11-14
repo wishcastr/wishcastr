@@ -10,7 +10,7 @@
           <img ng-src="{{product.image_large}}" />
         </figure>
         <div class="product-txt">
-          <h3 class="product-title">{{product.title | limitTo: 25}}</h3>
+          <h3 class="product-title">{{product.title }}</h3>
           <p class="descr">
             {{product.description | limitTo: 100 }}{{product.description.length > 25 ? '...' : ''}}
           </p>
