@@ -63,7 +63,7 @@
                 .then(function(response){
                   $scope.draft_wish = response.data;
               })//END OF PROMISE
-            }, 500);
+            }, 1);
 
           }else{
             console.log("You must sign up");
@@ -91,7 +91,7 @@
             .then(function(response){
               $scope.wishes = response.data;
             })//END OF PROMISE
-          }, 500);
+          }, 1);
         }else{
           console.log("Shouldn't see this");
           //TODO Hide User Wishes link when user is not logged in.
@@ -126,7 +126,7 @@
                 access_token: user.amz_access_token
                 }//END PARAMS
               })//END PATCH
-          }, 500);
+          }, 1);
         };//SUBMITWISH
 
         $scope.goBack = function() {
@@ -145,7 +145,7 @@
             $scope.draft_wish = response.data;
             console.log($scope.draft_wish);
           })//END PROMISE
-        }, 500);
+        }, 1);
       }//END CONTROLLER
 
     })//END WISH-FORM
@@ -172,7 +172,7 @@
           Search.results = response.data;
           $location.path('/results');
         })
-      }, 500);
+      }, 1);
 
       search.query = '';
     } // END find
@@ -213,9 +213,9 @@
 
   $('#amazon-root').on('click', function(){
     if(currentUser()){
-      setTimeout(window.doLogout, 100);
+      setTimeout(window.doLogout, 1);
     }else{
-      setTimeout(window.doAmazonLogin, 100);
+      setTimeout(window.doAmazonLogin, 1);
     }
   });
 
@@ -265,16 +265,16 @@
         data: {user: u},
         dataType: 'json'
       }).done(function(response){
+        docCookies.removeItem('user');
         u.id = response.id;
         u.amz_raccess_token = response.amz_raccess_token;
         u.created_at = response.created_at;
         u.updated_at = response.updated_at;
         u.postal_code = response.postal_code;
         docCookies.setItem('user', JSON.stringify(u), 60*60*24*7);
-        toggleLoginDisplay();
         window.location = "#/user-wishes";
-
-      }, 500);
+        toggleLoginDisplay();
+      }, 1);
     });
   };
 
