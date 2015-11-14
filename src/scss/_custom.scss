@@ -51,7 +51,7 @@ body:after {
       display: inline-block;
       margin-top: 10px;
       float: right;
-      margin-right: 0;
+      margin-right: 20px;
 
         #amazon-root {
           cursor: pointer;
@@ -84,6 +84,8 @@ body:after {
         #welcome {
           float: right;
           margin: 0;
+          margin-right: 60px;
+
         }
 
       }//END .LOGIN <DIV>
@@ -143,7 +145,7 @@ body:after {
         padding-right: 2%;
         border-radius: 3px;
         margin-left: 10px;
-        font-size: 1.5em;     
+        font-size: 1.5em;
         &:hover {
           background-color: $light-teal;
         }
