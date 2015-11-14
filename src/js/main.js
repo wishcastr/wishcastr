@@ -213,9 +213,9 @@
 
   $('#amazon-root').on('click', function(){
     if(currentUser()){
-      window.doLogout;
+      setTimeout(window.doLogout, 100);
     }else{
-      window.doAmazonLogin;
+      setTimeout(window.doAmazonLogin, 100);
     }
   });
 
@@ -224,9 +224,7 @@
   }
 
   window.doLogout = function(){
-    setTimeout(function(){
-      amazon.Login.logout();
-    }, 500);
+    amazon.Login.logout();
     docCookies.removeItem('user');
     toggleLoginDisplay();
   };
@@ -235,26 +233,24 @@
     options = {
       scope: 'profile'
     };
-    setTimeout(function(){
-     amazon.Login.authorize(options, function(response) {
-        if (response.error) {
-          console.log('oauth error ' + response.error);
-          return;
-        }
-        var userAccessToken = response.access_token;
+   amazon.Login.authorize(options, function(response) {
+      if (response.error) {
+        console.log('oauth error ' + response.error);
+        return;
+      }
+      var userAccessToken = response.access_token;
 
-        amazon.Login.retrieveProfile(userAccessToken, function(response) {
-          var u = {};
-          u.amz_access_token = userAccessToken;
-          u.name = response.profile.Name;
-          u.email = response.profile.PrimaryEmail;
-          u.amz_id = response.profile.CustomerId.substr(response.profile.CustomerId.lastIndexOf('.') + 1);
-          docCookies.setItem('user', JSON.stringify(u));
-          window.doRailsLogin(u);
-        }); //END RETREVEPROFILE
+      amazon.Login.retrieveProfile(userAccessToken, function(response) {
+        var u = {};
+        u.amz_access_token = userAccessToken;
+        u.name = response.profile.Name;
+        u.email = response.profile.PrimaryEmail;
+        u.amz_id = response.profile.CustomerId.substr(response.profile.CustomerId.lastIndexOf('.') + 1);
+        docCookies.setItem('user', JSON.stringify(u));
+        window.doRailsLogin(u);
+      }); //END RETREVEPROFILE
 
-      }); //END LOGIN.AUTHORIZE
-    }, 500);
+    }); //END LOGIN.AUTHORIZE
 
     // $window.location.reload(); //FIXME: DOESN'T BREAK CODE BUT DOESN'T SOLVE RELOAD PROBLEM FOR HELLO CTLR
 
