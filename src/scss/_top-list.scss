@@ -119,7 +119,6 @@
     }//END <LI>
   }//END of <UL>
   .add-wish{
-    float: right;
     display: none;
     top: 90%;
     margin: 0 auto;
@@ -163,6 +162,13 @@
       background-color: none;
     }
   }//END .ADD-WISH
+  .add-wish.fixed {
+    position: fixed;
+    bottom: 90%;
+  }
+  .add-wish.bottom {
+    position: relative;
+  }
 }//END .lists
 
 @media (max-width: 767px) {           //MOBILE

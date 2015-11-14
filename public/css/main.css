@@ -2331,7 +2331,6 @@ body:after {
               display: inline-block;
               vertical-align: middle; }
   .lists .add-wish {
-    float: right;
     display: none;
     top: 90%;
     margin: 0 auto;
@@ -2362,6 +2361,11 @@ body:after {
       font-size: 12pt;
       color: #064583;
       background-color: none; }
+  .lists .add-wish.fixed {
+    position: fixed;
+    bottom: 90%; }
+  .lists .add-wish.bottom {
+    position: relative; }
 
 /* Grow */
 .hvr-grow {

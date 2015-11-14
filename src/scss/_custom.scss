@@ -88,11 +88,7 @@ body:after {
 
       }//END .LOGIN <DIV>
 
-
-
-
     }//END .META
-
 
     button {
       background-color: $teal; //TEAL
@@ -149,8 +145,6 @@ body:after {
         }
       }//END BUTTON
 
-
-
       .search-menu {
         list-style: none;
         background-color: #c2c2c2;
@@ -163,10 +157,10 @@ body:after {
         margin-top: 10px;
 
         // &.shadow {
-	      //     -webkit-box-shadow: 0 8px 6px -6px black;
-	      //     -moz-box-shadow: 0 8px 6px -6px black;
-	      //     box-shadow: 0 8px 6px -6px black;
-        //   }
+        //   -webkit-box-shadow: 0 8px 6px -6px black;
+        //   -moz-box-shadow: 0 8px 6px -6px black;
+        //   box-shadow: 0 8px 6px -6px black;
+        // }
 
         li {
           // background-color: #fff;
@@ -177,7 +171,7 @@ body:after {
         }
       }
     }//.COLOR-BAR=
-    }//.SEARCH
+  }//.SEARCH
 
   .list-view {
     width: 100%;
@@ -235,14 +229,15 @@ body:after {
         &:hover {
           color: $teal;
         }
-      }//A
+      }//END A
 
-    } //GITHUB
+    } //END GITHUB
   }//END FOOTER
 
 }//END .CONTAINER
 
 @media (max-width: 767px) {           //MOBILE
+
 }
 
 @media (max-width: 1024px) and (min-width: 768px){      //TABLET
