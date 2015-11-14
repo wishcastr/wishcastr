@@ -1,49 +1,89 @@
-API Documentation:
-
-GET path localhost:3000
+# Wishcastr API Documentation:
 
 
+### GET /products/trigger_update.json
+update trigger for products
 
-
-GET path /products/trigger_update.json
+### Response:
 ```javascript
 {
   "status": "Success!"
 }  
 ```
-GET path /wishes/draft.json?access_token&user_id=1
+
+### GET /wishes/draft.json?access_token&user_id=1
+returns a single draft wish
+
+### Response
 ```javascript
 {
   "id": 2,
   "user_id": 1,
-  "threshold_price": null,
-  "category": null,
-  "query": null,
-  "name": null,
+  "threshold_price": 49.99,
+  "category": "Viedo Games",
+  "query": "XBOX One",
+  "name": "Black Ops",
   "saved": false,
   "created_at": "2015-11-13T20:47:13.979Z",
   "updated_at": "2015-11-13T20:47:13.979Z",
   "products": []
 }
 ```
-POST path /wishes/draft.json?access_token&user_id=1
+
+### POST /wishes/draft.json?access_token=#{user.access_token}&user_id=[#{user.id}]
+returns a draft add wishes action
+
+### Request
+
+
+### Response
+if authentication is needed but not  given
+```javascript
+{"error":"not authorized"}
+```
+
+### GET /price_histories/1.json
+returns a single price history
+
+### Response
 ```javascript
 {
-  "error": "not authorized"
+  "id": 1,
+  "product_id": 35,
+  "currency": null,
+  "price": "10000.0",
+  "date": "2015-11-11T21:30:31.815Z",
+  "created_at": "2015-11-12T21:30:31.822Z",
+  "updated_at": "2015-11-12T21:30:31.822Z"
 }
+```
+### GET /price_histories.json
+returns all price histories
+
+### Response
+```javascript
+[
+  {
+    "id": 1,
+    "product_id": 35,
+    "currency": null,
+    "price": "10000.0",
+    "date": "2015-11-11T21:30:31.815Z",
+  },
+  {
+    "id": 2,
+    "product_id": 1,
+    "currency": null,
+    "price": "12.33",
+    "date": "2015-11-12T21:30:55.652Z",
+  }
+]
 ```
 
 
 
-root :to => "static#index"
-get 'products/trigger_update' => 'products#trigger_update'
-post 'login/amazon' => 'users#login_amazon'
-post 'wishes/draft' => 'wishes#draft_wish_add'
-get 'wishes/draft' => 'wishes#draft'
-
 resources :users, defaults: { format: 'json' }
 resources :wishes, defaults: { format: 'json' }
-resources :price_histories, defaults: { format: 'json' }
 resources :products_wishes, defaults: { format: 'json' }
 resources :products, defaults: { format: 'json' } do
   collection do
