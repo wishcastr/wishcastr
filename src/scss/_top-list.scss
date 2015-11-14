@@ -28,7 +28,7 @@
       // background-color: #f2f2f2;
       @extend .clearfix;
       width: 40%;
-      height: 300px;
+      height: 320px;
       // padding-bottom: 40%;
       float: left;
       display: inline-block;
@@ -46,7 +46,7 @@
 
         .img-sizing {         //img container
           width: 250px;
-          height: 300px;
+          height: 320px;
           overflow: hidden;
           margin: 0 auto;
           display: inline-block;
@@ -74,7 +74,7 @@
           text-decoration: none;
           display: inline-block;
           width: 50%;
-          height: 300px;
+          height: 320px;
           background-color: #f2f2f2;
           float: left;
           padding-right: 37px;
@@ -87,9 +87,9 @@
           h3 {
             display: block;
             margin: 0 auto;
-            // margin-left: 10px;
-            // margin-top: 10px;
-            // margin-bottom: 10px;
+            margin-left: 30px;
+            margin-top: 10px;
+            margin-bottom: 10px;
             color: #068383;
             font-size: 14pt;
             overflow-y: hidden;
@@ -101,8 +101,11 @@
           p {
             display: block;
             margin: 10px;
+            margin-top: 5px;
             color: #064583;
             font-size: 10pt;
+            // overflow-y: hidden;
+            max-height: 75px;
             // margin-bottom: 10px;
 
           }
@@ -114,7 +117,7 @@
             font-weight: bold;
             display: block;
             position: absolute;
-            bottom: 60px;
+            bottom: 55px;
             right: 143px;
 
           }
@@ -124,6 +127,7 @@
             font-size: 12pt;
             text-align: left;
             margin: 20px;
+            margin-left: 40px;
           }
 
 
@@ -132,7 +136,7 @@
             font-size: 30pt;
             margin-bottom: 10px;
             position: absolute;
-            bottom: -3px;
+            bottom: -10px;
             right: 171px;
 
             &:hover {
