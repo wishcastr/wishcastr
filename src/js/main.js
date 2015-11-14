@@ -224,7 +224,7 @@
   }
 
   window.doLogout = function(){
-    setTimetou(function(){
+    setTimeout(function(){
       amazon.Login.logout();
     }, 500);
     docCookies.removeItem('user');
@@ -319,7 +319,6 @@
 
       // Y position of the vertical scrollbar
       var y = $(this).scrollTop();
-      console.log(y, y + fixedElementHeight, fixedElementOffset, footerOffset);
 
       if(y >= fixedElementOffset && (y + fixedElementHeight) < footerOffset) {
         $('.add-wish').addClass('fixed');
