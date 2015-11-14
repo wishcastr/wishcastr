@@ -7,20 +7,20 @@
       title="{{product.description}}" ng-repeat="product in products">
       <a ng-href="">
         <figure class="img-sizing">
-          <img ng-src="{{product.image_thumbnail}}" />
+          <img ng-src="{{product.image_large}}" />
         </figure>
         <div class="product-txt">
           <h3 class="product-title">{{product.title | limitTo: 25}}</h3>
+          <p class="descr">
+            {{product.description | limitTo: 100 }}{{product.description.length > 25 ? '...' : ''}}
+          </p>
           <p class="price">
             {{product.current_price | currency}}
-          </p>
-          <p class="descr">
-            {{product.description | limitTo: 25}}{{product.description.length > 25 ? '...' : ''}}
           </p>
           <div class="star-link" ng-click="starProduct()" >
             <span class="fa fa-star-o hvr-icon-grow" title="Create a Wish"></span>
           </div>
-        </div>
+        </div> <!--PRODUCT_TXT-->
       </a>
     </li>
   </ul>
