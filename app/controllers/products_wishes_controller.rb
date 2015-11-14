@@ -7,8 +7,8 @@ class ProductsWishesController < ApplicationController
   # end
 
   # GET /products_wishes/1.json
-  # def show
-  # end
+  def show
+  end
 
   # POST /products_wishes.json
   def create
