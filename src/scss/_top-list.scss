@@ -79,18 +79,21 @@
           float: left;
           padding-right: 37px;
           position: relative;
+          margin: 0 auto;
 
           // padding-bottom: 50%;
 
 
           h3 {
             display: block;
-            margin: 10px;
+            margin: 0 auto;
             // margin-left: 10px;
             // margin-top: 10px;
             // margin-bottom: 10px;
             color: #068383;
             font-size: 14pt;
+            overflow-y: hidden;
+            max-height: 75px;
 
 
           }
@@ -110,6 +113,10 @@
             color:#068383;
             font-weight: bold;
             display: block;
+            position: absolute;
+            bottom: 60px;
+            right: 143px;
+
           }
 
           .descr {
