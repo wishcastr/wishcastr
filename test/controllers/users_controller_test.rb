@@ -14,7 +14,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should create user" do
-    assert_difference('User.count') do
+    assert_difference('User.all').to_a do
       post :create, params: {
         user: { amz_access_token: @user.amz_access_token,
         amz_id: @user.amz_id, amz_raccess_token: @user.amz_raccess_token,

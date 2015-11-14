@@ -4,8 +4,6 @@ class WishesControllerTest < ActionController::TestCase
   setup do
     @wish = wishes(:one)
     @user = users(:one)
-    @request.headers["x-wishcastr-access-token"] = @user.amz_access_token
-    @request.headers["x-wishcastr-user-id"] = @user.id
   end
 
   test "should get index" do
@@ -35,7 +33,7 @@ class WishesControllerTest < ActionController::TestCase
       category: @wish.category, name: @wish.name,
       query: @wish.query, threshold_price: @wish.threshold_price,
       user_id: @wish.user_id } }, format: :json
-    assert_response 200
+    assert_response 403
   end
   #
   # test "should destroy wish" do
