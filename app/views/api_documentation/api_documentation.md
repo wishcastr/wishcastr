@@ -37,7 +37,7 @@ returns a draft add wishes action
 
 
 ### Response
-if authentication is needed but not  given
+If authentication is not  given
 ```javascript
 {"error":"not authorized"}
 ```
@@ -79,14 +79,3 @@ returns all price histories
   }
 ]
 ```
-
-
-
-resources :users, defaults: { format: 'json' }
-resources :wishes, defaults: { format: 'json' }
-resources :products_wishes, defaults: { format: 'json' }
-resources :products, defaults: { format: 'json' } do
-  collection do
-    get 'top'
-    get 'search'
-  end
