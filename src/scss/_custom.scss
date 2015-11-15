@@ -169,6 +169,7 @@ body:after {
           color: $dark-blue; //DARK-BLUE
           a {
             text-decoration: none;
+            display: inline-block;
           }
         }
       }
@@ -188,15 +189,26 @@ body:after {
     .sub-views {
       font-size: 25pt;
       text-align: center;
+      border-bottom: 1px solid $dark-blue;
 
       a{
         text-decoration: none;
         color: $dark-blue;
         display: none;
+        margin-top: 10px;
+        margin-right: 15px;
+        margin-left: 15px;
       }
+
       a.active {
-        color: red;
-        display: block;
+        display: inline-block;
+      }
+
+      .selected {
+        display: inline-block;
+        border: 1px solid $dark-blue; //FIXME: change to grey
+        border-bottom: 3px solid #fff;
+        border-radius: 3px;
       }
 
     } //SUB-VIEWS
