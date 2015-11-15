@@ -190,6 +190,7 @@ body:after {
       font-size: 25pt;
       text-align: center;
       border-bottom: 1px solid $dark-blue;
+      height: 58px;
 
       a{
         text-decoration: none;
@@ -202,6 +203,7 @@ body:after {
 
       a.active {
         display: inline-block;
+
       }
 
       .selected {
@@ -209,6 +211,9 @@ body:after {
         border: 1px solid $dark-blue; //FIXME: change to grey
         border-bottom: 3px solid #fff;
         border-radius: 3px;
+        padding-right: 15px;
+        padding-left: 15px;
+
       }
 
     } //SUB-VIEWS
