@@ -13,6 +13,7 @@
           $http.get(API.BASE_URL+API.TOP_WISHES_PATH)
             .then(function(response){
               $scope.products = response.data;
+              window.createWishBtnFloat();
           })//END OF PROMISE
         }, 1);
 
@@ -299,18 +300,9 @@
     toggleLoginDisplay();
   })
 
-
-
-  // $(window).scroll(function(){
-  //     $(".add-wish").css("bottom",Math.max(20,0-$(this).scrollBottom()));
-  // });
-
-})(); //END IFFE
-
-;(function(){
-  setTimeout(function(){
+  window.createWishBtnFloat = function(){
     var fixedElementOffset = $('.add-wish').offset().top;
-    var footerOffset = $('footer').offset().top - 512;
+    var footerOffset = $('footer').offset().top + 3220;
     var fixedElementHeight = $('.add-wish').height();
 
     // Check every time the user scrolls
@@ -318,6 +310,7 @@
 
       // Y position of the vertical scrollbar
       var y = $(this).scrollTop();
+      console.log(fixedElementOffset, y + fixedElementHeight, footerOffset);
 
       if(y >= fixedElementOffset && (y + fixedElementHeight) < footerOffset) {
         $('.add-wish').addClass('fixed');
@@ -328,9 +321,9 @@
       }else{
         $('.add-wish').removeClass('fixed bottom');
       }
-
     });
-  }, 2000);
+
+
 
 // function tabs () {
   $('#top-view').on('click', function () {
