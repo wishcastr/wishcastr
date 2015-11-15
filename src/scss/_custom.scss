@@ -33,7 +33,7 @@ body:after {
       float: left;
     } //END #logo
 
-    .meta {
+    .meta {               //<NAV>
       float: right;
       display: inline-block;
       width: 25%;
@@ -52,6 +52,7 @@ body:after {
       margin-top: 10px;
       float: right;
       margin-right: 20px;
+      width: 100%;
 
         #amazon-root {
           cursor: pointer;
@@ -71,23 +72,34 @@ body:after {
           #amazon-login {
             display: block;
             color: black;
-          }
+            width: 100%
+
+
+
+          } //END AMAZON_LOGIN
 
           #amazon-logout {
             display: none;
             color: black;
           }
-        }
+
         #amazon-root:active {
           background: $amazon-image-down no-repeat;
+          margin-right: 10px;
+          position: relative;
+
+          } //END AMAZON-ROOT ACTIVE
         }//END AMAZON-ROOT
         #welcome {
           float: right;
-          margin: 0;
-          margin-right: 60px;
-
-        }
-
+          margin: 10px;
+          margin-right: 0;
+          display: block;
+          position: absolute;
+          width: 33.33%;
+          top: 50px;
+          right: 30px;
+          }
       }//END .LOGIN <DIV>
 
     }//END .META
@@ -187,14 +199,14 @@ body:after {
     }
 
     .sub-views {
-      font-size: 25pt;
+      font-size: 22pt;
       text-align: center;
-      border-bottom: 1px solid $dark-blue;
+      border-bottom: 2px solid #f2f2f2;
       height: 58px;
 
       a{
         text-decoration: none;
-        color: $dark-blue;
+        color: #a9a9a9;
         display: none;
         margin-top: 10px;
         margin-right: 15px;
@@ -208,11 +220,14 @@ body:after {
 
       .selected {
         display: inline-block;
-        border: 1px solid $dark-blue; //FIXME: change to grey
+        border: 2px solid #f2f2f2; //FIXME: change to grey
         border-bottom: 3px solid #fff;
         border-radius: 3px;
         padding-right: 15px;
         padding-left: 15px;
+        font-size: 25pt;
+        color: $dark-blue;
+
 
       }
 
