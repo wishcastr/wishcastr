@@ -163,7 +163,6 @@
     search.query = '';
 
     search.find = function(){
-      setTimeout(function(){
         $http.get(API.BASE_URL + API.SEARCH_PATH, {
           params: {
             query: search.query
@@ -172,7 +171,7 @@
           Search.results = response.data;
           $location.path('/results');
         })
-      }, 500);
+
 
       search.query = '';
     } // END find
@@ -284,11 +283,15 @@
       $("#amazon-login").css("display", "block");
       $("#amazon-logout").css("display", "none");
       $('#welcome').addClass('hidden'); //TODO: DELETE ME IF WELCOME DOESN'T WORK
+      $('#user-view').removeClass('active');
+      window.location = '#/top-wishes';
 
     }else{ //USER LOGGED IN
       $('#amazon-login').css("display", "none");
       $("#amazon-logout").css("display", "block");
       $('#welcome').removeClass('hidden'); //TODO: DELETE ME IF WELCOME DOESN'T WORK
+      $('#user-view').addClass('active');
+
     }
   };
 
@@ -328,4 +331,11 @@
 
     });
   }, 2000);
-})();
+
+
+
+
+
+
+
+})();//END IFFE
