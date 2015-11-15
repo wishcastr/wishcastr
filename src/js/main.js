@@ -13,6 +13,7 @@
           $http.get(API.BASE_URL+API.TOP_WISHES_PATH)
             .then(function(response){
               $scope.products = response.data;
+              window.createWishBtnFloat();
           })//END OF PROMISE
         }, 1);
 
@@ -120,7 +121,7 @@
         $scope.submitWish = function() {
           $location.path('/user-wishes');
           setTimeout(function(){
-            $http.patch(API.BASE_URL + '/wishes/' + $scope.draft_wish.id + ".json", $scope.draft_wish, {
+            $http.patch(API.BASE_URL + '/wishes/' + $scope.wish.id + ".json", $scope.wish, {
               params: {
                 user_id: user.id,
                 access_token: user.amz_access_token
@@ -142,8 +143,8 @@
             }
           }) //END GET
           .then(function(response){
-            $scope.draft_wish = response.data;
-            console.log($scope.draft_wish);
+            $scope.wish = response.data;
+            console.log($scope.wish);
           })//END PROMISE
         }, 1);
       }//END CONTROLLER
@@ -296,36 +297,26 @@
     toggleLoginDisplay();
   })
 
+  window.createWishBtnFloat = function(){
+    // $(window).scroll(function(){
+    //   var maxScroll = $('footer').position().top-$(window).height()-$("footer").height()-$(".add-wish").height();
+    //   console.log($(window).scrollTop(), maxScroll);
+    //   if ($(window).scrollTop() >= maxScroll){
+    //     $(".add-wish").css({
+    //       position: 'absolute',
+    //       bottom: $('footer').position().top + $(".add-wish").height(),
+    //       top: '',
+    //     });
+    //   }else{
+    //     $(".add-wish").css({
+    //       position: 'fixed',
+    //       top: '90%',
+    //       bottom: ''
+    //     });
+    //   }
+    // });
+  }
 
-
-  // $(window).scroll(function(){
-  //     $(".add-wish").css("bottom",Math.max(20,0-$(this).scrollBottom()));
-  // });
 
 })(); //END IFFE
 
-;(function(){
-  setTimeout(function(){
-    var fixedElementOffset = $('.add-wish').offset().top;
-    var footerOffset = $('footer').offset().top - 112;
-    var fixedElementHeight = $('.add-wish').height();
-
-    // Check every time the user scrolls
-    $(window).scroll(function (event) {
-
-      // Y position of the vertical scrollbar
-      var y = $(this).scrollTop();
-
-      if(y >= fixedElementOffset && (y + fixedElementHeight) < footerOffset) {
-        $('.add-wish').addClass('fixed');
-        $('.add-wish').removeClass('bottom');
-      }else if(y >= fixedElementOffset && (y + fixedElementHeight) >= footerOffset) {
-        $('.add-wish').removeClass('fixed');
-        $('.add-wish').addClass('bottom');
-      }else{
-        $('.add-wish').removeClass('fixed bottom');
-      }
-
-    });
-  }, 2000);
-})();

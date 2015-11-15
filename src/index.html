@@ -52,7 +52,7 @@
                 Logout
               </span>
             </div>
-            <p id="welcome">Welcome, <span ng-bind="name"></span></p>
+            <p id="welcome" ng-if="currentUser()">Welcome, <span ng-bind="name"></span></p>
           </div>
         </nav>
 

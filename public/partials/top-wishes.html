@@ -1,26 +1,26 @@
-<section class="lists">
+<section class="lists" ng-if="products.length !== 0">
   <h2>Top Wishes</h2>
   <p>The top currently wished for items on the site</p>
   <ul>
     <li class="product"
       data-product-sku="{{product.sku}}" data-product-source="{{product.type}}"
       title="{{product.description}}" ng-repeat="product in products">
-      <a ng-href="">
+      <a ng-href=""> <!--FIXME: affiliate_url SHOULD WORK. MAKE IT NOT WORK FOR STAR.-->
         <figure class="img-sizing">
-          <img ng-src="{{product.image_thumbnail}}" />
+          <img ng-src="{{product.image_large}}" />
         </figure>
         <div class="product-txt">
-          <h3 class="product-title">{{product.title | limitTo: 25}}</h3>
+          <h3 class="product-title">{{product.title }}</h3>
+          <p class="descr">
+            {{product.description | limitTo: 100 }}{{product.description.length > 25 ? '...' : ''}}
+          </p>
           <p class="price">
             {{product.current_price | currency}}
-          </p>
-          <p class="descr">
-            {{product.description | limitTo: 25}}{{product.description.length > 25 ? '...' : ''}}
           </p>
           <div class="star-link" ng-click="starProduct()" >
             <span class="fa fa-star-o hvr-icon-grow" title="Create a Wish"></span>
           </div>
-        </div>
+        </div> <!--PRODUCT_TXT-->
       </a>
     </li>
   </ul>
