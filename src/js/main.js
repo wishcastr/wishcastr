@@ -95,7 +95,6 @@
           }, 1);
         }else{
           console.log("Shouldn't see this");
-          //TODO Hide User Wishes link when user is not logged in.
         }
       }//end of controller
     })//END OF USER-WISHES
@@ -284,12 +283,9 @@
     if(currentUser() === null) { //NO USER LOGGED IN
       $("#amazon-login").css("display", "block");
       $("#amazon-logout").css("display", "none");
-      $('#welcome').addClass('hidden'); //TODO: DELETE ME IF WELCOME DOESN'T WORK
-
     }else{ //USER LOGGED IN
       $('#amazon-login').css("display", "none");
       $("#amazon-logout").css("display", "block");
-      $('#welcome').removeClass('hidden'); //TODO: DELETE ME IF WELCOME DOESN'T WORK
     }
   };
 

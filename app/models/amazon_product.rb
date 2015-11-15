@@ -75,8 +75,9 @@ class AmazonProduct < Product
       result[:id] = nil
       result[:type] = "AmazonProduct"
       result[:sku] = item.xpath("ASIN[1]").text
-      result[:image_large] = item.xpath("LargeImage[1]/URL[1]").text || ""
-      result[:image_thumbnail] = item.xpath("ImageSets[1]/ImageSet[1]/TinyImage[1]/URL[1]").text || ""
+
+      result[:image_large] = item.xpath("LargeImage[1]/URL[1]").text.sub('http://ecx.images-amazon.com','https://images-na.ssl-images-amazon.com') || ""
+      result[:image_thumbnail] = item.xpath("ImageSets[1]/ImageSet[1]/TinyImage[1]/URL[1]").text.sub('http://ecx.images-amazon.com','https://images-na.ssl-images-amazon.com') || ""
       result[:title] = item.xpath("ItemAttributes[1]/Title[1]").text.titleize
       result[:brand] = item.xpath("ItemAttributes[1]/Brand[1]").text || ""
       result[:current_price] = item.xpath("OfferSummary[1]/LowestNewPrice[1]/Amount[1]").text.to_f/100
