@@ -7,6 +7,10 @@ gem 'sprockets', github: "rails/sprockets"
 # gem 'sass-rails', github: "rails/sass-rails"
 gem 'arel', github: "rails/arel"
 gem 'rack', github: "rack/rack"
+# gem 'thin'
+# brew install openssl
+# gem install eventmachine -v '1.0.8' -- --with-cppflags=-I/usr/local/opt/openssl/include
+# bundle exec thin --ssl -R config.ru -a 127.0.0.1 -p 8080 start
 
 gem 'api_docs'
 

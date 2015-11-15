@@ -307,7 +307,7 @@
 ;(function(){
   setTimeout(function(){
     var fixedElementOffset = $('.add-wish').offset().top;
-    var footerOffset = $('footer').offset().top - 512;
+    var footerOffset = $('footer').offset().top - 112;
     var fixedElementHeight = $('.add-wish').height();
 
     // Check every time the user scrolls

@@ -45,3 +45,5 @@ mkdir -p public/images/
 cp -r src/img/ public/img/
 cp -r src/favicons/ public/
 
+# scp -rp public root@72.9.159.43:/home/wishcastr
+
