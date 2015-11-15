@@ -73,9 +73,9 @@
       </section> <!--END OF .SEARCH-->
 
       <section class="list-view">
-        <nav class="sub-views">
-          <a href="#/top-wishes"id="top-view" class="active">Top Wishes</a>
-          <a href="#/user-wishes" id="user-view">User Wishes</a>
+        <nav class="sub-views" ng-controller="Hello">
+          <a href="#/top-wishes"id="top-view" class="active selected">Top Wishes</a>
+          <a href="#/user-wishes" id="user-view"><span ng-bind="name"></span>'s Wishes</a>
         </nav>
         <ng-view>
           <span class="fa fa-circle-o-notch fa-spin"></span>
