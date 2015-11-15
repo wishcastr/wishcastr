@@ -184,6 +184,22 @@ body:after {
       margin: 0 auto;
       font-size: 20pt;
     }
+
+    .sub-views {
+      font-size: 25pt;
+      text-align: center;
+
+      a{
+        text-decoration: none;
+        color: $dark-blue;
+        display: none;
+      }
+      a.active {
+        color: red;
+        display: block;
+      }
+
+    } //SUB-VIEWS
   } //END LIST-VIEW
 
   footer {
