@@ -5,6 +5,13 @@
       redirectTo: 'top-wishes'
     })//END OF REDIRECT
 
+    .when('/wishes', {
+      template: 'Hallo!',
+      controller: function($routeParams){
+        console.log($routeParams);
+      }
+    })
+
     .when ('/top-wishes', {
       templateUrl: 'partials/top-wishes.html',
 
@@ -90,8 +97,7 @@
           } //END IF USER
         }//END DRAFTWISH SCOPE FUNCTION
 
-
-      }//end of controller
+      } //end of controller
     })//END OF TOP-WISHES
 
     .when ('/wishes', {
@@ -134,7 +140,6 @@
             });
           });
         };
-
       }//end of controller
     })//END OF USER-WISHES
 
@@ -197,10 +202,13 @@
   })//END OF MODULE
 
   .controller('Hello', function($scope, auth) {
+
     $scope.toggleLogin = function(){
       auth.toggleLogin();
       $scope.changeUserDisplay();
+      $scope.currentUser = auth.currentUser();
     }
+
     $scope.changeUserDisplay = function(){
       if(auth.currentUser){
         angular.element('.amazon-login').css("display", "none");
@@ -231,7 +239,26 @@
       })
       search.query = '';
     } // END find
-  }) //END CONTROLLER
+  }) //END SEARCH CONTROLLER
+
+
+  .controller('Tabs', function($location){
+  console.log($location.path());
+      if ($location.path() == '/user-wishes'){
+        var userView = true;
+        var topView = false;
+        // $('user-view').addClass('selected');
+        // $('top-view').removeClass('selected');
+      }
+
+      if ($location.path() == '/top-wishes') {
+        var userView = false;
+        var topView = true;
+        // $('user-view').removeClass('selected');
+        // $('top-view').addClass('selected');
+      }
+  })// END TABS CONTROLLER
+
   .constant('API', {
     BASE_URL: '//localhost:3000',
     SEARCH_PATH: '/products/search.json',
@@ -312,7 +339,9 @@
   }])
 
 
-})(); //END OF IFFE
+
+})(); //END OF ANGULAR IFFE
+
 
 // Amazon Login SDK
 ;(function(){
@@ -332,16 +361,12 @@
 
   })(document);
 
-//------TABS-------------
-  $('#top-view').on('click', function () {
-    $('#top-view').addClass('selected');
-    $('#user-view').removeClass('selected');
-  });
 
-  $('#user-view').on('click', function() {
-    $('#user-view').addClass('selected');
-    $('#top-view').removeClass('selected');
-    });
+//------TABS-------------
+  // $('#top-view').on('click', function () {
+  //   $('#top-view').addClass('selected');
+  //   $('#user-view').removeClass('selected');
+  // });
 
 
 })();//END IFFE
