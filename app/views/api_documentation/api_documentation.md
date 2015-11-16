@@ -85,6 +85,25 @@ If authentication is not  given
 {"error":"not authorized"}
 ```
 
+### PATCH /wishes/3
+updates wish with id of 3
+
+### Response
+if id is not of user_id that matches
+```javascript
+{
+  "error": "User does not own this wish",
+  "user_on_wish": 1,
+  "provided": "3"
+}
+```
+
+### Response
+if user_id is correct
+```javascript
+
+```
+
 ### GET /price_histories/1.json
 returns a single price history
 
@@ -137,5 +156,23 @@ returns User with id of One
   "amz_raccess_token": null,
   "created_at": "2015-11-12T21:30:29.981Z",
   "updated_at": "2015-11-13T21:07:38.422Z"
+}
+```
+
+### PATCH /user/3
+updates user with id of 3
+
+### Response
+```javascript
+{
+  "id": 3,
+  "name": "Jack Handy",
+  "email": "jhandy@quotes.com",
+  "postal_code": "72727",
+  "amz_id": "12334",
+  "amz_access_token": "qwer",
+  "amz_raccess_token": "12qw",
+  "created_at": "2015-11-12T21:30:31.267Z",
+  "updated_at": "2015-11-16T16:04:59.999Z"
 }
 ```
