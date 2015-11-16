@@ -41,9 +41,10 @@ class WishesController < ApplicationController
         end
       end
       render :show, status: :ok
-    else
-      render inline: {error: "not authorized"}.to_json, status: :unauthorized
     end
+      # else
+      #   render inline: {error: "not authorized"}.to_json, status: :unauthorized
+      # end
   end
 
 

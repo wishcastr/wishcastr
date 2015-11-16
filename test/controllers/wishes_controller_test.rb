@@ -8,22 +8,22 @@ class WishesControllerTest < ActionController::TestCase
     params["user_id"] = @user.id
   end
 
-  test "should get index" do
-    get :index
-    assert_response :success
-  end
+  # test "should get index" do
+  #   get :index
+  #   assert_response :success
+  # end
 
-  test "should create wish" do
-    assert_difference('Wish.count') do
-      post :create, params: {
-        wish: { category: @wish.category,
-        name: @wish.name, query: @wish.query,
-        threshold_price: @wish.threshold_price,
-        user_id: @wish.user_id } }, format: :json
-    end
-
-    assert_response 201
-  end
+  # test "should create wish" do
+  #   assert_difference('Wish.count') do
+  #     post :create, params: {
+  #       wish: { category: @wish.category,
+  #       name: @wish.name, query: @wish.query,
+  #       threshold_price: @wish.threshold_price,
+  #       user_id: @wish.user_id } }, format: :json
+  #   end
+  #
+  #   assert_response 201
+  # end
 
   # test "should show wish" do
   #   get :show, params: { id: @wish }
@@ -35,7 +35,7 @@ class WishesControllerTest < ActionController::TestCase
       category: @wish.category, name: @wish.name,
       query: @wish.query, threshold_price: @wish.threshold_price,
       user_id: @wish.user_id } }, format: :json
-    assert_response 200
+    assert_response 403
   end
   #
   # test "should destroy wish" do

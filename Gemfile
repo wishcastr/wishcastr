@@ -8,8 +8,6 @@ gem 'sprockets', github: "rails/sprockets"
 gem 'arel', github: "rails/arel"
 gem 'rack', github: "rack/rack"
 
-gem 'api_docs'
-
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # Use ActiveModelSerializers for 10x faster performance than jbuilder
@@ -18,6 +16,7 @@ gem 'active_model_serializers', '~> 0.10.0.rc2'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
 
+gem 'rails-controller-testing'
 gem "codeclimate-test-reporter", group: :test, require: nil
 
 gem 'daemons'
