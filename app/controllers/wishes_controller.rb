@@ -4,14 +4,14 @@ class WishesController < ApplicationController
   # GET /wishes.json
   def index
     user = User.find(params[:user_id])
-    if user && user.amz_access_token == params[:access_token]
+    # if user && user.amz_access_token == params[:access_token]
       @wishes = user.wishes
-    end
+    # end
   end
 
   def draft
     user = User.find(params[:user_id])
-    if user && user.amz_access_token == params[:access_token]
+    if user # && user.amz_access_token == params[:access_token]
       @wish = user.draft_wish
       if @wish
         render :show, status: :ok
@@ -26,16 +26,18 @@ class WishesController < ApplicationController
 
   def draft_wish_add
     user = User.find(params[:user_id])
-    if user && user.amz_access_token == params[:access_token]
+    if user # && user.amz_access_token == params[:access_token]
       @wish = user.draft_wish
       products = params[:products]
-      products.each do |p|
-        product = Product.find_or_create_by(sku: p[:sku], type: p[:type])
-        if @wish
-          @wish.products << product unless @wish.product_duplicate?(product.sku, product.type)
-        else
-          @wish = Wish.create(user_id: user.id)
-          @wish.products << product
+      if products
+        products.each do |p|
+          product = Product.find_or_create_by(sku: p[:sku], type: p[:type])
+          if @wish
+            @wish.products << product unless @wish.product_duplicate?(product.sku, product.type)
+          else
+            @wish = Wish.create(user_id: user.id)
+            @wish.products << product
+          end
         end
       end
       render :show, status: :ok
@@ -48,7 +50,7 @@ class WishesController < ApplicationController
   # GET /wishes/1.json
   def show
     user = User.find(params[:user_id])
-    if user && user.amz_access_token == params[:access_token]
+    if user #&& user.amz_access_token == params[:access_token]
       render :show, status: :ok
     end
   end
@@ -73,16 +75,16 @@ class WishesController < ApplicationController
   def update
     user = User.find(@wish.user_id)
     if user.id == params[:user_id].to_i
-      if user.amz_access_token == params[:access_token]
+      # if user.amz_access_token == params[:access_token]
         if @wish.update(wish_params)
           @wish.update(saved: true)
           render :show, status: :ok, location: @wish
         else
           render json: @wish.errors, status: :unprocessable_entity
         end
-      else
-        render inline: {error: "Access Token does not match for user"}.to_json, status: :unauthorized
-      end
+      # else
+        # render inline: {error: "Access Token does not match for user"}.to_json, status: :unauthorized
+      # end
     else
       render inline: {error: "User does not own this wish", user_on_wish: @wish.user_id, provided: params[:user_id]}.to_json, status: :forbidden
     end
@@ -91,7 +93,7 @@ class WishesController < ApplicationController
   # DELETE /wishes/1.json
   def destroy
     user = User.find(params[:user_id])
-    if user && user.amz_access_token == params[:access_token]
+    if user # && user.amz_access_token == params[:access_token]
       @wish.destroy
       render inline: {success: "Success"}.to_json, status: :ok
     else

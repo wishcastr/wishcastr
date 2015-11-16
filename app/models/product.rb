@@ -35,4 +35,12 @@ class Product < ActiveRecord::Base
       sleep 1.0 if product.class == AmazonProduct
     end
   end
+
+  def write_d3_table
+    File.open(Rails.root.join("public/data/#{type}-#{sku}.tsv"), 'w') do |f|
+      price_histories.each do |ph|
+        f.write "#{ph.date}\t#{ph.price}\n"
+      end
+    end
+  end
 end
