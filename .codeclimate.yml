@@ -1,7 +1,25 @@
 
+engines:
+  rubocop:
+    enabled: true
+  golint:
+    enabled: true
+  gofmt:
+    enabled: true
+  eslint:
+    enabled: true
+  csslint:
+    enabled: true
+
 languages:
    Ruby: true
-
+   
+ratings:
+   paths:
+   - app/**
+   - lib/**
+   - "**.rb"
+   - "**.go"
 engines:
   # ... CONFIG CONTENT ...
   eslint:
