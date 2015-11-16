@@ -263,9 +263,9 @@ body:after {
           margin-right: 8px;
         }
 
-        &:hover {
-          color: $teal;
-        }
+        // &:hover {
+        //   color: $teal;
+        // }
       }//END A
     }//END .info-pgs
 
@@ -281,9 +281,9 @@ body:after {
       a {
         text-decoration: none;
         color: $ivory;
-        &:hover {
-          color: $teal;
-        }
+        // &:hover {
+        //   color: $teal;
+        // }
       }//END A
 
     } //END GITHUB
@@ -308,7 +308,7 @@ body:after {
 
 @media (max-width: 1024px) and (min-width: 768px){      //TABLET
   .container {
-
+    
   }
 }//END TABLET
 
@@ -326,7 +326,35 @@ body:after {
 
       }
     } //.color-bar
+    footer {
 
+
+      .info-pgs {
+
+        a {
+
+          &::before {
+
+          }
+
+          &:hover {
+            color: $teal;
+          }
+        }//END A
+      }//END .info-pgs
+
+
+      #github {
+
+        a {
+
+          &:hover {
+            color: $teal;
+          }
+        }//END A
+
+      } //END GITHUB
+    }//END FOOTER
 
   }// .container
 } //END DESKTOP
