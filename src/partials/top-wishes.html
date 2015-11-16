@@ -1,4 +1,4 @@
-<section class="lists" ng-if="products.length !== 0">
+<section class="lists" ng-if="products">
   <p>The top currently wished for items on the site</p>
   <ul>
     <li class="product"
@@ -23,9 +23,21 @@
       </a>
     </li>
   </ul>
-  <div class="add-wish" ng-click="draftWish()">
-    <button class="add-wish-btn hvr-grow">
+  <div class="add-wish">
+    <button ng-click="draftWish()" class="add-wish-btn hvr-grow">
       Create a wish
     </button>
   </div>
+  <div class="add-wish-but-login">
+    You should login
+    <div class="amazon-root" ng-click="toggleLogin()">
+      <span class="amazon-login">
+        Login
+      </span>
+      <span class="amazon-logout">
+        Logout
+      </span>
+    </div>
+  </div>
+
 </section>

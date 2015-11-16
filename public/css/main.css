@@ -2137,26 +2137,25 @@ body:after {
         float: right;
         margin-right: 20px;
         width: 100%; }
-        .container .nav-header .meta .login #amazon-root {
+        .container .nav-header .meta .login .amazon-root {
           cursor: pointer;
           background: url(../img/amazon_login_76x32.png) no-repeat;
           height: 32px;
           width: 76px;
-          float: right;
-          clear: right; }
-          .container .nav-header .meta .login #amazon-root span {
+          float: right; }
+          .container .nav-header .meta .login .amazon-root span {
             padding: 6px 0 0 30px;
             font-size: .6em;
             font-weight: bold;
             text-align: left; }
-          .container .nav-header .meta .login #amazon-root #amazon-login {
+          .container .nav-header .meta .login .amazon-root .amazon-login {
             display: block;
             color: black;
             width: 100%; }
-          .container .nav-header .meta .login #amazon-root #amazon-logout {
+          .container .nav-header .meta .login .amazon-root .amazon-logout {
             display: none;
             color: black; }
-          .container .nav-header .meta .login #amazon-root #amazon-root:active {
+          .container .nav-header .meta .login .amazon-root .amazon-root:active {
             background: url(../img/amazon_login_76x32_pressed.png) no-repeat;
             margin-right: 10px;
             position: relative; }
@@ -2164,7 +2163,7 @@ body:after {
           float: right;
           margin: 10px;
           margin-right: 0;
-          display: block;
+          display: none;
           position: absolute;
           width: 33.33%;
           top: 50px;
@@ -2401,11 +2400,36 @@ body:after {
       padding: 0; }
       .lists .add-wish:hover .drp-down {
         display: block; }
-    .lists .add-wish .drp-down {
-      display: none;
-      font-size: 12pt;
-      color: #064583;
-      background-color: none; }
+  .lists .add-wish-but-login {
+    display: none;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    -webkit-animation: display-none-transition 0.5s;
+    animation: display-none-transition 0.5s; }
+    .lists .add-wish-but-login .amazon-root {
+      cursor: pointer;
+      background: url(../img/amazon_login_76x32.png) no-repeat;
+      height: 32px;
+      width: 76px;
+      margin: 0 auto; }
+      .lists .add-wish-but-login .amazon-root span {
+        padding: 6px 0 0 30px;
+        font-size: .8em;
+        font-weight: bold;
+        text-align: left; }
+      .lists .add-wish-but-login .amazon-root .amazon-login {
+        display: block;
+        color: black;
+        width: 100%; }
+      .lists .add-wish-but-login .amazon-root .amazon-logout {
+        display: none;
+        color: black; }
+    .lists .add-wish-but-login .amazon-root:active {
+      background: url(../img/amazon_login_76x32_pressed.png) no-repeat;
+      margin-right: 10px;
+      position: relative; }
 
 @media (max-width: 767px) {
   ul {
