@@ -1,0 +1,16 @@
+
+languages:
+   Ruby: true
+
+engines:
+  # ... CONFIG CONTENT ...
+  eslint:
+    enabled: true
+    # ... CONFIG CONTENT ...
+    exclude_fingerprints:
+    - d326692d582e65022fb00a5f80b5dd2f
+    - 25843d970c93178e3d7523743d88481f
+    - 12ff962ee1709ad46e5fc8e872c6456c
+
+
+# ... CONFIG CONTENT ...
