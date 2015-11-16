@@ -1,8 +1,8 @@
-<section class="wish-form">
-  <h1>Create a wish</h1>
-  <form class="create-wish">
+<section class="wish-form" ng-if='wish'>
+  <h1>Edit a wish</h1>
+  <form name="wish-edit" class="create-wish" novalidate>
 
-    <section class="form-item" ng-repeat="product in draft_wish.products">
+    <section class="form-item" ng-repeat="product in wish.products">
       <figure class="img-sizing">
         <img ng-src="{{product.image_thumbnail}}" />
       </figure>
@@ -17,10 +17,22 @@
       </div>
     </section>
     <h4>Name your wish</h4>
-    <input type="text" placeholder="Wish Name" ng-model="draft_wish.name" />
+    <input type="text" name="wish-name" placeholder="Wish Name" ng-model="wish.name" required />
+    <div ng-show="wish-edit.$submitted || wish-edit.wish-name.$touched">
+      <span ng-show="wish-edit.wish-name.$error.required">
+        You need to name your wish!
+      </span>
+    </div>
     <h4>Name your desired price</h4>
-    <span class="currency">$ <input type="text" placeholder="Price" ng-model="draft_wish.threshold_price" /></span>
-
+    <span class="currency">$ <input type="integer" name="wish-price" placeholder="Price" ng-model="wish.threshold_price" required /></span>
+    <div ng-show="wish-edit.$submitted || wish-edit.wish-price.$touched">
+      <span ng-show="wish-edit.wish-price.$error.required">
+        You need to set a threshold price.
+      </span>
+      <span ng-show="wish-edit.wish-price.$error.integer">
+        This doesn't look like a valid price.
+      </span>
+    </div>
     <button type="submit" ng-click="submitWish()">Save your wish</button>
     <p class="cancel" ng-click="goBack()">Cancel</p>
   </form>

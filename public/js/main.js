@@ -9,10 +9,13 @@
       templateUrl: 'partials/top-wishes.html',
 
       controller: function ($http, $scope, API, $location) {
-        $http.get(API.BASE_URL+API.TOP_WISHES_PATH)
-          .then(function(response){
-            $scope.products = response.data;
-        })//END OF PROMISE
+        setTimeout(function(){
+          $http.get(API.BASE_URL+API.TOP_WISHES_PATH)
+            .then(function(response){
+              $scope.products = response.data;
+              window.createWishBtnFloat();
+          })//END OF PROMISE
+        }, 1);
 
         $scope.starredProducts = {products: []};
 
@@ -35,41 +38,63 @@
           }else{
             products.splice(products.indexOf(product), 1);
           }
-        }//END SCOPE FUNCTION
+
+          if(products.length > 0){
+            angular.element(".add-wish").css("display", "block");
+          }else{
+            angular.element(".add-wish").css("display", "none");
+          }
+
+        }//END STARPRODUCT SCOPE FUNCTION
+
+        if (currentUser() !== null) {
+          var user = currentUser();
+          $http.get(API.BASE_URL + API.WISH_PATH + API.DRAFT_WISH, {
+            params: {
+              user_id: user.id,
+              access_token: user.amz_access_token
+              }//END PARAMS
+            })
+            .then(function(response){
+              $scope.draft_wish = response.data;
+              window.createWishBtnFloat();
+          })
+        }
 
         $scope.draftWish = function() {
-          $location.path('/wish-form');
+
           var user = currentUser();
           if(user){
 
-            config = {
-              params: {
-                user_id: user.id,
-                access_token: user.amz_access_token
-              }
-            };
-
-            $http.post(API.BASE_URL+API.DRAFT_WISH_PATH, $scope.starredProducts, config)
+            setTimeout(function(){
+              $http.post(API.BASE_URL + API.WISH_PATH + API.DRAFT_WISH, $scope.starredProducts, {
+                params: {
+                  user_id: user.id,
+                  access_token: user.amz_access_token
+                }
+              })
               .then(function(response){
                 $scope.draft_wish = response.data;
-            })//END OF PROMISE
+                $location.path('/wish/'+$scope.draft_wish.id);
+              })//END OF PROMISE
+            }, 1);
 
           }else{
             console.log("You must sign up");
             //TODO prompt sign up modal
-          } //else
-        }
+          } //END IF USER
+        }//END DRAFTWISH SCOPE FUNCTION
 
 
       }//end of controller
     })//END OF TOP-WISHES
 
-    .when ('/user-wishes', {
+    .when ('/wishes', {
       templateUrl: 'partials/user-wishes.html',
-      controller: function ($http, $scope, API) {
+      controller: function ($http, $scope, API, $location) {
         var user = currentUser();
 
-        if(user){
+        setTimeout(function(){
           $http.get(API.BASE_URL+API.WISHES_PATH, {
             params: {
               user_id: user.id,
@@ -79,10 +104,28 @@
           .then(function(response){
             $scope.wishes = response.data;
           })//END OF PROMISE
-        }else{
-          console.log("Shouldn't see this");
-          //TODO Hide User Wishes link when user is not logged in.
-        }
+        }, 1);
+
+        $scope.editWish = function(){
+          var wish_id = angular.element(event.target).closest('.wish').attr("data-wish-id");
+          $location.path('/wish/'+wish_id);
+        };
+
+        $scope.deleteWish = function(){
+          var wish_id = angular.element(event.target).closest('.wish').attr("data-wish-id");
+          console.log("Deleting "+wish_id);
+          //TODO: ADD CONFIRMATION
+          $http.delete(API.BASE_URL + API.WISH_PATH + wish_id, {
+            params: {
+              user_id: user.id,
+              access_token: user.amz_access_token
+            }
+          })
+          .then(function(response){
+            angular.element('.wish[data-wish-id='+wish_id+']').addClass('animated flipOutY');
+          });
+        };
+
       }//end of controller
     })//END OF USER-WISHES
 
@@ -90,7 +133,7 @@
       templateUrl: 'partials/results.html',
       controller: function(Search, $location, $scope){
         $scope.wishForm = function() {          //ON CLICK TAKES YOU FROM /RESULTS
-          $location.path('/wish-form');         //TO /WISH-FORM
+          $location.path('/wish');         //TO /WISH-FORM
         }
         var products = this;
 
@@ -101,36 +144,45 @@
       controllerAs: 'products'
     })//END OF RESULTS PARTIAL
 
-    .when ('/wish-form', {
+    .when ('/wish/:wish_id', {
       templateUrl: 'partials/wish-form.html',
-      controller: function($location, $scope, $window, $http, API) {
-        $scope.submitWish = function() {
-          $location.path('/user-wishes');
-          $http.patch(API.BASE_URL + '/wishes/' + $scope.draft_wish.id + ".json", $scope.draft_wish, {
+      controller: function($location, $scope, $window, $http, $routeParams, API) {
+        var wish_id = $routeParams.wish_id;
+        console.log(wish_id);
+        user = currentUser();
+
+        setTimeout(function(){
+          $http.get(API.BASE_URL + API.WISH_PATH + wish_id + ".json", {
             params: {
               user_id: user.id,
               access_token: user.amz_access_token
               }//END PARAMS
-            })//END PATCH
+            })//END GET
+            .then(function(response){
+              $scope.wish = response.data;
+              console.log($scope.wish);
+            })//END PROMISE
+        }, 1);
+
+        $scope.submitWish = function() {
+
+          setTimeout(function(){
+            $http.patch(API.BASE_URL + API.WISH_PATH + $scope.wish.id + ".json", $scope.wish, {
+              params: {
+                user_id: user.id,
+                access_token: user.amz_access_token
+                }//END PARAMS
+              }).then(function(response){
+                $location.path('/wishes');
+              })//END PATCH
+          }, 1);
         };//SUBMITWISH
 
         $scope.goBack = function() {
           $window.history.back();
         };//goBack
 
-        user = currentUser();
 
-        $http.get(API.BASE_URL+API.DRAFT_WISH_PATH, {
-          params: {
-            user_id: user.id,
-            access_token: user.amz_access_token
-          }
-        }) //END GET
-        .then(function(response){
-          $scope.draft_wish = response.data;
-          console.log($scope.draft_wish);
-
-        })//END PROMISE
       }//END CONTROLLER
 
     })//END WISH-FORM
@@ -148,23 +200,23 @@
     search.query = '';
 
     search.find = function(){
-
       $http.get(API.BASE_URL + API.SEARCH_PATH, {
-        params: {query: search.query}
+        params: {
+          query: search.query
+        }
+      }).then(function(response){
+        Search.results = response.data;
+        $location.path('/results');
       })
-        .then(function(response){
-          Search.results = response.data;
-          $location.path('/results');
-        })
-        search.query = '';
-
+      search.query = '';
     } // END find
   }) //END CONTROLLER
   .constant('API', {
     BASE_URL: '//wishcastr-staging.herokuapp.com',
     SEARCH_PATH: '/products/search.json',
-    DRAFT_WISH_PATH: '/wishes/draft.json',
+    DRAFT_WISH: 'draft.json',
     WISHES_PATH: '/wishes.json',
+    WISH_PATH: '/wishes/',
     TOP_WISHES_PATH: '/products/top.json'
   })
   .value('Search', {
@@ -187,7 +239,11 @@
     a.async = true;
     a.id = 'amazon-login-sdk';
     a.src = 'https://api-cdn.amazon.com/sdk/login1.js';
-    d.getElementById('amazon-root').appendChild(a);
+    ar = d.getElementById('amazon-root');
+    if(ar){
+      ar.appendChild(a);
+    };
+
   })(document);
 
   $('#amazon-root').on('click', function(){
@@ -206,13 +262,14 @@
     amazon.Login.logout();
     docCookies.removeItem('user');
     toggleLoginDisplay();
+    window.location = "#/top-wishes";
   };
 
   window.doAmazonLogin = function(){
     options = {
       scope: 'profile'
     };
-    amazon.Login.authorize(options, function(response) {
+   amazon.Login.authorize(options, function(response) {
       if (response.error) {
         console.log('oauth error ' + response.error);
         return;
@@ -226,10 +283,11 @@
         u.email = response.profile.PrimaryEmail;
         u.amz_id = response.profile.CustomerId.substr(response.profile.CustomerId.lastIndexOf('.') + 1);
         docCookies.setItem('user', JSON.stringify(u));
-        setTimeout(window.doRailsLogin(u), 1);
+        window.doRailsLogin(u);
       }); //END RETREVEPROFILE
 
     }); //END LOGIN.AUTHORIZE
+
     // $window.location.reload(); //FIXME: DOESN'T BREAK CODE BUT DOESN'T SOLVE RELOAD PROBLEM FOR HELLO CTLR
 
   }; //END DOAMAZONLOGIN
@@ -242,15 +300,15 @@
       data: {user: u},
       dataType: 'json'
     }).done(function(response){
+      docCookies.removeItem('user');
       u.id = response.id;
       u.amz_raccess_token = response.amz_raccess_token;
       u.created_at = response.created_at;
       u.updated_at = response.updated_at;
       u.postal_code = response.postal_code;
       docCookies.setItem('user', JSON.stringify(u), 60*60*24*7);
+      window.location = "#/wishes";
       toggleLoginDisplay();
-      window.location = "#/user-wishes";
-
     });
   };
 
@@ -259,12 +317,10 @@
     if(currentUser() === null) { //NO USER LOGGED IN
       $("#amazon-login").css("display", "block");
       $("#amazon-logout").css("display", "none");
-      $('#welcome').addClass('hidden'); //TODO: DELETE ME IF WELCOME DOESN'T WORK
-
+      window.location = '#/top-wishes';
     }else{ //USER LOGGED IN
       $('#amazon-login').css("display", "none");
       $("#amazon-logout").css("display", "block");
-      $('#welcome').removeClass('hidden'); //TODO: DELETE ME IF WELCOME DOESN'T WORK
     }
   };
 
@@ -272,8 +328,44 @@
     toggleLoginDisplay();
   })
 
-  // $(window).scroll(function(){
-  //     $(".add-wish").css("bottom",Math.max(20,0-$(this).scrollBottom()));
-  // });
+  window.createWishBtnFloat = function(){
 
-})(); //END IFFE
+  //   var fixedElementOffset = $('.add-wish').offset().top;
+  //   var footerOffset = $('footer').offset().top + 3220;
+  //   var fixedElementHeight = $('.add-wish').height();
+  //
+  //   // Check every time the user scrolls
+  //   $(window).scroll(function (event) {
+  //
+  //     // Y position of the vertical scrollbar
+  //     var y = $(this).scrollTop();
+  //     // console.log(fixedElementOffset, y + fixedElementHeight, footerOffset);
+  //
+  //     if(y >= fixedElementOffset && (y + fixedElementHeight) < footerOffset) {
+  //       $('.add-wish').addClass('fixed');
+  //       $('.add-wish').removeClass('bottom');
+  //     }else if(y >= fixedElementOffset && (y + fixedElementHeight) >= footerOffset) {
+  //       $('.add-wish').removeClass('fixed');
+  //       $('.add-wish').addClass('bottom');
+  //     }else{
+  //       $('.add-wish').removeClass('fixed bottom');
+  //     }
+  //   });
+  }
+
+
+
+//------TABS-------------
+  $('#top-view').on('click', function () {
+    // console.log('BOOM!');
+    $('#top-view').addClass('selected');
+    $('#user-view').removeClass('selected');
+  });
+
+  $('#user-view').on('click', function() {
+    $('#user-view').addClass('selected');
+    $('#top-view').removeClass('selected');
+    });
+
+
+})();//END IFFE
