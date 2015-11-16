@@ -368,16 +368,16 @@ $(function(){
 
 
 
-  // $('#top-view').on('click', function () {
-  //   // console.log('BOOM!');
-  //   $('#top-view').addClass('selected');
-  //   $('#user-view').removeClass('selected');
-  // });
-  //
-  // $('#user-view').on('click', function() {
-  //   $('#user-view').addClass('selected');
-  //   $('#top-view').removeClass('selected');
-  //   });
+  $('#top-view').on('click', function () {
+    // console.log('BOOM!');
+    $('#top-view').addClass('selected');
+    $('#user-view').removeClass('selected');
+  });
+
+  $('#user-view').on('click', function() {
+    $('#user-view').addClass('selected');
+    $('#top-view').removeClass('selected');
+    });
 
 
 
