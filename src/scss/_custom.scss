@@ -149,10 +149,10 @@ body:after {
         background-color: $teal;
         border: none;
         color: #fff;
-        padding-left: 2%;
-        padding-right: 2%;
+        // padding-left: 2%;
+        // padding-right: 2%;
         border-radius: 3px;
-        margin-left: 10px;
+        // margin-left: 10px;
         font-size: 1.5em;
         &:hover {
           background-color: $light-teal;
@@ -294,18 +294,39 @@ body:after {
 @media (max-width: 767px) {           //MOBILE
   .container {
 
-  }
-}
+    .color-bar {
+
+      button {
+        margin-top: 15px;
+        padding-left: 15%;
+        padding-right: 15%;
+      }
+    } //.color-bar
+
+  }//.container
+}//END MOBILE
 
 @media (max-width: 1024px) and (min-width: 768px){      //TABLET
   .container {
 
   }
-}
+}//END TABLET
 
 
 @media (min-width: 1025px) {            //DESKTOP
   .container {
-    
-  }
-}
+
+    .color-bar {
+
+      button {
+        margin-top: 10px;
+        padding-left: 2%;
+        padding-right: 2%;
+        margin-left: 10px;
+
+      }
+    } //.color-bar
+
+
+  }// .container
+} //END DESKTOP
