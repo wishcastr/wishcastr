@@ -24,7 +24,6 @@ gem 'daemons'
 gem 'delayed_job_active_record'
 gem 'whenever'
 
-gem 'coveralls', require: false
 
 # Should use passenger later.
 gem 'puma'
