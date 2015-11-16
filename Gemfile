@@ -18,9 +18,14 @@ gem 'active_model_serializers', '~> 0.10.0.rc2'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
 
+gem "codeclimate-test-reporter", group: :test, require: nil
+
 gem 'daemons'
 gem 'delayed_job_active_record'
 gem 'whenever'
+
+gem 'coveralls', require: false
+
 # Should use passenger later.
 gem 'puma'
 

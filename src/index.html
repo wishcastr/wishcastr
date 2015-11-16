@@ -53,7 +53,10 @@
               </span>
             </div>
           </div>
-          <p id="welcome">Welcome, {{currentUser().name}}</p>
+
+          <!-- <p id="welcome">Welcome, {{currentUser().name}}</p> -->
+
+          <p id="welcome" ng-if="docCookies.getItem('user') != null">Welcome, <span ng-bind="name"></span></p>
         </nav>
 
       </header> <!--END OF NAV-HEADER-->
@@ -80,7 +83,7 @@
         <ng-view>
           <span class="fa fa-circle-o-notch fa-spin"></span>
         </ng-view>
-        <!-- <a href="#/user-wishes">user wishes</a>
+        <!-- <a href="#/wishes">user wishes</a>
         <a href="#/results">results</a> -->
       </section> <!--END .LIST-->
 
@@ -102,6 +105,7 @@
     <script src="../bower_components/jquery/dist/jquery.js"></script>
     <script src="../bower_components/angular/angular.js"></script>
     <script src="../bower_components/angular-route/angular-route.js"></script>
+    <script src="../bower_components/d3/d3.min.js"></script>
 
     <!-- endbower -->
     <script src="js/plugins.js"></script>

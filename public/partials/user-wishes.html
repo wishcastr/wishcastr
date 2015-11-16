@@ -1,13 +1,23 @@
-<section class="user-wishes-list">
-  <h2>User Wishes</h2>
+<!-- User has wishes -->
+<section class="user-wishes-list" ng-if="wishes !== null">
   <ul>
-    <li ng-repeat="wish in wishes">
+    <li data-wish-id="{{wish.id}}" class="wish" ng-repeat="wish in wishes" ng-if="wish.products.length > 0">
       <figure class="wish-img-sizing">
         <img ng-src="{{product.image_large}}" />
+        {{product.title}}
       </figure>
       <div class="wishes-list-txt">
         <h3>{{wish.name}}</h3>
         <h4>{{wish.threshold_price | currency}}</h4>
+        <p ng-if="wish.saved == false" class="draft">**Draft Wish**</p>
+        <button ng-click="editWish()" class="wishEditBtn">Edit</button>
+        <button ng-click="deleteWish()"class="wishDeleteBtn">Delete</button>
       </div>
     </li>
   </ul>
+</section>
+
+<!-- No Wishes, or empty draft wish -->
+<section class="user-wishes-list" ng-if="wishes.length == 0 || (wishes.length == 1 && wishes[0].saved == false && wishes[0].products.length == 0)">
+  You have no wishes!
+</section>
