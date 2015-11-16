@@ -2372,10 +2372,13 @@ body:after {
               vertical-align: middle; }
   .lists .add-wish {
     display: none;
-    top: 90%;
+    bottom: 0;
     margin: 0 auto;
     position: fixed;
-    width: 100%; }
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    -webkit-animation: display-none-transition 0.5s;
+    animation: display-none-transition 0.5s; }
     .lists .add-wish button {
       font-size: 20pt;
       border-radius: 5px;
@@ -2383,6 +2386,8 @@ body:after {
       color: white;
       cursor: pointer;
       border: none;
+      margin-top: 6pt;
+      margin-bottom: 6pt;
       box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.5);
       -webkit-animation: display-none-transition 0.5s;
       animation: display-none-transition 0.5s; }
@@ -2401,11 +2406,6 @@ body:after {
       font-size: 12pt;
       color: #064583;
       background-color: none; }
-  .lists .add-wish.fixed {
-    position: fixed;
-    bottom: 90%; }
-  .lists .add-wish.bottom {
-    position: relative; }
 
 @media (max-width: 767px) {
   ul {

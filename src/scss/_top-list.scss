@@ -156,10 +156,13 @@
   }//END of <UL>
   .add-wish{
     display: none;
-    top: 90%;
+    bottom: 0;
     margin: 0 auto;
     position: fixed;
     width: 100%;
+    background-color: rgba(0,0,0,.3);
+    -webkit-animation: display-none-transition 0.5s;
+    animation: display-none-transition 0.5s;
 
     button {
       font-size: 20pt;
@@ -168,9 +171,12 @@
       color: white;
       cursor: pointer;
       border: none;
+      margin-top: 6pt;
+      margin-bottom: 6pt;
       box-shadow: 1px 1px 2px 0 rgba(0,0,0,.5);
       -webkit-animation: display-none-transition 0.5s;
       animation: display-none-transition 0.5s;
+
       &:hover {
         background-color: $light-teal;
       }
@@ -198,13 +204,6 @@
       background-color: none;
     }
   }//END .ADD-WISH
-  .add-wish.fixed {
-    position: fixed;
-    bottom: 90%;
-  }
-  .add-wish.bottom {
-    position: relative;
-  }
 }//END .lists
 
 @media (max-width: 767px) {           //MOBILE
