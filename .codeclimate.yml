@@ -18,14 +18,7 @@ engines:
         enabled: false
       Rubocop/Style/SpaceInsideHashLiteralBraces:
         enabled: false
-  golint:
-    enabled: true
-  gofmt:
-    enabled: true
-  csslint:
-    enabled: true
-  eslint:
-    enabled: true
+
 
   exclude_fingerprints:
     - d326692d582e65022fb00a5f80b5dd2f
