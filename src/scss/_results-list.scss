@@ -25,9 +25,10 @@
     padding: 0;
 
     li {
-      border: 2px solid #fff;
+      border: 3px solid #fff;
       background-color: #f2f2f2;
       @extend .clearfix;
+
 
       a {
         float: left;
@@ -49,7 +50,7 @@
           .title {
             display: inline-block;
             margin: 0 10px;
-            margin-left: 0;
+            // margin-left: 0;
             color: #064583;
             text-transform: capitalize;
 
@@ -126,13 +127,35 @@
 
 
 @media (max-width: 767px) {           //MOBILE
-}
+  .result-list {
+
+    li {
+
+      .product-txt {
+        margin-left: 10px;
+      }
+    }//li
+
+  }//.results-list
+} //END MOBILE
 
 @media (max-width: 1024px) and (min-width: 768px){      //TABLET
+  .result-list {
 
-}
+  } //.result-list
+} //END TABLET
 
 
 @media (min-width: 1025px) {            //DESKTOP
+  .result-list {
+    li {
 
-}
+      .product-txt {
+        .title {
+          margin-left: 0;
+
+        }
+      }
+    }
+  } //.result-list
+} //END DESKTOP

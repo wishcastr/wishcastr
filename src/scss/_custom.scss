@@ -54,13 +54,12 @@ body:after {
       margin-right: 20px;
       width: 100%;
 
-        #amazon-root {
+        .amazon-root {
           cursor: pointer;
           background: $amazon-image-up no-repeat;
           height: 32px;
           width: 76px;
           float: right;
-          clear: right;
 
           span {
             padding: 6px 0 0 30px;
@@ -69,21 +68,18 @@ body:after {
             text-align: left;
           }
 
-          #amazon-login {
+          .amazon-login {
             display: block;
             color: black;
-            width: 100%
-
-
-
+            width: 100%;
           } //END AMAZON_LOGIN
 
-          #amazon-logout {
+          .amazon-logout {
             display: none;
             color: black;
-          }
+          } //END AMAZON_LOGOUT
 
-        #amazon-root:active {
+        .amazon-root:active {
           background: $amazon-image-down no-repeat;
           margin-right: 10px;
           position: relative;
@@ -94,7 +90,7 @@ body:after {
           float: right;
           margin: 10px;
           margin-right: 0;
-          display: block;
+          display: none;
           position: absolute;
           width: 33.33%;
           top: 50px;
@@ -149,10 +145,10 @@ body:after {
         background-color: $teal;
         border: none;
         color: #fff;
-        padding-left: 2%;
-        padding-right: 2%;
+        // padding-left: 2%;
+        // padding-right: 2%;
         border-radius: 3px;
-        margin-left: 10px;
+        // margin-left: 10px;
         font-size: 1.5em;
         &:hover {
           background-color: $light-teal;
@@ -195,7 +191,11 @@ body:after {
       -webkit-animation: fa-spin 2s infinite linear;
       animation: fa-spin 2s infinite linear;
       margin: 0 auto;
-      font-size: 20pt;
+      font-size: 60pt;
+      text-align: center;
+      width: 100%;
+      margin-top: 100px;
+      color: #c1c1c1;
     }
 
     .sub-views {
@@ -259,9 +259,9 @@ body:after {
           margin-right: 8px;
         }
 
-        &:hover {
-          color: $teal;
-        }
+        // &:hover {
+        //   color: $teal;
+        // }
       }//END A
     }//END .info-pgs
 
@@ -277,9 +277,9 @@ body:after {
       a {
         text-decoration: none;
         color: $ivory;
-        &:hover {
-          color: $teal;
-        }
+        // &:hover {
+        //   color: $teal;
+        // }
       }//END A
 
     } //END GITHUB
@@ -288,14 +288,69 @@ body:after {
 }//END .CONTAINER
 
 @media (max-width: 767px) {           //MOBILE
+  .container {
 
-}
+    .color-bar {
+
+      button {
+        margin-top: 15px;
+        padding-left: 15%;
+        padding-right: 15%;
+      }
+    } //.color-bar
+
+  }//.container
+}//END MOBILE
 
 @media (max-width: 1024px) and (min-width: 768px){      //TABLET
-
-}
+  .container {
+    
+  }
+}//END TABLET
 
 
 @media (min-width: 1025px) {            //DESKTOP
+  .container {
 
-}
+    .color-bar {
+
+      button {
+        margin-top: 10px;
+        padding-left: 2%;
+        padding-right: 2%;
+        margin-left: 10px;
+
+      }
+    } //.color-bar
+    footer {
+
+
+      .info-pgs {
+
+        a {
+
+          &::before {
+
+          }
+
+          &:hover {
+            color: $teal;
+          }
+        }//END A
+      }//END .info-pgs
+
+
+      #github {
+
+        a {
+
+          &:hover {
+            color: $teal;
+          }
+        }//END A
+
+      } //END GITHUB
+    }//END FOOTER
+
+  }// .container
+} //END DESKTOP

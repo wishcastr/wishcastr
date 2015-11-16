@@ -19,7 +19,7 @@
     list-style: none;
     width: 100%;
     padding: 0;
-    margin-left: 109px;
+    // margin-left: 109px;
     margin-top: 50px;
     @extend .clearfix;
 
@@ -27,12 +27,12 @@
       border: 2px solid #fff;
       background-color: #f2f2f2;
       @extend .clearfix;
-      width: 20%;
+      // width: 40%;
       height: 330px;
       float: left;
       display: inline-block;
       border-radius: 5px;
-      margin: 5px;
+      // margin: 5px;
 
       .wish-img-sizing {
         width: 260px;
@@ -96,13 +96,55 @@
 
 
 @media (max-width: 767px) {           //MOBILE
-}
+  .user-wishes-list {
+
+    ul {
+      margin-left: 0;
+
+      li {
+        width: 100%;
+        margin: 0;
+      }
+    }
+
+  }//end .user-wishes-list
+
+} //END MOBILE
+
 
 @media (max-width: 1024px) and (min-width: 768px){      //TABLET
 
-}
+  .user-wishes-list {
+
+    ul {
+      margin-left: 9%;
+
+      li {
+        width: 40%;
+        margin: 5px;
+
+      }
+
+    } //ul
+
+  }//end .user-wishes-list
+} //END TABLET
 
 
 @media (min-width: 1025px) {            //DESKTOP
+  .user-wishes-list {
 
-}
+    ul {
+      margin-left: 9%;
+
+      li {
+        width: 40%;
+        margin: 5px;
+
+      }
+    }
+
+
+  }//end .user-wishes-list
+
+} //END DESKTOP
