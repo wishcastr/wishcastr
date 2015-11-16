@@ -4,9 +4,9 @@ class WishesController < ApplicationController
   # GET /wishes.json
   def index
     user = User.find(params[:user_id])
-    # if user && user.amz_access_token == params[:access_token]
+    if user # && user.amz_access_token == params[:access_token]
       @wishes = user.wishes
-    # end
+    end
   end
 
   def draft
@@ -59,7 +59,7 @@ class WishesController < ApplicationController
   # POST /wishes.json
   def create
     user = User.find(params[:user_id])
-    if user && user.amz_access_token == params[:access_token]
+    if user # && user.amz_access_token == params[:access_token]
       @wish = Wish.new(wish_params)
       @wish.user_id = user.id
       if @wish.save
