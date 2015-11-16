@@ -9,6 +9,15 @@ ratings:
 engines:
   rubocop:
     enabled: true
+     checks:
+      Rubocop/Metrics/AbcSize:
+        enabled: false
+      Rubocop/Metrics/MethodLength:
+        enabled: false
+      Rubocop/Style/StringLiterals:
+        enabled: false
+      Rubocop/Style/SpaceInsideHashLiteralBraces:
+        enabled: false
   golint:
     enabled: true
   gofmt:
