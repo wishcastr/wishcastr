@@ -47,22 +47,35 @@
 
         }//END STARPRODUCT SCOPE FUNCTION
 
+        if (currentUser() !== null) {
+          var user = currentUser();
+          $http.get(API.BASE_URL + API.WISH_PATH + API.DRAFT_WISH, {
+            params: {
+              user_id: user.id,
+              access_token: user.amz_access_token
+              }//END PARAMS
+            })
+            .then(function(response){
+              $scope.draft_wish = response.data;
+              window.createWishBtnFloat();
+          })
+        }
+
         $scope.draftWish = function() {
-          $location.path('/wish-form');
+
           var user = currentUser();
           if(user){
 
-            config = {
-              params: {
-                user_id: user.id,
-                access_token: user.amz_access_token
-              }
-            };
-
             setTimeout(function(){
-                $http.post(API.BASE_URL+API.DRAFT_WISH_PATH, $scope.starredProducts, config)
-                .then(function(response){
-                  $scope.draft_wish = response.data;
+              $http.post(API.BASE_URL + API.WISH_PATH + API.DRAFT_WISH, $scope.starredProducts, {
+                params: {
+                  user_id: user.id,
+                  access_token: user.amz_access_token
+                }
+              })
+              .then(function(response){
+                $scope.draft_wish = response.data;
+                $location.path('/wish-form/'+$scope.draft_wish.id);
               })//END OF PROMISE
             }, 1);
 
@@ -76,9 +89,10 @@
       }//end of controller
     })//END OF TOP-WISHES
 
-    .when ('/user-wishes', {
+    .when ('/user-wishes/:wish_id', {
       templateUrl: 'partials/user-wishes.html',
       controller: function ($http, $scope, API) {
+        wish_id = $routeParams.wish_id;
         var user = currentUser();
 
         if(user){
@@ -96,6 +110,21 @@
         }else{
           console.log("Shouldn't see this");
         }
+
+        $scope.editWish = function(){
+          var w = angular.element(event.target).closest('.wish');
+          wish_id = w.attr("data-wish-id");
+          console.log("Editing");
+          console.log(wish);
+          console.log(wish_id);
+
+        };
+
+        $scope.deleteWish = function(){
+          var p = angular.element(event.target).closest('.product');
+          console.log("Deleting");
+        };
+
       }//end of controller
     })//END OF USER-WISHES
 
@@ -114,17 +143,36 @@
       controllerAs: 'products'
     })//END OF RESULTS PARTIAL
 
-    .when ('/wish-form', {
+    .when ('/wish-form/:wish_id', {
       templateUrl: 'partials/wish-form.html',
-      controller: function($location, $scope, $window, $http, API) {
+      controller: function($location, $scope, $window, $http, $routeParams, API) {
+        var wish_id = $routeParams.wish_id;
+        console.log(wish_id);
+        user = currentUser();
+
+        setTimeout(function(){
+          $http.get(API.BASE_URL + API.WISH_PATH + wish_id + ".json", {
+            params: {
+              user_id: user.id,
+              access_token: user.amz_access_token
+              }//END PARAMS
+            })//END GET
+            .then(function(response){
+              $scope.wish = response.data;
+              console.log($scope.wish);
+            })//END PROMISE
+        }, 1);
+
         $scope.submitWish = function() {
-          $location.path('/user-wishes');
+
           setTimeout(function(){
-            $http.patch(API.BASE_URL + '/wishes/' + $scope.wish.id + ".json", $scope.wish, {
+            $http.patch(API.BASE_URL + API.WISH_PATH + $scope.wish.id + ".json", $scope.wish, {
               params: {
                 user_id: user.id,
                 access_token: user.amz_access_token
                 }//END PARAMS
+              }).then(function(response){
+                $location.path('/user-wishes');
               })//END PATCH
           }, 1);
         };//SUBMITWISH
@@ -133,19 +181,7 @@
           $window.history.back();
         };//goBack
 
-        user = currentUser();
-        setTimeout(function(){
-          $http.get(API.BASE_URL+API.DRAFT_WISH_PATH, {
-            params: {
-              user_id: user.id,
-              access_token: user.amz_access_token
-            }
-          }) //END GET
-          .then(function(response){
-            $scope.wish = response.data;
-            console.log($scope.wish);
-          })//END PROMISE
-        }, 1);
+
       }//END CONTROLLER
 
     })//END WISH-FORM
@@ -178,10 +214,11 @@
     } // END find
   }) //END CONTROLLER
   .constant('API', {
-    BASE_URL: '//wishcastr-staging.herokuapp.com',
+    BASE_URL: '//localhost:3000',
     SEARCH_PATH: '/products/search.json',
-    DRAFT_WISH_PATH: '/wishes/draft.json',
+    DRAFT_WISH: 'draft.json',
     WISHES_PATH: '/wishes.json',
+    WISH_PATH: '/wishes/',
     TOP_WISHES_PATH: '/products/top.json'
   })
   .value('Search', {
@@ -258,23 +295,21 @@
 
   window.doRailsLogin = function(u){
     var BASEURL = "//wishcastr-staging.herokuapp.com/login/amazon.json";
-    setTimeout(function(){
-      $.ajax({
-        type: "POST",
-        url: BASEURL,
-        data: {user: u},
-        dataType: 'json'
-      }).done(function(response){
-        docCookies.removeItem('user');
-        u.id = response.id;
-        u.amz_raccess_token = response.amz_raccess_token;
-        u.created_at = response.created_at;
-        u.updated_at = response.updated_at;
-        u.postal_code = response.postal_code;
-        docCookies.setItem('user', JSON.stringify(u), 60*60*24*7);
-        window.location = "#/user-wishes";
-        toggleLoginDisplay();
-      }, 1);
+    $.ajax({
+      type: "POST",
+      url: BASEURL,
+      data: {user: u},
+      dataType: 'json'
+    }).done(function(response){
+      docCookies.removeItem('user');
+      u.id = response.id;
+      u.amz_raccess_token = response.amz_raccess_token;
+      u.created_at = response.created_at;
+      u.updated_at = response.updated_at;
+      u.postal_code = response.postal_code;
+      docCookies.setItem('user', JSON.stringify(u), 60*60*24*7);
+      window.location = "#/user-wishes";
+      toggleLoginDisplay();
     });
   };
 

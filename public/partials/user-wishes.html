@@ -1,13 +1,16 @@
 <section class="user-wishes-list" ng-if="wishes">
   <h2>User Wishes</h2>
   <ul>
-    <li ng-repeat="wish in wishes">
+    <li data-wish-id="{{wish.id}}" class="wish" ng-repeat="wish in wishes">
       <figure class="wish-img-sizing">
         <img ng-src="{{product.image_large}}" />
+        {{product.title}}
       </figure>
       <div class="wishes-list-txt">
         <h3>{{wish.name}}</h3>
         <h4>{{wish.threshold_price | currency}}</h4>
+        <button ng-click="editWish()" class="wishEditBtn">Edit</button>
+        <button ng-click="deleteWish()"class="wishDeleteBtn">Delete</button>
       </div>
     </li>
   </ul>
