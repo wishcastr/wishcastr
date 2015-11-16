@@ -20,6 +20,14 @@ class PriceHistoriesControllerTest < ActionController::TestCase
     assert_response 201
   end
 
+  # test "should error on update price history" do
+  #   patch :show, params:{
+  #     price_history: { currency: @price_history.currency,
+  #     date: @price_history.date, price: @price_history.price,
+  #     product_id: @price_history.product_id}, product_id: @price_history.id }, format: :json
+  #   assert_response 422
+  # end
+
   test "should show price_history" do
     get :show, params: { id: @price_history }
     assert_response :success
