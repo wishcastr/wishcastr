@@ -6,10 +6,15 @@ class UsersTest < ActionDispatch::IntegrationTest
   end
 
     test 'user can login' do
-    get "/users/1.json"
-    assert_template :show
+      get "/users/1.json"
+      assert_template :show
+    end
 
-    # post "/users/"
-    # assert_template :show
-  end
+    test 'user can update' do
+      patch "/users/1.json", params: {name: "Da-Me", email: "dame@wishcastr.com",
+        postal_code:"72727", amz_id:"AWED123", amz_access_token: "123DE",
+        amz_raccess_token:"Wat"}
+      assert_template :show
+    end
+
 end
