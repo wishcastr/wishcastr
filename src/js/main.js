@@ -301,42 +301,42 @@
   })
 
   window.createWishBtnFloat = function(){
-    var fixedElementOffset = $('.add-wish').offset().top;
-    var footerOffset = $('footer').offset().top + 3220;
-    var fixedElementHeight = $('.add-wish').height();
+  //   var fixedElementOffset = $('.add-wish').offset().top;
+  //   var footerOffset = $('footer').offset().top + 3220;
+  //   var fixedElementHeight = $('.add-wish').height();
+  //
+  //   // Check every time the user scrolls
+  //   $(window).scroll(function (event) {
+  //
+  //     // Y position of the vertical scrollbar
+  //     var y = $(this).scrollTop();
+  //     // console.log(fixedElementOffset, y + fixedElementHeight, footerOffset);
+  //
+  //     if(y >= fixedElementOffset && (y + fixedElementHeight) < footerOffset) {
+  //       $('.add-wish').addClass('fixed');
+  //       $('.add-wish').removeClass('bottom');
+  //     }else if(y >= fixedElementOffset && (y + fixedElementHeight) >= footerOffset) {
+  //       $('.add-wish').removeClass('fixed');
+  //       $('.add-wish').addClass('bottom');
+  //     }else{
+  //       $('.add-wish').removeClass('fixed bottom');
+  //     }
+  //   });
+  }
 
-    // Check every time the user scrolls
-    $(window).scroll(function (event) {
-
-      // Y position of the vertical scrollbar
-      var y = $(this).scrollTop();
-      console.log(fixedElementOffset, y + fixedElementHeight, footerOffset);
-
-      if(y >= fixedElementOffset && (y + fixedElementHeight) < footerOffset) {
-        $('.add-wish').addClass('fixed');
-        $('.add-wish').removeClass('bottom');
-      }else if(y >= fixedElementOffset && (y + fixedElementHeight) >= footerOffset) {
-        $('.add-wish').removeClass('fixed');
-        $('.add-wish').addClass('bottom');
-      }else{
-        $('.add-wish').removeClass('fixed bottom');
-      }
-    });
 
 
-
-// function tabs () {
+//------TABS-------------
   $('#top-view').on('click', function () {
     // console.log('BOOM!');
     $('#top-view').addClass('selected');
     $('#user-view').removeClass('selected');
+  });
 
-  })
   $('#user-view').on('click', function() {
     $('#user-view').addClass('selected');
     $('#top-view').removeClass('selected');
-
-  })
+    });
 
 
 
