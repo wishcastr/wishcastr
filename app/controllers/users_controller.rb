@@ -22,7 +22,6 @@ class UsersController < ApplicationController
           provider: "Amazon",
           amz_access_token: user_params[:amz_access_token]
         )
-        logger.debug("LOOK HERE" + @user)
       rescue ActiveRecord::RecordNotUnique
         retry
       end

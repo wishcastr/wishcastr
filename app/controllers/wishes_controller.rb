@@ -11,7 +11,7 @@ class WishesController < ApplicationController
 
   def draft
     user = User.find(params[:user_id])
-    # if user && user.amz_access_token == params[:access_token]
+    if user # && user.amz_access_token == params[:access_token]
       @wish = user.draft_wish
       if @wish
         render :show, status: :ok
@@ -19,14 +19,14 @@ class WishesController < ApplicationController
         @wish = Wish.create(user_id: user.id)
         render :show, status: :created
       end
-    # else
-    #   render inline: {error: "not authorized"}.to_json, status: :unauthorized
-    # end
+    else
+      render inline: {error: "not authorized"}.to_json, status: :unauthorized
+    end
   end
 
   def draft_wish_add
     user = User.find(params[:user_id])
-    # if user && user.amz_access_token == params[:access_token]
+    if user # && user.amz_access_token == params[:access_token]
       @wish = user.draft_wish
       products = params[:products]
       if products
@@ -41,18 +41,18 @@ class WishesController < ApplicationController
         end
       end
       render :show, status: :ok
-    # else
-    #   render inline: {error: "not authorized"}.to_json, status: :unauthorized
-    # end
+    else
+      render inline: {error: "not authorized"}.to_json, status: :unauthorized
+    end
   end
 
 
   # GET /wishes/1.json
   def show
     user = User.find(params[:user_id])
-    # if user && user.amz_access_token == params[:access_token]
+    if user #&& user.amz_access_token == params[:access_token]
       render :show, status: :ok
-    # end
+    end
   end
 
   # POST /wishes.json
