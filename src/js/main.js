@@ -72,8 +72,7 @@
           } //END IF USER
         }//END DRAFTWISH SCOPE FUNCTION
 
-
-      }//end of controller
+      } //end of controller
     })//END OF TOP-WISHES
 
     .when ('/user-wishes', {
@@ -96,7 +95,8 @@
         }else{
           console.log("Shouldn't see this");
           //TODO Hide User Wishes link when user is not logged in.
-        }
+        };
+
       }//end of controller
     })//END OF USER-WISHES
 
@@ -175,7 +175,22 @@
 
       search.query = '';
     } // END find
-  }) //END CONTROLLER
+  }) //END SEARCH CONTROLLER
+
+
+//FIXME!
+  // .controller('tabs', function(){
+  //
+  //     if ($location == '/#user-wishes'){
+  //       $('user-view').addClass('select');
+  //       $('top-view').removeClass('select');
+  //     }
+  //     if ($location == '/#top-wishes') {
+  //       $('user-view').removeClass('select');
+  //       $('top-view').addClass('select');
+  //     }
+  // })// END TABS CONTROLLER
+
   .constant('API', {
     BASE_URL: '//wishcastr-staging.herokuapp.com',
     SEARCH_PATH: '/products/search.json',
@@ -189,7 +204,8 @@
   })
 
 
-})(); //END OF IFFE
+
+})(); //END OF ANGULAR IFFE
 
 
 // Amazon Login SDK
@@ -226,6 +242,7 @@
     amazon.Login.logout();
     docCookies.removeItem('user');
     toggleLoginDisplay();
+    window.location = '/#top-wishes';
   };
 
   window.doAmazonLogin = function(){
@@ -251,7 +268,6 @@
 
     }); //END LOGIN.AUTHORIZE
 
-    // $window.location.reload(); //FIXME: DOESN'T BREAK CODE BUT DOESN'T SOLVE RELOAD PROBLEM FOR HELLO CTLR
 
   }; //END DOAMAZONLOGIN
 
@@ -291,9 +307,25 @@
       $("#amazon-logout").css("display", "block");
       $('#welcome').removeClass('hidden'); //TODO: DELETE ME IF WELCOME DOESN'T WORK
       $('#user-view').addClass('active');
+      // $('#user-view').addClass('selected');
+
 
     }
   };
+
+  var loc = window.location.href; // returns the full URL
+    //  if (window.location === '/#user-wishes') {
+  if (/user/.test(loc)){
+    console.log('USER WISHES SORTA WORKS');
+    $('#user-view').addClass('selected');
+    $('#top-view').removeClass('selected');
+  }
+    //  if (window.location === '/#top-wishes') {
+  if (/top-wishes/.test(loc)) {
+    console.log('MAKE IT SO TOP WISHES');
+    $('#user-view').removeClass('selected');
+    $('#top-view').addClass('selected');
+  }
 
   $(document).ready(function(){
     toggleLoginDisplay();
@@ -326,16 +358,28 @@
 
 
 //------TABS-------------
-  $('#top-view').on('click', function () {
-    // console.log('BOOM!');
-    $('#top-view').addClass('selected');
-    $('#user-view').removeClass('selected');
-  });
 
-  $('#user-view').on('click', function() {
-    $('#user-view').addClass('selected');
-    $('#top-view').removeClass('selected');
-    });
+
+$(function(){
+
+})
+
+
+
+
+
+  // $('#top-view').on('click', function () {
+  //   // console.log('BOOM!');
+  //   $('#top-view').addClass('selected');
+  //   $('#user-view').removeClass('selected');
+  // });
+  //
+  // $('#user-view').on('click', function() {
+  //   $('#user-view').addClass('selected');
+  //   $('#top-view').removeClass('selected');
+  //   });
+
+
 
 
 
