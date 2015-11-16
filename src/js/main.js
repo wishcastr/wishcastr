@@ -5,6 +5,13 @@
       redirectTo: 'top-wishes'
     })//END OF REDIRECT
 
+    .when('/wishes', {
+      template: 'Hallo!',
+      controller: function($routeParams){
+        console.log($routeParams);
+      }
+    })
+
     .when ('/top-wishes', {
       templateUrl: 'partials/top-wishes.html',
 
@@ -96,7 +103,7 @@
           console.log("Shouldn't see this");
           //TODO Hide User Wishes link when user is not logged in.
         };
-
+        'Tabs';
       }//end of controller
     })//END OF USER-WISHES
 
@@ -154,6 +161,9 @@
   })//END OF MODULE
 
   .controller('Hello', function($scope) {
+    $scope.currentUser = function(){
+      return currentUser();
+    }
     if (currentUser() !== null) {
       $scope.name = currentUser().name;
     }
@@ -178,18 +188,22 @@
   }) //END SEARCH CONTROLLER
 
 
-//FIXME!
-  // .controller('tabs', function(){
-  //
-  //     if ($location == '/#user-wishes'){
-  //       $('user-view').addClass('select');
-  //       $('top-view').removeClass('select');
-  //     }
-  //     if ($location == '/#top-wishes') {
-  //       $('user-view').removeClass('select');
-  //       $('top-view').addClass('select');
-  //     }
-  // })// END TABS CONTROLLER
+  .controller('Tabs', function($location){
+  console.log($location.path());
+      if ($location.path() == '/user-wishes'){
+        var userView = true;
+        var topView = false;
+        // $('user-view').addClass('selected');
+        // $('top-view').removeClass('selected');
+      }
+
+      if ($location.path() == '/top-wishes') {
+        var userView = false;
+        var topView = true;
+        // $('user-view').removeClass('selected');
+        // $('top-view').addClass('selected');
+      }
+  })// END TABS CONTROLLER
 
   .constant('API', {
     BASE_URL: '//wishcastr-staging.herokuapp.com',
@@ -313,19 +327,19 @@
     }
   };
 
-  var loc = window.location.href; // returns the full URL
+  // var loc = window.location.href; // returns the full URL
     //  if (window.location === '/#user-wishes') {
-  if (/user/.test(loc)){
-    console.log('USER WISHES SORTA WORKS');
-    $('#user-view').addClass('selected');
-    $('#top-view').removeClass('selected');
-  }
+  // if (/user/.test(loc)){
+  //   console.log('USER WISHES SORTA WORKS');
+  //   $('#user-view').addClass('selected');
+  //   $('#top-view').removeClass('selected');
+  // }
     //  if (window.location === '/#top-wishes') {
-  if (/top-wishes/.test(loc)) {
-    console.log('MAKE IT SO TOP WISHES');
-    $('#user-view').removeClass('selected');
-    $('#top-view').addClass('selected');
-  }
+  // if (/top-wishes/.test(loc)) {
+  //   console.log('MAKE IT SO TOP WISHES');
+  //   $('#user-view').removeClass('selected');
+  //   $('#top-view').addClass('selected');
+  // }
 
   $(document).ready(function(){
     toggleLoginDisplay();
@@ -360,24 +374,22 @@
 //------TABS-------------
 
 
-$(function(){
-
-})
 
 
 
 
 
-  $('#top-view').on('click', function () {
-    // console.log('BOOM!');
-    $('#top-view').addClass('selected');
-    $('#user-view').removeClass('selected');
-  });
-
-  $('#user-view').on('click', function() {
-    $('#user-view').addClass('selected');
-    $('#top-view').removeClass('selected');
-    });
+  //
+  // $('#top-view').on('click', function () {
+  //   // console.log('BOOM!');
+  //   $('#top-view').addClass('selected');
+  //   $('#user-view').removeClass('selected');
+  // });
+  //
+  // $('#user-view').on('click', function() {
+  //   $('#user-view').addClass('selected');
+  //   $('#top-view').removeClass('selected');
+  //   });
 
 
 
