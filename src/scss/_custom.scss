@@ -292,14 +292,20 @@ body:after {
 }//END .CONTAINER
 
 @media (max-width: 767px) {           //MOBILE
+  .container {
 
+  }
 }
 
 @media (max-width: 1024px) and (min-width: 768px){      //TABLET
+  .container {
 
+  }
 }
 
 
 @media (min-width: 1025px) {            //DESKTOP
-
+  .container {
+    
+  }
 }
