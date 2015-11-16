@@ -5,12 +5,7 @@
       redirectTo: 'top-wishes'
     })//END OF REDIRECT
 
-    .when('/wishes', {
-      template: 'Hallo!',
-      controller: function($routeParams){
-        console.log($routeParams);
-      }
-    })
+
 
     .when ('/top-wishes', {
       templateUrl: 'partials/top-wishes.html',
