@@ -17,10 +17,13 @@ gem 'active_model_serializers', '~> 0.10.0.rc2'
 gem 'rack-cors'
 
 gem 'rails-controller-testing'
+gem "codeclimate-test-reporter", group: :test, require: nil
 
 gem 'daemons'
 gem 'delayed_job_active_record'
 gem 'whenever'
+
+
 # Should use passenger later.
 gem 'puma'
 

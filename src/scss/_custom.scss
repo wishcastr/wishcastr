@@ -1,5 +1,10 @@
 $amazon-image-up: url(../img/amazon_login_76x32.png);
 $amazon-image-down: url(../img/amazon_login_76x32_pressed.png);
+$dark-blue: #064583;
+$teal: #068383;
+$light-teal: #379b9b;
+$yellow-orange: #F9BE12;
+$ivory: #fdf2cf;
 
 body:after {
   display: none;
@@ -20,7 +25,7 @@ body:after {
       display: inline-block;
       font-size: 30pt;
       font-family: 'Lobster Two', cursive;
-      color: #064583;     //DARK BLUE
+      color: $dark-blue;     //DARK BLUE
       font-weight: bold;
       margin-left: 10px;
       margin-top: 10px;
@@ -28,58 +33,75 @@ body:after {
       float: left;
     } //END #logo
 
-    .meta {
-      float: left;
+    .meta {               //<NAV>
+      float: right;
       display: inline-block;
       width: 25%;
       margin-top: 10px;
-      color: #064583;     //DARK BLUE
+      color: $dark-blue;     //DARK BLUE
       font-size: 16pt;
-      margin-right: 0;
+      margin-right: 10px;
       text-align: right;
 
       .hidden {
         display: none;
       }
+
+      .login {
+      display: inline-block;
+      margin-top: 10px;
+      float: right;
+      margin-right: 20px;
+      width: 100%;
+
+        .amazon-root {
+          cursor: pointer;
+          background: $amazon-image-up no-repeat;
+          height: 32px;
+          width: 76px;
+          float: right;
+
+          span {
+            padding: 6px 0 0 30px;
+            font-size: .6em;
+            font-weight: bold;
+            text-align: left;
+          }
+
+          .amazon-login {
+            display: block;
+            color: black;
+            width: 100%;
+          } //END AMAZON_LOGIN
+
+          .amazon-logout {
+            display: none;
+            color: black;
+          } //END AMAZON_LOGOUT
+
+        .amazon-root:active {
+          background: $amazon-image-down no-repeat;
+          margin-right: 10px;
+          position: relative;
+
+          } //END AMAZON-ROOT ACTIVE
+        }//END AMAZON-ROOT
+        #welcome {
+          float: right;
+          margin: 10px;
+          margin-right: 0;
+          display: none;
+          position: absolute;
+          width: 33.33%;
+          top: 50px;
+          right: 30px;
+          }
+      }//END .LOGIN <DIV>
+
     }//END .META
 
-    .login {
-      display: inline-block;
-      margin-top: 30px;
-      float: right;
-      width: 10%;
-      margin-right: 0;
-
-
-
-
-      #amazon-root {
-        cursor: pointer;
-        background: $amazon-image-up no-repeat;
-        height: 32px;
-        width: 76px;
-
-        span {
-          padding: 6px 0 0 30px;
-          font-size: .8em;
-          font-weight: bold;
-        }
-
-        #amazon-login {
-          display: block;
-        }
-
-        #amazon-logout {
-          display: none;
-        }
-      }
-      #amazon-root:active {
-        background: $amazon-image-down no-repeat;
-      }//END ROOT
-
-    }//END .LOGIN <DIV>
     button {
-      background-color: #068383; //TEAL
+      background-color: $teal; //TEAL
       border: none;
       color: #fff;
       border-radius: 3px;
@@ -94,7 +116,7 @@ body:after {
     .color-bar {
       display: inline-block;
       width: 100%;
-      background-color: #F9BE12; //YELLOW/ORANGE
+      background-color: $yellow-orange; //YELLOW/ORANGE
       padding-bottom: 4%;
       padding-top: 2%;
       text-align: center;
@@ -116,20 +138,22 @@ body:after {
         border: none;
         padding: 5px 95px;
         text-align: center;
-        margin-top: 25px;
+        font-size: 1.5em;
       }
 
       button {
-        background-color: #068383;
+        background-color: $teal;
         border: none;
         color: #fff;
-        padding-left: 2%;
-        padding-right: 2%;
+        // padding-left: 2%;
+        // padding-right: 2%;
         border-radius: 3px;
-        margin-left: 10px;
+        // margin-left: 10px;
+        font-size: 1.5em;
+        &:hover {
+          background-color: $light-teal;
+        }
       }//END BUTTON
-
-
 
       .search-menu {
         list-style: none;
@@ -143,21 +167,22 @@ body:after {
         margin-top: 10px;
 
         // &.shadow {
-	      //     -webkit-box-shadow: 0 8px 6px -6px black;
-	      //     -moz-box-shadow: 0 8px 6px -6px black;
-	      //     box-shadow: 0 8px 6px -6px black;
-        //   }
+        //   -webkit-box-shadow: 0 8px 6px -6px black;
+        //   -moz-box-shadow: 0 8px 6px -6px black;
+        //   box-shadow: 0 8px 6px -6px black;
+        // }
 
         li {
           // background-color: #fff;
-          color: #064583; //BLUE
+          color: $dark-blue; //DARK-BLUE
           a {
             text-decoration: none;
+            display: inline-block;
           }
         }
       }
     }//.COLOR-BAR=
-    }//.SEARCH
+  }//.SEARCH
 
   .list-view {
     width: 100%;
@@ -166,25 +191,64 @@ body:after {
       -webkit-animation: fa-spin 2s infinite linear;
       animation: fa-spin 2s infinite linear;
       margin: 0 auto;
-      font-size: 20pt;
+      font-size: 60pt;
+      text-align: center;
+      width: 100%;
+      margin-top: 100px;
+      color: #c1c1c1;
     }
+
+    .sub-views {
+      font-size: 22pt;
+      text-align: center;
+      border-bottom: 2px solid #f2f2f2;
+      height: 58px;
+
+      a{
+        text-decoration: none;
+        color: #a9a9a9;
+        display: none;
+        margin-top: 10px;
+        margin-right: 15px;
+        margin-left: 15px;
+      }
+
+
+      a.active {
+        display: inline-block;
+
+      }
+
+      .selected {
+        display: inline-block;
+        border: 2px solid #f2f2f2; //FIXME: change to grey
+        border-bottom: 3px solid #fff;
+        border-radius: 3px;
+        padding-right: 15px;
+        padding-left: 15px;
+        font-size: 25pt;
+        color: $dark-blue;
+
+
+      }
+
+    } //SUB-VIEWS
   } //END LIST-VIEW
 
   footer {
-    background-color: #F9BE12;
+    background-color: $yellow-orange;
     padding-top: 20px;
     padding-bottom: 15px;
     margin-top: 60px;
     @extend .clearfix;
 
     .info-pgs {
-      width: 50%;
       float: left;
       margin-top: 10px;
 
       a {
         text-decoration: none;
-        color: #fdf2cf;
+        color: $ivory;
         font-size: 14pt;
         margin-left: 10px;
         margin-right: 10px;
@@ -195,43 +259,98 @@ body:after {
           margin-right: 8px;
         }
 
-        &:hover {
-          color: #068383;
-        }
+        // &:hover {
+        //   color: $teal;
+        // }
       }//END A
     }//END .info-pgs
 
 
-    #gihub {
+    #github {
       float: right;
       text-decoration: none;
       margin-right: 25px;
       font-family: FontAwesome;
       font-size: 25pt;
-      width: 48%;
       text-align: right;
 
       a {
         text-decoration: none;
-        color: #fdf2cf;
-        &:hover {
-          color: #068383;
-        }
-      }//A
+        color: $ivory;
+        // &:hover {
+        //   color: $teal;
+        // }
+      }//END A
 
-    } //GITHUB
+    } //END GITHUB
   }//END FOOTER
 
 }//END .CONTAINER
 
 @media (max-width: 767px) {           //MOBILE
-}
+  .container {
+
+    .color-bar {
+
+      button {
+        margin-top: 15px;
+        padding-left: 15%;
+        padding-right: 15%;
+      }
+    } //.color-bar
+
+  }//.container
+}//END MOBILE
 
 @media (max-width: 1024px) and (min-width: 768px){      //TABLET
-
-}
+  .container {
+    
+  }
+}//END TABLET
 
 
 @media (min-width: 1025px) {            //DESKTOP
+  .container {
 
-}
+    .color-bar {
+
+      button {
+        margin-top: 10px;
+        padding-left: 2%;
+        padding-right: 2%;
+        margin-left: 10px;
+
+      }
+    } //.color-bar
+    footer {
+
+
+      .info-pgs {
+
+        a {
+
+          &::before {
+
+          }
+
+          &:hover {
+            color: $teal;
+          }
+        }//END A
+      }//END .info-pgs
+
+
+      #github {
+
+        a {
+
+          &:hover {
+            color: $teal;
+          }
+        }//END A
+
+      } //END GITHUB
+    }//END FOOTER
+
+  }// .container
+} //END DESKTOP

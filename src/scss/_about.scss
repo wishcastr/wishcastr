@@ -1,10 +1,10 @@
 .about {
   padding: 1em 2em;
-  color: #064583; //BLUE
+  color: $dark-blue; //BLUE
 
 
   h1 {
-    color: #068383;
+    color: $teal;
   }
 
 
@@ -42,11 +42,14 @@
           margin: 0 .1em;
           float: right;
           text-decoration: none;
-          color: #068383;
+          color: $teal;
           font-size: 1.5em;
+          &:hover {
+            color: $light-teal;
+          }
         }
         .about-link:visted {
-          color: #068383;
+          color: $teal;
         }
       }
 
@@ -57,10 +60,7 @@
       }
     }//END DIV.AWESOME-PERSON
   }//END DIV AWESOME-PEOPLE
-  footer {
-    display: inline-block;
-    float: left;
-  }
+
 }//END .ABOUT
 
 

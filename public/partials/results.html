@@ -16,9 +16,21 @@
     </li>
   </ul>
 
-  <div class="add-wish" ng-click="wishForm()">
-    <i class="fa fa-plus-circle"></i>
-    <div class="drp-down">Create a wish</div>
+  <div class="add-wish">
+    <button ng-click="draftWish()" class="add-wish-btn hvr-grow">
+      Create a wish
+    </button>
   </div>
-  
+  <div class="add-wish-but-login">
+    You should login
+    <div class="amazon-root" ng-click="toggleLogin()">
+      <span class="amazon-login">
+        Login
+      </span>
+      <span class="amazon-logout">
+        Logout
+      </span>
+    </div>
+  </div>
+
 </section>
