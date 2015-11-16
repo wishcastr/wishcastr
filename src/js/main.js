@@ -173,7 +173,6 @@
           $location.path('/results');
         })
 
-
       search.query = '';
     } // END find
   }) //END CONTROLLER
