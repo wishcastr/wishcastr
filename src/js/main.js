@@ -5,6 +5,13 @@
       redirectTo: 'top-wishes'
     })//END OF REDIRECT
 
+    .when('/wishes', {
+      template: 'Hallo!',
+      controller: function($routeParams){
+        console.log($routeParams);
+      }
+    })
+
     .when ('/top-wishes', {
       templateUrl: 'partials/top-wishes.html',
 
@@ -72,8 +79,7 @@
           } //END IF USER
         }//END DRAFTWISH SCOPE FUNCTION
 
-
-      }//end of controller
+      } //end of controller
     })//END OF TOP-WISHES
 
     .when ('/user-wishes', {
@@ -96,7 +102,8 @@
         }else{
           console.log("Shouldn't see this");
           //TODO Hide User Wishes link when user is not logged in.
-        }
+        };
+        'Tabs';
       }//end of controller
     })//END OF USER-WISHES
 
@@ -154,6 +161,9 @@
   })//END OF MODULE
 
   .controller('Hello', function($scope) {
+    $scope.currentUser = function(){
+      return currentUser();
+    }
     if (currentUser() !== null) {
       $scope.name = currentUser().name;
     }
@@ -173,10 +183,28 @@
           $location.path('/results');
         })
 
-
       search.query = '';
     } // END find
-  }) //END CONTROLLER
+  }) //END SEARCH CONTROLLER
+
+
+  .controller('Tabs', function($location){
+  console.log($location.path());
+      if ($location.path() == '/user-wishes'){
+        var userView = true;
+        var topView = false;
+        // $('user-view').addClass('selected');
+        // $('top-view').removeClass('selected');
+      }
+
+      if ($location.path() == '/top-wishes') {
+        var userView = false;
+        var topView = true;
+        // $('user-view').removeClass('selected');
+        // $('top-view').addClass('selected');
+      }
+  })// END TABS CONTROLLER
+
   .constant('API', {
     BASE_URL: '//wishcastr-staging.herokuapp.com',
     SEARCH_PATH: '/products/search.json',
@@ -190,7 +218,8 @@
   })
 
 
-})(); //END OF IFFE
+
+})(); //END OF ANGULAR IFFE
 
 
 // Amazon Login SDK
@@ -227,6 +256,7 @@
     amazon.Login.logout();
     docCookies.removeItem('user');
     toggleLoginDisplay();
+    window.location = '/#top-wishes';
   };
 
   window.doAmazonLogin = function(){
@@ -252,7 +282,6 @@
 
     }); //END LOGIN.AUTHORIZE
 
-    // $window.location.reload(); //FIXME: DOESN'T BREAK CODE BUT DOESN'T SOLVE RELOAD PROBLEM FOR HELLO CTLR
 
   }; //END DOAMAZONLOGIN
 
@@ -292,9 +321,25 @@
       $("#amazon-logout").css("display", "block");
       $('#welcome').removeClass('hidden'); //TODO: DELETE ME IF WELCOME DOESN'T WORK
       $('#user-view').addClass('active');
+      // $('#user-view').addClass('selected');
+
 
     }
   };
+
+  // var loc = window.location.href; // returns the full URL
+    //  if (window.location === '/#user-wishes') {
+  // if (/user/.test(loc)){
+  //   console.log('USER WISHES SORTA WORKS');
+  //   $('#user-view').addClass('selected');
+  //   $('#top-view').removeClass('selected');
+  // }
+    //  if (window.location === '/#top-wishes') {
+  // if (/top-wishes/.test(loc)) {
+  //   console.log('MAKE IT SO TOP WISHES');
+  //   $('#user-view').removeClass('selected');
+  //   $('#top-view').addClass('selected');
+  // }
 
   $(document).ready(function(){
     toggleLoginDisplay();
@@ -327,16 +372,26 @@
 
 
 //------TABS-------------
-  $('#top-view').on('click', function () {
-    // console.log('BOOM!');
-    $('#top-view').addClass('selected');
-    $('#user-view').removeClass('selected');
-  });
 
-  $('#user-view').on('click', function() {
-    $('#user-view').addClass('selected');
-    $('#top-view').removeClass('selected');
-    });
+
+
+
+
+
+
+  //
+  // $('#top-view').on('click', function () {
+  //   // console.log('BOOM!');
+  //   $('#top-view').addClass('selected');
+  //   $('#user-view').removeClass('selected');
+  // });
+  //
+  // $('#user-view').on('click', function() {
+  //   $('#user-view').addClass('selected');
+  //   $('#top-view').removeClass('selected');
+  //   });
+
+
 
 
 
