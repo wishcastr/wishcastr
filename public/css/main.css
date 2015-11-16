@@ -3162,28 +3162,7 @@ section.privacy {
 .user-wishes-list {
   margin: 0 auto;
   text-align: center;
-  width: 100%;
-  /*
-  @keyframes flipOutY {
-    from {
-      transform: perspective(400px);
-    }
-
-    30% {
-      transform: perspective(400px) rotate3d(0, 1, 0, -15deg);
-      opacity: 1;
-    }
-
-    to {
-      transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
-      opacity: 0;
-    }
-  }
-
-  .flipOutY {
-    backface-visibility: visible !important;
-    animation-name: flipOutY;
-  }*/ }
+  width: 100%; }
   .user-wishes-list h2 {
     font-size: 25pt;
     margin-bottom: 10px;

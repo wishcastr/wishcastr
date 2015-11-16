@@ -75,7 +75,7 @@
               })
               .then(function(response){
                 $scope.draft_wish = response.data;
-                $location.path('/wish-form/'+$scope.draft_wish.id);
+                $location.path('/wish/'+$scope.draft_wish.id);
               })//END OF PROMISE
             }, 1);
 

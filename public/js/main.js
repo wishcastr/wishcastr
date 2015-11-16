@@ -75,7 +75,7 @@
               })
               .then(function(response){
                 $scope.draft_wish = response.data;
-                $location.path('/wish-form/'+$scope.draft_wish.id);
+                $location.path('/wish/'+$scope.draft_wish.id);
               })//END OF PROMISE
             }, 1);
 
@@ -212,7 +212,7 @@
     } // END find
   }) //END CONTROLLER
   .constant('API', {
-    BASE_URL: '//localhost:3000',
+    BASE_URL: '//wishcastr-staging.herokuapp.com',
     SEARCH_PATH: '/products/search.json',
     DRAFT_WISH: 'draft.json',
     WISHES_PATH: '/wishes.json',
@@ -317,19 +317,10 @@
     if(currentUser() === null) { //NO USER LOGGED IN
       $("#amazon-login").css("display", "block");
       $("#amazon-logout").css("display", "none");
-      $('#welcome').addClass('hidden');
-      $('#user-view').removeClass('active');
-      $('#user-view').addClass('hidden');
-      $('#top-view').addClass('selected');
       window.location = '#/top-wishes';
     }else{ //USER LOGGED IN
       $('#amazon-login').css("display", "none");
       $("#amazon-logout").css("display", "block");
-      $('#welcome').removeClass('hidden');
-      $('#user-view').addClass('active');
-      $('#user-view').addClass('selected');
-      $('#user-view').removeClass('hidden');
-      $('#top-view').removeClass('selected');
     }
   };
 
