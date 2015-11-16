@@ -205,21 +205,27 @@
 
     $scope.toggleLogin = function(){
       auth.toggleLogin();
-      $scope.changeUserDisplay();
-      $scope.currentUser = auth.currentUser();
+      $scope.toggleLoginDisplay();
     }
 
-    $scope.changeUserDisplay = function(){
-      if(auth.currentUser){
-        angular.element('.amazon-login').css("display", "none");
-        angular.element('.amazon-logout').css("display", "block");
-        angular.element('#welcome').css("display", "block");
-      }else{
+    $scope.toggleLoginDisplay = function(){
+
+      $scope.currentUser = auth.currentUser();
+
+      if($scope.currentUser !== null){
         angular.element('.amazon-login').css("display", "block");
         angular.element('.amazon-logout').css("display", "none");
-        angular.element('#welcome').css("display", "none");
+        angular.element('#welcome').addClass("hidden");
+        angular.element('#user-view').removeClass('active');
+      }else{
+        angular.element('.amazon-login').css("display", "none");
+        angular.element('.amazon-logout').css("display", "block");
+        angular.element('#welcome').removeClass("hidden");
+        angular.element('#user-view').addClass('active');
       }
     }
+
+    $scope.toggleLoginDisplay();
 
 
   })//END CONTROLLER HELLO
@@ -243,20 +249,20 @@
 
 
   .controller('Tabs', function($location){
-  console.log($location.path());
-      if ($location.path() == '/user-wishes'){
-        var userView = true;
-        var topView = false;
-        // $('user-view').addClass('selected');
-        // $('top-view').removeClass('selected');
-      }
+    console.log($location.path());
+    if ($location.path() == '/user-wishes'){
+      var userView = true;
+      var topView = false;
+      // $('user-view').addClass('selected');
+      // $('top-view').removeClass('selected');
+    }
 
-      if ($location.path() == '/top-wishes') {
-        var userView = false;
-        var topView = true;
-        // $('user-view').removeClass('selected');
-        // $('top-view').addClass('selected');
-      }
+    if ($location.path() == '/top-wishes') {
+      var userView = false;
+      var topView = true;
+      // $('user-view').removeClass('selected');
+      // $('top-view').addClass('selected');
+    }
   })// END TABS CONTROLLER
 
   .constant('API', {
@@ -294,11 +300,8 @@
     };
 
     auth.doAmazonLogin = function(){
-      options = {
-        scope: 'profile'
-      };
-
-      amazon.Login.authorize(options, function(response) {
+      amazon.Login.setClientId('amzn1.application-oa2-client.91ae74641b2d4550959bd7109c2f2cba');
+      amazon.Login.authorize({scope: 'profile'}, function(response) {
         if (response.error) {
           console.log('oauth error ' + response.error);
           return;
@@ -334,7 +337,6 @@
         window.location = "#/wishes";
       });
     };
-
     return auth;
   }])
 
@@ -345,9 +347,7 @@
 
 // Amazon Login SDK
 ;(function(){
-  window.onAmazonLoginReady = function() {
-    amazon.Login.setClientId('amzn1.application-oa2-client.91ae74641b2d4550959bd7109c2f2cba');
-  };
+
   (function(d) {
     var a = d.createElement('script');
     a.type = 'text/javascript';

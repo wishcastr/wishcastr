@@ -2644,27 +2644,66 @@ body:after {
           .result-list ul li a .product-txt .descr {
             display: block; }
   .result-list .add-wish {
-    font-family: FontAwesome;
-    font-size: 20pt;
-    color: #f9be12;
-    background-color: #f2f2f2;
-    float: right;
-    display: inline;
-    top: 90%;
-    right: 20px;
+    display: none;
+    bottom: 0;
+    margin: 0 auto;
     position: fixed;
-    padding-left: 2.5%;
-    padding-right: 2.5%; }
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    -webkit-animation: display-none-transition 0.5s;
+    animation: display-none-transition 0.5s; }
+    .result-list .add-wish button {
+      font-size: 20pt;
+      border-radius: 5px;
+      background-color: #068383;
+      color: white;
+      cursor: pointer;
+      border: none;
+      margin-top: 6pt;
+      margin-bottom: 6pt;
+      box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.5);
+      -webkit-animation: display-none-transition 0.5s;
+      animation: display-none-transition 0.5s; }
+      .result-list .add-wish button:hover {
+        background-color: #379b9b; }
+    .result-list .add-wish button::before {
+      font-family: FontAwesome;
+      content: '\f0fe'; }
     .result-list .add-wish:hover {
       color: #f9be12;
       padding: 0; }
       .result-list .add-wish:hover .drp-down {
         display: block; }
-    .result-list .add-wish .drp-down {
-      display: none;
-      font-size: 12pt;
-      color: #064583;
-      background-color: none; }
+  .result-list .add-wish-but-login {
+    display: none;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    -webkit-animation: display-none-transition 0.5s;
+    animation: display-none-transition 0.5s; }
+    .result-list .add-wish-but-login .amazon-root {
+      cursor: pointer;
+      background: url(../img/amazon_login_76x32.png) no-repeat;
+      height: 32px;
+      width: 76px;
+      margin: 0 auto; }
+      .result-list .add-wish-but-login .amazon-root span {
+        padding: 6px 0 0 30px;
+        font-size: .8em;
+        font-weight: bold;
+        text-align: left; }
+      .result-list .add-wish-but-login .amazon-root .amazon-login {
+        display: block;
+        color: black;
+        width: 100%; }
+      .result-list .add-wish-but-login .amazon-root .amazon-logout {
+        display: none;
+        color: black; }
+    .result-list .add-wish-but-login .amazon-root:active {
+      background: url(../img/amazon_login_76x32_pressed.png) no-repeat;
+      margin-right: 10px;
+      position: relative; }
 
 @media (max-width: 767px) {
   .result-list li .product-txt {
