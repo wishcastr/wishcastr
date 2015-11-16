@@ -195,7 +195,11 @@ body:after {
       -webkit-animation: fa-spin 2s infinite linear;
       animation: fa-spin 2s infinite linear;
       margin: 0 auto;
-      font-size: 20pt;
+      font-size: 60pt;
+      text-align: center;
+      width: 100%;
+      margin-top: 100px;
+      color: #c1c1c1;
     }
 
     .sub-views {
