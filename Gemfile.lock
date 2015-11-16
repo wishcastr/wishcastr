@@ -132,6 +132,8 @@ GEM
     rack-cors (0.4.0)
     rack-test (0.6.3)
       rack (>= 1.0)
+    rails-controller-testing (0.0.3)
+      rails (>= 4.2)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.7)
@@ -172,6 +174,7 @@ DEPENDENCIES
   rack!
   rack-cors
   rails!
+  rails-controller-testing
   rails_12factor
   spring
   sprockets!

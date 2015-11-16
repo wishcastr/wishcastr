@@ -29,19 +29,22 @@ class WishesController < ApplicationController
     if user && user.amz_access_token == params[:access_token]
       @wish = user.draft_wish
       products = params[:products]
-      products.each do |p|
-        product = Product.find_or_create_by(sku: p[:sku], type: p[:type])
-        if @wish
-          @wish.products << product unless @wish.product_duplicate?(product.sku, product.type)
-        else
-          @wish = Wish.create(user_id: user.id)
-          @wish.products << product
+      if products
+        products.each do |p|
+          product = Product.find_or_create_by(sku: p[:sku], type: p[:type])
+          if @wish
+            @wish.products << product unless @wish.product_duplicate?(product.sku, product.type)
+          else
+            @wish = Wish.create(user_id: user.id)
+            @wish.products << product
+          end
         end
       end
       render :show, status: :ok
-    else
-      render inline: {error: "not authorized"}.to_json, status: :unauthorized
     end
+      # else
+      #   render inline: {error: "not authorized"}.to_json, status: :unauthorized
+      # end
   end
 
 

@@ -11,7 +11,7 @@ update trigger for products
 }  
 ```
 
-### GET /wishes/draft.json?access_token&user_id=1
+### GET /wishes/draft.json?access_token&user_id=[#{user_id}]
 returns a single draft wish
 
 ### Response
@@ -34,7 +34,20 @@ returns a single draft wish
 returns a draft add wishes action
 
 ### Request
-
+```javascript
+{
+  "id": 2,
+  "user_id": 1,
+  "threshold_price": 25,
+  "category": "Animals",
+  "query": "Dogs",
+  "name": "Bull-Dog",
+  "saved": false,
+  "created_at": "2015-11-13T20:47:13.979Z",
+  "updated_at": "2015-11-13T20:47:13.979Z",
+  "products": []
+}
+```
 
 ### Response
 If authentication is not  given

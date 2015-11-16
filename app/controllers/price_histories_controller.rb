@@ -2,9 +2,9 @@ class PriceHistoriesController < ApplicationController
   before_action :set_price_history, only: [:show, :update, :destroy]
 
   # GET /price_histories.json
-  def index
-    @price_histories = PriceHistory.all
-  end
+  # def index
+  #   @price_histories = PriceHistory.all
+  # end
 
   # GET /price_histories/1.json
   def show
