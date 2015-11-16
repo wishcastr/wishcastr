@@ -1,6 +1,6 @@
 echo 'Step 0: Kill ALL THE THINGS... in `public/`'
 
-rm -rf public/*
+find public/. ! -name 'data' -delete
 mkdir -p public
 
 echo 'Step 1: Copy all the HTML'
@@ -31,10 +31,14 @@ cp bower_components/angular/angular.js public/bower_components/angular/angular.j
 mkdir -p public/bower_components/angular-route/
 cp bower_components/angular-route/angular-route.js public/bower_components/angular-route/angular-route.js
 
+mkdir -p public/bower_components/d3/
+cp bower_components/d3/d3.min.js public/bower_components/d3/d3.min.js
+
 mkdir -p public/bower_components/font-awesome/css/
 mkdir -p public/fonts/
 cp bower_components/font-awesome/css/font-awesome.css public/bower_components/font-awesome/css/font-awesome.css
 
+mkdir -p public/data/
 cp -r bower_components/font-awesome/fonts/ public/fonts/
 
 mkdir -p public/bower_components/hover/scss/

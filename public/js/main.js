@@ -89,40 +89,41 @@
       }//end of controller
     })//END OF TOP-WISHES
 
-    .when ('/user-wishes/:wish_id', {
+    .when ('/wishes', {
       templateUrl: 'partials/user-wishes.html',
-      controller: function ($http, $scope, API) {
-        wish_id = $routeParams.wish_id;
+      controller: function ($http, $scope, API, $location) {
         var user = currentUser();
 
-        if(user){
-          setTimeout(function(){
-            $http.get(API.BASE_URL+API.WISHES_PATH, {
-              params: {
-                user_id: user.id,
-                access_token: user.amz_access_token
-              }
-            })
-            .then(function(response){
-              $scope.wishes = response.data;
-            })//END OF PROMISE
-          }, 1);
-        }else{
-          console.log("Shouldn't see this");
-        }
+        setTimeout(function(){
+          $http.get(API.BASE_URL+API.WISHES_PATH, {
+            params: {
+              user_id: user.id,
+              access_token: user.amz_access_token
+            }
+          })
+          .then(function(response){
+            $scope.wishes = response.data;
+          })//END OF PROMISE
+        }, 1);
 
         $scope.editWish = function(){
-          var w = angular.element(event.target).closest('.wish');
-          wish_id = w.attr("data-wish-id");
-          console.log("Editing");
-          console.log(wish);
-          console.log(wish_id);
-
+          var wish_id = angular.element(event.target).closest('.wish').attr("data-wish-id");
+          $location.path('/wish/'+wish_id);
         };
 
         $scope.deleteWish = function(){
-          var p = angular.element(event.target).closest('.product');
-          console.log("Deleting");
+          var wish_id = angular.element(event.target).closest('.wish').attr("data-wish-id");
+          console.log("Deleting "+wish_id);
+          //TODO: ADD CONFIRMATION
+          $http.delete(API.BASE_URL + API.WISH_PATH + wish_id, {
+            params: {
+              user_id: user.id,
+              access_token: user.amz_access_token
+            }
+          })
+          .then(function(response){
+            angular.element('.wish[data-wish-id='+wish_id+']').addClass('animated flipOutY');
+          });
         };
 
       }//end of controller
@@ -132,7 +133,7 @@
       templateUrl: 'partials/results.html',
       controller: function(Search, $location, $scope){
         $scope.wishForm = function() {          //ON CLICK TAKES YOU FROM /RESULTS
-          $location.path('/wish-form');         //TO /WISH-FORM
+          $location.path('/wish');         //TO /WISH-FORM
         }
         var products = this;
 
@@ -143,7 +144,7 @@
       controllerAs: 'products'
     })//END OF RESULTS PARTIAL
 
-    .when ('/wish-form/:wish_id', {
+    .when ('/wish/:wish_id', {
       templateUrl: 'partials/wish-form.html',
       controller: function($location, $scope, $window, $http, $routeParams, API) {
         var wish_id = $routeParams.wish_id;
@@ -172,7 +173,7 @@
                 access_token: user.amz_access_token
                 }//END PARAMS
               }).then(function(response){
-                $location.path('/user-wishes');
+                $location.path('/wishes');
               })//END PATCH
           }, 1);
         };//SUBMITWISH
@@ -199,17 +200,14 @@
     search.query = '';
 
     search.find = function(){
-      setTimeout(function(){
-        $http.get(API.BASE_URL + API.SEARCH_PATH, {
-          params: {
-            query: search.query
-          }
-        }).then(function(response){
-          Search.results = response.data;
-          $location.path('/results');
-        })
-      }, 1);
-
+      $http.get(API.BASE_URL + API.SEARCH_PATH, {
+        params: {
+          query: search.query
+        }
+      }).then(function(response){
+        Search.results = response.data;
+        $location.path('/results');
+      })
       search.query = '';
     } // END find
   }) //END CONTROLLER
@@ -264,6 +262,7 @@
     amazon.Login.logout();
     docCookies.removeItem('user');
     toggleLoginDisplay();
+    window.location = "#/top-wishes";
   };
 
   window.doAmazonLogin = function(){
@@ -308,7 +307,7 @@
       u.updated_at = response.updated_at;
       u.postal_code = response.postal_code;
       docCookies.setItem('user', JSON.stringify(u), 60*60*24*7);
-      window.location = "#/user-wishes";
+      window.location = "#/wishes";
       toggleLoginDisplay();
     });
   };
@@ -318,9 +317,19 @@
     if(currentUser() === null) { //NO USER LOGGED IN
       $("#amazon-login").css("display", "block");
       $("#amazon-logout").css("display", "none");
+      $('#welcome').addClass('hidden');
+      $('#user-view').removeClass('active');
+      $('#user-view').addClass('hidden');
+      $('#top-view').addClass('selected');
+      window.location = '#/top-wishes';
     }else{ //USER LOGGED IN
       $('#amazon-login').css("display", "none");
       $("#amazon-logout").css("display", "block");
+      $('#welcome').removeClass('hidden');
+      $('#user-view').addClass('active');
+      $('#user-view').addClass('selected');
+      $('#user-view').removeClass('hidden');
+      $('#top-view').removeClass('selected');
     }
   };
 
@@ -329,25 +338,43 @@
   })
 
   window.createWishBtnFloat = function(){
-    // $(window).scroll(function(){
-    //   var maxScroll = $('footer').position().top-$(window).height()-$("footer").height()-$(".add-wish").height();
-    //   console.log($(window).scrollTop(), maxScroll);
-    //   if ($(window).scrollTop() >= maxScroll){
-    //     $(".add-wish").css({
-    //       position: 'absolute',
-    //       bottom: $('footer').position().top + $(".add-wish").height(),
-    //       top: '',
-    //     });
-    //   }else{
-    //     $(".add-wish").css({
-    //       position: 'fixed',
-    //       top: '90%',
-    //       bottom: ''
-    //     });
-    //   }
-    // });
+
+  //   var fixedElementOffset = $('.add-wish').offset().top;
+  //   var footerOffset = $('footer').offset().top + 3220;
+  //   var fixedElementHeight = $('.add-wish').height();
+  //
+  //   // Check every time the user scrolls
+  //   $(window).scroll(function (event) {
+  //
+  //     // Y position of the vertical scrollbar
+  //     var y = $(this).scrollTop();
+  //     // console.log(fixedElementOffset, y + fixedElementHeight, footerOffset);
+  //
+  //     if(y >= fixedElementOffset && (y + fixedElementHeight) < footerOffset) {
+  //       $('.add-wish').addClass('fixed');
+  //       $('.add-wish').removeClass('bottom');
+  //     }else if(y >= fixedElementOffset && (y + fixedElementHeight) >= footerOffset) {
+  //       $('.add-wish').removeClass('fixed');
+  //       $('.add-wish').addClass('bottom');
+  //     }else{
+  //       $('.add-wish').removeClass('fixed bottom');
+  //     }
+  //   });
   }
 
 
-})(); //END IFFE
 
+//------TABS-------------
+  $('#top-view').on('click', function () {
+    // console.log('BOOM!');
+    $('#top-view').addClass('selected');
+    $('#user-view').removeClass('selected');
+  });
+
+  $('#user-view').on('click', function() {
+    $('#user-view').addClass('selected');
+    $('#top-view').removeClass('selected');
+    });
+
+
+})();//END IFFE

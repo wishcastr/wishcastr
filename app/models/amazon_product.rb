@@ -71,6 +71,7 @@ class AmazonProduct < Product
     doc.xpath("/ItemSearchResponse[1]/Items[1]/Item").each do |item|
       # logger.debug(item)
       result = {}
+      sanitizer = Rails::Html::FullSanitizer.new
 
       result[:id] = nil
       result[:type] = "AmazonProduct"
@@ -82,10 +83,10 @@ class AmazonProduct < Product
       result[:brand] = item.xpath("ItemAttributes[1]/Brand[1]").text || ""
       result[:current_price] = item.xpath("OfferSummary[1]/LowestNewPrice[1]/Amount[1]").text.to_f/100
       result[:current_price] = "Not Available" unless result[:current_price]
-      result[:description] = item.xpath("ItemAttributes[1]/Edition[1]").text.strip_tags || "No Description"
+      result[:description] = sanitizer.sanitize(item.xpath("ItemAttributes[1]/Edition[1]").text) || "No Description"
       result[:affiliate_url] = item.xpath("DetailPageURL[1]").text
       item.xpath("ItemAttributes[1]/Feature").each do |feature|
-        the_feature = feature.text.strip_tags
+        the_feature = sanitizer.sanitize(feature.text)
         the_feature.prepend("\n") unless result[:description].blank?
         result[:description] += the_feature
       end
