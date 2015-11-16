@@ -54,6 +54,7 @@
         .wishes-list-txt {
           padding-top: 4%;
           text-decoration: none;
+          // position: relative;
 
           h3 {
             display: block;
@@ -85,7 +86,41 @@
             display: block;
             font-size: 12pt;
           }
-          
+
+          #edit {
+            background-color: $teal;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            margin-right: 20px;
+
+            // position: absolute;
+            // left: 5%;
+
+            &:before {
+              content: '\f040';
+              font-family: FontAwesome;
+              margin-right: 5px;
+
+            }
+          } //EDIT
+            #delete {
+              background-color: $teal;
+              color: #fff;
+              border: none;
+              border-radius: 3px;
+              // position: absolute;
+              // right: 5%;
+
+
+              &:before {
+                content: '\f057';
+                font-family: FontAwesome;
+                margin-right: 5px;
+
+              }
+            } //DELETE
+
 
         }//.wishes-list-TXT
     }//END <LI>
@@ -100,12 +135,36 @@
   .user-wishes-list {
 
     ul {
-      margin-left: 0;
+      margin-left: 9.5%;
+      // margin-right: 2%;
+      // padding: 0;
+      // margin: 0;
 
       li {
-        width: 100%;
-        margin: 0;
-      }
+        width: 80%;
+        margin: 0 auto;
+
+        #edit {
+
+
+          &:before {
+
+            margin-right: 5px;
+
+          }
+        } //EDIT
+          #delete {
+
+
+
+            &:before {
+
+              margin-right: 5px;
+
+            }
+          } //DELETE
+
+      } //LI
     }
 
   }//end .user-wishes-list
@@ -119,6 +178,7 @@
 
     ul {
       margin-left: 9%;
+
 
       li {
         width: 40%;
@@ -139,7 +199,7 @@
       margin-left: 9%;
 
       li {
-        width: 40%;
+        width: 25%;
         margin: 5px;
 
       }
