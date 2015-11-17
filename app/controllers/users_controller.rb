@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     if @user.save
       render :show, status: :created, location: @user
     else
-      render json: @user.errors, status: :unprocessable_entity
+      render inline: {error: @user.errors}.to_json, status: :unprocessable_entity
     end
   end
 
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       render :show, status: :ok, location: @user
     else
-      render json: @user.errors, status: :unprocessable_entity
+      render inline: {error: @user.errors}.to_json, status: :unprocessable_entity
     end
   end
 
