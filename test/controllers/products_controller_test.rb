@@ -10,6 +10,12 @@ class ProductsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should return search result" do
+    get :index, params: {query: "Nintendo"}
+    assert_response :success
+  end
+
+
   test "should create product" do
     assert_difference('Product.count') do
       post :create, params: { product: {
