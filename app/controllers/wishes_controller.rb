@@ -79,6 +79,10 @@ class WishesController < ApplicationController
       # if user.amz_access_token == params[:access_token]
         if @wish.update(wish_params)
           @wish.update(saved: true)
+          @wish.products.each do |p|
+            next if params[:products].any? { |pp| p.sku == pp[:sku] && p.type == pp[:type] }
+            ProductsWish.where(wish_id: @wish.id, product_id: p.id).each { |pw| pw.destroy }
+          end
           render :show, status: :ok, location: @wish
         else
           render inline: {error: @wish.errors}.to_json, status: :unprocessable_entity

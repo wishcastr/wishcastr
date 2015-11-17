@@ -173,17 +173,25 @@
 
         $scope.removeProduct = function() {
           var p = $(event.target).closest('.form-item');
-          console.log(p);
-          console.log($scope.wish);
 
+          // CONSTRUCT PRODUCT FOR PATCH
           var product = {
             sku: p.attr('data-product-sku'),
             type: p.attr('data-product-source')
           } //END VAR PRODUCT
 
-          $scope.wish.products.splice($scope.wish.products.indexOf(product), 1);
 
-          console.log($scope.wish);
+          // FIND INDEX VALUE OF PRODUCT
+          var index = null;
+          for (var i=0; i<$scope.wish.products.length; i++) {
+            if ( $scope.wish.products[i].sku == product.sku && $scope.wish.products[i].type == product.type ) {
+              index = i;
+              break;
+            }
+          }
+
+          // REMOVE IT
+          $scope.wish.products.splice(index, 1);
 
         }
 

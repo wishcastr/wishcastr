@@ -30,17 +30,17 @@
       <button class="cancel" ng-click="goBack()">Cancel</button>
     </section>
 
-    <section class="form-item" data-product-sku="{{product.sku}}" data-product-type="{{product.type}}" ng-repeat="product in wish.products">
+    <section class="form-item" data-product-sku="{{product.sku}}" data-product-source="{{product.type}}" ng-repeat="product in wish.products">
       <figure class="img-sizing">
         <img ng-src="{{product.image_large}}" />
       </figure>
       <div class="product-txt">
-        <h3 class="product-title">{{product.title | limitTo: 25}}</h3>
+        <h3 class="product-title">{{product.title}}</h3>
         <p class="price">
           {{product.threshold_price | currency}}
         </p>
         <p class="descr">
-          {{product.description | limitTo: 25}}{{product.description.length > 25 ? '...' : ''}}
+          {{product.description | limitTo: 75}}{{product.description.length > 25 ? '...' : ''}}
         </p>
       </div>
       <button class="remove" ng-click="removeProduct()"></button>
