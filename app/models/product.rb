@@ -2,6 +2,7 @@ class Product < ActiveRecord::Base
   has_many :wishes, through: :products_wishes
   has_many :products_wishes
   has_many :price_histories
+  validates :sku, presence: true
 
   def self.by_wishes(how_many = nil)
     products = Product.select("products.*, COUNT(products_wishes.id) as wishes_count")
