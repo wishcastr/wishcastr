@@ -24,7 +24,7 @@
     @extend .clearfix;
 
     li {
-      border: 2px solid #fff;
+      // border: 2px solid #fff;
       background-color: #f2f2f2;
       @extend .clearfix;
       // width: 40%;
@@ -150,6 +150,8 @@
       li {
         width: 80%;
         margin: 0 auto;
+        border: 2px solid #fff;
+
 
         .editBtns {
           display: inline-block;
@@ -188,6 +190,8 @@
       li {
         width: 25%;
         margin: 5px;
+        box-shadow: 2px 2px 2px 0px rgba(0,0,0,.25);
+
 
         .wish-img-sizing {
           width: 200px;
@@ -217,6 +221,7 @@
       li {
         width: 25%;
         margin: 5px;
+        box-shadow: 2px 2px 2px 0px rgba(0,0,0,.25);
 
         .wish-img-sizing {
           width: 260px;
