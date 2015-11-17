@@ -147,6 +147,8 @@
         products.results = function(){
           return Search.results;
         };
+
+
       }, //END CONTROLLER
       controllerAs: 'products'
     })//END OF RESULTS PARTIAL
@@ -256,7 +258,7 @@
   })// END TABS CONTROLLER
 
   .constant('API', {
-    BASE_URL: '//localhost:3000',
+    BASE_URL: '//wishcastr-staging.herokuapp.com',
     SEARCH_PATH: '/products/search.json',
     DRAFT_WISH: 'draft.json',
     WISHES_PATH: '/wishes.json',
