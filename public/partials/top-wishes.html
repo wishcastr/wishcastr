@@ -13,7 +13,7 @@
           <p class="descr">
             {{product.description | limitTo: 100 }}{{product.description.length > 25 ? '...' : ''}}
           </p>
-          <p class="price">
+          <p class="price" data-current-price="{{product.current_price}}">
             {{product.current_price | currency}}
           </p>
           <div class="star-link" ng-click="starProduct()" >

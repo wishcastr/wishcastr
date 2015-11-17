@@ -67,13 +67,13 @@ end
 
 products = AmazonProduct.all
 
-# 150.times do
-#   PriceHistory.create!(
-#     product_id: products.sample.id,
-#     currency: "USD",
-#     price: Faker::Commerce.price,
-#     date: Faker::Date.between(100.days.ago, Date.today))
-# end
+150.times do
+  PriceHistory.create!(
+    product_id: products.sample.id,
+    currency: "USD",
+    price: Faker::Commerce.price,
+    date: Faker::Date.between(100.days.ago, Date.today))
+end
 
 # 300.times do
 #   wish = Wish.create(

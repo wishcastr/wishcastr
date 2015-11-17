@@ -2616,7 +2616,9 @@ body:after {
           .result-list ul .result-item a .img-container img {
             display: inline-block;
             margin: 0 auto;
-            float: left; }
+            float: left;
+            max-width: 100%;
+            max-height: 250px; }
         .result-list ul .result-item a .product-txt {
           text-align: left;
           width: 80%;

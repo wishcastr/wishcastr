@@ -30,7 +30,8 @@
             sku: p.attr('data-product-sku'),
             type: p.attr('data-product-source'),
             description: p.attr('title'),
-            image_thumbnail: p.find('img').attr('src'),
+            current_price: p.find('.price').attr('data-current-price'),
+            image_large: p.find('img').attr('ng-src'),
             title: p.find('.product-title').text()
           } //END VAR PRODUCT
 
@@ -364,7 +365,7 @@
   })// END TABS CONTROLLER
 
   .constant('API', {
-    BASE_URL: '//wishcastr-staging.herokuapp.com',
+    BASE_URL: '//localhost:3000',
     SEARCH_PATH: '/products/search.json',
     DRAFT_WISH: 'draft.json',
     WISHES_PATH: '/wishes.json',
