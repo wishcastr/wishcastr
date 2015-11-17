@@ -30,7 +30,7 @@ class Product < ActiveRecord::Base
       updated_product = product.class.item_lookup(product.sku)
       if updated_product[:sku] == product.sku
         PriceHistory.create(product_id: product.id, price: updated_product[:current_price], date: DateTime.now())
-        product.write_d3_table
+        # product.write_d3_table
       else
         logger.debug("How did this happen? Amazon you dumb")
       end
@@ -38,11 +38,11 @@ class Product < ActiveRecord::Base
     end
   end
 
-  def write_d3_table
-    File.open(Rails.root.join("public/data/#{type}-#{sku}.tsv"), 'w') do |f|
-      price_histories.each do |ph|
-        f.write "#{ph.date}\t#{ph.price}\n"
-      end
-    end
-  end
+  # def write_d3_table
+  #   File.open(Rails.root.join("public/data/#{type}-#{sku}.tsv"), 'w') do |f|
+  #     price_histories.each do |ph|
+  #       f.write "#{ph.date}\t#{ph.price}\n"
+  #     end
+  #   end
+  # end
 end
