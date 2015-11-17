@@ -30,7 +30,6 @@
       background-color: #f2f2f2;
       @extend .clearfix;
 
-
       a {
         float: left;
         text-decoration: none;
@@ -87,14 +86,15 @@
             font-size: 18pt;
             position: absolute;
             top: 25px;
-            right: 109px;
+            right: 87px;
             // margin-top: 5%;
             // margin-bottom: 5%;
 
           }
 
           .descr {
-            width: 78%;
+            width: 75%;
+            margin-right: 5px;
 
           }
 
@@ -237,6 +237,7 @@
       position: relative;
     } //END AMAZON-ROOT ACTIVE*/
 
+
   }//END .ADD-WISH-BUT-LOGIN
 } //END <SECTION>
 
@@ -244,12 +245,19 @@
 @media (max-width: 767px) {           //MOBILE
   .result-list {
 
-    li {
+    .result-item {  //li
+      width: 100%;
+
 
       .product-txt {
         margin-left: 10px;
+
+        .star-link {
+          font-size: 40pt;
+          right: 0;
+        }
       }
-    }//li
+    }//.result-item <li>
 
   }//.results-list
 } //END MOBILE
@@ -257,20 +265,33 @@
 @media (max-width: 1024px) and (min-width: 768px){      //TABLET
   .result-list {
 
+    .result-item {
+
+      .star-link {
+        font-size: 35pt;
+      }
+    } //.result-item
+
+
   } //.result-list
 } //END TABLET
 
 
 @media (min-width: 1025px) {            //DESKTOP
   .result-list {
-    li {
+    .result-item {
 
       .product-txt {
         .title {
           margin-left: 0;
 
-        }
-      }
-    }
+          .star-link {
+            font-size: 35pt;
+          }
+
+        } //.title
+      } //.product-txt
+    } //.result-item
   } //.result-list
+
 } //END DESKTOP

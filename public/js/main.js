@@ -148,7 +148,6 @@
           return Search.results;
         };
 
-
         $scope.starredProducts = {};
         $scope.starredProducts.products = [];
 
