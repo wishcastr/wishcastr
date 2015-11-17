@@ -138,7 +138,7 @@
 
     .when ('/results', {
       templateUrl: 'partials/results.html',
-      controller: function(Search, $location, $scope){
+      controller: function(Search, $location, $scope, auth, API, $http){
         $scope.wishForm = function() {          //ON CLICK TAKES YOU FROM /RESULTS
           $location.path('/wish');         //TO /WISH-FORM
         }
@@ -147,6 +147,76 @@
         products.results = function(){
           return Search.results;
         };
+
+        $scope.starProduct = function () {
+          // $location.path('/wish-form');
+          var star = $(event.target).closest('.star-link').find('.fa');
+          var p = $(event.target).closest('.product');
+          star.toggleClass('fa-star fa-star-o');
+          var products = $scope.starredProducts.products;
+          var product = {
+            sku: p.attr('data-product-sku'),
+            type: p.attr('data-product-source'),
+            description: p.attr('title'),
+            image_thumbnail: p.find('img').attr('src'),
+            title: p.find('.product-title').text()
+          } //END VAR PRODUCT
+
+          if(star.hasClass('fa-star')){
+            products.push(product);
+          }else{
+            products.splice(products.indexOf(product), 1);
+          }
+
+          if(products.length > 0 && $scope.currentUser !== null){
+            angular.element(".add-wish").css("display", "block");
+          }else{
+            angular.element(".add-wish").css("display", "none");
+          }
+          if(products.length > 0 && $scope.currentUser == null){
+            angular.element(".add-wish-but-login").css("display", "block");
+          }else{
+            angular.element(".add-wish-but-login").css("display", "none");
+          }
+
+        }//END STARPRODUCT SCOPE FUNCTION
+
+        if (auth.currentUser() !== null) {
+          var user = auth.currentUser();
+          $http.get(API.BASE_URL + API.WISH_PATH + API.DRAFT_WISH, {
+            params: {
+              user_id: user.id,
+              access_token: user.amz_access_token
+              }//END PARAMS
+            })
+            .then(function(response){
+              $scope.draft_wish = response.data;
+          })
+        }
+
+        $scope.draftWish = function() {
+
+          var user = auth.currentUser();
+          if(user){
+
+            setTimeout(function(){
+              $http.post(API.BASE_URL + API.WISH_PATH + API.DRAFT_WISH, $scope.starredProducts, {
+                params: {
+                  user_id: user.id,
+                  access_token: user.amz_access_token
+                }
+              })
+              .then(function(response){
+                $scope.draft_wish = response.data;
+                $location.path('/wish/'+$scope.draft_wish.id);
+              })//END OF PROMISE
+            }, 1);
+
+          }else{
+            console.log("You must sign up");
+            //TODO prompt sign up modal
+          } //END IF USER
+        }//END DRAFTWISH SCOPE FUNCTION
 
 
       }, //END CONTROLLER
