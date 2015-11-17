@@ -10,6 +10,12 @@ class ProductsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should return search result" do
+    get :index, params: {query: "Nintendo"}
+    assert_response :success
+  end
+
+
   test "should create product" do
     assert_difference('Product.count') do
       post :create, params: { product: {
@@ -21,6 +27,19 @@ class ProductsControllerTest < ActionController::TestCase
         type: @product.type } }, format: :json
     end
     assert_response 201
+  end
+
+  test "should error on create product" do
+    assert_no_difference('Product.count') do
+      post :create, params: { product: {
+        affiliate_url: @product.affiliate_url,
+        brand: @product.brand, description: @product.description,
+        image_large: @product.image_large,
+        image_thumbnail: @product.image_thumbnail,
+        sku: nil, title: @product.title,
+        type: @product.type } }, format: :json
+    end
+    assert_response 422
   end
 
   test "should show product" do
@@ -38,10 +57,22 @@ class ProductsControllerTest < ActionController::TestCase
     assert_response 200
   end
 
+  test "should error on update product" do
+    patch :update, params: { id: @product,
+      product: { affiliate_url: @product.affiliate_url,
+      brand: @product.brand, description: @product.description,
+      image_large: @product.image_large,
+      image_thumbnail: @product.image_thumbnail, sku: nil,
+      title: @product.title, type: @product.type } }, format: :json
+    assert_response 422
+  end
+
   test "should destroy product" do
     assert_difference('Product.count', -1) do
       delete :destroy, params: { id: @product }, format: :json
     end
     assert_response 204
   end
+
+
 end

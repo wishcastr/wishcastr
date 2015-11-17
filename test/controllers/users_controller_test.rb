@@ -4,8 +4,6 @@ class UsersControllerTest < ActionController::TestCase
   setup do
     @wish = wishes(:one)
     @user = users(:one)
-    @request.headers["x-wishcastr-access-token"] = @user.amz_access_token
-    @request.headers["x-wishcastr-user-id"] = @user.id
   end
 
   test "should get index" do
@@ -14,14 +12,33 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should create user" do
-    assert_difference('User.count') do
+    assert_difference('User.count', 1) do
       post :create, params: {
-        user: { amz_access_token: @user.amz_access_token,
-        amz_id: @user.amz_id, amz_raccess_token: @user.amz_raccess_token,
-        email: @user.email, name: @user.name,
-        postal_code: @user.postal_code } }, format: :json
+        user: {
+          amz_access_token: @user.amz_access_token,
+          amz_id: @user.amz_id + rand(1..29292992).to_s,
+          amz_raccess_token: @user.amz_raccess_token,
+          email: @user.email + rand(1..100000).to_s,
+          name: @user.name,
+          postal_code: @user.postal_code }
+        }, format: :json
     end
     assert_response 201
+  end
+
+  test "should error on create user" do
+    assert_no_difference('User.count') do
+      post :create, params: {
+        user: {
+          amz_access_token: @user.amz_access_token,
+          amz_id: @user.amz_id + rand(1..29292992).to_s,
+          amz_raccess_token: @user.amz_raccess_token,
+          email: nil,
+          name: @user.name,
+          postal_code: @user.postal_code }
+        }, format: :json
+    end
+    assert_response 422
   end
 
   test "should show user" do
@@ -35,6 +52,14 @@ class UsersControllerTest < ActionController::TestCase
       amz_id: @user.amz_id, amz_raccess_token: @user.amz_raccess_token,
       email: @user.email, name: @user.name, postal_code: @user.postal_code } }, format: :json
     assert_response 200
+  end
+
+  test "should error on update user" do
+    patch :update, params: {
+      id: @user, user: { amz_access_token: @user.amz_access_token,
+      amz_id: @user.amz_id, amz_raccess_token: @user.amz_raccess_token,
+      email: nil, name: @user.name, postal_code: @user.postal_code } }, format: :json
+    assert_response 422
   end
 
   test "should destroy user" do

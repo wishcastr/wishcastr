@@ -5,13 +5,6 @@
       redirectTo: 'top-wishes'
     })//END OF REDIRECT
 
-    .when('/wishes', {
-      template: 'Hallo!',
-      controller: function($routeParams){
-        console.log($routeParams);
-      }
-    })
-
     .when ('/top-wishes', {
       templateUrl: 'partials/top-wishes.html',
 
@@ -100,7 +93,7 @@
       } //end of controller
     })//END OF TOP-WISHES
 
-    .when ('/wishes', {
+    .when ('/user-wishes', {
       templateUrl: 'partials/user-wishes.html',
       controller: function ($http, $scope, API, $location, auth) {
         var user = auth.currentUser();
@@ -185,7 +178,7 @@
                 access_token: user.amz_access_token
                 }//END PARAMS
               }).then(function(response){
-                $location.path('/wishes');
+                $location.path('/user-wishes');
               })//END PATCH
           }, 1);
         };//SUBMITWISH
@@ -202,26 +195,16 @@
   })//END OF MODULE
 
   .controller('Hello', function($scope, auth) {
+    $scope.currentUser = auth.currentUser;
+    $scope.toggleLogin = auth.toggleLogin;
 
-    $scope.toggleLogin = function(){
-      auth.toggleLogin();
-      $scope.changeUserDisplay();
-      $scope.currentUser = auth.currentUser();
-    }
-
-    $scope.changeUserDisplay = function(){
-      if(auth.currentUser){
-        angular.element('.amazon-login').css("display", "none");
-        angular.element('.amazon-logout').css("display", "block");
-        angular.element('#welcome').css("display", "block");
+    $scope.loginCommand = function() {
+      if($scope.currentUser() == null){
+        return "Login";
       }else{
-        angular.element('.amazon-login').css("display", "block");
-        angular.element('.amazon-logout').css("display", "none");
-        angular.element('#welcome').css("display", "none");
+        return "Logout";
       }
     }
-
-
   })//END CONTROLLER HELLO
 
   .controller('SearchController', function($http, Search, API, $location){
@@ -242,21 +225,26 @@
   }) //END SEARCH CONTROLLER
 
 
-  .controller('Tabs', function($location){
-  console.log($location.path());
-      if ($location.path() == '/user-wishes'){
-        var userView = true;
-        var topView = false;
-        // $('user-view').addClass('selected');
-        // $('top-view').removeClass('selected');
-      }
+  .controller('Tabs', function($scope, $location, auth){
+    console.log($location.path());
 
-      if ($location.path() == '/top-wishes') {
-        var userView = false;
-        var topView = true;
-        // $('user-view').removeClass('selected');
-        // $('top-view').addClass('selected');
-      }
+    $scope.currentUser = auth.currentUser;
+
+    $scope.userView = function(){
+      if ($location.path() == '/user-wishes'){
+        return true;
+      }else{
+        return false;
+      };
+    }
+
+    $scope.topView = function(){
+      if ($location.path() == '/top-wishes'){
+        return true;
+      }else{
+        return false;
+      };
+    }
   })// END TABS CONTROLLER
 
   .constant('API', {
@@ -272,7 +260,6 @@
     results: [],
   })
   .factory('auth', ['$http', 'API', function($http, API){
-
     var auth = {};
 
     auth.currentUser = function(){
@@ -294,11 +281,8 @@
     };
 
     auth.doAmazonLogin = function(){
-      options = {
-        scope: 'profile'
-      };
-
-      amazon.Login.authorize(options, function(response) {
+      amazon.Login.setClientId('amzn1.application-oa2-client.91ae74641b2d4550959bd7109c2f2cba');
+      amazon.Login.authorize({scope: 'profile'}, function(response) {
         if (response.error) {
           console.log('oauth error ' + response.error);
           return;
@@ -331,10 +315,9 @@
         u.updated_at = response.updated_at;
         u.postal_code = response.postal_code;
         docCookies.setItem('user', JSON.stringify(u), 60*60*24*7);
-        window.location = "#/wishes";
+        window.location = "#/user-wishes";
       });
     };
-
     return auth;
   }])
 
@@ -345,9 +328,7 @@
 
 // Amazon Login SDK
 ;(function(){
-  window.onAmazonLoginReady = function() {
-    amazon.Login.setClientId('amzn1.application-oa2-client.91ae74641b2d4550959bd7109c2f2cba');
-  };
+
   (function(d) {
     var a = d.createElement('script');
     a.type = 'text/javascript';
