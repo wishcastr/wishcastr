@@ -10,8 +10,10 @@
         <h3>{{wish.name}}</h3>
         <h4>{{wish.threshold_price | currency}}</h4>
         <p ng-if="wish.saved == false" class="draft">**Draft Wish**</p>
-        <button ng-click="editWish()" class="wishEditBtn" id="edit">Edit</button>
-        <button ng-click="deleteWish()"class="wishDeleteBtn" id="delete">Delete</button>
+        <div class="editBtns hide">
+          <button ng-click="editWish()" class="wishEditBtn" id="edit">Edit</button>
+          <button ng-click="deleteWish()"class="wishDeleteBtn" id="delete">Delete</button>
+        </div>
       </div>
     </li>
   </ul>
