@@ -8,7 +8,7 @@
       </figure>
       <div class="wishes-list-txt">
         <h3>{{wish.name}}</h3>
-        <h4>{{wish.threshold_price | currency}}</h4>
+        <h4 class="price">{{wish.threshold_price | currency}}</h4>
         <p ng-if="wish.saved == false" class="draft">**Draft Wish**</p>
         <div class="editBtns">
           <button ng-click="editWish()" class="wishEditBtn" id="edit">Edit</button>
