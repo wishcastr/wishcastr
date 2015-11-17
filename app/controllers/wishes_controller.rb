@@ -4,9 +4,9 @@ class WishesController < ApplicationController
   # GET /wishes.json
   def index
     user = User.find(params[:user_id])
-    # if user && user.amz_access_token == params[:access_token]
+    if user # && user.amz_access_token == params[:access_token]
       @wishes = user.wishes
-    # end
+    end
   end
 
   def draft
@@ -59,13 +59,13 @@ class WishesController < ApplicationController
   # POST /wishes.json
   def create
     user = User.find(params[:user_id])
-    if user && user.amz_access_token == params[:access_token]
+    if user # && user.amz_access_token == params[:access_token]
       @wish = Wish.new(wish_params)
       @wish.user_id = user.id
       if @wish.save
         render :show, status: :created, location: @wish
       else
-        render json: @wish.errors, status: :unprocessable_entity
+        render inline: {error: @wish.errors}.to_json, status: :unprocessable_entity
       end
     else
       render inline: {error: "User ID or Access Token does not match"}.to_json, status: :forbidden
@@ -81,7 +81,7 @@ class WishesController < ApplicationController
           @wish.update(saved: true)
           render :show, status: :ok, location: @wish
         else
-          render json: @wish.errors, status: :unprocessable_entity
+          render inline: {error: @wish.errors}.to_json, status: :unprocessable_entity
         end
       # else
         # render inline: {error: "Access Token does not match for user"}.to_json, status: :unauthorized

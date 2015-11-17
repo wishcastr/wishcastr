@@ -17,7 +17,7 @@ class ProductsWishesController < ApplicationController
     if @products_wish.save
       render :show, status: :created, location: @products_wish
     else
-      render json: @products_wish.errors, status: :unprocessable_entity
+      render inline: {error: @products_wish.errors}.to_json, status: :unprocessable_entity
     end
   end
 
@@ -26,7 +26,7 @@ class ProductsWishesController < ApplicationController
     if @products_wish.update(products_wish_params)
       render :show, status: :ok, location: @products_wish
     else
-      render json: @products_wish.errors, status: :unprocessable_entity
+      render inline: {error: @products_wish.errors}.to_json, status: :unprocessable_entity
     end
   end
 

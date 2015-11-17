@@ -4,31 +4,59 @@ class WishesControllerTest < ActionController::TestCase
   setup do
     @wish = wishes(:one)
     @user = users(:one)
-    params["access_token"] = @user.amz_access_token
-    params["user_id"] = @user.id
   end
 
-  # test "should get index" do
-  #   get :index
-  #   assert_response :success
-  # end
+  test "should get index" do
+    get :index, params: { user_id: @user.id, access_token: @user.amz_access_token}
+    assert_response :success
+  end
 
-  # test "should create wish" do
-  #   assert_difference('Wish.count') do
+  test "should create wish" do
+    assert_difference('Wish.count') do
+      post :create, params: {
+        wish: {
+          user_id: @wish.user_id,
+          name: @wish.name,
+          query: @wish.query,
+          threshold_price: @wish.threshold_price },
+        user_id: @user.id,
+        access_token: @user.amz_access_token }, format: :json
+    end
+    assert_response 201
+  end
+
+  test "should 422 error on create wish" do
+    assert_no_difference('Wish.count') do
+      post :create, params: {
+        wish: {
+          user_id: @wish.user_id,
+          name: nil,
+          query: @wish.query,
+          threshold_price: @wish.threshold_price },
+        user_id: @user.id,
+        access_token: @user.amz_access_token }, format: :json
+    end
+    assert_response 422
+  end
+
+  # test "should 403 error on create wish" do
+  #   assert_no_difference('Wish.count') do
   #     post :create, params: {
-  #       wish: { category: @wish.category,
-  #       name: @wish.name, query: @wish.query,
-  #       threshold_price: @wish.threshold_price,
-  #       user_id: @wish.user_id } }, format: :json
+  #       wish: {
+  #         user_id:nil,
+  #         name: @wish.name,
+  #         query: @wish.query,
+  #         threshold_price: @wish.threshold_price},
+  #       user_id: @user.id,
+  #       access_token: @user.amz_access_token }, format: :json
   #   end
-  #
-  #   assert_response 201
+  #   assert_response 403
   # end
 
-  # test "should show wish" do
-  #   get :show, params: { id: @wish }
-  #   assert_response :success
-  # end
+  test "should show wish" do
+    get :show, params: {user_id: @wish.user_id, id: @wish.id}, format: :json
+    assert_response :success
+  end
 
   test "should update wish" do
     patch :update, params: { id: @wish, wish: {
@@ -37,11 +65,23 @@ class WishesControllerTest < ActionController::TestCase
       user_id: @wish.user_id } }, format: :json
     assert_response 403
   end
-  #
-  # test "should destroy wish" do
-  #   assert_difference('Wish.count', -1) do
-  #     delete :destroy, params: { id: @wish }
-  #   end
-  #   assert_response 204
-  # end
+
+  test "should error on update wish" do
+    patch :update, params: { id: @wish, wish: {
+      category: @wish.category, name: nil,
+      query: @wish.query, threshold_price: @wish.threshold_price,
+      user_id: @wish.user_id },
+    user_id: @user.id,
+    access_token: @user.amz_access_token
+       }, format: :json
+    assert_response 422
+  end
+
+  test "should destroy wish" do
+    assert_difference('Wish.count', -1) do
+      delete :destroy, params: { user_id: @wish.user_id, id: @wish.id }, format: :json
+    end
+    assert_response 200
+  end
+
 end
