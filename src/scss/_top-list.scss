@@ -155,10 +155,13 @@
   }//END of <UL>
   .add-wish{
     display: none;
-    top: 90%;
+    bottom: 0;
     margin: 0 auto;
     position: fixed;
     width: 100%;
+    background-color: rgba(0,0,0,.3);
+    -webkit-animation: display-none-transition 0.5s;
+    animation: display-none-transition 0.5s;
 
     button {
       font-size: 20pt;
@@ -167,9 +170,12 @@
       color: white;
       cursor: pointer;
       border: none;
+      margin-top: 6pt;
+      margin-bottom: 6pt;
       box-shadow: 1px 1px 2px 0 rgba(0,0,0,.5);
       -webkit-animation: display-none-transition 0.5s;
       animation: display-none-transition 0.5s;
+
       &:hover {
         background-color: $light-teal;
       }
@@ -190,20 +196,48 @@
       }
     }//.ADD-WISH HOVER
 
-    .drp-down {
-      display:none;
-      font-size: 12pt;
-      color: #064583;
-      background-color: none;
-    }
   }//END .ADD-WISH
-  .add-wish.fixed {
+    .add-wish-but-login{
+    display: none;
+    bottom: 0;
     position: fixed;
-    bottom: 90%;
-  }
-  .add-wish.bottom {
-    position: relative;
-  }
+    width: 100%;
+    background-color: rgba(0,0,0,.3);
+    -webkit-animation: display-none-transition 0.5s;
+    animation: display-none-transition 0.5s;
+
+    .amazon-root {
+      cursor: pointer;
+      background: $amazon-image-up no-repeat;
+      height: 32px;
+      width: 76px;
+      margin: 0 auto;
+
+      span {
+        padding: 6px 0 0 30px;
+        font-size: .8em;
+        font-weight: bold;
+        text-align: left;
+      }
+
+      .amazon-login {
+        display: block;
+        color: black;
+        width: 100%;
+      } //END AMAZON_LOGIN
+
+      .amazon-logout {
+        display: none;
+        color: black;
+      } //END AMAZON_LOGOUT
+    }
+    .amazon-root:active {
+      background: $amazon-image-down no-repeat;
+      margin-right: 10px;
+      position: relative;
+    } //END AMAZON-ROOT ACTIVE
+
+  }//END .ADD-WISH-BUT-LOGIN
 }//END .lists
 @media (max-width: 512px) {          //MINI-MOBILE
   .lists {

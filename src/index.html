@@ -44,19 +44,12 @@
         <a href="#/top-wishes" id="logo">Wishcastr</a>
         <nav class="meta" ng-controller="Hello as hello">
           <div class="login">
-            <div id="amazon-root">
-              <span id="amazon-login">
-                Login
-              </span>
-              <span id="amazon-logout">
-                Logout
-              </span>
+            <div ng-click="toggleLogin()" id="amazon-load" class="amazon-root">
+              <span class="amazon-login">Login</span>
+              <span class="amazon-logout">Logout</span>
             </div>
           </div>
-
-          <!-- <p id="welcome">Welcome, {{currentUser().name}}</p> -->
-
-          <p id="welcome" ng-if="docCookies.getItem('user') != null">Welcome, <span ng-bind="name"></span></p>
+          <p id="welcome">Welcome, {{currentUser.name}}</span></p>
         </nav>
 
       </header> <!--END OF NAV-HEADER-->
