@@ -79,7 +79,7 @@
             font-size: 18pt;
             margin-top: 14px;
             font-size: 14pt;
-            color: #064583;
+            color: $dark-blue;
             font-weight: bold;
           }
 
@@ -111,7 +111,7 @@
               }
             } //EDIT
               #delete {
-                background-color: $teal;
+                background-color: #ee6a50;
                 color: #fff;
                 border: none;
                 border-radius: 3px;
@@ -125,7 +125,7 @@
                   margin-right: 5px;
                 }
                 &:hover {
-                  background-color: #379b9b;
+                  background-color: #f18772 ;
                 }
 
               } //DELETE
@@ -216,7 +216,8 @@
   .user-wishes-list {
 
     ul {
-      margin-left: 9%;
+      margin-left: 11%;
+
 
       li {
         width: 25%;
