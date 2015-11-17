@@ -148,18 +148,21 @@
           return Search.results;
         };
 
+
+        $scope.starredProducts = [];
+
         $scope.starProduct = function () {
           // $location.path('/wish-form');
           var star = $(event.target).closest('.star-link').find('.fa');
-          var p = $(event.target).closest('.product');
+          var p = $(event.target).closest('.result-item');
           star.toggleClass('fa-star fa-star-o');
-          var products = $scope.starredProducts.products;
+          var products = $scope.starredProducts;
           var product = {
             sku: p.attr('data-product-sku'),
             type: p.attr('data-product-source'),
             description: p.attr('title'),
             image_thumbnail: p.find('img').attr('src'),
-            title: p.find('.product-title').text()
+            title: p.find('.title').text()
           } //END VAR PRODUCT
 
           if(star.hasClass('fa-star')){
@@ -168,12 +171,12 @@
             products.splice(products.indexOf(product), 1);
           }
 
-          if(products.length > 0 && $scope.currentUser !== null){
+          if(products.length > 0 && auth.currentUser() !== null){
             angular.element(".add-wish").css("display", "block");
           }else{
             angular.element(".add-wish").css("display", "none");
           }
-          if(products.length > 0 && $scope.currentUser == null){
+          if(products.length > 0 && auth.currentUser() == null){
             angular.element(".add-wish-but-login").css("display", "block");
           }else{
             angular.element(".add-wish-but-login").css("display", "none");
@@ -203,6 +206,7 @@
               $http.post(API.BASE_URL + API.WISH_PATH + API.DRAFT_WISH, $scope.starredProducts, {
                 params: {
                   user_id: user.id,
+                  name: $scope.starredProducts[0].title,
                   access_token: user.amz_access_token
                 }
               })
