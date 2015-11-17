@@ -1,7 +1,7 @@
 .result-list {
   margin: 0 auto;
   text-align: center;
-  width: 80%;
+  width: 100%;
 
   h2 {
     font-size: 25pt;
@@ -21,8 +21,9 @@
   ul {
     // border: 1px solid #068383;
     list-style: none;
-    width: 100%;
+    width: 80%;
     padding: 0;
+    margin: 0 auto;
 
     .result-item {
       border: 3px solid #fff;
@@ -136,6 +137,8 @@
     margin: 0 auto;
     position: fixed;
     width: 100%;
+    // padding-top: 15px; //FIXME: MAKE ME BIGGER!!!
+    // padding-bottom: 15px;
     background-color: rgba(0,0,0,.3);
     -webkit-animation: display-none-transition 0.5s;
     animation: display-none-transition 0.5s;
