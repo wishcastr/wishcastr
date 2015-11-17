@@ -4,8 +4,8 @@ class CatchMailer < ApplicationMailer
     @user = user
     if @user
       mail(to: "#{@user.name} <#{@user.email}>", subject: "Wishcastr Account Created")
-    else
-      logger.debug("Could not find #{user}")
+    # else
+    #   logger.debug("Could not find #{user}")
     end
   end
 
@@ -15,18 +15,18 @@ class CatchMailer < ApplicationMailer
     @wish = wish
     if @user && @product && @wish
       mail(to: "#{@user.name} <#{@user.email}>", subject: "Catch! #{@product.title}")
-    else
-      logger.debug("Could not find #{user} or #{product} or #{wish}")
+    # else
+    #   logger.debug("Could not find #{user} or #{product} or #{wish}")
     end
   end
 
-  def test(user)
-    @user = user
-    if @user
-      mail(to: @user.email, subject: 'Testing Wishcastr')
-    else
-      logger.debug("Could not find #{@user}")
-    end
-  end
+  # def test(user)
+  #   @user = user
+  #   if @user
+  #     mail(to: @user.email, subject: 'Testing Wishcastr')
+  #   else
+  #     logger.debug("Could not find #{@user}")
+  #   end
+  # end
 
 end

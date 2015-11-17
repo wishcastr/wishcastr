@@ -3,7 +3,7 @@
 one:
   id: 1
   name: MyString
-  email: MyString
+  email: MyString@you.com
   postal_code: MyString
   amz_id: MyString
   amz_access_token: MyString

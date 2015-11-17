@@ -2,9 +2,9 @@ class PriceHistoriesController < ApplicationController
   before_action :set_price_history, only: [:show, :update, :destroy]
 
   # GET /price_histories.json
-  def index
-    @price_histories = PriceHistory.all
-  end
+  # def index
+  #   @price_histories = PriceHistory.all
+  # end
 
   # GET /price_histories/1.json
   def show
@@ -17,7 +17,7 @@ class PriceHistoriesController < ApplicationController
     if @price_history.save
       render :show, status: :created, location: @price_history
     else
-      render json: @price_history.errors, status: :unprocessable_entity
+      render inline: {error: @price_history.errors}.to_json, status: :unprocessable_entity
     end
   end
 
@@ -26,7 +26,7 @@ class PriceHistoriesController < ApplicationController
     if @price_history.update(price_history_params)
       render :show, status: :ok, location: @price_history
     else
-      render json: @price_history.errors, status: :unprocessable_entity
+      render inline: {error: @price_history.errors}.to_json, status: :unprocessable_entity
     end
   end
 

@@ -2,9 +2,9 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :update, :destroy]
 
   # GET /products.json
-  def index
-    @products = Product.all
-  end
+  # def index
+  #   @products = Product.all
+  # end
 
   def top
     quantity = params[:limit] || 24
@@ -29,7 +29,7 @@ class ProductsController < ApplicationController
     if @product.save
       render :show, status: :created, location: @product
     else
-      render json: @product.errors, status: :unprocessable_entity
+      render inline: { error: @product.errors}.to_json, status: :unprocessable_entity
     end
   end
 
@@ -38,7 +38,7 @@ class ProductsController < ApplicationController
     if @product.update(product_params)
       render :show, status: :ok, location: @product
     else
-      render json: @product.errors, status: :unprocessable_entity
+      render inline: { error: @product.errors}.to_json, status: :unprocessable_entity
     end
   end
 

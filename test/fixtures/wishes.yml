@@ -6,6 +6,7 @@ one:
   category: Food
   query: hotdog
   name: loose sausage
+  saved: false
 
 two:
   user_id: 1
@@ -13,3 +14,4 @@ two:
   category: MyString
   query: MyString
   name: MyString
+  saved: false

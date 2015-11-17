@@ -12,6 +12,6 @@ class User < ActiveRecord::Base
 
 
   def new_account_email
-    CatchMailer.new_account(self).deliver_now
+    CatchMailer.new_account(self).deliver_now unless Rails.env.development?
   end
 end

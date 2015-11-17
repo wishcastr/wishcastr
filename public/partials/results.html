@@ -1,24 +1,40 @@
 <section class="result-list">
   <h2>Results</h2>
   <ul class="search-menu">
-    <li ng-repeat="product in products.results()">
-      <a href="#"> <!--TODO: MAKE THIS LINK TO AN ITEM SPECIFIC PAGE-->
-        <img ng-src="{{product.image_thumbnail}}">
+    <li data-product-sku="{{product.sku}}" data-affiliate-url="{{product.affiliate_url}}" data-product-source="{{product.type}}" class="result-item" ng-repeat="product in products.results()">
+      <a> <!--TODO: MAKE THIS LINK TO AN ITEM SPECIFIC PAGE-->
+        <figure class="img-container">
+          <img ng-src="{{product.image_large}}">
+        </figure>
         <div class="product-txt" title="{{product.description}}">
-          <h3 class="title">{{product.title | limitTo: 50}}{{product.description.length > 20 ? '...' : ''}}</h3>
+          <h3 class="title" title="{{product.title}}">{{product.title | limitTo: 50}}{{product.description.length > 20 ? '...' : ''}}</h3>
           <div class="star-link" ng-click="starProduct()" >
             <span class="fa fa-star-o hvr-icon-grow" title="Create a Wish"></span>
           </div>
-          <p class="price">{{product.current_price | currency }}</p>
-          <p class="descr">{{product.description | limitTo: 80}}{{product.description.length > 20 ? '...' : ''}}</p>
+          <p class="price" data-current-price="{{product.current_price}}">{{product.current_price | currency }}</p>
+          <p class="descr">{{product.description }}{{product.description.length > 20 ? '...' : ''}}</p>
+          <!-- <a class="buy" href="{{product.affiliate_url}}" target="_blank">Buy Now</a> -->
         </div>
       </a>
     </li>
   </ul>
 
-  <div class="add-wish" ng-click="wishForm()">
-    <i class="fa fa-plus-circle"></i>
-    <div class="drp-down">Create a wish</div>
+  <div class="add-wish">
+    <button ng-click="draftWish()" class="add-wish-btn hvr-grow">
+      Create a wish
+    </button>
   </div>
-  
+  <div class="add-wish-but-login">
+    <p class="login-save">Login to save your wish!</p>
+    <!-- <div class="amazon-root" ng-click="toggleLogin()">
+      <span class="amazon-login">
+        Login
+      </span>
+      <span class="amazon-logout">
+        Logout
+      </span>
+    </div> -->
+  </div>
+
+
 </section>

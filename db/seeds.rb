@@ -1,5 +1,7 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
+# This file should contain all the record creation needed to seed the
+# database with its default values.
+# The data can then be loaded with the rake db:seed (or created alongside
+# the db with db:setup).
 
 # 10.times do
 #   User.create!(
@@ -65,13 +67,13 @@ end
 
 products = AmazonProduct.all
 
-# 150.times do
-#   PriceHistory.create!(
-#     product_id: products.sample.id,
-#     currency: "USD",
-#     price: Faker::Commerce.price,
-#     date: Faker::Date.between(100.days.ago, Date.today))
-# end
+150.times do
+  PriceHistory.create!(
+    product_id: products.sample.id,
+    currency: "USD",
+    price: Faker::Commerce.price,
+    date: Faker::Date.between(100.days.ago, Date.today))
+end
 
 # 300.times do
 #   wish = Wish.create(
@@ -123,5 +125,6 @@ dame = User.create!(
     query: "Overwatch Collector")
 
   # sample_product = Product.find_by(sku: "B017L187X2")
-  # PriceHistory.create!(product_id: sample_product.id, date: DateTime.now() - 1.day, price: 10000)
+  # PriceHistory.create!(product_id: sample_product.id,
+  # date: DateTime.now() - 1.day, price: 10000)
   # wishy.products << sample_product
