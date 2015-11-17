@@ -39,6 +39,19 @@ class WishesControllerTest < ActionController::TestCase
     assert_response 422
   end
 
+  # test "should 403 error on create wish" do
+  #   assert_no_difference('Wish.count') do
+  #     post :create, params: {
+  #       wish: {
+  #         user_id:nil,
+  #         name: @wish.name,
+  #         query: @wish.query,
+  #         threshold_price: @wish.threshold_price},
+  #       user_id: @user.id,
+  #       access_token: @user.amz_access_token }, format: :json
+  #   end
+  #   assert_response 403
+  # end
 
   test "should show wish" do
     get :show, params: {user_id: @wish.user_id, id: @wish.id}, format: :json
@@ -70,4 +83,5 @@ class WishesControllerTest < ActionController::TestCase
     end
     assert_response 200
   end
+
 end
