@@ -3,7 +3,9 @@
   <ul class="search-menu">
     <li ng-repeat="product in products.results()">
       <a> <!--TODO: MAKE THIS LINK TO AN ITEM SPECIFIC PAGE-->
-        <img ng-src="{{product.image_thumbnail}}">
+        <figure class="img-container">
+          <img ng-src="{{product.image_thumbnail}}">
+        </figure>
         <div class="product-txt" title="{{product.description}}">
           <h3 class="title">{{product.title | limitTo: 50}}{{product.description.length > 20 ? '...' : ''}}</h3>
           <div class="star-link" ng-click="star()" >
