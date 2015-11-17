@@ -245,6 +245,14 @@
         return false;
       };
     }
+
+    $scope.resultView = function(){
+      if ($location.path() == '/results'){
+        return true;
+      }else{
+        return false;
+      };
+    }
   })// END TABS CONTROLLER
 
   .constant('API', {
