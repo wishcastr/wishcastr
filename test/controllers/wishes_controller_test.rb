@@ -25,6 +25,21 @@ class WishesControllerTest < ActionController::TestCase
     assert_response 201
   end
 
+  test "should 422 error on create wish" do
+    assert_no_difference('Wish.count') do
+      post :create, params: {
+        wish: {
+          user_id: @wish.user_id,
+          name: nil,
+          query: @wish.query,
+          threshold_price: @wish.threshold_price },
+        user_id: @user.id,
+        access_token: @user.amz_access_token }, format: :json
+    end
+    assert_response 422
+  end
+
+
   test "should show wish" do
     get :show, params: {user_id: @wish.user_id, id: @wish.id}, format: :json
     assert_response :success
@@ -36,6 +51,17 @@ class WishesControllerTest < ActionController::TestCase
       query: @wish.query, threshold_price: @wish.threshold_price,
       user_id: @wish.user_id } }, format: :json
     assert_response 403
+  end
+
+  test "should error on update wish" do
+    patch :update, params: { id: @wish, wish: {
+      category: @wish.category, name: nil,
+      query: @wish.query, threshold_price: @wish.threshold_price,
+      user_id: @wish.user_id },
+    user_id: @user.id,
+    access_token: @user.amz_access_token
+       }, format: :json
+    assert_response 422
   end
 
   test "should destroy wish" do
