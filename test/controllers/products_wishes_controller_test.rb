@@ -10,17 +10,17 @@ class ProductsWishesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  # test "should create products_wish" do
-  #   assert_difference('ProductsWish.count') do
-  #     post :create, params: {
-  #       products_wish: {
-  #         product_id: @products_wish.product_id,
-  #         wish_id: @products_wish.wish_id
-  #       }
-  #     }, format: :json
-  #   end
-  #   assert_response 201
-  # end
+  test "should create products_wish" do
+    assert_difference('ProductsWish.count') do
+      post :create, params: {
+        products_wish: {
+          product_id: @products_wish.product_id,
+          wish_id: @products_wish.wish_id
+        }
+      }, format: :json
+    end
+    assert_response 201
+  end
 
   test "should show products_wish" do
     get :show, params: { id: @products_wish }, format: :json
