@@ -24,7 +24,7 @@
     width: 100%;
     padding: 0;
 
-    li {
+    .result-item {
       border: 3px solid #fff;
       background-color: #f2f2f2;
       @extend .clearfix;
