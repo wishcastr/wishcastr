@@ -15,6 +15,10 @@ class ProductsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should return top wishes" do
+    get :top, format: :json
+    assert_response :success
+  end
 
   test "should create product" do
     assert_difference('Product.count') do
