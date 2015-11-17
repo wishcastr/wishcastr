@@ -162,7 +162,7 @@
             type: p.attr('data-product-source'),
             description: p.find('.product-txt').attr('title'),
             image_large: p.find('img').attr('ng-src'),
-            current_price: p.attr('data-current-price'),
+            current_price: p.find('.price').attr('data-current-price'),
             title: p.find('.title').attr('title'),
             affiliate_url: p.find('.buy').attr('href')
           } //END VAR PRODUCT
