@@ -17,7 +17,7 @@ class PriceHistoriesController < ApplicationController
     if @price_history.save
       render :show, status: :created, location: @price_history
     else
-      render json: @price_history.errors, status: :unprocessable_entity
+      render inline: {error: @price_history.errors}.to_json, status: :unprocessable_entity
     end
   end
 

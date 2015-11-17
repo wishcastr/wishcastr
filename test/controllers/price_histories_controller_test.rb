@@ -20,6 +20,16 @@ class PriceHistoriesControllerTest < ActionController::TestCase
     assert_response 201
   end
 
+  test "should error on create price_history" do
+    assert_no_difference('PriceHistory.count') do
+      post :create, params: { id: @price_history.id,
+        price_history: { currency: @price_history.currency,
+        date: @price_history.date, price: @price_history.price,
+        product_id: nil } }, format: :json
+    end
+    assert_response 422
+  end
+
   test "should error on update price history" do
     patch :update, params: {id: @price_history.id,
       price_history: { currency: @price_history.currency,
