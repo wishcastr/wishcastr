@@ -9,24 +9,19 @@ ratings:
 engines:
   rubocop:
     enabled: true
-     checks:
-      Rubocop/Metrics/AbcSize:
-        enabled: false
-     checks:
-      Rubocop/Metrics/MethodLength:
-        enabled: false
-     checks:
-      Rubocop/Style/StringLiterals:
-        enabled: false
-     checks:
-      Rubocop/Style/SpaceInsideHashLiteralBraces:
-        enabled: false
-     checks:
-      Rubocop/Metrics/LineLength:
-        enabled: false
-     checks:
-      Rubocop/Style/SpaceInsideHashLiteralBraces:
-        enabled: false
+      checks:
+        Rubocop/Metrics/AbcSize:
+          enabled: false
+        Rubocop/Metrics/MethodLength:
+          enabled: false
+        Rubocop/Style/StringLiterals:
+          enabled: false
+        Rubocop/Style/SpaceInsideHashLiteralBraces:
+          enabled: false
+        Rubocop/Metrics/LineLength:
+          enabled: false
+        Rubocop/Style/SpaceInsideHashLiteralBraces:
+          enabled: false
 
 exclude_fingerprints:
   - d326692d582e65022fb00a5f80b5dd2f
