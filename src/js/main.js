@@ -5,13 +5,6 @@
       redirectTo: 'top-wishes'
     })//END OF REDIRECT
 
-    .when('/wishes', {
-      template: 'Hallo!',
-      controller: function($routeParams){
-        console.log($routeParams);
-      }
-    })
-
     .when ('/top-wishes', {
       templateUrl: 'partials/top-wishes.html',
 
@@ -100,7 +93,7 @@
       } //end of controller
     })//END OF TOP-WISHES
 
-    .when ('/wishes', {
+    .when ('/user-wishes', {
       templateUrl: 'partials/user-wishes.html',
       controller: function ($http, $scope, API, $location, auth) {
         var user = auth.currentUser();
@@ -185,7 +178,7 @@
                 access_token: user.amz_access_token
                 }//END PARAMS
               }).then(function(response){
-                $location.path('/wishes');
+                $location.path('/user-wishes');
               })//END PATCH
           }, 1);
         };//SUBMITWISH
@@ -202,32 +195,16 @@
   })//END OF MODULE
 
   .controller('Hello', function($scope, auth) {
+    $scope.currentUser = auth.currentUser;
+    $scope.toggleLogin = auth.toggleLogin;
 
-    $scope.toggleLogin = function(){
-      auth.toggleLogin();
-      $scope.toggleLoginDisplay();
-    }
-
-    $scope.toggleLoginDisplay = function(){
-
-      $scope.currentUser = auth.currentUser();
-
-      if($scope.currentUser !== null){
-        angular.element('.amazon-login').css("display", "block");
-        angular.element('.amazon-logout').css("display", "none");
-        angular.element('#welcome').addClass("hidden");
-        angular.element('#user-view').removeClass('active');
+    $scope.loginCommand = function() {
+      if($scope.currentUser() == null){
+        return "Login";
       }else{
-        angular.element('.amazon-login').css("display", "none");
-        angular.element('.amazon-logout').css("display", "block");
-        angular.element('#welcome').removeClass("hidden");
-        angular.element('#user-view').addClass('active');
+        return "Logout";
       }
     }
-
-    $scope.toggleLoginDisplay();
-
-
   })//END CONTROLLER HELLO
 
   .controller('SearchController', function($http, Search, API, $location){
@@ -248,20 +225,25 @@
   }) //END SEARCH CONTROLLER
 
 
-  .controller('Tabs', function($location){
+  .controller('Tabs', function($scope, $location, auth){
     console.log($location.path());
-    if ($location.path() == '/user-wishes'){
-      var userView = true;
-      var topView = false;
-      // $('user-view').addClass('selected');
-      // $('top-view').removeClass('selected');
+
+    $scope.currentUser = auth.currentUser;
+
+    $scope.userView = function(){
+      if ($location.path() == '/user-wishes'){
+        return true;
+      }else{
+        return false;
+      };
     }
 
-    if ($location.path() == '/top-wishes') {
-      var userView = false;
-      var topView = true;
-      // $('user-view').removeClass('selected');
-      // $('top-view').addClass('selected');
+    $scope.topView = function(){
+      if ($location.path() == '/top-wishes'){
+        return true;
+      }else{
+        return false;
+      };
     }
   })// END TABS CONTROLLER
 
@@ -278,7 +260,6 @@
     results: [],
   })
   .factory('auth', ['$http', 'API', function($http, API){
-
     var auth = {};
 
     auth.currentUser = function(){
@@ -334,7 +315,7 @@
         u.updated_at = response.updated_at;
         u.postal_code = response.postal_code;
         docCookies.setItem('user', JSON.stringify(u), 60*60*24*7);
-        window.location = "#/wishes";
+        window.location = "#/user-wishes";
       });
     };
     return auth;
