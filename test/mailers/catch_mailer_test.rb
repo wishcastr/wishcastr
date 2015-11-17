@@ -14,9 +14,4 @@ class CatchMailerTest < ActionMailer::TestCase
     assert_equal ["catch@wishcastr.com"], email.from
     assert_match "Caught", email.body.encoded
   end
-
-  test "could not find user" do
-    email = CatchMailer.catch("David")
-    assert_not_empty "Could not find David", Rails::logger.debug
-  end
 end
