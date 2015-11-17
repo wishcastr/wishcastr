@@ -12,7 +12,7 @@ class WishesControllerTest < ActionController::TestCase
   end
 
   test "should create wish" do
-    assert_difference('Wish.count', 1) do
+    assert_difference('Wish.count') do
       post :create, params: {
         wish: {
           user_id: @wish.user_id,

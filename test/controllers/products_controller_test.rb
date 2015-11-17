@@ -44,4 +44,6 @@ class ProductsControllerTest < ActionController::TestCase
     end
     assert_response 204
   end
+
+    
 end
