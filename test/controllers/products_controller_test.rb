@@ -20,6 +20,11 @@ class ProductsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should return search results" do
+    get :search, format: :json
+    assert_response :success
+  end
+
   test "should create product" do
     assert_difference('Product.count') do
       post :create, params: { product: {
