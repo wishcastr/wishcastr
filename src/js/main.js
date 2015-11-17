@@ -149,6 +149,8 @@
         products.results = function(){
           return Search.results;
         };
+
+
       }, //END CONTROLLER
       controllerAs: 'products'
     })//END OF RESULTS PARTIAL
