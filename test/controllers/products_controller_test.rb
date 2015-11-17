@@ -56,6 +56,12 @@ class ProductsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should trigger update" do
+    get :trigger_update, format: :json
+
+    assert_response :success
+  end
+
   test "should update product" do
     patch :update, params: { id: @product,
       product: { affiliate_url: @product.affiliate_url,
