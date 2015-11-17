@@ -41,6 +41,17 @@ class UsersControllerTest < ActionController::TestCase
     assert_response 422
   end
 
+  # test "should error 403 on create user" do
+  #   # assert_no_difference('User.count') do
+  #     post :create, params: {
+  #       user: {
+  #         id: 3
+  #       }
+  #     }, format: :json
+  #   # end
+  #   assert_response 403
+  # end
+
   test "should show user" do
     get :show, params: { id: @user }, format: :json
     assert_response :success
