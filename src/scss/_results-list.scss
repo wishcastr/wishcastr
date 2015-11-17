@@ -122,6 +122,9 @@
       &:hover {
         background-color: $light-teal;
       }
+      &:active {
+        background-color: $teal-dark;
+      }
     }
 
 

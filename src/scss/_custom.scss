@@ -1,10 +1,14 @@
 $amazon-image-up: url(../img/amazon_login_76x32.png);
 $amazon-image-down: url(../img/amazon_login_76x32_pressed.png);
 $dark-blue: #064583;
+$teal-dark: #046969;
 $teal: #068383;
 $light-teal: #379b9b;
 $yellow-orange: #F9BE12;
 $ivory: #fdf2cf;
+$coral: #ee6a50;
+$coral-light: #f18772;
+$coral-dark: #EE6A50;
 
 body:after {
   display: none;
@@ -153,6 +157,9 @@ body:after {
         font-size: 1.5em;
         &:hover {
           background-color: $light-teal;
+        }
+        &:active {
+          background-color: $teal-dark;
         }
       }//END BUTTON
 

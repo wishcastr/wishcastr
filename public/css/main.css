@@ -2205,6 +2205,8 @@ body:after {
       font-size: 1.5em; }
       .container .search .color-bar button:hover {
         background-color: #379b9b; }
+      .container .search .color-bar button:active {
+        background-color: #046969; }
     .container .search .color-bar .search-menu {
       list-style: none;
       background-color: #c2c2c2;
@@ -2666,6 +2668,8 @@ body:after {
       animation: display-none-transition 0.5s; }
       .result-list .add-wish button:hover {
         background-color: #379b9b; }
+      .result-list .add-wish button:active {
+        background-color: #046969; }
     .result-list .add-wish button::before {
       font-family: FontAwesome;
       content: '\f0fe'; }
@@ -3177,43 +3181,56 @@ section.privacy {
     margin-bottom: 50px;
     padding-top: 10px;
     padding-bottom: 10px; }
-    .wish-form .create-wish .form-item .img-sizing {
-      width: 260px;
-      height: 150px;
-      overflow: hidden;
-      margin: 0 auto; }
-      .wish-form .create-wish .form-item .img-sizing img {
-        display: block;
-        margin: 0 auto;
-        margin-top: 20px;
-        margin-bottom: 15px;
-        max-width: 100%;
-        max-height: 100%; }
-    .wish-form .create-wish .form-item .product-txt {
-      padding-top: 4%;
-      text-decoration: none; }
-      .wish-form .create-wish .form-item .product-txt h3 {
-        display: block;
-        margin: 0 10px;
-        margin-left: 0;
-        color: #068383;
-        font-size: 16pt;
-        margin-bottom: 10px; }
-      .wish-form .create-wish .form-item .product-txt p {
-        display: block;
-        margin: 0 10px;
-        color: #068383;
-        font-size: 12pt;
-        margin-bottom: 10px; }
-      .wish-form .create-wish .form-item .product-txt .price {
-        font-size: 18pt;
-        margin-top: 14px;
-        font-size: 14pt;
-        color: #064583;
-        font-weight: bold; }
-      .wish-form .create-wish .form-item .product-txt .descr {
-        display: block;
-        font-size: 12pt; }
+    .wish-form .create-wish .wish-meta {
+      border-bottom: 1px black solid; }
+    .wish-form .create-wish .form-item {
+      border-bottom: 1px black solid; }
+      .wish-form .create-wish .form-item .remove {
+        background-color: #ee6a50; }
+        .wish-form .create-wish .form-item .remove:hover {
+          background-color: #f18772; }
+        .wish-form .create-wish .form-item .remove:active {
+          background-color: #EE6A50; }
+      .wish-form .create-wish .form-item .remove:before {
+        font-family: FontAwesome;
+        content: '\f057'; }
+      .wish-form .create-wish .form-item .img-sizing {
+        width: 260px;
+        height: 150px;
+        overflow: hidden;
+        margin: 0 auto; }
+        .wish-form .create-wish .form-item .img-sizing img {
+          display: block;
+          margin: 0 auto;
+          margin-top: 20px;
+          margin-bottom: 15px;
+          max-width: 100%;
+          max-height: 100%; }
+      .wish-form .create-wish .form-item .product-txt {
+        padding-top: 4%;
+        text-decoration: none; }
+        .wish-form .create-wish .form-item .product-txt h3 {
+          display: block;
+          margin: 0 10px;
+          margin-left: 0;
+          color: #068383;
+          font-size: 16pt;
+          margin-bottom: 10px; }
+        .wish-form .create-wish .form-item .product-txt p {
+          display: block;
+          margin: 0 10px;
+          color: #068383;
+          font-size: 12pt;
+          margin-bottom: 10px; }
+        .wish-form .create-wish .form-item .product-txt .price {
+          font-size: 18pt;
+          margin-top: 14px;
+          font-size: 14pt;
+          color: #064583;
+          font-weight: bold; }
+        .wish-form .create-wish .form-item .product-txt .descr {
+          display: block;
+          font-size: 12pt; }
     .wish-form .create-wish h4 {
       font-size: 14pt;
       margin-bottom: 10px;
@@ -3240,12 +3257,12 @@ section.privacy {
       .wish-form .create-wish button:hover {
         background-color: #379b9b; }
     .wish-form .create-wish .cancel {
-      color: #064583;
       text-decoration: none;
       margin-top: 15px;
-      cursor: pointer; }
+      cursor: pointer;
+      background-color: #ee6a50; }
       .wish-form .create-wish .cancel:hover {
-        text-decoration: underline; }
+        background-color: #f18772; }
 
 /* Icon Grow */
 .hvr-icon-grow {
@@ -3296,14 +3313,12 @@ section.privacy {
     padding: 0;
     margin-top: 50px; }
     .user-wishes-list ul li {
-      border: 2px solid #fff;
       background-color: #f2f2f2;
       height: 330px;
       float: left;
       display: inline-block;
       border-radius: 5px; }
       .user-wishes-list ul li .wish-img-sizing {
-        width: 260px;
         height: 150px;
         overflow: hidden;
         margin: 0 auto; }
@@ -3323,7 +3338,8 @@ section.privacy {
           margin-left: 0;
           color: #068383;
           font-size: 16pt;
-          margin-bottom: 10px; }
+          margin-bottom: 10px;
+          text-transform: capitalize; }
         .user-wishes-list ul li .wishes-list-txt p {
           display: block;
           margin: 0 10px;
@@ -3339,6 +3355,31 @@ section.privacy {
         .user-wishes-list ul li .wishes-list-txt .descr {
           display: block;
           font-size: 12pt; }
+        .user-wishes-list ul li .wishes-list-txt .editBtns #edit {
+          background-color: #068383;
+          color: #fff;
+          border: none;
+          border-radius: 3px;
+          margin-right: 15px;
+          font-size: 14pt; }
+          .user-wishes-list ul li .wishes-list-txt .editBtns #edit:before {
+            content: '\f040';
+            font-family: FontAwesome;
+            margin-right: 5px; }
+          .user-wishes-list ul li .wishes-list-txt .editBtns #edit:hover {
+            background-color: #379b9b; }
+        .user-wishes-list ul li .wishes-list-txt .editBtns #delete {
+          background-color: #068383;
+          color: #fff;
+          border: none;
+          border-radius: 3px;
+          font-size: 14pt; }
+          .user-wishes-list ul li .wishes-list-txt .editBtns #delete:before {
+            content: '\f057';
+            font-family: FontAwesome;
+            margin-right: 5px; }
+          .user-wishes-list ul li .wishes-list-txt .editBtns #delete:hover {
+            background-color: #379b9b; }
   .user-wishes-list .animated {
     -webkit-animation-duration: 1s;
     animation-duration: 1s;
@@ -5569,24 +5610,43 @@ section.privacy {
 
 @media (max-width: 767px) {
   .user-wishes-list ul {
-    margin-left: 0; }
+    margin-left: 9.5%; }
     .user-wishes-list ul li {
-      width: 100%;
-      margin: 0; } }
+      width: 80%;
+      margin: 0 auto;
+      border: 2px solid #fff; }
+      .user-wishes-list ul li .editBtns {
+        display: inline-block; }
+        .user-wishes-list ul li .editBtns #edit:before {
+          margin-right: 5px; }
+        .user-wishes-list ul li .editBtns #delete:before {
+          margin-right: 5px; } }
 
 @media (max-width: 1024px) and (min-width: 768px) {
   .user-wishes-list ul {
     margin-left: 9%; }
     .user-wishes-list ul li {
-      width: 40%;
-      margin: 5px; } }
+      width: 25%;
+      margin: 5px;
+      box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.25); }
+      .user-wishes-list ul li .wish-img-sizing {
+        width: 200px; }
+      .user-wishes-list ul li .editBtns {
+        display: inline-block; } }
 
 @media (min-width: 1025px) {
   .user-wishes-list ul {
     margin-left: 9%; }
     .user-wishes-list ul li {
-      width: 40%;
-      margin: 5px; } }
+      width: 25%;
+      margin: 5px;
+      box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.25); }
+      .user-wishes-list ul li .wish-img-sizing {
+        width: 260px; }
+      .user-wishes-list ul li .editBtns {
+        display: none; }
+    .user-wishes-list ul li:hover .editBtns {
+      display: inline-block; } }
 
 html {
   width: 100%;

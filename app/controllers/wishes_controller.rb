@@ -16,7 +16,7 @@ class WishesController < ApplicationController
       if @wish
         render :show, status: :ok
       else
-        @wish = Wish.create(user_id: user.id)
+        @wish = Wish.create(user_id: user.id, name: params[:name])
         render :show, status: :created
       end
     else
@@ -35,7 +35,7 @@ class WishesController < ApplicationController
           if @wish
             @wish.products << product unless @wish.product_duplicate?(product.sku, product.type)
           else
-            @wish = Wish.create(user_id: user.id)
+            @wish = Wish.create(user_id: user.id, name: params[:name])
             @wish.products << product
           end
         end

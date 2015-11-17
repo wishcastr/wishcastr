@@ -2,9 +2,37 @@
   <h1>Edit a wish</h1>
   <form name="wish-edit" class="create-wish" novalidate>
 
-    <section class="form-item" ng-repeat="product in wish.products">
+    <section class="wish-meta">
+      <div>
+        <label>Name your wish</label>
+        <input type="text" name="wish-name" placeholder="Wish Name" ng-model="wish.name" required />
+        <div ng-show="wish-edit.$submitted || wish-edit.wish-name.$touched">
+          <span ng-show="wish-edit.wish-name.$error.required">
+            You need to name your wish!
+          </span>
+        </div>
+      </div>
+
+      <div>
+        <label>Name your desired price</label>
+        <span class="currency">$ <input type="integer" name="wish-price" placeholder="Price" ng-model="wish.threshold_price" required /></span>
+        <div ng-show="wish-edit.$submitted || wish-edit.wish-price.$touched">
+          <span ng-show="wish-edit.wish-price.$error.required">
+            You need to set a threshold price.
+          </span>
+          <span ng-show="wish-edit.wish-price.$error.integer">
+            This doesn't look like a valid price.
+          </span>
+        </div>
+      </div>
+
+      <button type="submit" ng-click="submitWish()">Save your wish</button>
+      <button class="cancel" ng-click="goBack()">Cancel</button>
+    </section>
+
+    <section class="form-item" data-product-sku="{{product.sku}}" data-product-type="{{product.type}}" ng-repeat="product in wish.products">
       <figure class="img-sizing">
-        <img ng-src="{{product.image_thumbnail}}" />
+        <img ng-src="{{product.image_large}}" />
       </figure>
       <div class="product-txt">
         <h3 class="product-title">{{product.title | limitTo: 25}}</h3>
@@ -15,25 +43,10 @@
           {{product.description | limitTo: 25}}{{product.description.length > 25 ? '...' : ''}}
         </p>
       </div>
+      <button class="remove" ng-click="removeProduct()"></button>
     </section>
-    <h4>Name your wish</h4>
-    <input type="text" name="wish-name" placeholder="Wish Name" ng-model="wish.name" required />
-    <div ng-show="wish-edit.$submitted || wish-edit.wish-name.$touched">
-      <span ng-show="wish-edit.wish-name.$error.required">
-        You need to name your wish!
-      </span>
-    </div>
-    <h4>Name your desired price</h4>
-    <span class="currency">$ <input type="integer" name="wish-price" placeholder="Price" ng-model="wish.threshold_price" required /></span>
-    <div ng-show="wish-edit.$submitted || wish-edit.wish-price.$touched">
-      <span ng-show="wish-edit.wish-price.$error.required">
-        You need to set a threshold price.
-      </span>
-      <span ng-show="wish-edit.wish-price.$error.integer">
-        This doesn't look like a valid price.
-      </span>
-    </div>
+
     <button type="submit" ng-click="submitWish()">Save your wish</button>
-    <p class="cancel" ng-click="goBack()">Cancel</p>
+    <button class="cancel" ng-click="goBack()">Cancel</button>
   </form>
 </section>

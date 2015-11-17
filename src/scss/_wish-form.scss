@@ -4,10 +4,10 @@
   text-align: center;
   color: $dark-blue;
 
-
   h1 {
     text-align: center;
   }
+
 
   .create-wish { //FORM
     width: 40%;
@@ -20,7 +20,27 @@
     padding-bottom: 10px;
     // text-align: left;
 
+    .wish-meta {
+      border-bottom: 1px black solid;
+    }
+
     .form-item {
+      border-bottom: 1px black solid;
+
+      .remove {
+        background-color: $coral;
+        &:hover{
+          background-color: $coral-light;
+        }
+        &:active{
+          background-color: $coral-dark;
+        };
+      }
+      .remove:before{
+        font-family: FontAwesome;
+        content: '\f057';
+      }
+
       .img-sizing {
         width: 260px;
         height: 150px;
@@ -109,14 +129,13 @@
     }
 
     .cancel {
-      color: $dark-blue;
       text-decoration: none;
       margin-top: 15px;
       cursor: pointer;
+      background-color: $coral;
 
       &:hover {
-        text-decoration: underline;
-        // color: #698fb4;
+        background-color: $coral-light;
       }
     }
   }//END <FORM>
