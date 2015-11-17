@@ -12,7 +12,7 @@
             <span class="fa fa-star-o hvr-icon-grow" title="Create a Wish"></span>
           </div>
           <p class="price">{{product.current_price | currency }}</p>
-          <p class="descr">{{product.description | limitTo: 80}}{{product.description.length > 20 ? '...' : ''}}</p>
+          <p class="descr">{{product.description }}{{product.description.length > 20 ? '...' : ''}}</p>
         </div>
       </a>
     </li>
