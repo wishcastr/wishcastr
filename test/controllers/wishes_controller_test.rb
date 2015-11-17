@@ -63,6 +63,13 @@ class WishesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should create from draft" do
+    post :draft, params: {id:3, user_id: 2}, format: :json
+    get :show, params: {id: 3, user_id: 2}, format: :json
+    assert_response 404
+  end
+
+
   test "should update wish" do
     patch :update, params: { id: @wish, wish: {
       category: @wish.category, name: @wish.name,
