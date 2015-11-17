@@ -71,6 +71,7 @@
         <nav class="sub-views" ng-controller="Tabs">
           <a href="#/top-wishes" id="top-view" class="active" ng-class="{ 'selected': topView() }">Top Wishes</a>
           <a href="#/user-wishes" id="user-view" ng-class="{ 'selected': userView(), 'active': currentUser() !== null }">My Wishes</a>
+
         </nav>
         <ng-view>
           <span class="fa fa-circle-o-notch fa-spin"></span>
