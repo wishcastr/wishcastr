@@ -53,28 +53,28 @@
 
         }//END STARPRODUCT SCOPE FUNCTION
 
-        if (auth.currentUser() !== null) {
-          var user = auth.currentUser();
-          $http.get(API.BASE_URL + API.WISH_PATH + API.DRAFT_WISH, {
-            params: {
-              user_id: user.id,
-              access_token: user.amz_access_token
-              }//END PARAMS
-            })
-            .then(function(response){
-              $scope.draft_wish = response.data;
-          })
-        }
+        // if (auth.currentUser() !== null) {
+        //   var user = auth.currentUser();
+        //   $http.get(API.BASE_URL + API.WISH_PATH + API.DRAFT_WISH, {
+        //     params: {
+        //       user_id: user.id,
+        //       // name: $scope.starredProducts.products[0].title,
+        //       access_token: user.amz_access_token
+        //       }//END PARAMS
+        //     })
+        //     .then(function(response){
+        //       $scope.draft_wish = response.data;
+        //   })
+        // }
 
         $scope.draftWish = function() {
-
           var user = auth.currentUser();
           if(user){
-
             setTimeout(function(){
               $http.post(API.BASE_URL + API.WISH_PATH + API.DRAFT_WISH, $scope.starredProducts, {
                 params: {
                   user_id: user.id,
+                  name: $scope.starredProducts.products[0].title,
                   access_token: user.amz_access_token
                 }
               })
@@ -148,21 +148,23 @@
           return Search.results;
         };
 
-
-        $scope.starredProducts = [];
+        $scope.starredProducts = {};
+        $scope.starredProducts.products = [];
 
         $scope.starProduct = function () {
           // $location.path('/wish-form');
           var star = $(event.target).closest('.star-link').find('.fa');
           var p = $(event.target).closest('.result-item');
           star.toggleClass('fa-star fa-star-o');
-          var products = $scope.starredProducts;
+          var products = $scope.starredProducts.products;
           var product = {
             sku: p.attr('data-product-sku'),
             type: p.attr('data-product-source'),
-            description: p.attr('title'),
-            image_thumbnail: p.find('img').attr('src'),
-            title: p.find('.title').text()
+            description: p.find('.product-txt').attr('title'),
+            image_large: p.find('img').attr('ng-src'),
+            current_price: p.attr('data-current-price'),
+            title: p.find('.title').attr('title'),
+            affiliate_url: p.find('.buy').attr('href')
           } //END VAR PRODUCT
 
           if(star.hasClass('fa-star')){
@@ -206,7 +208,7 @@
               $http.post(API.BASE_URL + API.WISH_PATH + API.DRAFT_WISH, $scope.starredProducts, {
                 params: {
                   user_id: user.id,
-                  name: $scope.starredProducts[0].title,
+                  name: $scope.starredProducts.products[0].title,
                   access_token: user.amz_access_token
                 }
               })
@@ -245,8 +247,39 @@
             })//END PROMISE
         }, 1);
 
-        $scope.submitWish = function() {
+        $scope.removeProduct = function() {
+          var p = $(event.target).closest('.form-item');
 
+
+          // CONSTRUCT PRODUCT FOR PATCH
+          var product = {
+            sku: p.attr('data-product-sku'),
+            type: p.attr('data-product-source')
+          } //END VAR PRODUCT
+
+
+          // FIND INDEX VALUE OF PRODUCT
+          var index = null;
+          for (var i=0; i<$scope.wish.products.length; i++) {
+            if ( $scope.wish.products[i].sku == product.sku && $scope.wish.products[i].type == product.type ) {
+              index = i;
+              break;
+            }
+          }
+
+          // REMOVE IT
+          $scope.wish.products.splice(index, 1);
+
+          // FUN STUFF
+          p.addClass('animated fadeOutRight');
+          console.log(p);
+          p.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+            p.remove();
+          });
+
+        }
+
+        $scope.submitWish = function() {
           setTimeout(function(){
             $http.patch(API.BASE_URL + API.WISH_PATH + $scope.wish.id + ".json", $scope.wish, {
               params: {
@@ -269,7 +302,6 @@
     })//END WISH-FORM
 
   })//END OF MODULE
-
   .controller('Hello', function($scope, auth) {
     $scope.currentUser = auth.currentUser;
     $scope.toggleLogin = auth.toggleLogin;
@@ -332,7 +364,7 @@
   })// END TABS CONTROLLER
 
   .constant('API', {
-    BASE_URL: '//wishcastr-staging.herokuapp.com',
+    BASE_URL: '//localhost:3000',
     SEARCH_PATH: '/products/search.json',
     DRAFT_WISH: 'draft.json',
     WISHES_PATH: '/wishes.json',

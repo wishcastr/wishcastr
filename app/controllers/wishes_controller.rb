@@ -16,7 +16,7 @@ class WishesController < ApplicationController
       if @wish
         render :show, status: :ok
       else
-        @wish = Wish.create(user_id: user.id)
+        @wish = Wish.create(user_id: user.id, name: params[:name])
         render :show, status: :created
       end
     else
@@ -29,22 +29,19 @@ class WishesController < ApplicationController
     if user # && user.amz_access_token == params[:access_token]
       @wish = user.draft_wish
       products = params[:products]
-      if products
-        products.each do |p|
-          product = Product.find_or_create_by(sku: p[:sku], type: p[:type])
-          if @wish
-            @wish.products << product unless @wish.product_duplicate?(product.sku, product.type)
-          else
-            @wish = Wish.create(user_id: user.id)
-            @wish.products << product
-          end
-        end
+      unless @wish
+        @wish = Wish.create(user_id: user.id, name: params[:name])
+      end
+      products.each do |p|
+        product = Product.find_or_create_by(sku: p[:sku], type: p[:type])
+        PriceHistory.create(product_id: product.id, currency: "USD", price: p[:current_price], date: DateTime.now())
+        product.update(description: p[:description], title: p[:title], image_large: p[:image_large])
+        @wish.products << product unless @wish.product_duplicate?(product.sku, product.type)
       end
       render :show, status: :ok
+    else
+      render inline: {error: "Could not find user"}.to_json, status: :not_found
     end
-      # else
-      #   render inline: {error: "not authorized"}.to_json, status: :unauthorized
-      # end
   end
 
 
@@ -79,6 +76,10 @@ class WishesController < ApplicationController
       # if user.amz_access_token == params[:access_token]
         if @wish.update(wish_params)
           @wish.update(saved: true)
+          @wish.products.each do |p|
+            next if params[:products].any? { |pp| p.sku == pp[:sku] && p.type == pp[:type] }
+            ProductsWish.where(wish_id: @wish.id, product_id: p.id).each { |pw| pw.destroy }
+          end
           render :show, status: :ok, location: @wish
         else
           render inline: {error: @wish.errors}.to_json, status: :unprocessable_entity

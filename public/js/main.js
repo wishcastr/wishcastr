@@ -53,28 +53,28 @@
 
         }//END STARPRODUCT SCOPE FUNCTION
 
-        if (auth.currentUser() !== null) {
-          var user = auth.currentUser();
-          $http.get(API.BASE_URL + API.WISH_PATH + API.DRAFT_WISH, {
-            params: {
-              user_id: user.id,
-              access_token: user.amz_access_token
-              }//END PARAMS
-            })
-            .then(function(response){
-              $scope.draft_wish = response.data;
-          })
-        }
+        // if (auth.currentUser() !== null) {
+        //   var user = auth.currentUser();
+        //   $http.get(API.BASE_URL + API.WISH_PATH + API.DRAFT_WISH, {
+        //     params: {
+        //       user_id: user.id,
+        //       // name: $scope.starredProducts.products[0].title,
+        //       access_token: user.amz_access_token
+        //       }//END PARAMS
+        //     })
+        //     .then(function(response){
+        //       $scope.draft_wish = response.data;
+        //   })
+        // }
 
         $scope.draftWish = function() {
-
           var user = auth.currentUser();
           if(user){
-
             setTimeout(function(){
               $http.post(API.BASE_URL + API.WISH_PATH + API.DRAFT_WISH, $scope.starredProducts, {
                 params: {
                   user_id: user.id,
+                  name: $scope.starredProducts.products[0].title,
                   access_token: user.amz_access_token
                 }
               })
@@ -138,7 +138,7 @@
 
     .when ('/results', {
       templateUrl: 'partials/results.html',
-      controller: function(Search, $location, $scope){
+      controller: function(Search, $location, $scope, auth, API, $http){
         $scope.wishForm = function() {          //ON CLICK TAKES YOU FROM /RESULTS
           $location.path('/wish');         //TO /WISH-FORM
         }
@@ -147,6 +147,85 @@
         products.results = function(){
           return Search.results;
         };
+
+
+        $scope.starredProducts = {};
+        $scope.starredProducts.products = [];
+
+        $scope.starProduct = function () {
+          // $location.path('/wish-form');
+          var star = $(event.target).closest('.star-link').find('.fa');
+          var p = $(event.target).closest('.result-item');
+          star.toggleClass('fa-star fa-star-o');
+          var products = $scope.starredProducts.products;
+          var product = {
+            sku: p.attr('data-product-sku'),
+            type: p.attr('data-product-source'),
+            description: p.find('.product-txt').attr('title'),
+            image_large: p.find('img').attr('ng-src'),
+            current_price: p.attr('data-current-price'),
+            title: p.find('.title').attr('title'),
+            affiliate_url: p.find('.buy').attr('href')
+          } //END VAR PRODUCT
+
+          if(star.hasClass('fa-star')){
+            products.push(product);
+          }else{
+            products.splice(products.indexOf(product), 1);
+          }
+
+          if(products.length > 0 && auth.currentUser() !== null){
+            angular.element(".add-wish").css("display", "block");
+          }else{
+            angular.element(".add-wish").css("display", "none");
+          }
+          if(products.length > 0 && auth.currentUser() == null){
+            angular.element(".add-wish-but-login").css("display", "block");
+          }else{
+            angular.element(".add-wish-but-login").css("display", "none");
+          }
+
+        }//END STARPRODUCT SCOPE FUNCTION
+
+        if (auth.currentUser() !== null) {
+          var user = auth.currentUser();
+          $http.get(API.BASE_URL + API.WISH_PATH + API.DRAFT_WISH, {
+            params: {
+              user_id: user.id,
+              access_token: user.amz_access_token
+              }//END PARAMS
+            })
+            .then(function(response){
+              $scope.draft_wish = response.data;
+          })
+        }
+
+        $scope.draftWish = function() {
+
+          var user = auth.currentUser();
+          if(user){
+
+            setTimeout(function(){
+              $http.post(API.BASE_URL + API.WISH_PATH + API.DRAFT_WISH, $scope.starredProducts, {
+                params: {
+                  user_id: user.id,
+                  name: $scope.starredProducts.products[0].title,
+                  access_token: user.amz_access_token
+                }
+              })
+              .then(function(response){
+                $scope.draft_wish = response.data;
+                $location.path('/wish/'+$scope.draft_wish.id);
+              })//END OF PROMISE
+            }, 1);
+
+          }else{
+            console.log("You must sign up");
+            //TODO prompt sign up modal
+          } //END IF USER
+        }//END DRAFTWISH SCOPE FUNCTION
+
+
       }, //END CONTROLLER
       controllerAs: 'products'
     })//END OF RESULTS PARTIAL
@@ -169,8 +248,39 @@
             })//END PROMISE
         }, 1);
 
-        $scope.submitWish = function() {
+        $scope.removeProduct = function() {
+          var p = $(event.target).closest('.form-item');
 
+
+          // CONSTRUCT PRODUCT FOR PATCH
+          var product = {
+            sku: p.attr('data-product-sku'),
+            type: p.attr('data-product-source')
+          } //END VAR PRODUCT
+
+
+          // FIND INDEX VALUE OF PRODUCT
+          var index = null;
+          for (var i=0; i<$scope.wish.products.length; i++) {
+            if ( $scope.wish.products[i].sku == product.sku && $scope.wish.products[i].type == product.type ) {
+              index = i;
+              break;
+            }
+          }
+
+          // REMOVE IT
+          $scope.wish.products.splice(index, 1);
+
+          // FUN STUFF
+          p.addClass('animated fadeOutRight');
+          console.log(p);
+          p.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+            p.remove();
+          });
+
+        }
+
+        $scope.submitWish = function() {
           setTimeout(function(){
             $http.patch(API.BASE_URL + API.WISH_PATH + $scope.wish.id + ".json", $scope.wish, {
               params: {
@@ -193,7 +303,6 @@
     })//END WISH-FORM
 
   })//END OF MODULE
-
   .controller('Hello', function($scope, auth) {
     $scope.currentUser = auth.currentUser;
     $scope.toggleLogin = auth.toggleLogin;
@@ -240,6 +349,14 @@
 
     $scope.topView = function(){
       if ($location.path() == '/top-wishes'){
+        return true;
+      }else{
+        return false;
+      };
+    }
+
+    $scope.resultView = function(){
+      if ($location.path() == '/results'){
         return true;
       }else{
         return false;

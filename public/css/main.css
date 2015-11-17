@@ -2205,6 +2205,8 @@ body:after {
       font-size: 1.5em; }
       .container .search .color-bar button:hover {
         background-color: #379b9b; }
+      .container .search .color-bar button:active {
+        background-color: #046969; }
     .container .search .color-bar .search-menu {
       list-style: none;
       background-color: #c2c2c2;
@@ -2399,8 +2401,8 @@ body:after {
       color: white;
       cursor: pointer;
       border: none;
-      margin-top: 6pt;
-      margin-bottom: 6pt;
+      margin-top: 15px;
+      margin-bottom: 15px;
       box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.5);
       -webkit-animation: display-none-transition 0.5s;
       animation: display-none-transition 0.5s; }
@@ -2586,7 +2588,7 @@ body:after {
 .result-list {
   margin: 0 auto;
   text-align: center;
-  width: 80%; }
+  width: 100%; }
   .result-list h2 {
     font-size: 25pt;
     margin-bottom: 10px;
@@ -2597,51 +2599,70 @@ body:after {
     margin-bottom: 20px; }
   .result-list ul {
     list-style: none;
-    width: 100%;
-    padding: 0; }
-    .result-list ul li {
+    width: 80%;
+    padding: 0;
+    margin: 0 auto; }
+    .result-list ul .result-item {
       border: 3px solid #fff;
       background-color: #f2f2f2; }
-      .result-list ul li a {
+      .result-list ul .result-item a {
         float: left;
         text-decoration: none;
         width: 100%; }
-        .result-list ul li a img {
+        .result-list ul .result-item a .img-container {
+          float: left;
+          width: 10%;
+          display: inline-block; }
+          .result-list ul .result-item a .img-container img {
+            display: inline-block;
+            margin: 0 auto;
+            float: left; }
+        .result-list ul .result-item a .product-txt {
+          text-align: left;
+          width: 80%;
+          float: left;
           display: inline-block;
-          margin: 10px;
-          margin-right: 15px;
-          float: left; }
-        .result-list ul li a .product-txt {
-          padding-top: 4%;
-          text-align: left; }
-          .result-list ul li a .product-txt .title {
+          margin-top: 2%;
+          position: relative; }
+          .result-list ul .result-item a .product-txt .title {
             display: inline-block;
             margin: 0 10px;
             color: #064583;
+            font-size: 16pt;
             text-transform: capitalize; }
-          .result-list ul li a .product-txt p {
+          .result-list ul .result-item a .product-txt p {
             display: inline-block;
             margin: 0 10px;
-            color: #068383; }
-          .result-list ul li a .product-txt .price {
+            color: #068383;
+            margin-bottom: 2%;
+            max-height: 50px;
+            overflow-y: hidden; }
+          .result-list ul .result-item a .product-txt .price {
             float: right;
             font-size: 18pt;
-            margin-top: 10px; }
-          .result-list ul li a .product-txt .star-link {
+            position: absolute;
+            top: 25px;
+            right: 109px; }
+          .result-list ul .result-item a .product-txt .descr {
+            width: 78%; }
+          .result-list ul .result-item a .product-txt .star-link {
             color: #f9be12;
             font-size: 35pt;
-            margin-bottom: 10px;
             margin-left: 50px;
             margin-right: 35px;
             display: block;
-            float: right; }
-            .result-list ul li a .product-txt .star-link:hover {
+            float: right;
+            position: absolute;
+            right: 1px;
+            top: 22px;
+            cursor: pointer; }
+            .result-list ul .result-item a .product-txt .star-link:hover {
               color: #fad159; }
-            .result-list ul li a .product-txt .star-link fa fa-star {
+            .result-list ul .result-item a .product-txt .star-link fa fa-star {
               font-family: Font-Awesome;
               display: inline-block;
               vertical-align: middle; }
-          .result-list ul li a .product-txt .descr {
+          .result-list ul .result-item a .product-txt .descr {
             display: block; }
   .result-list .add-wish {
     display: none;
@@ -2666,6 +2687,8 @@ body:after {
       animation: display-none-transition 0.5s; }
       .result-list .add-wish button:hover {
         background-color: #379b9b; }
+      .result-list .add-wish button:active {
+        background-color: #046969; }
     .result-list .add-wish button::before {
       font-family: FontAwesome;
       content: '\f0fe'; }
@@ -2680,30 +2703,25 @@ body:after {
     position: fixed;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.3);
-    -webkit-animation: display-none-transition 0.5s;
-    animation: display-none-transition 0.5s; }
-    .result-list .add-wish-but-login .amazon-root {
-      cursor: pointer;
-      background: url(../img/amazon_login_76x32.png) no-repeat;
-      height: 32px;
-      width: 76px;
-      margin: 0 auto; }
-      .result-list .add-wish-but-login .amazon-root span {
-        padding: 6px 0 0 30px;
-        font-size: .8em;
-        font-weight: bold;
-        text-align: left; }
-      .result-list .add-wish-but-login .amazon-root .amazon-login {
-        display: block;
-        color: black;
-        width: 100%; }
-      .result-list .add-wish-but-login .amazon-root .amazon-logout {
+    animation: display-none-transition 0.5s;
+    /*  .amazon-logout {
         display: none;
-        color: black; }
-    .result-list .add-wish-but-login .amazon-root:active {
-      background: url(../img/amazon_login_76x32_pressed.png) no-repeat;
+        color: black;
+      } //END AMAZON_LOGOUT
+    }
+
+    .amazon-root:active {
+      background: $amazon-image-down no-repeat;
       margin-right: 10px;
-      position: relative; }
+      position: relative;
+    } //END AMAZON-ROOT ACTIVE*/ }
+    .result-list .add-wish-but-login .login-save {
+      font-size: 16pt;
+      font-weight: bold;
+      background-color: #ee6a50;
+      color: #fff;
+      margin-top: 15px;
+      margin-bottom: 15px; }
 
 @media (max-width: 767px) {
   .result-list li .product-txt {
@@ -3172,48 +3190,74 @@ section.privacy {
     width: 40%;
     margin: 0 auto;
     display: block;
-    border: 1 solid red;
-    background-color: #f2f2f2;
     margin-bottom: 50px;
     padding-top: 10px;
     padding-bottom: 10px; }
-    .wish-form .create-wish .form-item .img-sizing {
-      width: 260px;
-      height: 150px;
-      overflow: hidden;
-      margin: 0 auto; }
-      .wish-form .create-wish .form-item .img-sizing img {
-        display: block;
-        margin: 0 auto;
-        margin-top: 20px;
-        margin-bottom: 15px;
-        max-width: 100%;
-        max-height: 100%; }
-    .wish-form .create-wish .form-item .product-txt {
-      padding-top: 4%;
-      text-decoration: none; }
-      .wish-form .create-wish .form-item .product-txt h3 {
-        display: block;
-        margin: 0 10px;
-        margin-left: 0;
-        color: #068383;
-        font-size: 16pt;
-        margin-bottom: 10px; }
-      .wish-form .create-wish .form-item .product-txt p {
-        display: block;
-        margin: 0 10px;
-        color: #068383;
-        font-size: 12pt;
-        margin-bottom: 10px; }
-      .wish-form .create-wish .form-item .product-txt .price {
-        font-size: 18pt;
-        margin-top: 14px;
-        font-size: 14pt;
-        color: #064583;
-        font-weight: bold; }
-      .wish-form .create-wish .form-item .product-txt .descr {
-        display: block;
-        font-size: 12pt; }
+    .wish-form .create-wish .wish-meta div {
+      margin: 1em; }
+      .wish-form .create-wish .wish-meta div label {
+        display: block; }
+    .wish-form .create-wish .wish-meta input {
+      padding: .25em; }
+    .wish-form .create-wish .form-item:hover .remove {
+      display: inline-block; }
+    .wish-form .create-wish .form-item {
+      position: relative;
+      background-color: #f2f2f2;
+      box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.25);
+      padding: 1em 1em;
+      margin: 1em 1em; }
+      .wish-form .create-wish .form-item .remove {
+        position: absolute;
+        background-color: #ee6a50;
+        top: 1em;
+        right: 1em;
+        margin: 0;
+        display: none; }
+        .wish-form .create-wish .form-item .remove:hover {
+          background-color: #f18772; }
+        .wish-form .create-wish .form-item .remove:active {
+          background-color: #EE6A50; }
+      .wish-form .create-wish .form-item .remove:before {
+        font-family: FontAwesome;
+        content: '\f057'; }
+      .wish-form .create-wish .form-item .img-sizing {
+        width: 260px;
+        height: 150px;
+        overflow: hidden;
+        margin: 0 auto; }
+        .wish-form .create-wish .form-item .img-sizing img {
+          display: block;
+          margin: 0 auto;
+          margin-top: 20px;
+          margin-bottom: 15px;
+          max-width: 100%;
+          max-height: 100%; }
+      .wish-form .create-wish .form-item .product-txt {
+        padding-top: 4%;
+        text-decoration: none; }
+        .wish-form .create-wish .form-item .product-txt h3 {
+          display: block;
+          margin: 0 10px;
+          margin-left: 0;
+          color: #068383;
+          font-size: 16pt;
+          margin-bottom: 10px; }
+        .wish-form .create-wish .form-item .product-txt p {
+          display: block;
+          margin: 0 10px;
+          color: #068383;
+          font-size: 12pt;
+          margin-bottom: 10px; }
+        .wish-form .create-wish .form-item .product-txt .price {
+          font-size: 18pt;
+          margin-top: 14px;
+          font-size: 14pt;
+          color: #064583;
+          font-weight: bold; }
+        .wish-form .create-wish .form-item .product-txt .descr {
+          display: block;
+          font-size: 12pt; }
     .wish-form .create-wish h4 {
       font-size: 14pt;
       margin-bottom: 10px;
@@ -3221,7 +3265,8 @@ section.privacy {
     .wish-form .create-wish .currency {
       border: 1px solid #ccc;
       color: #a3a3a3;
-      background-color: #fff; }
+      background-color: #fff;
+      padding: .25em; }
       .wish-form .create-wish .currency input {
         border: 0;
         background-color: transparent;
@@ -3230,22 +3275,22 @@ section.privacy {
       background-color: #068383;
       border: none;
       color: #fff;
-      padding-left: 2%;
-      padding-right: 2%;
+      /*  padding-left: 2%;
+      padding-right: 2%;*/
       border-radius: 3px;
-      display: block;
+      /*      display: block;
       margin: 0 auto;
       margin-top: 40px;
-      margin-bottom: 15px; }
+      margin-bottom: 15px;*/ }
       .wish-form .create-wish button:hover {
         background-color: #379b9b; }
     .wish-form .create-wish .cancel {
-      color: #064583;
       text-decoration: none;
       margin-top: 15px;
-      cursor: pointer; }
+      cursor: pointer;
+      background-color: #ee6a50; }
       .wish-form .create-wish .cancel:hover {
-        text-decoration: underline; }
+        background-color: #f18772; }
 
 /* Icon Grow */
 .hvr-icon-grow {
@@ -3296,14 +3341,14 @@ section.privacy {
     padding: 0;
     margin-top: 50px; }
     .user-wishes-list ul li {
-      border: 2px solid #fff;
       background-color: #f2f2f2;
       height: 330px;
       float: left;
       display: inline-block;
-      border-radius: 5px; }
+      border-radius: 5px;
+      padding: 1em;
+      margin: 1em; }
       .user-wishes-list ul li .wish-img-sizing {
-        width: 260px;
         height: 150px;
         overflow: hidden;
         margin: 0 auto; }
@@ -3323,7 +3368,8 @@ section.privacy {
           margin-left: 0;
           color: #068383;
           font-size: 16pt;
-          margin-bottom: 10px; }
+          margin-bottom: 10px;
+          text-transform: capitalize; }
         .user-wishes-list ul li .wishes-list-txt p {
           display: block;
           margin: 0 10px;
@@ -3339,6 +3385,34 @@ section.privacy {
         .user-wishes-list ul li .wishes-list-txt .descr {
           display: block;
           font-size: 12pt; }
+        .user-wishes-list ul li .wishes-list-txt .editBtns {
+          display: none;
+          margin: 0; }
+          .user-wishes-list ul li .wishes-list-txt .editBtns #edit {
+            background-color: #068383;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            margin-right: 15px;
+            font-size: 14pt; }
+            .user-wishes-list ul li .wishes-list-txt .editBtns #edit:before {
+              content: '\f040';
+              font-family: FontAwesome;
+              margin-right: 5px; }
+            .user-wishes-list ul li .wishes-list-txt .editBtns #edit:hover {
+              background-color: #379b9b; }
+          .user-wishes-list ul li .wishes-list-txt .editBtns #delete {
+            background-color: #ee6a50;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            font-size: 14pt; }
+            .user-wishes-list ul li .wishes-list-txt .editBtns #delete:before {
+              content: '\f057';
+              font-family: FontAwesome;
+              margin-right: 5px; }
+            .user-wishes-list ul li .wishes-list-txt .editBtns #delete:hover {
+              background-color: #f18772; }
   .user-wishes-list .animated {
     -webkit-animation-duration: 1s;
     animation-duration: 1s;
@@ -5569,25 +5643,45 @@ section.privacy {
 
 @media (max-width: 767px) {
   .user-wishes-list ul {
-    margin-left: 0; }
+    margin-left: 9.5%; }
     .user-wishes-list ul li {
-      width: 100%;
-      margin: 0; } }
+      width: 80%;
+      margin: 0 auto;
+      border: 2px solid #fff; }
+      .user-wishes-list ul li .editBtns {
+        display: inline-block; }
+        .user-wishes-list ul li .editBtns #edit:before {
+          margin-right: 5px; }
+        .user-wishes-list ul li .editBtns #delete:before {
+          margin-right: 5px; } }
 
 @media (max-width: 1024px) and (min-width: 768px) {
   .user-wishes-list ul {
     margin-left: 9%; }
     .user-wishes-list ul li {
-      width: 40%;
-      margin: 5px; } }
+      width: 25%;
+      margin: 5px;
+      box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.25); }
+      .user-wishes-list ul li .wish-img-sizing {
+        width: 200px; }
+      .user-wishes-list ul li .editBtns {
+        display: inline-block; } }
 
 @media (min-width: 1025px) {
   .user-wishes-list ul {
-    margin-left: 9%; }
+    margin-left: 11%; }
     .user-wishes-list ul li {
-      width: 40%;
-      margin: 5px; } }
+      width: 25%;
+      margin: 5px;
+      box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.25); }
+      .user-wishes-list ul li .wish-img-sizing {
+        width: 260px; }
+      .user-wishes-list ul li .editBtns {
+        display: none; }
+    .user-wishes-list ul li:hover .editBtns {
+      display: inline-block; } }
 
+/*@import "_animate";*/
 html {
   width: 100%;
   height: 100%;
@@ -5649,14 +5743,15 @@ html {
  * 2. The use of `table` rather than `block` is only necessary if using
  *    `:before` to contain the top-margins of child elements.
  */
-.clearfix:before, .container .search .color-bar:before, .container footer:before, .lists:before, .lists ul:before, .lists ul li:before, .result-list ul li:before, .about div.awesome-people:before, .user-wishes-list:before, .user-wishes-list ul:before, .user-wishes-list ul li:before,
+.clearfix:before, .container .search .color-bar:before, .container footer:before, .lists:before, .lists ul:before, .lists ul li:before, .result-list ul .result-item:before, .result-list ul .result-item a .img-container:before, .about div.awesome-people:before, .user-wishes-list:before, .user-wishes-list ul:before, .user-wishes-list ul li:before,
 .clearfix:after,
 .container .search .color-bar:after,
 .container footer:after,
 .lists:after,
 .lists ul:after,
 .lists ul li:after,
-.result-list ul li:after,
+.result-list ul .result-item:after,
+.result-list ul .result-item a .img-container:after,
 .about div.awesome-people:after,
 .user-wishes-list:after,
 .user-wishes-list ul:after,
@@ -5666,7 +5761,7 @@ html {
   display: table;
   /* 2 */ }
 
-.clearfix:after, .container .search .color-bar:after, .container footer:after, .lists:after, .lists ul:after, .lists ul li:after, .result-list ul li:after, .about div.awesome-people:after, .user-wishes-list:after, .user-wishes-list ul:after, .user-wishes-list ul li:after {
+.clearfix:after, .container .search .color-bar:after, .container footer:after, .lists:after, .lists ul:after, .lists ul li:after, .result-list ul .result-item:after, .result-list ul .result-item a .img-container:after, .about div.awesome-people:after, .user-wishes-list:after, .user-wishes-list ul:after, .user-wishes-list ul li:after {
   clear: both; }
 
 /* ==========================================================================

@@ -159,6 +159,9 @@
       &:hover {
         background-color: $light-teal;
       }
+      &:active {
+        background-color: $teal-dark;
+      }
     }
 
 
@@ -222,16 +225,17 @@
     //     width: 100%;
     //   } //END AMAZON_LOGIN
 
-      .amazon-logout {
+    /*  .amazon-logout {
         display: none;
         color: black;
       } //END AMAZON_LOGOUT
     }
+
     .amazon-root:active {
       background: $amazon-image-down no-repeat;
       margin-right: 10px;
       position: relative;
-    } //END AMAZON-ROOT ACTIVE
+    } //END AMAZON-ROOT ACTIVE*/
 
   }//END .ADD-WISH-BUT-LOGIN
 } //END <SECTION>
