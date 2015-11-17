@@ -12,6 +12,7 @@ json.products @wish.products do |p|
   json.sku p.sku
   json.image_large p.image_large
   json.image_thumbnail p.image_thumbnail
+  json.current_price p.current_price
   json.title p.title
   json.brand p.brand
   json.description p.description

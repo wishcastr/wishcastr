@@ -14,7 +14,7 @@
       </div>
 
       <div>
-        <label>Email me when it reaches this price</label>
+        <label>Email me when any products in this wish reach this price</label>
         <span class="currency">$ <input type="integer" name="wish-price" placeholder="Price" ng-model="wish.threshold_price" required /></span>
         <div ng-show="wish-edit.$submitted || wish-edit.wish-price.$touched">
           <span ng-show="wish-edit.wish-price.$error.required">
@@ -38,7 +38,7 @@
       <div class="product-txt">
         <h3 class="product-title">{{product.title}}</h3>
         <p class="price">
-          {{product.threshold_price | currency}}
+          Current Lowest Price: {{product.current_price | currency}}
         </p>
         <p class="descr">
           {{product.description | limitTo: 75}}{{product.description.length > 25 ? '...' : ''}}

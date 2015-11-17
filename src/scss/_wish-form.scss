@@ -31,6 +31,12 @@
       }
     }
 
+    .form-item:hover {
+      .remove {
+        display: inline-block;
+      }
+    }//END form-item hover
+
     .form-item {
       position: relative;
       background-color: #f2f2f2;
@@ -38,14 +44,13 @@
       padding: 1em 1em;
       margin: 1em 1em;
 
-
-
       .remove {
         position: absolute;
         background-color: $coral;
         top: 1em;
         right: 1em;
         margin: 0;
+        display: none;
 
         &:hover{
           background-color: $coral-light;
