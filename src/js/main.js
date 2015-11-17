@@ -174,6 +174,7 @@
         $scope.removeProduct = function() {
           var p = $(event.target).closest('.form-item');
 
+
           // CONSTRUCT PRODUCT FOR PATCH
           var product = {
             sku: p.attr('data-product-sku'),
@@ -192,6 +193,13 @@
 
           // REMOVE IT
           $scope.wish.products.splice(index, 1);
+
+          // FUN STUFF
+          p.addClass('animated fadeOutRight');
+          console.log(p);
+          p.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+            p.remove();
+          });
 
         }
 

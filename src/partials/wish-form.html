@@ -1,10 +1,10 @@
 <section class="wish-form" ng-if='wish'>
-  <h1>Edit a wish</h1>
+  <h1>Edit Your Wish</h1>
   <form name="wish-edit" class="create-wish" novalidate>
 
     <section class="wish-meta">
       <div>
-        <label>Name your wish</label>
+        <label>Name of Wish</label>
         <input type="text" name="wish-name" placeholder="Wish Name" ng-model="wish.name" required />
         <div ng-show="wish-edit.$submitted || wish-edit.wish-name.$touched">
           <span ng-show="wish-edit.wish-name.$error.required">
@@ -14,7 +14,7 @@
       </div>
 
       <div>
-        <label>Name your desired price</label>
+        <label>Email me when it reaches this price</label>
         <span class="currency">$ <input type="integer" name="wish-price" placeholder="Price" ng-model="wish.threshold_price" required /></span>
         <div ng-show="wish-edit.$submitted || wish-edit.wish-price.$touched">
           <span ng-show="wish-edit.wish-price.$error.required">
@@ -26,8 +26,9 @@
         </div>
       </div>
 
-      <button type="submit" ng-click="submitWish()">Save your wish</button>
       <button class="cancel" ng-click="goBack()">Cancel</button>
+      <button type="submit" ng-click="submitWish()">Save your wish</button>
+
     </section>
 
     <section class="form-item" data-product-sku="{{product.sku}}" data-product-source="{{product.type}}" ng-repeat="product in wish.products">
@@ -46,7 +47,5 @@
       <button class="remove" ng-click="removeProduct()"></button>
     </section>
 
-    <button type="submit" ng-click="submitWish()">Save your wish</button>
-    <button class="cancel" ng-click="goBack()">Cancel</button>
   </form>
 </section>

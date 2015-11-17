@@ -13,24 +13,40 @@
     width: 40%;
     margin: 0 auto;
     display: block;
-    border: 1 solid red;
-    background-color: #f2f2f2;
     margin-bottom: 50px;
     padding-top: 10px;
     padding-bottom: 10px;
-    // text-align: left;
-    box-shadow: 2px 2px 2px 0px rgba(0,0,0,.25);
 
     .wish-meta {
-      border-bottom: 1px black solid;
+      div {
+        margin: 1em;
+
+        label {
+          display: block;
+        }
+      }
+
+      input {
+        padding: .25em;
+      }
     }
 
     .form-item {
-      border-bottom: 1px black solid;
+      position: relative;
+      background-color: #f2f2f2;
+      box-shadow: 2px 2px 2px 0px rgba(0,0,0,.25);
+      padding: 1em 1em;
+      margin: 1em 1em;
+
 
 
       .remove {
+        position: absolute;
         background-color: $coral;
+        top: 1em;
+        right: 1em;
+        margin: 0;
+
         &:hover{
           background-color: $coral-light;
         }
@@ -101,10 +117,12 @@
       // margin-left: 50px;
 
     }
+
     .currency {
     border: 1px solid #ccc;
     color: #a3a3a3;
     background-color: #fff;
+    padding: .25em;
 
       input {
         border: 0;
@@ -117,13 +135,13 @@
       background-color: $teal;
       border: none;
       color: #fff;
-      padding-left: 2%;
-      padding-right: 2%;
+    /*  padding-left: 2%;
+      padding-right: 2%;*/
       border-radius: 3px;
-      display: block;
+/*      display: block;
       margin: 0 auto;
       margin-top: 40px;
-      margin-bottom: 15px;
+      margin-bottom: 15px;*/
 
       &:hover {
         background-color: $light-teal;
