@@ -20,13 +20,13 @@ class CatchMailer < ApplicationMailer
     end
   end
 
-  def test(user)
-    @user = user
-    if @user
-      mail(to: @user.email, subject: 'Testing Wishcastr')
-    else
-      logger.debug("Could not find #{@user}")
-    end
-  end
+  # def test(user)
+  #   @user = user
+  #   if @user
+  #     mail(to: @user.email, subject: 'Testing Wishcastr')
+  #   else
+  #     logger.debug("Could not find #{@user}")
+  #   end
+  # end
 
 end
