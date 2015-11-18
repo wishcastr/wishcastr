@@ -17,19 +17,41 @@
     padding-top: 10px;
     padding-bottom: 10px;
 
-    .wish-meta {
+    .wish-meta {        //EDIT BOX
+      // border: 1px solid red;
+      background-color: $yellow-orange;
+      padding-bottom: 4%;
+      padding-top: 1%;
+      color: #fff;
+      font-size: 16pt;
+
       div {
         margin: 1em;
 
         label {
           display: block;
+          margin-bottom: 10px;
+
         }
-      }
+      } //DIV
 
       input {
         padding: .25em;
+        color: #a3a3a3;
+        font-size: 12pt;
+        // border-radius: 2px;
       }
-    }
+      #name-input {
+        width: 80%;
+        color: $dark-blue;
+      }
+
+      .currency {
+        padding: 0.5%;
+        color: $dark-blue;
+        font-size: 12pt;
+      }
+    } //END .WISH-META
 
     .form-item:hover {
       .remove {
@@ -140,6 +162,8 @@
       background-color: $teal;
       border: none;
       color: #fff;
+      margin-right: 10px;
+      font-size: 14pt;
     /*  padding-left: 2%;
       padding-right: 2%;*/
       border-radius: 3px;
