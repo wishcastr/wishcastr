@@ -155,9 +155,9 @@ body:after {
         border-radius: 3px;
         // margin-left: 10px;
         font-size: 1.5em;
-        &:hover {
-          background-color: $light-teal;
-        }
+        // &:hover {
+        //   background-color: $light-teal;
+        // }
         &:active {
           background-color: $teal-dark;
         }
@@ -328,7 +328,10 @@ body:after {
         padding-right: 2%;
         margin-left: 10px;
 
-      }
+        &:hover {
+          background-color: $light-teal;
+        }
+      } //button
     } //.color-bar
     footer {
 
@@ -362,4 +365,3 @@ body:after {
 
   }// .container
 } //END DESKTOP
-
