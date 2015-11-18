@@ -1,6 +1,6 @@
 echo 'Step 0: Kill ALL THE THINGS... in `public/`'
 
-find public/. ! -name 'data' -delete
+rm -rf public
 mkdir -p public
 
 echo 'Step 1: Copy all the HTML'
@@ -40,9 +40,6 @@ cp bower_components/font-awesome/css/font-awesome.css public/bower_components/fo
 
 mkdir -p public/data/
 cp -r bower_components/font-awesome/fonts/ public/fonts/
-
-mkdir -p public/bower_components/hover/scss/
-cp bower_components/hover/scss/hover.scss public/bower_components/hover/scss/hover.scss
 
 echo 'Step 5: Copy all the images!'
 mkdir -p public/images/
