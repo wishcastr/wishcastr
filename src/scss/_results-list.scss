@@ -38,7 +38,7 @@
         .img-container {
           @extend .clearfix;
           float: left;
-          width: 10%;
+          // width: 10%;
           display: inline-block;
 
 
@@ -87,8 +87,8 @@
             float: right;
             font-size: 18pt;
             position: absolute;
-            top: 25px;
-            right: 87px;
+            // top: 25px;
+            // right: 87px;
             // margin-top: 5%;
             // margin-bottom: 5%;
 
@@ -102,7 +102,7 @@
 
           .star-link {
             color: #f9be12;
-            font-size: 35pt;
+            // font-size: 35pt;
             // margin-top: 25px;
             // margin-bottom: 10px;
             margin-left: 50px;
@@ -110,8 +110,8 @@
             display: block;
             float: right;
             position: absolute;
-            right: 1px;
-            top: 22px;
+            // right: 1px;
+            // top: 22px;
             cursor: pointer;
 
             &:hover {
@@ -250,15 +250,24 @@
     .result-item {  //li
       width: 100%;
 
+      .img-container {
+        width: 50%;
+      }
 
       .product-txt {
         margin-left: 10px;
 
-        .star-link {
-          font-size: 40pt;
-          right: 0;
+        .price {
+          top:-55px;
+          right: -44px;
         }
-      }
+
+        .star-link {
+          font-size: 45pt;
+          right: -54px;
+          top: -139px;
+        }
+      }//product-txt
     }//.result-item <li>
 
   }//.results-list
@@ -269,12 +278,24 @@
 
     .result-item {
 
-      .star-link {
-        font-size: 35pt;
+      .img-container {
+        width: 40%;
+
       }
+      .product-txt {
+
+        .price {
+          top: -75px;
+          right: 20px;
+        }
+
+        .star-link {
+          font-size: 50pt;
+          top: -195px;
+          right: 1px;
+        }
+      }//.product-txt
     } //.result-item
-
-
   } //.result-list
 } //END TABLET
 
@@ -283,15 +304,28 @@
   .result-list {
     .result-item {
 
+      .img-container {
+        width: 10%;
+
+      }
+
       .product-txt {
         .title {
           margin-left: 0;
+        } //.title
+
+          .price {
+            top: 25px;
+            right: 87px;
+          }
 
           .star-link {
             font-size: 35pt;
+            top: 22px;
+            right: 1px;
           }
 
-        } //.title
+
       } //.product-txt
     } //.result-item
   } //.result-list
