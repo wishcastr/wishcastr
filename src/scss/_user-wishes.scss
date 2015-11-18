@@ -87,7 +87,7 @@
             font-size: 12pt;
           }
           .editBtns {
-            display: none;
+            // display: none;
             margin: 0;
 
             #edit {
@@ -95,7 +95,7 @@
               color: #fff;
               border: none;
               border-radius: 3px;
-              margin-right: 15px;
+              margin-left: 10px;
               font-size: 14pt;
 
               // position: absolute;
@@ -106,9 +106,9 @@
                 font-family: FontAwesome;
                 margin-right: 5px;
               }
-              &:hover {
-                background-color: $light-teal;
-              }
+              // &:hover {
+              //   background-color: $light-teal;
+              // }
             } //EDIT
               #delete {
 
@@ -123,9 +123,9 @@
                   font-family: FontAwesome;
                   margin-right: 5px;
                 }
-                &:hover {
-                  background-color: $coral-light;
-                }
+                // &:hover {
+                //   background-color: $coral-light;
+                // }
 
               } //DELETE
             }//editBtns
@@ -144,7 +144,7 @@
   .user-wishes-list {
 
     ul {
-      margin-left: 9.5%;
+      margin-left: 5.5%;
 
 
       li {
@@ -154,7 +154,14 @@
 
 
         .editBtns {
-          display: inline-block;
+          display: block;
+
+          #delete {
+
+            &:before {
+              margin-right: 5px;
+            }
+          } //DELETE
 
           #edit {
 
@@ -164,12 +171,7 @@
 
             }
           } //EDIT
-            #delete {
 
-              &:before {
-                margin-right: 5px;
-              }
-            } //DELETE
         } //editBtns
       } //LI
     }//UL
@@ -233,7 +235,19 @@
 
         .editBtns {
           display: none;
-        }
+
+          #edit {
+            &:hover {
+              background-color: $light-teal;
+            }
+          }//#edit
+
+          #delete {
+            &:hover {
+              background-color: $coral-light;
+            }
+          }
+        }//.editBtns
       } //li
 
       li:hover {
