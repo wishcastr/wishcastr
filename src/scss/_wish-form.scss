@@ -17,25 +17,47 @@
     padding-top: 10px;
     padding-bottom: 10px;
 
-    .wish-meta {
+    .wish-meta {        //EDIT BOX
+      // border: 1px solid red;
+      background-color: $yellow-orange;
+      padding-bottom: 4%;
+      padding-top: 1%;
+      color: #fff;
+      font-size: 16pt;
+
       div {
         margin: 1em;
 
         label {
           display: block;
+          margin-bottom: 10px;
+
         }
-      }
+      } //DIV
 
       input {
         padding: .25em;
+        color: #a3a3a3;
+        font-size: 12pt;
+        // border-radius: 2px;
       }
-    }
+      #name-input {
+        width: 80%;
+        color: $dark-blue;
+      }
 
-    .form-item:hover {
-      .remove {
-        display: inline-block;
+      .currency {
+        padding: 0.5%;
+        color: $dark-blue;
+        font-size: 12pt;
       }
-    }//END form-item hover
+    } //END .WISH-META
+
+    // .form-item:hover {
+    //   .remove {
+    //     display: inline-block;
+    //   }
+    // }//END form-item hover
 
     .form-item {
       position: relative;
@@ -50,15 +72,15 @@
         top: 1em;
         right: 1em;
         margin: 0;
-        display: none;
-
-        &:hover{
-          background-color: $coral-light;
-        }
+        // display: none;
+      //
+      //   &:hover{
+      //     background-color: $coral-light;
+      //   }
         &:active{
           background-color: $coral-dark;
         };
-      }
+     }//END .REMOVE
       .remove:before{
         font-family: FontAwesome;
         content: '\f057';
@@ -140,6 +162,8 @@
       background-color: $teal;
       border: none;
       color: #fff;
+      margin-right: 10px;
+      font-size: 14pt;
     /*  padding-left: 2%;
       padding-right: 2%;*/
       border-radius: 3px;
@@ -148,10 +172,10 @@
       margin-top: 40px;
       margin-bottom: 15px;*/
 
-      &:hover {
-        background-color: $light-teal;
-      }
-    }
+      // &:hover {
+      //   background-color: $light-teal;
+      // }
+    }//END BUTTON
 
     .cancel {
       text-decoration: none;
@@ -159,9 +183,91 @@
       cursor: pointer;
       background-color: $coral;
 
-      &:hover {
-        background-color: $coral-light;
-      }
+      // &:hover {
+      //   background-color: $coral-light;
+      // }
     }
   }//END <FORM>
 }//END .WISH-FORM
+
+@media (max-width: 767px) {           //MOBILE
+  .wish-form {
+    .create-wish {
+      width: 100%;
+
+      .wish-meta {
+        width: 100%;
+      }//meta-wish
+
+      .remove {
+        display: inline-block;
+      }
+      .remove:before{
+        font-family: FontAwesome;
+        content: '\f057';
+      }
+    }//create-wish
+  }//end .wish-form
+}//end MOBILE
+
+
+@media (max-width: 1024px) and (min-width: 768px){      //TABLET
+  .wish-form {
+    .create-wish {
+      width: 80%;
+
+      }//create-wish
+
+
+
+  }//end .wish-form
+}//END TABLET
+
+@media (min-width: 1025px) {            //DESKTOP
+
+  .wish-form {
+    .create-wish {
+      width: 40%;
+
+      .form-item:hover {
+        .remove {
+          display: inline-block;
+        }
+
+      }//END form-item hover
+
+
+        .remove {
+          // position: absolute;
+          // background-color: $coral;
+          // top: 1em;
+          // right: 1em;
+          // margin: 0;
+          display: none;
+
+          &:hover{
+            background-color: $coral-light;
+          }
+          &:active{
+            background-color: $coral-dark;
+          };
+        }//.remove
+      // .currency {
+
+        button {
+          &:hover {
+            background-color: $light-teal;
+          }
+        }//button
+      // }//.currency
+      .cancel {
+        &:hover {
+          background-color: $coral-light;
+        }
+      }//.cancel
+    }//create-wish
+
+
+
+  }//end .wish-form
+} //END DESKTOP
