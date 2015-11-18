@@ -365,7 +365,7 @@
   })// END TABS CONTROLLER
 
   .constant('API', {
-    BASE_URL: '//',
+    BASE_URL: '',
     SEARCH_PATH: '/products/search.json',
     DRAFT_WISH: 'draft.json',
     WISHES_PATH: '/wishes.json',
