@@ -58,7 +58,7 @@
           // padding-top: 4%;
           // padding-bottom: 5%;
           text-align: left;
-          width: 80%;
+          // width: 80%;
           float: left;
           display: inline-block;
           margin-top: 2%;
@@ -69,7 +69,7 @@
             display: inline-block;
             margin: 0 10px;
             color: #064583;
-            font-size: 16pt;
+            // font-size: 16pt;
             text-transform: capitalize;
 
           }
@@ -244,7 +244,7 @@
 } //END <SECTION>
 
 
-@media (max-width: 767px) {           //MOBILE
+@media (max-width: 900px) {           //MOBILE
   .result-list {
 
     .result-item {  //li
@@ -252,11 +252,17 @@
 
       .img-container {
         width: 50%;
+        height: 100px;
+        overflow: hidden;
       }
 
       .product-txt {
         margin-left: 10px;
+        width: 80%;
 
+        .title {
+          font-size: 12pt;
+        }
         .price {
           top:-55px;
           right: -44px;
@@ -265,7 +271,7 @@
         .star-link {
           font-size: 45pt;
           right: -54px;
-          top: -139px;
+          top: -130px;
         }
       }//product-txt
     }//.result-item <li>
@@ -273,26 +279,34 @@
   }//.results-list
 } //END MOBILE
 
-@media (max-width: 1024px) and (min-width: 768px){      //TABLET
+@media (max-width: 1024px) and (min-width: 901px){      //TABLET
   .result-list {
 
     .result-item {
 
       .img-container {
-        width: 40%;
+        width: 30%;
 
       }
       .product-txt {
+        width: 50%;
+        .title  {
+          font-size: 14pt;
+        }
 
         .price {
-          top: -75px;
-          right: 20px;
+          top: 66px;
+          right: -68px;
+        }
+
+        .descr {
+          max-height: 200px;
         }
 
         .star-link {
-          font-size: 50pt;
-          top: -195px;
-          right: 1px;
+          font-size: 45pt;
+          top: 4px;
+          right: -70px;
         }
       }//.product-txt
     } //.result-item
@@ -310,8 +324,12 @@
       }
 
       .product-txt {
+        width: 80%;
+
         .title {
           margin-left: 0;
+          font-size: 16pt;
+
         } //.title
 
           .price {
