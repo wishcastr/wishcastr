@@ -197,46 +197,27 @@
     }//.ADD-WISH HOVER
 
   }//END .ADD-WISH
-    .add-wish-but-login{
+  .add-wish-but-login{
     display: none;
     bottom: 0;
     position: fixed;
     width: 100%;
     background-color: rgba(0,0,0,.3);
-    -webkit-animation: display-none-transition 0.5s;
     animation: display-none-transition 0.5s;
 
-    .amazon-root {
-      cursor: pointer;
-      background: $amazon-image-up no-repeat;
-      height: 32px;
-      width: 76px;
-      margin: 0 auto;
-
-      span {
-        padding: 6px 0 0 30px;
-        font-size: .8em;
-        font-weight: bold;
-        text-align: left;
-      }
-
-      .amazon-login {
-        display: block;
-        color: black;
-        width: 100%;
-      } //END AMAZON_LOGIN
-
-      .amazon-logout {
-        display: none;
-        color: black;
-      } //END AMAZON_LOGOUT
+    .login-save {
+      font-size: 16pt;
+      // color: #fdebb7;
+      font-weight: bold;
+      background-color: #ee6a50;
+      color: #fff;
+      margin-top: 15px;
+      margin-bottom: 15px;
+      // -webkit-text-fill-color: #fdebb7;
+      // -webkit-text-stroke-width: 0.25px;
+      // -webkit-text-stroke-color: black;
+      // -webkit-animation: display-none-transition 0.5s;
     }
-    .amazon-root:active {
-      background: $amazon-image-down no-repeat;
-      margin-right: 10px;
-      position: relative;
-    } //END AMAZON-ROOT ACTIVE
-
   }//END .ADD-WISH-BUT-LOGIN
 }//END .lists
 @media (max-width: 512px) {          //MINI-MOBILE

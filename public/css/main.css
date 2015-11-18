@@ -2203,8 +2203,6 @@ body:after {
       color: #fff;
       border-radius: 3px;
       font-size: 1.5em; }
-      .container .search .color-bar button:hover {
-        background-color: #379b9b; }
       .container .search .color-bar button:active {
         background-color: #046969; }
     .container .search .color-bar .search-menu {
@@ -2242,7 +2240,6 @@ body:after {
         text-decoration: none;
         color: #a9a9a9;
         display: none;
-        margin-top: 10px;
         margin-right: 15px;
         margin-left: 15px; }
       .container .list-view .sub-views a.active {
@@ -2254,7 +2251,6 @@ body:after {
         border-radius: 3px;
         padding-right: 15px;
         padding-left: 15px;
-        font-size: 25pt;
         color: #064583; }
   .container footer {
     background-color: #F9BE12;
@@ -2289,7 +2285,15 @@ body:after {
   .container .color-bar button {
     margin-top: 15px;
     padding-left: 15%;
-    padding-right: 15%; } }
+    padding-right: 15%; }
+  .container .list-view {
+    font-size: 16pt; }
+    .container .list-view .sub-views a {
+      margin-top: 15px; } }
+
+@media (max-width: 1024px) and (min-width: 768px) {
+  .container .list-view .sub-views a {
+    margin-top: 15px; } }
 
 @media (min-width: 1025px) {
   .container .color-bar button {
@@ -2297,6 +2301,12 @@ body:after {
     padding-left: 2%;
     padding-right: 2%;
     margin-left: 10px; }
+    .container .color-bar button:hover {
+      background-color: #379b9b; }
+  .container .list-view .sub-views a {
+    margin-top: 10px; }
+  .container .list-view .selected {
+    font-size: 25pt; }
   .container footer .info-pgs a:hover {
     color: #068383; }
   .container footer #github a:hover {
@@ -2422,30 +2432,14 @@ body:after {
     position: fixed;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.3);
-    -webkit-animation: display-none-transition 0.5s;
     animation: display-none-transition 0.5s; }
-    .lists .add-wish-but-login .amazon-root {
-      cursor: pointer;
-      background: url(../img/amazon_login_76x32.png) no-repeat;
-      height: 32px;
-      width: 76px;
-      margin: 0 auto; }
-      .lists .add-wish-but-login .amazon-root span {
-        padding: 6px 0 0 30px;
-        font-size: .8em;
-        font-weight: bold;
-        text-align: left; }
-      .lists .add-wish-but-login .amazon-root .amazon-login {
-        display: block;
-        color: black;
-        width: 100%; }
-      .lists .add-wish-but-login .amazon-root .amazon-logout {
-        display: none;
-        color: black; }
-    .lists .add-wish-but-login .amazon-root:active {
-      background: url(../img/amazon_login_76x32_pressed.png) no-repeat;
-      margin-right: 10px;
-      position: relative; }
+    .lists .add-wish-but-login .login-save {
+      font-size: 16pt;
+      font-weight: bold;
+      background-color: #ee6a50;
+      color: #fff;
+      margin-top: 15px;
+      margin-bottom: 15px; }
 
 @media (max-width: 512px) {
   .lists ul {
@@ -2611,7 +2605,6 @@ body:after {
         width: 100%; }
         .result-list ul .result-item a .img-container {
           float: left;
-          width: 10%;
           display: inline-block; }
           .result-list ul .result-item a .img-container img {
             display: inline-block;
@@ -2642,22 +2635,17 @@ body:after {
           .result-list ul .result-item a .product-txt .price {
             float: right;
             font-size: 18pt;
-            position: absolute;
-            top: 25px;
-            right: 87px; }
+            position: absolute; }
           .result-list ul .result-item a .product-txt .descr {
             width: 75%;
             margin-right: 5px; }
           .result-list ul .result-item a .product-txt .star-link {
             color: #f9be12;
-            font-size: 35pt;
             margin-left: 50px;
             margin-right: 35px;
             display: block;
             float: right;
             position: absolute;
-            right: 1px;
-            top: 22px;
             cursor: pointer; }
             .result-list ul .result-item a .product-txt .star-link:hover {
               color: #fad159; }
@@ -2729,21 +2717,41 @@ body:after {
 @media (max-width: 767px) {
   .result-list .result-item {
     width: 100%; }
+    .result-list .result-item .img-container {
+      width: 50%; }
     .result-list .result-item .product-txt {
       margin-left: 10px; }
+      .result-list .result-item .product-txt .price {
+        top: -55px;
+        right: -44px; }
       .result-list .result-item .product-txt .star-link {
-        font-size: 40pt;
-        right: 0; } }
+        font-size: 45pt;
+        right: -54px;
+        top: -139px; } }
 
 @media (max-width: 1024px) and (min-width: 768px) {
-  .result-list .result-item .star-link {
-    font-size: 35pt; } }
+  .result-list .result-item .img-container {
+    width: 40%; }
+  .result-list .result-item .product-txt .price {
+    top: -75px;
+    right: 20px; }
+  .result-list .result-item .product-txt .star-link {
+    font-size: 50pt;
+    top: -195px;
+    right: 1px; } }
 
 @media (min-width: 1025px) {
+  .result-list .result-item .img-container {
+    width: 10%; }
   .result-list .result-item .product-txt .title {
     margin-left: 0; }
-    .result-list .result-item .product-txt .title .star-link {
-      font-size: 35pt; } }
+  .result-list .result-item .product-txt .price {
+    top: 25px;
+    right: 87px; }
+  .result-list .result-item .product-txt .star-link {
+    font-size: 35pt;
+    top: 22px;
+    right: 1px; } }
 
 .col-1-3 {
   width: 33.33333%;
@@ -3207,14 +3215,28 @@ section.privacy {
     margin-bottom: 50px;
     padding-top: 10px;
     padding-bottom: 10px; }
-    .wish-form .create-wish .wish-meta div {
-      margin: 1em; }
-      .wish-form .create-wish .wish-meta div label {
-        display: block; }
-    .wish-form .create-wish .wish-meta input {
-      padding: .25em; }
-    .wish-form .create-wish .form-item:hover .remove {
-      display: inline-block; }
+    .wish-form .create-wish .wish-meta {
+      background-color: #F9BE12;
+      padding-bottom: 4%;
+      padding-top: 1%;
+      color: #fff;
+      font-size: 16pt; }
+      .wish-form .create-wish .wish-meta div {
+        margin: 1em; }
+        .wish-form .create-wish .wish-meta div label {
+          display: block;
+          margin-bottom: 10px; }
+      .wish-form .create-wish .wish-meta input {
+        padding: .25em;
+        color: #a3a3a3;
+        font-size: 12pt; }
+      .wish-form .create-wish .wish-meta #name-input {
+        width: 80%;
+        color: #064583; }
+      .wish-form .create-wish .wish-meta .currency {
+        padding: 0.5%;
+        color: #064583;
+        font-size: 12pt; }
     .wish-form .create-wish .form-item {
       position: relative;
       background-color: #f2f2f2;
@@ -3226,10 +3248,7 @@ section.privacy {
         background-color: #ee6a50;
         top: 1em;
         right: 1em;
-        margin: 0;
-        display: none; }
-        .wish-form .create-wish .form-item .remove:hover {
-          background-color: #f18772; }
+        margin: 0; }
         .wish-form .create-wish .form-item .remove:active {
           background-color: #EE6A50; }
       .wish-form .create-wish .form-item .remove:before {
@@ -3289,6 +3308,8 @@ section.privacy {
       background-color: #068383;
       border: none;
       color: #fff;
+      margin-right: 10px;
+      font-size: 14pt;
       /*  padding-left: 2%;
       padding-right: 2%;*/
       border-radius: 3px;
@@ -3296,15 +3317,42 @@ section.privacy {
       margin: 0 auto;
       margin-top: 40px;
       margin-bottom: 15px;*/ }
-      .wish-form .create-wish button:hover {
-        background-color: #379b9b; }
     .wish-form .create-wish .cancel {
       text-decoration: none;
       margin-top: 15px;
       cursor: pointer;
       background-color: #ee6a50; }
-      .wish-form .create-wish .cancel:hover {
+
+@media (max-width: 767px) {
+  .wish-form .create-wish {
+    width: 100%; }
+    .wish-form .create-wish .wish-meta {
+      width: 100%; }
+    .wish-form .create-wish .remove {
+      display: inline-block; }
+    .wish-form .create-wish .remove:before {
+      font-family: FontAwesome;
+      content: '\f057'; } }
+
+@media (max-width: 1024px) and (min-width: 768px) {
+  .wish-form .create-wish {
+    width: 80%; } }
+
+@media (min-width: 1025px) {
+  .wish-form .create-wish {
+    width: 40%; }
+    .wish-form .create-wish .form-item:hover .remove {
+      display: inline-block; }
+    .wish-form .create-wish .remove {
+      display: none; }
+      .wish-form .create-wish .remove:hover {
         background-color: #f18772; }
+      .wish-form .create-wish .remove:active {
+        background-color: #EE6A50; }
+    .wish-form .create-wish button:hover {
+      background-color: #379b9b; }
+    .wish-form .create-wish .cancel:hover {
+      background-color: #f18772; } }
 
 /* Icon Grow */
 .hvr-icon-grow {
@@ -3400,21 +3448,18 @@ section.privacy {
           display: block;
           font-size: 12pt; }
         .user-wishes-list ul li .wishes-list-txt .editBtns {
-          display: none;
           margin: 0; }
           .user-wishes-list ul li .wishes-list-txt .editBtns #edit {
             background-color: #068383;
             color: #fff;
             border: none;
             border-radius: 3px;
-            margin-right: 15px;
+            margin-left: 10px;
             font-size: 14pt; }
             .user-wishes-list ul li .wishes-list-txt .editBtns #edit:before {
               content: '\f040';
               font-family: FontAwesome;
               margin-right: 5px; }
-            .user-wishes-list ul li .wishes-list-txt .editBtns #edit:hover {
-              background-color: #379b9b; }
           .user-wishes-list ul li .wishes-list-txt .editBtns #delete {
             background-color: #ee6a50;
             color: #fff;
@@ -3425,8 +3470,6 @@ section.privacy {
               content: '\f057';
               font-family: FontAwesome;
               margin-right: 5px; }
-            .user-wishes-list ul li .wishes-list-txt .editBtns #delete:hover {
-              background-color: #f18772; }
   .user-wishes-list .animated {
     -webkit-animation-duration: 1s;
     animation-duration: 1s;
@@ -5657,16 +5700,16 @@ section.privacy {
 
 @media (max-width: 767px) {
   .user-wishes-list ul {
-    margin-left: 9.5%; }
+    margin-left: 5.5%; }
     .user-wishes-list ul li {
       width: 80%;
       margin: 0 auto;
       border: 2px solid #fff; }
       .user-wishes-list ul li .editBtns {
-        display: inline-block; }
-        .user-wishes-list ul li .editBtns #edit:before {
-          margin-right: 5px; }
+        display: block; }
         .user-wishes-list ul li .editBtns #delete:before {
+          margin-right: 5px; }
+        .user-wishes-list ul li .editBtns #edit:before {
           margin-right: 5px; } }
 
 @media (max-width: 1024px) and (min-width: 768px) {
@@ -5692,6 +5735,10 @@ section.privacy {
         width: 260px; }
       .user-wishes-list ul li .editBtns {
         display: none; }
+        .user-wishes-list ul li .editBtns #edit:hover {
+          background-color: #379b9b; }
+        .user-wishes-list ul li .editBtns #delete:hover {
+          background-color: #f18772; }
     .user-wishes-list ul li:hover .editBtns {
       display: inline-block; } }
 
