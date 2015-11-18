@@ -141,7 +141,7 @@ body:after {
       input {
         border-radius: 3px;
         border: none;
-        padding: 5px 95px;
+        // padding: 5px 95px;
         text-align: center;
         font-size: 1.5em;
       }
@@ -299,6 +299,9 @@ body:after {
   .container {
 
     .color-bar {
+      input {
+        padding: 5px 71px;
+      }
 
       button {
         margin-top: 15px;
@@ -308,7 +311,7 @@ body:after {
     } //.color-bar
 
     .list-view {
-      font-size: 16pt;
+      font-size: 14pt;
       .sub-views {
         a {
           margin-top: 15px;
@@ -321,6 +324,13 @@ body:after {
 
 @media (max-width: 1024px) and (min-width: 768px){      //TABLET
   .container {
+
+    .color-bar {
+      input {
+        padding: 5px 95px;
+
+      }
+    }
     .list-view {
       .sub-views {
         a {
@@ -338,7 +348,10 @@ body:after {
   .container {
 
     .color-bar {
+      input {
+        padding: 5px 95px;
 
+      }
       button {
         margin-top: 10px;
         padding-left: 2%;
