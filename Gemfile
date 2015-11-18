@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 ruby '2.2.2'
 
-gem 'rails', github: "rails/rails"
-gem 'sprockets-rails', github: "rails/sprockets-rails"
-gem 'sprockets', github: "rails/sprockets"
-# gem 'sass-rails', github: "rails/sass-rails"
-gem 'arel', github: "rails/arel"
-gem 'rack', github: "rack/rack"
+gem 'rails', git: "https://github.com/rails/rails"
+gem 'sprockets-rails', git: "https://github.com/rails/sprockets-rails"
+gem 'sprockets', git: "https://github.com/rails/sprockets"
+# gem 'sass-rails', git: "https://github.com/rails/sass-rails"
+gem 'arel', git: "https://github.com/rails/arel"
+gem 'rack', git: "https://github.com/rack/rack"
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
