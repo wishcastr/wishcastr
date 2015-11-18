@@ -365,7 +365,7 @@
   })// END TABS CONTROLLER
 
   .constant('API', {
-    BASE_URL: '//wishcastr-staging.herokuapp.com',
+    BASE_URL: '//localhost:3000',
     SEARCH_PATH: '/products/search.json',
     DRAFT_WISH: 'draft.json',
     WISHES_PATH: '/wishes.json',

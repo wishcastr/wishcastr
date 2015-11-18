@@ -7,7 +7,7 @@ echo 'Step 1: Copy all the HTML'
 cp src/*.html public/
 
 mkdir -p public/partials/
-cp -r src/partials/ public/partials/
+cp -r src/partials/* public/partials/
 
 echo 'Step 2: Build all the Sass into CSS!'
 mkdir -p public/css
@@ -47,4 +47,5 @@ cp bower_components/hover/scss/hover.scss public/bower_components/hover/scss/hov
 echo 'Step 5: Copy all the images!'
 mkdir -p public/images/
 cp -r src/img/ public/img/
-cp -r src/favicons/ public/
+cp src/favicons/* public/
+mkdir -p public/logs/
