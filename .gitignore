@@ -24,3 +24,4 @@ npm-debug.log
 !/tmp/.keep
 .DS_Store
 ~$*
+/coverage/*
