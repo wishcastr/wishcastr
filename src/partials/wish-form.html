@@ -5,7 +5,7 @@
     <section class="wish-meta">
       <div>
         <label>Name of Wish</label>
-        <input type="text" name="wish-name" placeholder="Wish Name" ng-model="wish.name" required />
+        <input type="text" name="wish-name" placeholder="Wish Name" id="name-input" ng-model="wish.name" required />
         <div ng-show="wish-edit.$submitted || wish-edit.wish-name.$touched">
           <span ng-show="wish-edit.wish-name.$error.required">
             You need to name your wish!
@@ -15,7 +15,7 @@
 
       <div>
         <label>Email me when any products in this wish reach this price</label>
-        <span class="currency">$ <input type="integer" name="wish-price" placeholder="Price" ng-model="wish.threshold_price" required /></span>
+        <span class="currency">$ <input type="integer" name="wish-price" placeholder="Price" id="price-input" ng-model="wish.threshold_price" required /></span>
         <div ng-show="wish-edit.$submitted || wish-edit.wish-price.$touched">
           <span ng-show="wish-edit.wish-price.$error.required">
             You need to set a threshold price.
@@ -26,8 +26,8 @@
         </div>
       </div>
 
-      <button class="cancel" ng-click="goBack()">Cancel</button>
       <button type="submit" ng-click="submitWish()">Save your wish</button>
+      <button class="cancel" ng-click="goBack()">Cancel</button>
 
     </section>
 

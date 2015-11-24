@@ -165,7 +165,7 @@
             image_large: p.find('img').attr('ng-src'),
             current_price: p.find('.price').attr('data-current-price'),
             title: p.find('.title').attr('title'),
-            affiliate_url: p.find('.buy').attr('href')
+            affiliate_url: p.attr('data-affiliate-url')
           } //END VAR PRODUCT
 
           if(star.hasClass('fa-star')){
@@ -365,7 +365,7 @@
   })// END TABS CONTROLLER
 
   .constant('API', {
-    BASE_URL: '//wishcastr-staging.herokuapp.com',
+    BASE_URL: '',
     SEARCH_PATH: '/products/search.json',
     DRAFT_WISH: 'draft.json',
     WISHES_PATH: '/wishes.json',

@@ -29,6 +29,13 @@ class Product < ActiveRecord::Base
     Product.all.each do |product|
       updated_product = product.class.item_lookup(product.sku)
       if updated_product[:sku] == product.sku
+        product.update(
+          image_large: updated_product[:image_large],
+          image_thumbnail: updated_product[:image_thumbnail],
+          title: updated_product[:title],
+          brand: updated_product[:brand],
+          description: updated_product[:description],
+          affiliate_url: updated_product[:affiliate_url])
         PriceHistory.create(product_id: product.id, price: updated_product[:current_price], date: DateTime.now())
         # product.write_d3_table
       else

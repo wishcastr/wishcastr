@@ -1,19 +1,19 @@
 GIT
-  remote: git://github.com/rack/rack.git
+  remote: https://github.com/rack/rack
   revision: c393176b0edf3e5d06cabbb6eb9d9c7a07b2afa7
   specs:
     rack (2.0.0.alpha)
       json
 
 GIT
-  remote: git://github.com/rails/arel.git
+  remote: https://github.com/rails/arel
   revision: 3c429c5d86e9e2201c2a35d934ca6a8911c18e69
   specs:
     arel (7.0.0.alpha)
 
 GIT
-  remote: git://github.com/rails/rails.git
-  revision: 23bb31b158fe10e5872dc80634a7ff172531c570
+  remote: https://github.com/rails/rails
+  revision: 3d8a7c0e64fef726c22fd64911771cee8c467447
   specs:
     actionmailer (5.0.0.alpha)
       actionpack (= 5.0.0.alpha)
@@ -45,7 +45,7 @@ GIT
       activesupport (= 5.0.0.alpha)
       arel (= 7.0.0.alpha)
     activesupport (5.0.0.alpha)
-      concurrent-ruby (~> 1.0.0.pre3, < 2.0.0)
+      concurrent-ruby (~> 1.0)
       i18n (~> 0.7)
       json (~> 1.7, >= 1.7.7)
       method_source
@@ -70,20 +70,20 @@ GIT
       thor (>= 0.18.1, < 2.0)
 
 GIT
-  remote: git://github.com/rails/sprockets-rails.git
-  revision: 93a45b1c463a063ec7cf4d160107b67aa3db7a1a
+  remote: https://github.com/rails/sprockets
+  revision: 98d0ccc42949815d959cf95fbffd52a3df650358
+  specs:
+    sprockets (4.0.0)
+      rack (>= 1, < 3)
+
+GIT
+  remote: https://github.com/rails/sprockets-rails
+  revision: 06d84e952490d7d391592124f6e3b79f9c596674
   specs:
     sprockets-rails (3.0.0.beta3)
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-
-GIT
-  remote: git://github.com/rails/sprockets.git
-  revision: 5a77f8b007b8ec61edd783c48baf9d971f1c684d
-  specs:
-    sprockets (4.0.0)
-      rack (>= 1, < 3)
 
 GEM
   remote: https://rubygems.org/
@@ -97,7 +97,7 @@ GEM
     codeclimate-test-reporter (0.4.8)
       simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.0)
-    concurrent-ruby (1.0.0.pre4)
+    concurrent-ruby (1.0.0)
     daemons (1.2.3)
     delayed_job (4.1.1)
       activesupport (>= 3.0, < 5.0)
@@ -122,9 +122,9 @@ GEM
     method_source (0.8.2)
     mime-types (2.6.2)
     mini_portile (0.6.2)
-    minitest (5.8.2)
+    minitest (5.8.3)
     multi_json (1.11.2)
-    nokogiri (1.6.6.2)
+    nokogiri (1.6.6.3)
       mini_portile (~> 0.6.0)
     pg (0.18.3)
     pry (0.10.3)
