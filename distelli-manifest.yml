@@ -1,0 +1,37 @@
+dbernheisel/wishcastr:
+
+  #Learn about the distelli-manifest.yml at https://www.distelli.com/docs/reference/distelli-manifest
+  PkgInclude:
+    - '*'
+    #- lib/simplerubyapp/*.rb
+    #- Gemfile
+    #- config.ru
+    #- SimpleRubyApp.gemspec
+
+  Build:
+    - echo "Begin Build"
+    - su -l wishcastr
+    - cd ~
+    - bundle install
+    - npm install
+    - bash build
+
+  PreInstall:
+    - echo "Begin PreInstall"
+    #- gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+    #- curl -sSL https://get.rvm.io | bash -s stable --ruby
+    #- source ~/.rvm/scripts/rvm
+    #- rvm install ruby-2.2.2
+    #- rvm use 2.2.2
+    #- gem install bundle
+
+  PostInstall:
+    - echo "Begin PostInstall"
+    #- source ~/.rvm/scripts/rvm
+    #- rvm use 2.2.2
+    #- bundle install --binstubs $DISTELLI_APPHOME/bundle/bin --standalone --path $DISTELLI_APPHOME/bundle/lib
+
+  Exec:
+    #- source ~/.rvm/scripts/rvm
+    #- rvm use 2.2.2
+    #- ./bundle/bin/thin start -p $PORT -e $STAGE
