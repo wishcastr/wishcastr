@@ -15,7 +15,7 @@ body:after {
   content: $amazon-image-up $amazon-image-down;
 }
 
-.container {
+.container {          //Main Body Container
   width: 100%;
   font-family: 'Lato', sans-serif;
   .nav-header {
@@ -29,7 +29,7 @@ body:after {
       display: inline-block;
       font-size: 30pt;
       font-family: 'Lobster Two', cursive;
-      color: $dark-blue;     //DARK BLUE
+      color: $dark-blue;
       font-weight: bold;
       margin-left: 10px;
       margin-top: 10px;
@@ -43,16 +43,16 @@ body:after {
       display: inline-block;
       width: 25%;
       margin-top: 10px;
-      color: $dark-blue;     //DARK BLUE
+      color: $dark-blue;
       font-size: 16pt;
       margin-right: 10px;
       text-align: right;
 
-      .hidden {
+      .hidden {           //welcome message
         display: none;
       }
 
-      .login {
+      .login {          //<div> login button
       display: inline-block;
       margin-top: 10px;
       float: right;
@@ -105,97 +105,55 @@ body:after {
 
     }//END .META
 
-    button {
-      background-color: $teal; //TEAL
-      border: none;
-      color: #fff;
-      border-radius: 3px;
-      &:hover {
-        background-color: #379b9b;
-      }
-    }//BUTTON
   }//END <HEADER>
 
-  .search {
+  .search {  //<section>
 
     .color-bar {
       display: inline-block;
       width: 100%;
-      background-color: $yellow-orange; //YELLOW/ORANGE
+      background-color: $yellow-orange;
       padding-bottom: 4%;
       padding-top: 2%;
       text-align: center;
       @extend .clearfix;
-      h2 {
+      h2 {                    //"find what you're wishing for"
         font-size: 35pt;
         font-weight: lighter;
         color: #fff;
         margin-bottom: 17px;
         margin-top: 25px;
-        #wish {
+        #wish {               //"wish" styling <span>
           font-family: 'Lobster Two', cursive;
           font-weight: lighter;
         }
       }//END H2
 
-      input {
+      input {               //search
         border-radius: 3px;
         border: none;
-        // padding: 5px 95px;
         text-align: center;
         font-size: 1.5em;
       }
 
-      button {
+      button {                  //submit search button
         background-color: $teal;
         border: none;
         color: #fff;
-        // padding-left: 2%;
-        // padding-right: 2%;
         border-radius: 3px;
-        // margin-left: 10px;
         font-size: 1.5em;
-        // &:hover {
-        //   background-color: $light-teal;
-        // }
+
         &:active {
           background-color: $teal-dark;
         }
       }//END BUTTON
-
-      .search-menu {
-        list-style: none;
-        background-color: #c2c2c2;
-        width: 60%;
-        margin: 0 auto;
-        border-radius: 5px;
-        position: absolute;
-        left: 18%;
-        text-align: left;
-        margin-top: 10px;
-
-        // &.shadow {
-        //   -webkit-box-shadow: 0 8px 6px -6px black;
-        //   -moz-box-shadow: 0 8px 6px -6px black;
-        //   box-shadow: 0 8px 6px -6px black;
-        // }
-
-        li {
-          // background-color: #fff;
-          color: $dark-blue; //DARK-BLUE
-          a {
-            text-decoration: none;
-            display: inline-block;
-          }
-        }
-      }
-    }//.COLOR-BAR=
+    }//.COLOR-BAR
   }//.SEARCH
 
-  .list-view {
+  .list-view {     //<section> contains tabs and ng-view
     width: 100%;
 
-    .#{$fa-css-prefix}-spin {
+    .#{$fa-css-prefix}-spin {  //loading spinner
       -webkit-animation: fa-spin 2s infinite linear;
       animation: fa-spin 2s infinite linear;
       margin: 0 auto;
@@ -206,7 +164,7 @@ body:after {
       color: #c1c1c1;
     }
 
-    .sub-views {
+    .sub-views {      //tabs
       font-size: 22pt;
       text-align: center;
       border-bottom: 2px solid #f2f2f2;
@@ -222,22 +180,18 @@ body:after {
       }
 
 
-      a.active {
+      a.active {              //makes tab visible
         display: inline-block;
-
       }
 
-      .selected {
+      .selected {             //shows which view is selected
         display: inline-block;
         border: 2px solid #f2f2f2;
         border-bottom: 3px solid #fff;
         border-radius: 3px;
         padding-right: 15px;
         padding-left: 15px;
-        // font-size: 25pt;
         color: $dark-blue;
-
-
       }
 
     } //SUB-VIEWS
@@ -250,7 +204,7 @@ body:after {
     margin-top: 60px;
     @extend .clearfix;
 
-    .info-pgs {
+    .info-pgs {       //<div> for privacy and about pages
       float: left;
       margin-top: 10px;
 
@@ -261,20 +215,15 @@ body:after {
         margin-left: 10px;
         margin-right: 10px;
 
-        &::before {
+        &::before {         //stars
           content: '\f005';
           font-family: FontAwesome;
           margin-right: 8px;
         }
-
-        // &:hover {
-        //   color: $teal;
-        // }
       }//END A
     }//END .info-pgs
 
-
-    #github {
+    #github {           //github link
       float: right;
       text-decoration: none;
       margin-right: 25px;
@@ -285,9 +234,6 @@ body:after {
       a {
         text-decoration: none;
         color: $ivory;
-        // &:hover {
-        //   color: $teal;
-        // }
       }//END A
 
     } //END GITHUB
@@ -295,15 +241,15 @@ body:after {
 
 }//END .CONTAINER
 
-@media (max-width: 767px) {           //MOBILE
+@media (max-width: 767px) {           //MOBILE VIEW
   .container {
 
     .color-bar {
-      input {
+      input {       //search bar
         padding: 5px 71px;
       }
 
-      button {
+      button {      //submit search button
         margin-top: 15px;
         padding-left: 15%;
         padding-right: 15%;
@@ -313,7 +259,7 @@ body:after {
     .list-view {
       font-size: 14pt;
       .sub-views {
-        a {
+        a {                 //tabs
           margin-top: 15px;
         }
       }//.sub-views
@@ -322,70 +268,59 @@ body:after {
   }//.container
 }//END MOBILE
 
-@media (max-width: 1024px) and (min-width: 768px){      //TABLET
+@media (max-width: 1024px) and (min-width: 768px){      //TABLET VIEW
   .container {
 
     .color-bar {
-      input {
+      input {    //search bar
         padding: 5px 95px;
-
       }
-    }
+    } // end .color-bar
     .list-view {
       .sub-views {
-        a {
+        a {             //tabs
           margin-top: 15px;
         }
-      }
-
-    }//.list-view
-
-  } //.container
+      } //end .sub-views
+    }//end .list-view
+  } //end .container
 }//END TABLET
 
 
-@media (min-width: 1025px) {            //DESKTOP
+@media (min-width: 1025px) {            //DESKTOP VIEW
   .container {
 
     .color-bar {
-      input {
+      input {           //search bar
         padding: 5px 95px;
-
       }
-      button {
+      button {      //submit search button
         margin-top: 10px;
         padding-left: 2%;
         padding-right: 2%;
         margin-left: 10px;
 
-        &:hover {
+        &:hover {         //hover effect for button
           background-color: $light-teal;
         }
       } //button
     } //.color-bar
     .list-view {
       .sub-views {
-        a {
+        a {         //tabs
           margin-top: 10px;
         }
       }// .sub-views
       .selected{
         font-size: 25pt;
-
       }
-    }
+    } //end .list-view
     footer {
-
-
       .info-pgs {
-
         a {
-
           &::before {
-
           }
-
-          &:hover {
+          &:hover {     //hover effect for footer links
             color: $teal;
           }
         }//END A
@@ -393,16 +328,12 @@ body:after {
 
 
       #github {
-
         a {
-
-          &:hover {
+          &:hover {     //hover effect for footer links
             color: $teal;
           }
         }//END A
-
       } //END GITHUB
     }//END FOOTER
-
   }// .container
 } //END DESKTOP
