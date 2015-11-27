@@ -25,6 +25,6 @@ production:
   adapter: postgresql
   host: localhost
   database: wishcastr
-  user: ENV['WISHCASTR_DB_USER']
-  password: ENV['WISHCASTR_DB_PASS']
+  user: <%= ENV['WISHCASTR_DB_USER'] %>
+  password: <%= ENV['WISHCASTR_DB_PASS'] %>
   port: 5432
