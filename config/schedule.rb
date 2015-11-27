@@ -18,14 +18,6 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-group: do 'production'
-every 30.minutes do
-  Product.update_prices
-  Wishes.all.each do |wish|
-    catches = wish.find_catches
-    catches.each do |caught|
-      CatchMailer.catch(wish.user, caught, wish).deliver_now unless wish.notified
-      wish.update(notified: true)
-    end
-  end
+every 15.minutes do
+  rake 'trigger_price_updates'
 end
