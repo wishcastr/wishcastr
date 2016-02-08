@@ -39,7 +39,7 @@ mkdir -p public/fonts/
 cp bower_components/font-awesome/css/font-awesome.css public/bower_components/font-awesome/css/font-awesome.css
 
 mkdir -p public/data/
-cp -r bower_components/font-awesome/fonts/ public/fonts/
+cp -r bower_components/font-awesome/fonts/ public/
 
 echo 'Step 5: Copy all the images!'
 mkdir -p public/images/
